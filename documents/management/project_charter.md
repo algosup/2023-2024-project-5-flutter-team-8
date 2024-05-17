@@ -14,19 +14,20 @@ This implementation should be only targeting the front-end at first and should o
 
 ## Stakeholders
 
-| Role   | Representative | Expectation                           |
-| ------ | -------------- | ------------------------------------- |
-| Client |                | Finished project meeting requirements |
+| Role            | Representative                        | Expectation                                                            |
+| --------------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| Client          | Lilou Jourdannaud (We Are Evolution.) | Finished project meeting requirements                                  |
+| School director | Franck JEANNIN (ALGOSUP)              | Clear documentation and management based on the skills learnt in class |
 
 ## Team members and responsibilities
 
 | Name             | Role              | Responsibilities                                                                                                                     | Performance criteria                                                                                                                      |
 | ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Antoine PREVOST  | Project Manager   | Management (time, resources)<br>Workload repartition<br> Report to stakeholders<br>Risk anticipation and mitigation                   | Project delivered on time <br>Complete software delivered<br>Resource management not exceeding expectations<br>Seamlessly running project |
+| Antoine PREVOST  | Project Manager   | Managment (time, resources)<br>Workload distribution<br> Report to stakeholders<br>Risk anticipation and mitigation                  | Project delivered on time <br>Complete software delivered<br>Resource management not exceeding expectations<br>Seamlessly running project |
 | Thomas PLANCHARD | Program Manager   | Mock-ups and general design of the software<br>Communication with the client<br>Functional specification delivery<br>Risk management | Functional specification<br>Client approval of the design and functionalities                                                             |
 | Maxime THIZEAU   | Technical Leader  | Define coding conventions<br>Choose technical tools used<br>Technical specification delivery<br>Manages developer tasks              | Technical specification                                                                                                                   |
 | Quentin CLÉMENT  | Software engineer | Write the code<br>Fix bugs<br>Document the code<br>Create the tests if needed for the code                                           | All required functionalities implemented<br>Bug-free code                                                                                 |
-| Pavlo PRENDI     | Quality assurance | Verify documents<br>Test the program<br>Confirm we match the client expectations<br>Test plan delivery                               | Test Plan<br>Identification of bugs<br>Comprehensive and exhaustive documentation                                                          |
+| Pavlo PRENDI     | Quality assurance | Verify documents<br>Test the program<br>Confirm we match the client expectations<br>Test plan delivery                               | Test Plan<br>Identification of bugs<br>Comprehensive and exhaustive documentation                                                         |
 | Arthur LEMOINE   | Technical Writer  | User Manual                                                                                                                          |                                                                                                                                           |
 
 ## Project Plan
