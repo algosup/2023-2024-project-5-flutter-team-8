@@ -3,18 +3,16 @@
 // that can be found in the LICENSE file.
 
 import 'dart:math' as math;
-import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 
 const int maxSeeds = 250;
 
 void main() {
-  runApp(const Sunflower());
+  runApp(const Loading());
 }
 
-class Sunflower extends StatefulWidget {
-  const Sunflower({super.key});
+class Loading extends StatefulWidget {
+  const Loading({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +20,7 @@ class Sunflower extends StatefulWidget {
   }
 }
 
-class _SunflowerState extends State<Sunflower> {
+class _SunflowerState extends State<Loading> {
   int seeds = 0;
 
   @override
@@ -77,9 +75,16 @@ class _SunflowerState extends State<Sunflower> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/img/logo.png'),
-              // add text section
-              const Text("Adopte 1 Candidat", style: TextStyle(fontFamily:'Didot', color: Colors.white, fontSize: 50)),
+              Transform.scale(
+                scale: 0.6, // Adjust this value to scale the image and text
+                child: Column(
+                  children: [
+                    Image.asset('assets/img/logo.png'),
+                    // const Text("Adopte 1 Candidat", 
+                    //   style: TextStyle(fontFamily:'Didot', color: Colors.white, fontSize: 50)),
+                  ],
+                ),
+              ),
               SizedBox(height: size.height / 10),
               SunflowerWidget(seeds),
             ],
@@ -121,8 +126,8 @@ class SunflowerWidget extends StatelessWidget {
     // draw the seeds only from the moment they start moving to the end
 
     for (var j = seeds; j < maxSeeds; j++) {
-      final x = math.cos(tau * j / (maxSeeds - 1)) * 1.25;
-      final y = math.sin(tau * j / (maxSeeds - 1)) * 1.25;
+      final x = math.cos(tau * j / (maxSeeds - 1)) * 1.5;
+      final y = math.sin(tau * j / (maxSeeds - 1)) * 1.5;
       seedWidgets.add(AnimatedAlign(
         key: ValueKey(j),
         duration: Duration(milliseconds: rng.nextInt(500) + 250),

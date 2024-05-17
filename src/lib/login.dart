@@ -1,26 +1,24 @@
-// import "sunflower.dart";
+import 'package:flutter/material.dart';
+import 'splashScreen.dart'; // Ensure you import the main file for navigation
 
-// void main() {
-//   runApp(const MainApp());
-// }
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({super.key});
 
-// class MainApp extends StatefulWidget {
-//   const MainApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF000000)),
-//       home: Scaffold(
-//         body: SafeArea(
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.end,
-//             children: [
-//               SunflowerWidget(seeds),
-//             ],
-//           ),
-//         ),
-//       ), 
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to the first route when tapped.
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
