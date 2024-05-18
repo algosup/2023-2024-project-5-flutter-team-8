@@ -1,4 +1,4 @@
-# Tinder-like recruitment app - Project Charter
+# 2023 - 2024 Project-5 Flutter Team-8 - Project Charter
 
 ## Project definition
 
