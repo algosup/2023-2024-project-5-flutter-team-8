@@ -21,8 +21,8 @@ Consequently, in this project, we are going to use Flutter, a language standardi
 
 ## Requirements
 
-The final product isn't ready yet to be installed on your device. This section will be updated as son as the product can be installed on your side.
+The final product isn't ready yet to be installed on your device. This section will be updated as soon as the product can be installed on your side.
 
 ## Installation
 
-The final product isn't ready yet to be installed on your device. This section will be updated as son as the product can be installed on your side.
+The final product isn't ready yet to be installed on your device. This section will be updated as soon as the product can be installed on your side.
