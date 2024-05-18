@@ -8,7 +8,7 @@ Adopte un Candidat is a recruitment app available on mobile and desktop platform
 
 Consequently, in this project, we are going to use Flutter, a language standardizing development among all the platforms targetted by the product.
 
-## Who worked on this projectd?
+## Who worked on this project?
 
 | Name             | Role              | Picture                                                                       | 🔗 to LinkedIn profile                                                                                                                                                     |
 | ---------------- | ----------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
