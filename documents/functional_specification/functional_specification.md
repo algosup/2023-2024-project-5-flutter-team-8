@@ -40,7 +40,6 @@
       - [➭ Job Creation](#-job-creation)
     - [2) Job Applications](#2-job-applications)
       - [➭ Job Matching](#-job-matching)
-      - [➭ Localization](#-localization)
     - [3) Language Support](#3-language-support)
       - [➭ Language Options](#-language-options)
     - [4) Device Compatibility](#4-device-compatibility)
@@ -52,33 +51,15 @@
     - [6) Candidate Privacy](#6-candidate-privacy)
       - [➭ Confidentiality Measures](#-confidentiality-measures)
       - [➭ Data Visibility](#-data-visibility)
-      - [➭ Soft Skill Compatibility](#-soft-skill-compatibility)
   - [D) Non-Functional Requirements](#d-non-functional-requirements)
     - [1) User Interface Design](#1-user-interface-design)
       - [➭ Visual Design](#-visual-design)
       - [➭ Branding](#-branding)
       - [➭ Accessibility](#-accessibility)
     - [2) Security](#2-security)
-      - [➭ Candidate Privacy](#-candidate-privacy)
-      - [➭ Data Encryption](#-data-encryption)
     - [3) Performance](#3-performance)
       - [➭ Responsiveness](#-responsiveness)
       - [➭ Load Time](#-load-time)
-    - [4) Reliability](#4-reliability)
-      - [➭ System Stability](#-system-stability)
-      - [➭ Error Handling](#-error-handling)
-    - [5) Usability](#5-usability)
-      - [➭ Intuitive Navigation](#-intuitive-navigation)
-      - [➭ User Feedback](#-user-feedback)
-    - [6) Localization](#6-localization)
-      - [➭ Language Support](#-language-support)
-      - [➭ Cultural Adaptation](#-cultural-adaptation)
-    - [7) Compatibility](#7-compatibility)
-      - [➭ Cross-Device Compatibility](#-cross-device-compatibility)
-      - [➭ Browser Compatibility](#-browser-compatibility)
-    - [8) Support and Maintenance](#8-support-and-maintenance)
-      - [➭ Technical Support](#-technical-support)
-      - [➭ Software Updates](#-software-updates)
   
 </details>
 
@@ -273,8 +254,6 @@ Ensure it shows task durations and dependencies. -->
 
 #### ➭ Dependencies
 
-<!-- TODO -->
-
 **Task Dependencies**:
 
 - Final Testing cannot start until Core Feature Development is complete.
@@ -379,7 +358,7 @@ Finally, the company needs to register the researched soft skills which will not
 
 As this app is a "Tinder-like" application, a match system was needed.
 This system is defined as follows:
-First, the app will do a preventive match depending on the soft skills of the job-seeker and the ones researched by a company for a job. Then, these offers will appear on the screen of the job seeker so that he can select the ones he is interested in and only then the company will be able to see his profile and accept it to have the final "match". the specific steps of this concept are defined bellow:
+First, the app will do a preventive match depending on the soft skills of the job-seeker and the ones researched by a company for a job. Then, these offers will appear on the screen of the job seeker so that he can select the ones he is interested in and only then the company will be able to see his profile and accept it to have the final "match". the specific steps of this concept are defined below:
 
 - Application matches job-seeker and job offers depending on the soft skills researched.
   - Companies will be able to select "big" soft skills for their job offer and job-seekers will be able to select "small" soft skills
@@ -391,9 +370,6 @@ First, the app will do a preventive match depending on the soft skills of the jo
 - In that case, there will be a match which means the company and the job-seeker will then be able to talk to each other.
 
 One thing to be added is that if a job offer has no job-seeker yet, all job-seeker will be able to see it and not only the ones that have had a preventive match with it.
-
-#### ➭ Localization
-<!-- ? -->
 
 ### 3) Language Support
 
@@ -412,16 +388,27 @@ To change the language option, access to the settings will be created on the set
 
 Since the programming language for this project is Flutter. The application would be supported by a large amount of devices.
 The supported devices would be:
-- MacOS
-- Windows
-- Linux
+- Computer
 - Android
-- Ios
-- Chrome
+- iOS
 
 #### ➭ Cross-Platform Compatibility
 
-<!-- TODO -->
+Google Chrome will be used to run the application on different computers. Therefore, the computer used will need:
+
+To use Chrome on Windows with an Intel processor, you'll need:
+- Windows 10 and up
+- An Intel Pentium 4 processor or later that's SSE3 capable.
+
+To use Chrome on Windows with an ARM processor, you'll need:
+- Windows 11 and up
+
+To use Chrome on Mac, you'll need:
+- macOS Catalina 10.15 and up
+
+To use Chrome on Linux, you'll need:
+- 64-bit Ubuntu 18.04+, Debian 10+, openSUSE 15.2+, or Fedora Linux 32+
+- An Intel Pentium 4 processor or later that's SSE3 capable
 
 ### 5) Target Audience
 
@@ -445,9 +432,40 @@ The supported devices would be:
 
 #### ➭ Confidentiality Measures
 
+The role of this application is to give an equal chance to get hired for a job not depending on anything else than the "soft skills".
+One of the best ways to do so is to anonymize the candidate profiles to avoid all kinds of stereotypes or discrimination. 
+
 #### ➭ Data Visibility
 
-#### ➭ Soft Skill Compatibility
+**Candidate side**: 
+
+Information visible are:
+- Profile ID
+- Avatar picture
+- "Soft skills"
+- Certifications
+
+Information hidden are:
+- Personal e-mail
+- Password
+- Full name
+- Location
+
+**Company side**: 
+
+Information visible are:
+- Company's name
+- Company's logo
+- Job title
+- Job description
+- Location
+- Workplace Images
+
+Information hidden are:
+- Personal e-mail
+- Password
+- company registration number (SIRET number)
+- "Soft skills"
 
 ## D) Non-Functional Requirements
 
@@ -464,17 +482,28 @@ Logo, color pallet, page template, avatars -->
 
 ### 2) Security
 
-#### ➭ Candidate Privacy
+<!-- Not really use because only frontend asked -->
 
-#### ➭ Data Encryption
+<!-- #### ➭ Candidate Privacy
+
+#### ➭ Data Encryption -->
 
 ### 3) Performance
 
 #### ➭ Responsiveness
 
+Since this application is not a high-performance one, the responsiveness depending on the Open Source has been set as follows:
+- **Windows**: 100-200ms
+- **macOS**: 80-150ms
+- **Linux**: 50-200ms
+- **Android**: 100-250ms
+- **iOS**: 70-130ms
+
 #### ➭ Load Time
 
-### 4) Reliability
+For this application the load time was set to two seconds, it is the average for an application to open and over this limit, it could discourage some users.
+
+<!-- ### 4) Reliability
 
 #### ➭ System Stability
 
@@ -484,22 +513,4 @@ Logo, color pallet, page template, avatars -->
 
 #### ➭ Intuitive Navigation
 
-#### ➭ User Feedback
-
-### 6) Localization
-
-#### ➭ Language Support
-
-#### ➭ Cultural Adaptation
-
-### 7) Compatibility
-
-#### ➭ Cross-Device Compatibility
-
-#### ➭ Browser Compatibility
-
-### 8) Support and Maintenance
-
-#### ➭ Technical Support
-
-#### ➭ Software Updates
+#### ➭ User Feedback -->
