@@ -379,10 +379,18 @@ Finally, the company needs to register the researched soft skills which will not
 
 As this app is a "Tinder-like" application, a match system was needed.
 This system is defined as follows:
-- Home page with "bubbles" containing companies' logos.
-- When clicked, a pop-up page will appear, with the company's logo, the company's name, a starting date, the job name, the company's location and a little job description. To see some images you would be able to swipe to the right.
-- To apply or deny the job offer, click on the according button.
-If the company likes the user's profile, there will be a match.
+First, the app will do a preventive match depending on the soft skills of the job-seeker and the ones researched by a company for a job. Then, these offers will appear on the screen of the job seeker so that he can select the ones he is interested in and only then the company will be able to see his profile and accept it to have the final "match". the specific steps of this concept are defined bellow:
+
+- Application matches job-seeker and job offers depending on the soft skills researched.
+  - Companies will be able to select "big" soft skills for their job offer and job-seekers will be able to select "small" soft skills
+  - If four of a job-seeker's soft skills are in the "big categories" that the company is looking for then there is a first "match".
+- The Home page of the job-seeker will display those first matches with "bubbles" containing companies' logos.
+  - When clicked, a pop-up page will appear, with the company's logo, the company's name, a starting date, the job name, the company's location and a little job description. To see some images you would be able to swipe to the right.
+  - To apply or deny the job offer, the job-seeker will click on the according button.
+- The company will see the user's profile that have liked them and they will be able to like them when they find them interesting. 
+- In that case, there will be a match which means the company and the job-seeker will then be able to talk to each other.
+
+One thing to be added is that if a job offer has no job-seeker yet, all job-seeker will be able to see it and not only the ones that have had a preventive match with it.
 
 #### ➭ Localization
 <!-- ? -->
