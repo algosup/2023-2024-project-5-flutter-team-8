@@ -93,13 +93,13 @@
 
 **Author(s)**: Thomas PLANCHARD.
 
-**Document ID/Number**: ?
+**Document ID/Number**: <!-- TODO -->
 
 **Version**: v0.1.
 
 **Date of Creation**: 05/16/24.
 
-**Last Updated**: 05/17/24.
+**Last Updated**: 05/21/24.
 
 **Status**: Draft.
 
@@ -137,7 +137,10 @@ The client is the company "We Are Evolution.", a creative employer branding agen
 
 #### ➭ Vision
 
-<!-- TODO -->
+The vision of the "Adopte Un Candidat" Project is to rehearse and improve the current job recruitment, by focussing more on a behavioral aspect than an actual technical one. It would principally help companies find good employees with great mental and behavior, increasing the work life for all of them. Like this a good atmosphere would be present in the company and the work amount would increase since humans work better in a sain environment.
+
+This application would then help companies find new employee basing their research on different kinds of "Soft skills". It would allow the companies to select what matters the most within a predefined soft skills list, according to what they want the employee to be.
+<!-- To rehearse -->
 
 #### ➭ Objectives
 
@@ -146,9 +149,7 @@ companies are anonymized on the platform. This allows us to focus on candidates'
 potential, rather than their origin, gender, age, etc.
 
 **Valuing soft skills**: Instead of focusing solely on diplomas and professional experience, the concept 
-emphasizes  soft  skills,  i.e.  the  behavioral  and  relational  skills  of  candidates.  This  makes  it 
-possible  to  recognize  and  evaluate skills such as communication, teamwork, creativity, problem-
-solving, etc. 
+emphasizes soft skills, i.e. the behavioral and relational skills of candidates. This makes it possible to recognize and evaluate skills such as communication, teamwork, creativity, problem-solving, etc.
 
 **Priority given to the human aspect**: The concept emphasizes the human aspect of recruitment, 
 recognizing that each candidate has unique talents and skills to offer. It seeks to give each individual 
@@ -221,7 +222,7 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 
 **Quality assurance**: A Quality Assurance professional ensures that software products meet quality standards before they are released. They identify defects and issues through systematic testing and validation.
 
-**Technical writer**: A Technical Writer creates documentation that explains technical information in a clear and concise manner. They produce manuals, guides, and other materials that help users understand and use products effectively.
+**Technical writer**: A Technical Writer creates documentation that explains technical information clearly and concisely. They produce manuals, guides, and other materials that help users understand and use products effectively.
 
 #### ➭ Project Reviewers
 
@@ -231,7 +232,35 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 
 #### ➭ Retroplanning
 
-<!-- TODO -->
+**End Goal and Deadline**:
+
+Launch of the new "Adopte un Candidat" application by June 21, 2024.
+
+**Key Milestones**:
+
+- Final Testing completed by June 14, 2024.
+- Final Product codebase completed by June 12, 2024.
+- Functional Specification completed by May 24, 2024.
+
+**Task Breakdown**:
+
+- Correcting codebase product from June 12 to June 14, 2024.
+- Testing codebase product from June 12 to June 14, 2024.
+- Implementing Nice-to-have features from June 10 to June 12, 2024.
+- Implementing core features from June 7 to June 12, 2024.
+- Reviewing Functional Specification from May 23 to May 24, 2024.
+- Defining Functional Specification from May 14 to May 23, 2024.
+- Creating the Mockup from May 14 to May 21, 2024.
+
+**Critical Path**:
+
+- Core feature development must be completed before final testing.
+- Mockup must be completed before Implementing Core features.
+
+**Timeline Visualization**:
+
+<!-- Include a Gantt chart or similar timeline to visualize the backward planning.
+Ensure it shows task durations and dependencies. -->
 
 #### ➭ Milestones
 
@@ -249,12 +278,50 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 
 <!-- TODO -->
 
+**Task Dependencies**:
+
+<!-- List tasks that depend on the completion of previous tasks.
+Example: "Integration Testing cannot start until Core Feature Development is complete." -->
+- Final Testing cannot start until Core Feature Development is complete.
+- Nice-to-have features cannot start until Core Feature Development is complete.
+- Core Feature Development cannot start until the Mockup is approved.
+
+**Resource Dependencies**:
+
+<!-- - QA Team must be available for continuous testing from August to November. -->
+
+**Critical Path Analysis**:
+
+<!-- Explain the critical path and its impact on the project timeline.
+Example: "Delays in critical path tasks will delay the overall project completion." -->
+
 #### ➭ Assumptions/Constraints
 
-For this project, the team will assume the application will be free when released so the creation a business plan is not useful.
+<!-- To complete -->
+For this project, the team will assume the application will be free when released so the creation of a business plan is not useful.
 To simplify the application there will be no admin account, assuming all the counts created would be authentical and totally legal.
 
 However, there are some constraints as well in this project, they are:
+
+**Assumptions**:
+
+<!-- List assumptions regarding project conditions, resources, and external factors.
+Example: "Assume that key stakeholders will be available for sign-off at each milestone." -->
+
+**Constraints**:
+
+<!-- Identify constraints that limit project execution, such as budget, time, and resource limitations.
+Example: "Budget constraint of $500,000 for the entire project." -->
+
+**Risk Factors**:
+
+<!-- Mention potential risks associated with assumptions and constraints.
+Example: "Risk of resource unavailability due to overlapping projects." -->
+
+**Mitigation Plans**:
+
+<!-- Provide plans to address and mitigate constraints and risks.
+Example: "Contingency plans for delays in critical tasks, such as allocating additional resources." -->
 
 ## C) Functional Requirements
 
@@ -262,23 +329,23 @@ However, there are some constraints as well in this project, they are:
 
 #### ➭ User Registration
 
-To register to the application, it would differ according to the state of the user (Company or Candidate).
+To register for the application, it would differ according to the state of the user (Company or Candidate).
 
 ##### ➭ Candidate Registration
 
-There will be five different steps to register a new canditate account.
+There will be five different steps to register a new candidate account.
 
-The first one would be to register an e-mail account, a password and a full name, there will be hide later-on.
+The first one would be to register an e-mail account, a password and a full name, which will be hidden later on.
 
-The second steps would be to select a total of fifteen "soft skills" in a list of fourty of them.
+The second step would be to select a total of fifteen "soft skills" from a list of forty of them.
 
 Once they have selected these 15 "soft skills" defining them, they should organize them from the best to the worst. The first one would be the "soft skills" they master the most, and so on.
 
-Next the user will have to select is location and a range arround it to define the possible company near him.
+Next, the user will have to select his location and a range around it to define the possible company near him.
 
 Finally, they should select an avatar among twelve animals, defining their mentality and how they see themselves.
 
-Once all these steps are completed, the user will receive an e-mail in his mailbox to confirm his register.
+Once all these steps are completed, the user will receive an e-mail in his mailbox to confirm his registration.
 
 ##### ➭ Company Registration
 
@@ -297,11 +364,11 @@ Once all these steps are completed, the user will receive an e-mail in his mailb
 #### ➭ Job Matching
 
 As this app is a "Tinder-like" application, a match system was needed.
-This system is defined as followed:
-- Home page with "bubbles" containing company's logo.
-- When clicked, a pop-up page will appear, with the company's logo, the company's name, a starting date, the job name, the company's location and a little job description. To see some images you would be abble to swipe to the right.
+This system is defined as follows:
+- Home page with "bubbles" containing companies' logos.
+- When clicked, a pop-up page will appear, with the company's logo, the company's name, a starting date, the job name, the company's location and a little job description. To see some images you would be able to swipe to the right.
 - To apply or deny the job offer, click on the according button.
-If the company liked the user's profile, their will be a match.
+If the company likes the user's profile, there will be a match.
 
 #### ➭ Localization
 <!-- ? -->
@@ -310,19 +377,19 @@ If the company liked the user's profile, their will be a match.
 
 #### ➭ Language Options
 
-Since the targeted audianec for this application is the France, it is meant to be in French language at first.
+Since the targeted audience for this application is France, it is meant to be in the French language at first.
 However, to facilitate the expansion of the application in foreign countries, a language setting was added.
 Then, at the launching of the product, there would only be English and French language.
-Other languages could be implementing afterwards, depending on which country would use the application.
+Other languages could be implemented afterward, depending on which country would use the application.
 
-To change the language option, an access to the settings will be created in the setting page.
+To change the language option, access to the settings will be created on the settings page.
 
 ### 4) Device Compatibility
 
 #### ➭ Supported Devices
 
 Since the programming language for this project is Flutter. The application would be supported by a large amount of devices.
-The supported divices would be:
+The supported devices would be:
 - MacOS
 - Windows
 - Linux
