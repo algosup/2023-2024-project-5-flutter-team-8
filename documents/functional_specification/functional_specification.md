@@ -34,8 +34,10 @@
       - [➭ User Registration](#-user-registration)
         - [➭ Candidate Registration](#-candidate-registration)
         - [➭ Company Registration](#-company-registration)
-      - [➭ Company Preferences](#-company-preferences)
+      - [➭ Candidate Management](#-candidate-management)
+      - [➭ Candidate Anonymity](#-candidate-anonymity)
       - [➭ Soft Skills Assessment](#-soft-skills-assessment)
+      - [➭ Job Creation](#-job-creation)
     - [2) Job Applications](#2-job-applications)
       - [➭ Job Matching](#-job-matching)
       - [➭ Localization](#-localization)
@@ -47,12 +49,7 @@
     - [5) Target Audience](#5-target-audience)
       - [➭ Job Seekers](#-job-seekers)
       - [➭ Companies](#-companies)
-    - [6) Admin Dashboard](#6-admin-dashboard)
-      - [➭ Candidate Management](#-candidate-management)
-      - [➭ Candidate Anonymity](#-candidate-anonymity)
-      - [➭ Soft Skills Assessment](#-soft-skills-assessment-1)
-      - [➭ Job Creation](#-job-creation)
-    - [7) Candidate Privacy](#7-candidate-privacy)
+    - [6) Candidate Privacy](#6-candidate-privacy)
       - [➭ Confidentiality Measures](#-confidentiality-measures)
       - [➭ Data Visibility](#-data-visibility)
       - [➭ Soft Skill Compatibility](#-soft-skill-compatibility)
@@ -280,15 +277,13 @@ Ensure it shows task durations and dependencies. -->
 
 **Task Dependencies**:
 
-<!-- List tasks that depend on the completion of previous tasks.
-Example: "Integration Testing cannot start until Core Feature Development is complete." -->
 - Final Testing cannot start until Core Feature Development is complete.
 - Nice-to-have features cannot start until Core Feature Development is complete.
 - Core Feature Development cannot start until the Mockup is approved.
 
 **Resource Dependencies**:
 
-<!-- - QA Team must be available for continuous testing from August to November. -->
+- QA Team must be available for continuous testing from June 7 to June 14, 2024.
 
 **Critical Path Analysis**:
 
@@ -298,20 +293,15 @@ Example: "Delays in critical path tasks will delay the overall project completio
 #### ➭ Assumptions/Constraints
 
 <!-- To complete -->
-For this project, the team will assume the application will be free when released so the creation of a business plan is not useful.
-To simplify the application there will be no admin account, assuming all the counts created would be authentical and totally legal.
-
-However, there are some constraints as well in this project, they are:
 
 **Assumptions**:
 
-<!-- List assumptions regarding project conditions, resources, and external factors.
-Example: "Assume that key stakeholders will be available for sign-off at each milestone." -->
+For this project, the team will assume the application will be free when released so the creation of a business plan is not useful.
+To simplify the application there will be no admin account, assuming all the counts created would be authentical and totally legal.
 
 **Constraints**:
 
-<!-- Identify constraints that limit project execution, such as budget, time, and resource limitations.
-Example: "Budget constraint of $500,000 for the entire project." -->
+However, there are some constraints as well in this project, they are:
 
 **Risk Factors**:
 
@@ -349,15 +339,39 @@ Once all these steps are completed, the user will receive an e-mail in his mailb
 
 ##### ➭ Company Registration
 
-<!-- TODO -->
+To register as a company it is way simple.
 
-#### ➭ Company Preferences
+The first step would be nearly the same as for the users, the company would need to register an e-mail account, a password, the name of the company and the company registration number (SIRET number).
 
-<!-- TODO -->
+After this, they would have to give their Logo to the application.
+
+Finally, they would receive an e-mail in his mailbox to confirm their registration.
+
+#### ➭ Candidate Management
+
+A list would be provided on the communication page for the company. This page would contain all the matching users who are interested in the job offer provided.
+They would be able to click on each profile to see the redirected e-mail, but also the certification and a more detailed view of the soft skills selected by the user.
+
+#### ➭ Candidate Anonymity
+
+According to the requirements and the fact that the application is based solely on "soft skills", the candidate dashboard on the company side would be anonymized to prefer impartiality. \
+Therefore, only the avatar, the ID registration number and the soft skills of the user would be visible. \
+It would also be a redirected mail to communicate between the two if the company is interested in the user profile. \
+However, the e-mail provided would not be the user's personal e-mail to certify the anonymity once again.
 
 #### ➭ Soft Skills Assessment
 
-<!-- TODO -->
+To assess the level of soft skills mentioned by the user, the company would be able to create its own certification as a way to certify the user's claims.
+The certification could be a simple multiple-choice questionnaire where the company sets a percentage of wanted answers to give the certification.
+Of course, a user with a certification would benefit from one who doesn't have it.
+
+#### ➭ Job Creation
+
+Another requested feature is to create job offers. \
+To create a job offer, the company should register the type of contract they need and also the contract start date (according to the type of contract the end date could be requested).
+The next step would be to register the job's title and a short description of it. \
+After this, the company should register the location of the workplace and it could add some images of it. It is not mandatory but highly recommended, since it could help users to accept the job offer. \
+Finally, the company needs to register the researched soft skills which will not be visible on the user side.
 
 ### 2) Job Applications
 
@@ -405,19 +419,21 @@ The supported devices would be:
 
 #### ➭ Job Seekers
 
+**Perona 1 - Warrick Ryder**:
+
+![Persona 1 - Warrick Ryder](img/warrick_ryder.png)
+
+**Perona 2 - Sham'a Aline**:
+
+![Perona 2 - Sham'a Aline](img/sham'a_aline.png)
+
 #### ➭ Companies
 
-### 6) Admin Dashboard
+**Perona 3 - SUBLIMINAL**:
 
-#### ➭ Candidate Management
+![Perona 3 - SUBLIMINAL](img/subliminal.png)
 
-#### ➭ Candidate Anonymity
-
-#### ➭ Soft Skills Assessment
-
-#### ➭ Job Creation
-
-### 7) Candidate Privacy
+### 6) Candidate Privacy
 
 #### ➭ Confidentiality Measures
 
@@ -430,6 +446,9 @@ The supported devices would be:
 ### 1) User Interface Design
 
 #### ➭ Visual Design
+
+<!-- Insert Mockup 
+Logo, color pallet, page template, avatars -->
 
 #### ➭ Branding
 
