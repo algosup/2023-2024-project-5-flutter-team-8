@@ -1,83 +1,74 @@
-# Functional Specifications 
-
-<details>
-<summary>
-
-## Table of content </summary>
-
-- [Functional Specifications](#functional-specifications)
-  - [Table of content ](#table-of-content-)
-  - [I. Introduction](#i-introduction)
-    - [1. Glossary](#1-glossary)
-    - [2. Project Overview](#2-project-overview)
-    - [3. Project Definition](#3-project-definition)
-      - [➭ Vision](#-vision)
-      - [➭ Objectives](#-objectives)
-      - [➭ Scope](#-scope)
-      - [➭ Deliverables](#-deliverables)
-    - [4. Project Organisation](#4-project-organisation)
-      - [➭ Project Representatives](#-project-representatives)
-      - [➭ Stakeholders](#-stakeholders)
-      - [➭ Project Roles](#-project-roles)
-      - [➭ Project Reviewers](#-project-reviewers)
-    - [5. Project Plan](#5-project-plan)
-      - [➭ Retroplanning](#-retroplanning)
-      - [➭ Milestones](#-milestones)
-      - [➭ Dependencies](#-dependencies)
-      - [➭ Assumptions/Constraints](#-assumptionsconstraints)
-  - [II. Functional Requirements](#ii-functional-requirements)
-    - [1. Soft Skills Evaluation](#1-soft-skills-evaluation)
-      - [➭ User Registration](#-user-registration)
-        - [➭ Candidate Registration](#-candidate-registration)
-        - [➭ Company Registration](#-company-registration)
-      - [➭ Candidate Management](#-candidate-management)
-      - [➭ Candidate Anonymity](#-candidate-anonymity)
-      - [➭ Soft Skills Assessment](#-soft-skills-assessment)
-      - [➭ Job Creation](#-job-creation)
-      - [➭ Notifications](#-notifications)
-    - [2. Job Applications](#2-job-applications)
-      - [➭ Job Matching](#-job-matching)
-      - [➭ Soft skills list](#-soft-skills-list)
-    - [3. Language Support](#3-language-support)
-      - [➭ Language Options](#-language-options)
-    - [4. Device Compatibility](#4-device-compatibility)
-      - [➭ Supported Devices](#-supported-devices)
-      - [➭ Cross-Platform Compatibility](#-cross-platform-compatibility)
-    - [5. Target Audience](#5-target-audience)
-      - [➭ Job Seekers](#-job-seekers)
-      - [➭ Companies](#-companies)
-    - [6. Candidate Privacy](#6-candidate-privacy)
-      - [➭ Confidentiality Measures](#-confidentiality-measures)
-      - [➭ Data Visibility](#-data-visibility)
-  - [III. Non-Functional Requirements](#iii-non-functional-requirements)
-    - [1. User Interface Design](#1-user-interface-design)
-      - [➭ Visual Design](#-visual-design)
-      - [➭ Branding](#-branding)
-      - [➭ Accessibility](#-accessibility)
-    - [2. Security](#2-security)
-    - [3. Performance](#3-performance)
-      - [➭ Responsiveness](#-responsiveness)
-      - [➭ Load Time](#-load-time)
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h1 align="center">Functional Specification</h1>
+  <p align="center">
+    <strong>Adopte 1 Candidat</strong>
+    <br />
   
-</details>
+  </p>
+</div>
+
+
+- [I. Introduction](#i-introduction)
+  - [1. Glossary](#1-glossary)
+  - [2. Project Overview](#2-project-overview)
+  - [3. Project Definition](#3-project-definition)
+    - [➭ Vision](#-vision)
+    - [➭ Objectives](#-objectives)
+    - [➭ Scope](#-scope)
+    - [➭ Target Audience](#-target-audience)
+    - [➭ Deliverables](#-deliverables)
+  - [4. Project Organisation](#4-project-organisation)
+    - [➭ Project Representatives](#-project-representatives)
+    - [➭ Stakeholders](#-stakeholders)
+    - [➭ Project Roles](#-project-roles)
+    - [➭ Project Reviewers](#-project-reviewers)
+  - [5. Project Plan](#5-project-plan)
+    - [➭ Retroplanning](#-retroplanning)
+    - [➭ Milestones](#-milestones)
+    - [➭ Dependencies](#-dependencies)
+    - [➭ Assumptions/Constraints](#-assumptionsconstraints)
+- [II. Functional Requirements](#ii-functional-requirements)
+  - [1. Registration](#1-registration)
+    - [➭ User Registration](#-user-registration)
+      - [➭ Candidate Registration](#-candidate-registration)
+      - [➭ Company Registration](#-company-registration)
+    - [➭ Candidate Management](#-candidate-management)
+    - [➭ Candidate Anonymity](#-candidate-anonymity)
+    - [➭ Soft Skills Assessment](#-soft-skills-assessment)
+    - [➭ Job Creation](#-job-creation)
+    - [➭ Notifications](#-notifications)
+  - [2. Job Applications](#2-job-applications)
+    - [➭ Job Matching](#-job-matching)
+    - [➭ Soft skills list](#-soft-skills-list)
+  - [3. Language Support](#3-language-support)
+    - [➭ Language Options](#-language-options)
+  - [4. Device Compatibility](#4-device-compatibility)
+    - [➭ Supported Devices](#-supported-devices)
+    - [➭ Cross-Platform Compatibility](#-cross-platform-compatibility)
+  - [5. Target Audience](#5-target-audience)
+    - [➭ Job Seekers](#-job-seekers)
+    - [➭ Companies](#-companies)
+  - [6. Candidate Privacy](#6-candidate-privacy)
+    - [➭ Confidentiality Measures](#-confidentiality-measures)
+    - [➭ Data Visibility](#-data-visibility)
+  - [7. User Workflow](#7-user-workflow)
+- [III. Non-Functional Requirements](#iii-non-functional-requirements)
+  - [1. User Interface Design](#1-user-interface-design)
+    - [➭ Visual Design](#-visual-design)
+    - [➭ Branding](#-branding)
+    - [➭ Accessibility](#-accessibility)
+  - [2. Security](#2-security)
+  - [3. Performance](#3-performance)
+    - [➭ Responsiveness](#-responsiveness)
+    - [➭ Load Time](#-load-time)
+
 
 ## I. Introduction
 
 ### 1. Glossary
 
-**Flutter**: Google's portable UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
-
-**hard skills**: technical skills required for a job.
-
-**match**: two users must like each other before they can exchange messages.
-
-**mock-ups**: a model or replica of a machine or structure, used for instructional or experimental purposes.
-
-<!-- each soft skills? -->
-
-**responsiveness**: the ability to react quickly and in a positive way to something.
-
-**soft skills**: non-technical skills that describe how you work and interact with others.
 
 ### 2. Project Overview
 
@@ -136,6 +127,14 @@ requirements for potential employees.
 This project will be developed using Flutter, a cross-platform framework, ensuring the application is available on computer, iOS, and Android. 
 
 The implementation will focus solely on the front-end and provide interfaces for both candidates and companies.
+
+#### ➭ Target Audience
+
+**Job Seekers:** Individuals looking for employment, particularly those with limited formal qualifications and those who face various forms of discrimination that reduce their chances of getting an interview. These candidates are technologically savvy and comfortable using an app to find job opportunities. They need a platform to highlight their soft skills, maintain anonymity, and browse relevant job opportunities easily.
+
+**Companies:** Companies that have difficulty finding candidates using the normal hiring method. They need a solution to find a large number of candidates who match their values and the soft skills required for the position. They are ready to judge people solely on their general skills and put everything else aside.
+
+
 
 #### ➭ Deliverables
 
@@ -247,41 +246,60 @@ Ensure it shows task durations and dependencies. -->
 
 - QA Team must be available for continuous testing from June 7 to June 14, 2024.
 
-**Critical Path Analysis**:
 
-<!-- Explain the critical path and its impact on the project timeline.
-Example: "Delays in critical path tasks will delay the overall project completion." -->
 
 #### ➭ Assumptions/Constraints
 
-<!-- To complete -->
 
 **Assumptions**:
 
-For this project, the team will assume the application will be free when released so the creation of a business plan is not useful.
-To simplify the application there will be no admin account, assuming all the counts created would be authentical and totally legal.
+- *Business Plan:*
+    The team will assume the application will be free when released so the creation of a business plan is not useful.
+
+- *Candidate Engagement:*
+    Candidates will accurately and honestly assess their soft skills during the registration process.
+
+- *Company Needs:*
+    Companies have a clear understanding of the soft skills they require for their positions and will accurately define their preferences.
+
+
+- *Predefined Lists:*
+    The predefined lists of soft skills and animal avatars will be comprehensive and sufficient for both candidates and companies.
+
+- *Internet Access:*
+    Users will have reliable internet access to use the application effectively.
+
+- *Feedback and Iteration:*
+    Users will provide feedback on their experience, which can be used for future iterations and improvements of the application.
+
+- *Technical Constraints:*
+    The technical limitations of Flutter will not significantly hinder the implementation of the required front-end features
+
 
 **Constraints**:
 
-However, there are some constraints as well in this project, they are:
+- *Scope Limitations:*
+    The project will focus exclusively on front-end development using Flutter.
+    Backend functionality, including database management and server-side logic, will not be implemented in this phase.
 
-**Risk Factors**:
+- *Authentication:*
+    A robust authentication system will not be developed. Instead, hard-coded login credentials will be used to simulate user authentication.
 
-<!-- Mention potential risks associated with assumptions and constraints.
-Example: "Risk of resource unavailability due to overlapping projects." -->
+- *Platform Compatibility:*
+    The application must be compatible with desktop, iOS, and Android platforms.
 
-**Mitigation Plans**:
+- *Data Privacy:*
+Candidates' personal information must remain confidential. Companies will only have access to soft skill profiles, unique user IDs, and selected animal avatars.
 
-<!-- Provide plans to address and mitigate constraints and risks.
-Example: "Contingency plans for delays in critical tasks, such as allocating additional resources." -->
 
 ## II. Functional Requirements
 
-### 1. Soft Skills Evaluation
+
+### 1. Registration
 
 #### ➭ User Registration
 
-To register for the application, it would differ according to the state of the user (Company or Candidate).
+To register for the application, would differ according to the state of the user (Company or Candidate).
 
 ##### ➭ Candidate Registration
 
@@ -519,6 +537,72 @@ Information hidden are:
 - Password
 - company registration number (SIRET number)
 - "Soft skills"
+
+### 7. User Workflow 
+
+```mermaid
+graph TD
+  %% Candidate Flow
+  subgraph Candidate Flow
+    A1[Registration/Login] -->|New User| A4[Register: Input Details, Select Animal Avatar, Create Soft Skills Profile]
+    A1 -->|Returning User| A5[Login: Input Hard-coded Credentials]
+    A4 --> A6[Home Page]
+    A5 --> A6[Home Page]
+    
+    A6 --> B1[Profile Page]
+    A6 --> B2[Certifications Page]
+    A6 --> B3[Matches Page]
+    
+    B1 --> B4[Edit Profile]
+    B4 --> B5[Update Animal Avatar]
+    B4 --> B6[Update Settings]
+    
+    B2 --> B7[Browse Available Certifications]
+    B7 --> B8[Select and Complete Certifications]
+    
+    B3 --> B9[View Job Offers]
+    B9 --> B10[Tap Company Logo]
+    B10 --> B11[View Job Description]
+    B11 --> B12[Swipe Right to Apply]
+    B11 --> B13[Swipe Left to Decline]
+    B12 --> B14[Receive Confirmation]
+
+    B3 --> B17[Matches Page]
+    B17 --> B18[View all Matches]
+    B18 --> B19[Tap on a match]
+    B19 --> B20[Communicate with the company]
+    
+    
+    A6 --> B15[Receive Notifications]
+    A6 --> B16[Logout]
+  end
+```
+
+```mermaid
+graph TD
+  %% Company Flow
+  subgraph Company Flow
+    C1[Registration/Login] -->|New User| C4[Register: Input Details, Company Information]
+    C1 -->|Returning User| C5[Login: Input Hard-coded Credentials]
+    C4 --> C6[Dashboard Home]
+    C5 --> C6[Dashboard Home]
+    
+    C6 --> D1[Matches Page]
+    C6 --> D2[Preferences Page]
+    C6 --> D3[Notifications Page]
+    
+    D1 --> D4[View Candidates]
+    D4 --> D5[Shortlist Candidates]
+    D4 --> D6[Reject Candidates]
+    
+    D2 --> D7[Set Soft Skills Criteria]
+    D2 --> D8[Update Company Profile]
+    D8 --> D9[Manage Job Descriptions]
+    
+    C6 --> D10[Receive Notifications]
+    C6 --> D11[Logout]
+  end
+```
 
 ## III. Non-Functional Requirements
 
