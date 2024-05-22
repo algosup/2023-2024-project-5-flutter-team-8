@@ -1,0 +1,33 @@
+name: Pull Request
+description: Pull Request template
+title: XXXXX [XX/XX/2024]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the following:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: Please write a short description of your request
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Please ensure that you agree to this CheckList before submitting this pull request.
+      options:
+        - label: Your code builds clean without any errors or warnings
+          required: true
+        - label: I have performed a self-review of my code
+          required: true
+        - label: If it is a core feature, I have added thorough tests.
+          required: true
+        - label: I have respected all the syntax-rules of the project.
+          required: true
+        - label: I'have checked for spelling mistakes and repetitions 
+          required: true
+  - type: markdown
+    attributes:
+      value: Thank you for your request!  
