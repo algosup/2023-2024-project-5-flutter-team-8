@@ -38,8 +38,10 @@
       - [➭ Candidate Anonymity](#-candidate-anonymity)
       - [➭ Soft Skills Assessment](#-soft-skills-assessment)
       - [➭ Job Creation](#-job-creation)
+      - [➭ Notifications](#-notifications)
     - [2) Job Applications](#2-job-applications)
       - [➭ Job Matching](#-job-matching)
+      - [➭ Soft skills list](#-soft-skills-list)
     - [3) Language Support](#3-language-support)
       - [➭ Language Options](#-language-options)
     - [4) Device Compatibility](#4-device-compatibility)
@@ -77,7 +79,7 @@
 
 **Date of Creation**: 05/16/24.
 
-**Last Updated**: 05/21/24.
+**Last Updated**: 05/22/24.
 
 **Status**: Draft.
 
@@ -103,50 +105,49 @@
 
 ### 1) Glossary
 
-<!-- TODO -->
+**Flutter**: Google's portable UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
+
+**hard skills**: technical skills required for a job.
+
+**match**: two users must like each other before they can exchange messages.
+
+**mock-ups**: a model or replica of a machine or structure, used for instructional or experimental purposes.
+
+<!-- each soft skills? -->
+
+**responsiveness**: the ability to react quickly and in a positive way to something.
+
+**soft skills**: non-technical skills that describe how you work and interact with others.
 
 ### 2) Project Overview
 
 This project aims to create a Tinder-like recruitment app valuing soft skills rather than hard skills.
 
 The client is the company "We Are Evolution.", a creative employer branding agency. Our contact point is Lilou Jourdannaud, the communication intern.
+<!-- Put a link for We are Evolution? -->
 
 ### 3) Project Definition
 
 #### ➭ Vision
 
-The vision of the "Adopte Un Candidat" Project is to rehearse and improve the current job recruitment, by focussing more on a behavioral aspect than an actual technical one. It would principally help companies find good employees with great mental and behavior, increasing the work life for all of them. Like this a good atmosphere would be present in the company and the work amount would increase since humans work better in a sain environment.
+The vision of the "Adopte Un Candidat" Project is to rehearse and improve the current job recruitment, by focussing more on a behavioral aspect than an actual technical one. It would principally help companies find good employees with great mental and behavior, enhancing the work life for all of them. Like this a good atmosphere would be present in the company and the work amount would increase since humans work better in a sain environment.
 
 This application would then help companies find new employee basing their research on different kinds of "Soft skills". It would allow the companies to select what matters the most within a predefined soft skills list, according to what they want the employee to be.
 <!-- To rehearse -->
 
 #### ➭ Objectives
 
-**Anonymization of candidates and companies**: To avoid discrimination in hiring, candidates and 
-companies are anonymized on the platform. This allows us to focus on candidates' skills and 
-potential, rather than their origin, gender, age, etc.
+**Anonymization of candidates and companies**: To avoid discrimination in hiring, candidates and companies are anonymized on the platform. This allows us to focus on candidates' skills and potential, rather than their origin, gender, age, etc.
 
-**Valuing soft skills**: Instead of focusing solely on diplomas and professional experience, the concept 
-emphasizes soft skills, i.e. the behavioral and relational skills of candidates. This makes it possible to recognize and evaluate skills such as communication, teamwork, creativity, problem-solving, etc.
+**Valuing soft skills**: Instead of focusing solely on diplomas and professional experience, the concept emphasizes soft skills, i.e. the behavioral and relational skills of candidates. This makes it possible to recognize and evaluate skills such as communication, teamwork, creativity, problem-solving, etc.
 
-**Priority given to the human aspect**: The concept emphasizes the human aspect of recruitment, 
-recognizing that each candidate has unique talents and skills to offer. It seeks to give each individual 
-the opportunity to showcase his or her skills, regardless of background or academic credentials.
+**Priority given to the human aspect**: The concept emphasizes the human aspect of recruitment, recognizing that each candidate has unique talents and skills to offer. It seeks to give each individual the opportunity to showcase his or her skills, regardless of background or academic credentials.
 
-**Matching between candidates and companies**: The "matching" process enables candidates and 
-companies to connect and find an ideal match. Candidates can express their preferences in terms of 
-companies and positions, and companies can search for candidates who match their cultural and 
-organizational needs.
+**Matching between candidates and companies**: The "matching" process enables candidates and companies to connect and find an ideal match. Candidates can express their preferences in terms of companies and positions, and companies can search for candidates who match their cultural and organizational needs.
 
-**Using an application**: The entire recruitment process takes place on a dedicated application. This 
-facilitates interaction between candidates and companies, offering features such as messaging, 
-personalized profiles, etc.
+**Using an application**: The entire recruitment process takes place on a dedicated application. This facilitates interaction between candidates and companies, offering features such as messaging, personalized profiles, etc.
 
-**Process**: In our approach, we do not have tests, quizzes, or games. Instead, candidates will have the 
-opportunity to select their soft skills from a provided list, while recruiters will choose the desired 
-skills from the same list. The "match" will occur when there is a 50% overlap of soft skills between 
-the candidate and the company. Our concept is inspired by the functionality of the "Tinder" 
-application for recruitment. There is no document or defined skills matrix.
+**Process**: In our approach, we do not have tests, quizzes, or games. Instead, candidates will have the opportunity to select their soft skills from a provided list, while recruiters will choose the desired skills from the same list. The "match" will occur when there is a 50% overlap of soft skills between the candidate and the company. Our concept is inspired by the functionality of the "Tinder" application for recruitment. There is no document or defined skills matrix.
 
 #### ➭ Scope
 
@@ -187,6 +188,7 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 | --------------- | ------------------------------------- | ---------------------------------------------------------------------- |
 | Client          | Lilou Jourdannaud (We Are Evolution.) | Finished project meeting requirements                                  |
 | School director | Franck JEANNIN (ALGOSUP)              | Clear documentation and management based on the skills learnt in class |
+<!-- link? -->
 
 #### ➭ Project Roles
 
@@ -228,12 +230,12 @@ Launch of the new "Adopte un Candidat" application by June 21, 2024.
 - Implementing core features from June 7 to June 12, 2024.
 - Reviewing Functional Specification from May 23 to May 24, 2024.
 - Defining Functional Specification from May 14 to May 23, 2024.
-- Creating the Mockup from May 14 to May 21, 2024.
+- Creating the mock-up from May 14 to May 21, 2024.
 
 **Critical Path**:
 
 - Core feature development must be completed before final testing.
-- Mockup must be completed before Implementing Core features.
+- Mock-up must be completed before Implementing Core features.
 
 **Timeline Visualization**:
 
@@ -258,7 +260,7 @@ Ensure it shows task durations and dependencies. -->
 
 - Final Testing cannot start until Core Feature Development is complete.
 - Nice-to-have features cannot start until Core Feature Development is complete.
-- Core Feature Development cannot start until the Mockup is approved.
+- Core Feature Development cannot start until the mock-up is approved.
 
 **Resource Dependencies**:
 
@@ -308,7 +310,7 @@ The first one would be to register an e-mail account, a password and a full name
 
 The second step would be to select a total of fifteen "soft skills" from a list of forty of them.
 
-Once they have selected these 15 "soft skills" defining them, they should organize them from the best to the worst. The first one would be the "soft skills" they master the most, and so on.
+Once they have selected these 15 "soft skills" defining them, they should organize them from the best to the worst. The first one would be the "soft skill" they master the most, and so on.
 
 Next, the user will have to select his location and a range around it to define the possible company near him.
 
@@ -352,6 +354,28 @@ The next step would be to register the job's title and a short description of it
 After this, the company should register the location of the workplace and it could add some images of it. It is not mandatory but highly recommended, since it could help users to accept the job offer. \
 Finally, the company needs to register the researched soft skills which will not be visible on the user side.
 
+#### ➭ Notifications
+
+This kind of application needs notifications to keep the user up to date and inform on what is happening on its profile. The following notifications have been thought of according to the main functionalities of the application.
+
+New match
+Hey! Come back to the application, you get a new match!
+
+New Message
+Hey! Come back to the application, you get a new message!
+
+Long time no see
+Hi... It's been a long time since we last saw you on the application. Did you find a job?
+
+New job applying
+Hey! Come back to the application, there is ... new job applying in your area!
+
+New Certification available
+This company sent you a new certification. Come back and pass it!
+
+Job applying denial
+Hi... Your application has been denied, come find others.
+
 ### 2) Job Applications
 
 #### ➭ Job Matching
@@ -370,6 +394,54 @@ First, the app will do a preventive match depending on the soft skills of the jo
 - In that case, there will be a match which means the company and the job-seeker will then be able to talk to each other.
 
 One thing to be added is that if a job offer has no job-seeker yet, all job-seeker will be able to see it and not only the ones that have had a preventive match with it.
+
+#### ➭ Soft skills list
+
+The "soft skills" mentioned in the section above have been separated into two categories, the "Big Skills" and the "Small Skills".
+The "Big Skills" are categories including four to fourteen "Small Skills".
+
+| Big Skills         | Small Skill                           |
+| ------------------ | ------------------------------------- |
+| LEADERSHIP         | Influence                             |
+|                    | Self-Confidence                       |
+|                    | Communication                         |
+|                    | Judgment                              |
+|                    | Empathy                               |
+| Efficiency         | Efficiency                            |
+|                    | ability to focus                      |
+|                    | time management                       |
+|                    | stress management                     |
+|                    | sense of priorities                   |
+|                    | being organised                       |
+|                    | know how to organise                  |
+|                    | ability to concentrate                |
+|                    | meeting deadlines                     |
+|                    | pression handling                     |
+|                    | Process Optimisation                  |
+|                    | ability to delegate / entrust         |
+|                    | problem solving                       |
+|                    | file gestion                          |
+| Social competences | Team Work                             |
+|                    | Team Spirit                           |
+|                    | sense of service                      |
+|                    | Coordination                          |
+|                    | ability to infer confidence           |
+|                    | being engaged                         |
+|                    | ability to create human relationships |
+|                    | Cooperation & collaboration           |
+| Agile competences  | Flexibility                           |
+|                    | adaptability (when facing changes)    |
+|                    | being open to changes                 |
+|                    | self-questioning                      |
+|                    | anticipation                          |
+|                    | Innovation                            |
+|                    | creativity                            |
+|                    | Optimism                              |
+|                    | Self-improvement                      |
+|                    | getting out of comfort-zone           |
+|                    | audacity                              |
+|                    | curiosity                             |
+|                    | risk-taking                           |
 
 ### 3) Language Support
 
@@ -473,20 +545,17 @@ Information hidden are:
 
 #### ➭ Visual Design
 
-<!-- Insert Mockup 
+<!-- Insert mock-up 
 Logo, color pallet, page template, avatars -->
 
 #### ➭ Branding
 
 #### ➭ Accessibility
 
-### 2) Security
+### 2) Security 
 
-<!-- Not really use because only frontend asked -->
-
-<!-- #### ➭ Candidate Privacy
-
-#### ➭ Data Encryption -->
+For the project "Adopte un Candidat". The team was asked to focus mainly on the front-end and not on the back-end. Therefore, the security would not be a priority or implementable on the application. However, there are some ideas to use afterward:
+<!-- TODO -->
 
 ### 3) Performance
 
@@ -501,7 +570,8 @@ Since this application is not a high-performance one, the responsiveness dependi
 
 #### ➭ Load Time
 
-For this application the load time was set to two seconds, it is the average for an application to open and over this limit, it could discourage some users.
+All applications have load time in it to wait for the application to charge before opening it. The application "Adopte un Candidat" is no exception. There are two kinds of load time, the important one and the small one.
+For the important one, we aimed for two seconds on average and three seconds at the maximum, over this load time it could discourage some users. For the small one, we aimed for less than one second per load time.
 
 <!-- ### 4) Reliability
 
