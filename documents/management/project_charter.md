@@ -16,7 +16,7 @@ This implementation should be only targeting the front-end at first and should o
 
 | Role            | Representative                        | Expectation                                                            |
 | --------------- | ------------------------------------- | ---------------------------------------------------------------------- |
-| Client          | Lilou Jourdannaud (We Are Evolution.) | Finished project meeting requirements                                  |
+| Client          | Lilou JOURDANNAUD (We Are Evolution.) | Finished project meeting requirements                                  |
 | School director | Franck JEANNIN (ALGOSUP)              | Clear documentation and management based on the skills learnt in class |
 
 ## Team members and responsibilities
