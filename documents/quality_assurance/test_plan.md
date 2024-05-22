@@ -10,6 +10,9 @@
         - [First Steps](#21-first-steps)
         - [Automation testing](#22-automation-testing)
     - [Test Criteria](#3-test-criteria)
+        - [App Evaluation](#31-app-evaluation)
+        - [Suspension Criteria](#32-suspension-criteria)
+        - [Exit Criteria](#33-exit-criteria)
     - [Test Schedules/Estimations](#4test-schedulestimations)
     - [Glossary](#5-glossary)
 
@@ -54,13 +57,13 @@ Establishing test criteria is crucial to guarantee the quality of our program be
 
 Here will be presented the most important assessments on how to evaluate the app:
 
-    1.Interface Intuitiveness - The interface should work as expected by the user with no significant errors or overly complex commands that would sway the usage of the app.
+    1. Interface Intuitiveness - The interface should work as expected by the user with no significant errors or overly complex commands that would sway the usage of the app.
 
-    2.App performance - The speed at which pages load and tasks will be executed will be at an acceptable rate.
+    2. App performance - The speed at which pages load and tasks will be executed will be at an acceptable rate.
 
-    3.App security - The app should be secure and non breachable by any third party, information about the user will remain unknown to anyone unless agreed by the user.
+    3. App security - The app should be secure and non breachable by any third party, information about the user will remain unknown to anyone unless agreed by the user.
 
-    4.App relevance to company needs - The app will be constructed as per it has been described by the company We Are Evolution.
+    4. App relevance to company needs - The app will be constructed as per it has been described by the company We Are Evolution.
 
 
 ### 3.2 Suspension Criteria
@@ -78,11 +81,11 @@ Suspencion criteria are established to define conditions under which testing act
 Before the app can be considered finished, certain milestones need to have been met by the team.
 This criteria ensures that the app meets the required quality standards before reaching the consumer.
 
-    1.Test Case Coverage - A minimum test case coverage of 80% of all the added features and functionalities must be completed with success.
+    1. Test Case Coverage - A minimum test case coverage of 80% of all the added features and functionalities must be completed with success.
 
-    2.Bug Resolution Coverage - At least 90% of bugs must be addressed and resolved before the app is considered finished.
+    2. Bug Resolution Coverage - At least 90% of bugs must be addressed and resolved before the app is considered finished.
 
-    3.Documentation Completeness - Comprehensive documentation, including test plans, test cases, test results, functional specifications, and technical specifications, must be finalized and reviewed for completeness. Documentation should be easily understandable and accessible to all team members, ensuring a clear understanding of the testing process and results.
+    3. Documentation Completeness - Comprehensive documentation, including test plans, test cases, test results, functional specifications, and technical specifications, must be finalized and reviewed for completeness. Documentation should be easily understandable and accessible to all team members, ensuring a clear understanding of the testing process and results.
 
 
 
