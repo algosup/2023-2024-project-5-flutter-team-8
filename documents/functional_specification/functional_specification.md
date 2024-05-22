@@ -7,30 +7,26 @@
 
 - [Functional Specifications](#functional-specifications)
   - [Table of content ](#table-of-content-)
-  - [A) Document Control](#a-document-control)
-    - [1) Document Information](#1-document-information)
-    - [2) Document History](#2-document-history)
-    - [3) Document Approval](#3-document-approval)
-  - [B) Introduction](#b-introduction)
-    - [1) Glossary](#1-glossary)
-    - [2) Project Overview](#2-project-overview)
-    - [3) Project Definition](#3-project-definition)
+  - [I. Introduction](#i-introduction)
+    - [1. Glossary](#1-glossary)
+    - [2. Project Overview](#2-project-overview)
+    - [3. Project Definition](#3-project-definition)
       - [➭ Vision](#-vision)
       - [➭ Objectives](#-objectives)
       - [➭ Scope](#-scope)
       - [➭ Deliverables](#-deliverables)
-    - [4) Project Organisation](#4-project-organisation)
+    - [4. Project Organisation](#4-project-organisation)
       - [➭ Project Representatives](#-project-representatives)
       - [➭ Stakeholders](#-stakeholders)
       - [➭ Project Roles](#-project-roles)
       - [➭ Project Reviewers](#-project-reviewers)
-    - [5) Project Plan](#5-project-plan)
+    - [5. Project Plan](#5-project-plan)
       - [➭ Retroplanning](#-retroplanning)
       - [➭ Milestones](#-milestones)
       - [➭ Dependencies](#-dependencies)
       - [➭ Assumptions/Constraints](#-assumptionsconstraints)
-  - [C) Functional Requirements](#c-functional-requirements)
-    - [1) Soft Skills Evaluation](#1-soft-skills-evaluation)
+  - [II. Functional Requirements](#ii-functional-requirements)
+    - [1. Soft Skills Evaluation](#1-soft-skills-evaluation)
       - [➭ User Registration](#-user-registration)
         - [➭ Candidate Registration](#-candidate-registration)
         - [➭ Company Registration](#-company-registration)
@@ -39,71 +35,35 @@
       - [➭ Soft Skills Assessment](#-soft-skills-assessment)
       - [➭ Job Creation](#-job-creation)
       - [➭ Notifications](#-notifications)
-    - [2) Job Applications](#2-job-applications)
+    - [2. Job Applications](#2-job-applications)
       - [➭ Job Matching](#-job-matching)
       - [➭ Soft skills list](#-soft-skills-list)
-    - [3) Language Support](#3-language-support)
+    - [3. Language Support](#3-language-support)
       - [➭ Language Options](#-language-options)
-    - [4) Device Compatibility](#4-device-compatibility)
+    - [4. Device Compatibility](#4-device-compatibility)
       - [➭ Supported Devices](#-supported-devices)
       - [➭ Cross-Platform Compatibility](#-cross-platform-compatibility)
-    - [5) Target Audience](#5-target-audience)
+    - [5. Target Audience](#5-target-audience)
       - [➭ Job Seekers](#-job-seekers)
       - [➭ Companies](#-companies)
-    - [6) Candidate Privacy](#6-candidate-privacy)
+    - [6. Candidate Privacy](#6-candidate-privacy)
       - [➭ Confidentiality Measures](#-confidentiality-measures)
       - [➭ Data Visibility](#-data-visibility)
-  - [D) Non-Functional Requirements](#d-non-functional-requirements)
-    - [1) User Interface Design](#1-user-interface-design)
+  - [III. Non-Functional Requirements](#iii-non-functional-requirements)
+    - [1. User Interface Design](#1-user-interface-design)
       - [➭ Visual Design](#-visual-design)
       - [➭ Branding](#-branding)
       - [➭ Accessibility](#-accessibility)
-    - [2) Security](#2-security)
-    - [3) Performance](#3-performance)
+    - [2. Security](#2-security)
+    - [3. Performance](#3-performance)
       - [➭ Responsiveness](#-responsiveness)
       - [➭ Load Time](#-load-time)
   
 </details>
 
-## A) Document Control
+## I. Introduction
 
-### 1) Document Information
-
-**Title**: Functional Specifications.
-
-**Author(s)**: Thomas PLANCHARD.
-
-**Document ID/Number**: <!-- TODO -->
-
-**Version**: v0.1.
-
-**Date of Creation**: 05/16/24.
-
-**Last Updated**: 05/22/24.
-
-**Status**: Draft.
-
-**Confidentiality Level**: Public.
-
-### 2) Document History
-
-|Version|	Date|	Author|	Description of Changes|	Reason for Change|
-|-------|-----|-------|-----------------------|------------------|
-|       |     |       |                       |                  |
-
-<!-- TODO -->
-
-### 3) Document Approval
-
-|Approver Name	|Title	|Approval Date	|Signature	|Comments |
-|---------------|-------|---------------|-----------|---------|
-|               |       |               |           |         |
-
-<!-- TODO -->
-
-## B) Introduction
-
-### 1) Glossary
+### 1. Glossary
 
 **Flutter**: Google's portable UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
 
@@ -119,41 +79,63 @@
 
 **soft skills**: non-technical skills that describe how you work and interact with others.
 
-### 2) Project Overview
+### 2. Project Overview
 
 This project aims to create a Tinder-like recruitment app valuing soft skills rather than hard skills.
 
-The client is the company "We Are Evolution.", a creative employer branding agency. Our contact point is Lilou Jourdannaud, the communication intern.
-<!-- Put a link for We are Evolution? -->
+The client is the company "[We Are Evolution.](https://www.we-are-evolution.com/)", a creative employer branding agency. Our 
+contact point is Lilou Jourdannaud, the communication intern.
 
-### 3) Project Definition
+### 3. Project Definition
 
 #### ➭ Vision
 
-The vision of the "Adopte Un Candidat" Project is to rehearse and improve the current job recruitment, by focussing more on a behavioral aspect than an actual technical one. It would principally help companies find good employees with great mental and behavior, enhancing the work life for all of them. Like this a good atmosphere would be present in the company and the work amount would increase since humans work better in a sain environment.
+The vision of the "Adopte Un Candidat" Project is to transform and 
+enhance the job recruitment process by emphasizing behavioral aspects 
+over technical skills. This approach aims to help companies identify 
+employees with strong mental attributes and positive behaviors, thereby 
+fostering a healthy and productive work environment. By prioritizing 
+these qualities, the project seeks to create a positive workplace 
+atmosphere, leading to increased productivity and overall job 
+satisfaction.
 
-This application would then help companies find new employee basing their research on different kinds of "Soft skills". It would allow the companies to select what matters the most within a predefined soft skills list, according to what they want the employee to be.
-<!-- To rehearse -->
+
+This application assists companies in finding new employees by focusing 
+on various soft skills. It enables companies to prioritize the most 
+relevant soft skills from a predefined list based on their specific 
+requirements for potential employees.
+
+
 
 #### ➭ Objectives
 
-**Anonymization of candidates and companies**: To avoid discrimination in hiring, candidates and companies are anonymized on the platform. This allows us to focus on candidates' skills and potential, rather than their origin, gender, age, etc.
+- **Anonymization of candidates**: To avoid discrimination in hiring, 
+  candidates are anonymized on the platform. This allows us to focus on 
+  candidates' skills and potential, rather than their origin, gender, 
+  age, etc.
 
-**Valuing soft skills**: Instead of focusing solely on diplomas and professional experience, the concept emphasizes soft skills, i.e. the behavioral and relational skills of candidates. This makes it possible to recognize and evaluate skills such as communication, teamwork, creativity, problem-solving, etc.
+- **Valuing soft skills**: The concept focuses on emphasizing soft 
+  skills over diplomas and experience. Soft skills will be the sole 
+  criteria used in the matching system to ensure effective and 
+  meaningful placements.
 
-**Priority given to the human aspect**: The concept emphasizes the human aspect of recruitment, recognizing that each candidate has unique talents and skills to offer. It seeks to give each individual the opportunity to showcase his or her skills, regardless of background or academic credentials.
+- **Using an application**: The entire recruitment process takes place 
+  on a dedicated application. This facilitates interaction between 
+  candidates and companies.
 
-**Matching between candidates and companies**: The "matching" process enables candidates and companies to connect and find an ideal match. Candidates can express their preferences in terms of companies and positions, and companies can search for candidates who match their cultural and organizational needs.
-
-**Using an application**: The entire recruitment process takes place on a dedicated application. This facilitates interaction between candidates and companies, offering features such as messaging, personalized profiles, etc.
-
-**Process**: In our approach, we do not have tests, quizzes, or games. Instead, candidates will have the opportunity to select their soft skills from a provided list, while recruiters will choose the desired skills from the same list. The "match" will occur when there is a 50% overlap of soft skills between the candidate and the company. Our concept is inspired by the functionality of the "Tinder" application for recruitment. There is no document or defined skills matrix.
+- **Process**: In our approach, we do not have tests, quizzes, or games. 
+  Instead, candidates will have the opportunity to select their soft 
+  skills from a provided list, while recruiters will choose the desired 
+  skills from the same list. The "match" will occur when there is a 50% 
+  overlap of soft skills between the candidate and the company. Our 
+  concept is inspired by the functionality of the "Tinder" application 
+  for recruitment.
 
 #### ➭ Scope
 
-This project should be done using Flutter and be compatible with all types of devices.
+This project will be developed using Flutter, a cross-platform framework, ensuring the application is available on computer, iOS, and Android. 
 
-This implementation should be only targeting the front-end at first and should offer an interface to candidates, and companies but also "We are evolution." as an administrator.
+The implementation will focus solely on the front-end and provide interfaces for both candidates and companies.
 
 #### ➭ Deliverables
 
@@ -169,7 +151,7 @@ Additional documents will be given to the client:
 
 In addition, a presentation of our work will be done to the client as a 15-minute long presentation.
 
-### 4) Project Organisation
+### 4. Project Organisation
 
 #### ➭ Project Representatives
 
@@ -188,27 +170,26 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 | --------------- | ------------------------------------- | ---------------------------------------------------------------------- |
 | Client          | Lilou Jourdannaud (We Are Evolution.) | Finished project meeting requirements                                  |
 | School director | Franck JEANNIN (ALGOSUP)              | Clear documentation and management based on the skills learnt in class |
-<!-- link? -->
+
 
 #### ➭ Project Roles
 
-**Project manager**: A Project Manager (PM) is responsible for planning, executing, and closing projects. They ensure that the project meets its objectives on time and within budget. The PM coordinates the efforts of the team and manages resources to ensure smooth project progression.
+| Role                   | Description                                                                                   | Name |
+| ---------------------- | --------------------------------------------------------------------------------------------- | -----|
+| Project Manager        | Responsible for the overall planning, execution, and success of the project.                 | Antoine PREVOST |
+| Program Manager        | Makes sure the project meets expectation. Is in charge of design. Is responsible for writing the Functional Specifications | Thomas PLANCHARD |
+| Tech Lead              | Makes the technical decision in the project. Translates the Functional Specification into Technical Specifications. Does code review. | Maxime THIZEAU |
+| Senior Software Engineer | Writes the code. Writes documentation. Participate in the technical design. | Quentin CLEMENT |
+| Quality Assurance      | Tests all the functionalities of a product to find bugs and issue. Document bugs and issues. Write the test plan. Check that issues have been fixed.     | Pavlo PRENDI |
+| Technical Writer       | Responsible for creating and maintaining the project's documentation.                        | Arthur LEMOINE |
 
-**Program manager**: A Program Manager oversees multiple related projects, aligning them with the strategic goals of the organization. They ensure that projects within a program are coordinated and meet broader business objectives.
-
-**Tech lead**: A Tech Lead is a senior technical expert who provides technical direction for a project or team. They ensure that the technical aspects of the project are aligned with best practices and organizational standards.
-
-**Software engineer**: A Software Engineer designs, develops, tests, and maintains software applications. They work on the implementation of features and functionalities according to project requirements.
-
-**Quality assurance**: A Quality Assurance professional ensures that software products meet quality standards before they are released. They identify defects and issues through systematic testing and validation.
-
-**Technical writer**: A Technical Writer creates documentation that explains technical information clearly and concisely. They produce manuals, guides, and other materials that help users understand and use products effectively.
 
 #### ➭ Project Reviewers
 
-<!-- TODO -->
+External project reviewers have been appointed by the project owner to review our specifications and provide us with feedback.
 
-### 5) Project Plan
+
+### 5. Project Plan
 
 #### ➭ Retroplanning
 
@@ -294,9 +275,9 @@ Example: "Risk of resource unavailability due to overlapping projects." -->
 <!-- Provide plans to address and mitigate constraints and risks.
 Example: "Contingency plans for delays in critical tasks, such as allocating additional resources." -->
 
-## C) Functional Requirements
+## II. Functional Requirements
 
-### 1) Soft Skills Evaluation
+### 1. Soft Skills Evaluation
 
 #### ➭ User Registration
 
@@ -376,7 +357,7 @@ This company sent you a new certification. Come back and pass it!
 Job applying denial
 Hi... Your application has been denied, come find others.
 
-### 2) Job Applications
+### 2. Job Applications
 
 #### ➭ Job Matching
 
@@ -443,7 +424,7 @@ The "Big Skills" are categories including four to fourteen "Small Skills".
 |                    | curiosity                             |
 |                    | risk-taking                           |
 
-### 3) Language Support
+### 3. Language Support
 
 #### ➭ Language Options
 
@@ -454,7 +435,7 @@ Other languages could be implemented afterward, depending on which country would
 
 To change the language option, access to the settings will be created on the settings page.
 
-### 4) Device Compatibility
+### 4. Device Compatibility
 
 #### ➭ Supported Devices
 
@@ -482,7 +463,7 @@ To use Chrome on Linux, you'll need:
 - 64-bit Ubuntu 18.04+, Debian 10+, openSUSE 15.2+, or Fedora Linux 32+
 - An Intel Pentium 4 processor or later that's SSE3 capable
 
-### 5) Target Audience
+### 5. Target Audience
 
 #### ➭ Job Seekers
 
@@ -500,7 +481,7 @@ To use Chrome on Linux, you'll need:
 
 ![Perona 3 - SUBLIMINAL](img/subliminal.png)
 
-### 6) Candidate Privacy
+### 6. Candidate Privacy
 
 #### ➭ Confidentiality Measures
 
@@ -539,9 +520,9 @@ Information hidden are:
 - company registration number (SIRET number)
 - "Soft skills"
 
-## D) Non-Functional Requirements
+## III. Non-Functional Requirements
 
-### 1) User Interface Design
+### 1. User Interface Design
 
 #### ➭ Visual Design
 
@@ -552,12 +533,12 @@ Logo, color pallet, page template, avatars -->
 
 #### ➭ Accessibility
 
-### 2) Security 
+### 2. Security 
 
 For the project "Adopte un Candidat". The team was asked to focus mainly on the front-end and not on the back-end. Therefore, the security would not be a priority or implementable on the application. However, there are some ideas to use afterward:
 <!-- TODO -->
 
-### 3) Performance
+### 3. Performance
 
 #### ➭ Responsiveness
 
