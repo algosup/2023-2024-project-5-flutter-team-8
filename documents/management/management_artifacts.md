@@ -41,6 +41,14 @@ Legend:
 
 ## Risks & Assumptions
 
+| ID  | Description                                                                    | Consequence                                                       | Impact   | Likelihood | Mitigation/Avoidance                                                                |
+| --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------- | ---------- | ----------------------------------------------------------------------------------- |
+| 1   | Flutter is a laguage to which we are not yet used to.                          | Development pace might be hindered                                | High     | Medium     | Ask for help to the other team members                                              |
+| 2   | The client might want to change /add requirements                              | We might need to change how the solution is developed             | Medium   | Low        | Validate every step of the project with the client, to ensure the solution fits him |
+| 3   | We might create a clone of an already exisiting solution and infringe a patent | The client couldn't develop their solution based on our prototype | High     | Low        | Check for any patent and find our unique selling point (USP)                        |
+| 4   | Misinterpretation of the project                                               | Incorrect implementation of the software                          | Critical | Medium     | Regular communication with the client to understand their needs, and stick to them. |
+| 5   | Team member leaving                                                            | Tasks left to the remaining members without any assignee          | High     | Unlikely   | Sharing the tasks among the remaining team members.                                 |
+
 ## Key Performance Indicators
 
 ## Weekly reports
