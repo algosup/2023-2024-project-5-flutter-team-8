@@ -56,11 +56,15 @@
 ### 1. Purpose
 
 <!-- Outline the purpose of the document and the application. -->
-This document is meant to explain how to create the 
+This document is meant to explain how to create the application by implementing the features detailed in the [functional specification]().
+The purpose of the application is to create a new way of recruiting people based on their soft skills and not their technical skills. It is also totally anonymized for better equality between the potential candidates.
 
 ### 2. Scope
 
 <!-- Define the scope of the front-end project and what the document will cover. -->
+This project should be done using Flutter and be compatible with all types of devices.
+
+This implementation should be only targeting the front-end at first and should offer an interface to candidates, and companies but also "We are evolution." as an administrator.
 
 ### 3. Definitions, Acronyms, and Abbreviations
 
@@ -71,29 +75,129 @@ This document is meant to explain how to create the
 ### 1. Coding Standards
 
 <!-- Describe the coding standards and style guidelines to be followed (e.g., Dart/Flutter coding conventions). -->
+This project is entirely made in the Flutter dart language, that's why it is logical and easy to keep the same coding convention as the Flutter.
+
+Classes, enum types, typedefs, and type parameters should be in PascalCase:
+```Dart
+class ClassName { ... }
+
+enum EnumName { ... }
+
+typedef Predicate<T> = bool Function(T value);
+```
+
+Extensions have the same naming convention as Classes which is PascalCase:
+```Dart
+extension MyExtensionList<T> on List<T> { ... }
+```
+
+Packages, Files and Folders should be named in a snake_case style:
+```
+my_package
+└─ lib
+   └─ file_system.dart
+   └─ slider_menu.dart
+```
+
+The name import prefixes should also be in a snake_case style:
+```Dart
+import 'dart:math' as math;
+import 'package:angular_components/angular_components.dart' as angular_components;
+import 'package:js/js.dart' as js;
+```
+
+Other identifiers such as Class members, top-level definitions, variables, parameters, and named parameters would be in a simple camelCase:
+
+```Dart
+var number = 3;
+
+HttpRequest httpRequest;
+
+void align(bool clearItems) {
+  // ...
+}
+```
+
+Prefer camelCase for constants or SCREAMING_CAPS if it was already used in the code source:
+```Dart
+const pi = 3.14;
+```
+
+Avoid using '_' before identifiers that are not private.\
+Also, avoid prefix letters. \
+Moreover, do not explicitly name libraries, Dart generates a unique tag for each library based on its path and filename.
+
+The Flutter language is a prioritization in his import files, they should follow this order alphabetically:
+- `dart:` imports
+- `package:` imports
+- relative imports
+- exports
+
+```Dart
+import 'dart:async';
+import 'dart:html';
+
+import 'package:bar/bar.dart';
+import 'package:foo/foo.dart';
+
+import 'util.dart';
+
+export 'src/error.dart';
+```
+
+Format comments like sentences for better understanding:
+```Dart
+// This comment explain ...
+```
+Avoid using block comments for documentation
 
 ### 2. Naming Conventions
 
 <!-- Define naming conventions for variables, classes, methods, and other identifiers. -->
+This project has two main naming conventions, which are the repository naming convention and the coding naming convention.
+
+Some of the coding naming conventions were defined above in the previous section. Here are the missing ones:
+```
+function: camelCase
+class: PascalCase
+widget: PascalCase
+```
+The repository naming conventions are the following:
 ```
 branches: kebab-case
 folder: snake_case
 file: snake_case
-following the flutter naming convention
-function: camelCase
-class: PascalCase
-widget: PascalCase
+```
+Moreover, all the branches have been defined previously.
+|Names|Utilities|
+|-----|---------|
+|main |owning the final state of the project|
+|documents|all the modifications related to the document, whatever it is, should be done on this branch|
+|dev  |owning the most complete and functional version of the code|
+|*code feature*|owning one specific function of the specific code, should be erased once merged to the dev branch|
+
+The branches should be merged following a simple pull request system.
+The lower branch should merge with the higher branch to avoid conflict. If there is none or when they are corrected, a pull request should be done to merge the lower branch to the higher one.
+The hierarchy would follow this tree:
+```
+main
+-> documents
+-> dev
+  -> One branch for each big feature
 ```
 
 ### 3. Commenting and Documentation
 
 <!-- Outline how code should be commented and documented, including requirements for inline comments and documentation comments. -->
+As said in section [1. Coding Standards](#1-coding-standards), the code should be commented on with single-line commentary and with clear sentences. \
+It is recommended to be explicit and to use the most possible commentaries to inform potential software engineers of the use of each function.
 
 ## III. System Overview
 
 ### 1. System Architecture
 
 <!-- Provide an overview of the front-end architecture, including diagrams (e.g., component diagrams). -->
+Our GitHub repository will be created following the architecture hereunder:
 
 ```
 Root
@@ -110,11 +214,7 @@ Root
 | | +---weekly_reports
 | | | \---weekly_report_cumulative.md
 | | | \---weekly_report_1.md
-| | | \---weekly_report_2.md
-| | | \---weekly_report_3.md
-| | | \---weekly_report_4.md
-| | | \---weekly_report_5.md
-| | | \---weekly_report_6.md
+| | | \--- ...
 | +---communication
 | +---user_manual
 | | \---user_manual.pdf
@@ -135,14 +235,21 @@ Root
 \---README.md
 \---.gitignore
 ```
+The architecture of the application will be in the src/lib folder, containing all the pages of both the candidate and company sides.
+<!-- list all the pages? -->
 
 ### 2. Technology Stack
 
 <!-- List and describe the technologies and frameworks used (e.g., Flutter, Dart). -->
+For this project, it has been decided to use the Flutter/Dart language as well as some famous extensions of it, which are:
+- [riverpod](https://riverpod.dev/): which is a reactive caching framework for Flutter/Dart. Using declarative and reactive programming, Riverpod takes care of a large part of your application's logic for you.
+- [freezed](https://pub.dev/packages/freezed): a code generator for data-classes/unions/pattern-matching/cloning.
+- [go_router](https://pub.dev/packages/go_router): a declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens. You can define URL patterns, navigate using a URL, handle deep links, and a number of other navigation-related scenarios.
 
 ### 3. Key Components
 
 <!-- Describe the key components of the front-end (e.g., UI components, state management). -->
+
 
 ## IV. Application Architecture
 
@@ -157,6 +264,71 @@ Root
 ### 3. Navigation
 
 <!-- Detail the navigation strategy (e.g., Navigator 2.0, named routes). -->
+For the navigation between the different pages, go_routeur will be used. It is a simpler way to navigate between the pages than the one provided by default.
+Here is what it would look like:
+```Dart
+GoRouter goRouter() {
+  return GoRouter(
+    initialLocation: '/loading',
+    routes: <RouteBase>[
+      GoRoute(
+        path: '/loading',
+        name: 'loading',
+        builder: (context, state) => const Loading(),
+      ),
+      GoRoute(
+        path: '/splashScreen',
+        name: 'splashScreen',
+        builder: (context, state) => const SplashScreen(),
+      ),
+    ],
+  );
+}
+```
+This is only a simple preview for the first two pages, all the pages would be defined hereunder:
+| Names | Path | Descriptions |
+| ----- | ---- | ------------ |
+| 'logo' | '/logo' ||
+| 'splashScreen' | '/splashScreen' ||
+| 'login' | '/login' ||
+| 'forgetPassword' | '/forgetPassword' ||
+| 'typeUserChoice' | '/typeUserChoice' ||
+| 'signUpUser' | '/signUpUser' ||
+| 'softSkillsChoices' | '/softSkillsChoices' ||
+| 'softSkillsRank' | '/softSkillsRank' ||
+| 'location' | '/location' ||
+| 'profilePicture' | '/profilePicture' ||
+| 'checkYourEmail' | '/checkYourEmail' ||
+| 'successfully' | '/successfully' ||
+| 'homeScreen' | '/homeScreen' ||
+| 'jobInfo' | '/jobInfo' ||
+| 'skillsCategories' | '/skillsCategories' ||
+| 'skillsSelection' | '/skillsSelection' ||
+| 'message' | '/message' ||
+| 'chat' | '/chat' ||
+| 'noMessage' | '/noMessage' ||
+| 'profile' | '/profile' ||
+| 'personalInformation' | '/personalInformation' ||
+| 'updatePassword' | '/updatePassword' ||
+| 'updateProfilePicture' | '/updateProfilePicture' ||
+| 'settings' | '/settings' ||
+| 'jobsLiked' | '/jobsLiked' ||
+| 'profileCertification' | '/profileCertification' ||
+| 'profileSkills' | '/profileSkills' ||
+| 'profileAddSkills' | '/profileAddSkills' ||
+| 'profileRankSkills' | '/profileRankSkills' ||
+| 'signUpCompany' | '/signUpCompany' ||
+| 'profilePictureCompany' | '/profilePictureCompany' ||
+| 'companyHomeScreen' | '/companyHomeScreen' ||
+| 'noOffer' | '/noOffer' ||
+| 'addJobOffer' | '/addJobOffer' ||
+| 'addImages' | '/addImages' ||
+| 'addSoftSkillsJob' | '/addSoftSkillsJob' ||
+| 'SkillsCategoriesCompany' | '/SkillsCategoriesCompany' ||
+| 'SkillsSelectionCompany' | '/SkillsSelectionCompany' ||
+| 'messageQualifiedCompany' | '/messageQualifiedCompany' ||
+| 'messageUnqualifiedCompany' | '/messageUnqualifiedCompany' ||
+| 'profileCompany' | '/profileCompany' ||
 
 ## V. Data Management
 
