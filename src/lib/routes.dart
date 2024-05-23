@@ -1,29 +1,22 @@
-// import 'package:adopte_1_candidat/main.dart';
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart';
 
-// final GoRouter router = GoRouter(
-//   routes: <RouteBase>[
-//     GoRoute(
-//       name: 'Loading',
-//       path: '/',
-//       builder: (context, state) {
-//         return const Loading();
-//       },
-//     ),
-//     GoRoute(
-//       name: 'Home',
-//       path: '/home',
-//       builder: (context, state) {
-//         return const Home();
-//       },
-//     ),
-//     GoRoute(
-//       name: 'About',
-//       path: '/about',
-//       builder: (context, state) {
-//         return const About();
-//       },
-//     ),
-//   ],
-// );
+import 'package:adopte_1_candidat/loading.dart';
+import 'package:adopte_1_candidat/splash_screen.dart';
+
+GoRouter goRouter() {
+  return GoRouter(
+    initialLocation: '/loading',
+    routes: <RouteBase>[
+      GoRoute(
+        path: '/loading',
+        name: 'loading',
+        builder: (context, state) => const Loading(),
+      ),
+      GoRoute(
+        path: '/splashScreen',
+        name: 'splashScreen',
+        builder: (context, state) => const SplashScreen(),
+      ),
+    ],
+  );
+}

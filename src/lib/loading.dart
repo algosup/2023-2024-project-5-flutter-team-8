@@ -1,15 +1,9 @@
-// Copyright 2019 the Dart project authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license
-// that can be found in the LICENSE file.
-
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
+import 'package:go_router/go_router.dart';
 
 const int maxSeeds = 250;
-
-void main() {
-  runApp(const Loading());
-}
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -22,73 +16,78 @@ class Loading extends StatefulWidget {
 
 class _SunflowerState extends State<Loading> {
   int seeds = 0;
+  int cycles = 0;
+  bool _isMounted = false;
 
   @override
   void initState() {
     super.initState();
+    _isMounted = true;
     _incrementCounter();
   }
 
-  _incrementCounter() async {
-    if (seeds == 0) {
-      for (var i = 0; i < maxSeeds; i++) {
-        //Loop 100 times
-        await Future.delayed(const Duration(milliseconds: 2), () {
-          // Delay 500 milliseconds
+  @override
+  void dispose() {
+    _isMounted = false;
+    super.dispose();
+  }
+
+  void _incrementCounter() async {
+    for (var i = 0; i < maxSeeds; i++) {
+      await Future.delayed(const Duration(milliseconds: 2), () {
+        if (_isMounted) {
           setState(() {
-            seeds++; //Increment Counter
+            seeds++;
           });
-        });
-      }
-      await Future.delayed(const Duration(milliseconds: 750), () {
-        _decrementCounter();
+        }
       });
     }
+    await Future.delayed(const Duration(milliseconds: 750), _decrementCounter);
   }
 
-  _decrementCounter() async {
-    if (seeds == maxSeeds) {
-      for (var i = maxSeeds; i >= 1; i--) {
-        //Loop 100 times
-        await Future.delayed(const Duration(milliseconds: 1), () {
-          // Delay 500 milliseconds
+  void _decrementCounter() async {
+    for (var i = maxSeeds; i >= 1; i--) {
+      await Future.delayed(const Duration(milliseconds: 1), () {
+        if (_isMounted) {
           setState(() {
-            seeds--; //Increment Counter
+            seeds--;
           });
-        });
-      }
+        }
+      });
     }
-    
-    _incrementCounter();
+    cycles++;
+    if (cycles == 1) {
+      _redirect();
+    } else {
+      _incrementCounter();
+    }
+  }
+
+  void _redirect() {
+    developer.log('Redirecting to splash screen');
+    if (_isMounted) {
+      GoRouter.of(context).go('/splashScreen');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Transform.scale(
-                scale: 0.6, // Adjust this value to scale the image and text
-                child: Column(
-                  children: [
-                    Image.asset('assets/img/logo.png'),
-                    // const Text("Adopte 1 Candidat", 
-                    //   style: TextStyle(fontFamily:'Didot', color: Colors.white, fontSize: 50)),
-                  ],
-                ),
-              ),
-              SizedBox(height: size.height / 10),
-              SunflowerWidget(seeds),
-            ],
-          ),
+    return Scaffold(
+      backgroundColor: Colors.black, // Set background color to black
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Transform.scale(
+              scale: 0.6,
+              child: Image.asset('assets/img/unofficial_logo.png'),
+            ),
+            SizedBox(height: size.height / 10),
+            SunflowerWidget(seeds),
+          ],
         ),
       ),
     );
@@ -122,8 +121,6 @@ class SunflowerWidget extends StatelessWidget {
         child: const Dot(true),
       ));
     }
-
-    // draw the seeds only from the moment they start moving to the end
 
     for (var j = seeds; j < maxSeeds; j++) {
       final x = math.cos(tau * j / (maxSeeds - 1)) * 1.5;
