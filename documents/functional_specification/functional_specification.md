@@ -29,7 +29,14 @@
     - [➭ Milestones](#-milestones)
     - [➭ Dependencies](#-dependencies)
     - [➭ Assumptions/Constraints](#-assumptionsconstraints)
-- [II. Functional Requirements](#ii-functional-requirements)
+- [II. UX/UI](#ii-uxui)
+  - [1. Visual Design](#1-visual-design)
+    - [➭ Mockups](#-mockups)
+    - [➭ Unique UI Feature:](#-unique-ui-feature)
+    - [➭ Color Palette](#-color-palette)
+    - [➭ Font](#-font)
+    - [➭ Image Assets](#-image-assets)
+- [III. Functional Requirements](#iii-functional-requirements)
   - [1. Registration](#1-registration)
     - [➭ User Registration](#-user-registration)
       - [➭ Candidate Registration](#-candidate-registration)
@@ -54,13 +61,9 @@
     - [➭ Confidentiality Measures](#-confidentiality-measures)
     - [➭ Data Visibility](#-data-visibility)
   - [7. User Workflow](#7-user-workflow)
-- [III. Non-Functional Requirements](#iii-non-functional-requirements)
-  - [1. User Interface Design](#1-user-interface-design)
-    - [➭ Visual Design](#-visual-design)
-    - [➭ Branding](#-branding)
-    - [➭ Accessibility](#-accessibility)
-  - [2. Security](#2-security)
-  - [3. Performance](#3-performance)
+- [IV. Non-Functional Requirements](#iv-non-functional-requirements)
+  - [1. Security](#1-security)
+  - [2. Performance](#2-performance)
     - [➭ Responsiveness](#-responsiveness)
     - [➭ Load Time](#-load-time)
 
@@ -219,8 +222,7 @@ Launch of the new "Adopte un Candidat" application by June 21, 2024.
 
 **Timeline Visualization**:
 
-<!-- Include a Gantt chart or similar timeline to visualize the backward planning.
-Ensure it shows task durations and dependencies. -->
+![Gant chart](./img/gant_chart.png)
 
 #### ➭ Milestones
 
@@ -292,30 +294,78 @@ Ensure it shows task durations and dependencies. -->
 Candidates' personal information must remain confidential. Companies will only have access to soft skill profiles, unique user IDs, and selected animal avatars.
 
 
-## II. Functional Requirements
+## II. UX/UI
+
+### 1. Visual Design
+
+
+The design of the application follows a user-centered approach, prioritizing ease of use and visual appeal. 
+
+#### ➭ Mockups
+
+The mockups for the application can be accessed via the following link: [Mockup PDF](./Adopte1CandidatMockup.pdf)
+
+The mockups are organized in the order of the user workflow, starting from registration/login and progressing through profile creation, soft skills selection...
+
+#### ➭ Unique UI Feature:
+
+To enhance user engagement, we've designed Job Offer Bubbles, a unique feature in the app:
+
+- **Description**: Animated bubbles bounce slowly across the screen, representing job offers.
+- **Interaction**: Users click on bubbles to view job details in a pop-up window.
+- **Navigation**: Within the pop-up, users can swipe through job images.
+- **Acceptance**: Accept or decline job offers by clicking the corresponding buttons.
+
+![Home](./img/Home%20Screen.png)
+![Job Bubble 1](./img/Job%20Info.jpg)
+![Job Bubble 2](./img/Job%20Info%202.jpg)
+
+
+This feature adds a dynamic and playful element to the app, making job browsing more interactive and enjoyable for candidates.
+
+#### ➭ Color Palette
+
+The color palette for the application is as follows:
+- Primary Color: #D6CDFE (Light Purple) 
+- Background Color: #F9F9F9 (Light Grey)
+- Text Color: Black (#000000) for primary text, White (#FFFFFF) for secondary text
+
+#### ➭ Font 
+
+We will use DM Sans as the primary font for the "Adopte Un Candidat" application.
+
+#### ➭ Image Assets
+
+All images used in the application are available in a dedicated folder accessible via the following link: [Image Assets Folder](./img/app_img/)
+
+
+
+
+## III. Functional Requirements
 
 
 ### 1. Registration
 
 #### ➭ User Registration
 
-To register for the application, would differ according to the state of the user (Company or Candidate).
+To register for the application, the process would differ based on the user's role, whether they are a Company or a Candidate.
 
 ##### ➭ Candidate Registration
 
-There will be five different steps to register a new candidate account.
+To register a new candidate account, there will be five steps:
 
-The first one would be to register an e-mail account, a password and a full name, which will be hidden later on.
+1. **Email and Password Registration**: Users will provide an email address, a password, and a full name (which will be hidden later).
 
-The second step would be to select a total of fifteen "soft skills" from a list of forty of them.
+2. **Soft Skills Selection**: Candidates will choose a total of fifteen soft skills from a list of forty. They will then organize these selected skills from the most proficient to the least proficient.
 
-Once they have selected these 15 "soft skills" defining them, they should organize them from the best to the worst. The first one would be the "soft skill" they master the most, and so on.
+3. **Location Selection**: Candidates will select their location and define a range around it to identify potential nearby companies.
 
-Next, the user will have to select his location and a range around it to define the possible company near him.
+4. **Avatar Selection**: Users will choose an avatar from a selection of twelve animals, reflecting their mentality and self-perception.
 
-Finally, they should select an avatar among twelve animals, defining their mentality and how they see themselves.
+5. **Email Confirmation**: Upon completing all steps, candidates will receive an email in their mailbox to confirm their registration.
 
-Once all these steps are completed, the user will receive an e-mail in his mailbox to confirm his registration.
+After the registration process, the user will be redirected to the home page.
+
 
 ##### ➭ Company Registration
 
@@ -357,23 +407,16 @@ Finally, the company needs to register the researched soft skills which will not
 
 This kind of application needs notifications to keep the user up to date and inform on what is happening on its profile. The following notifications have been thought of according to the main functionalities of the application.
 
-New match
-Hey! Come back to the application, you get a new match!
+| Notification Type | Notification Content |
+| ----------------- | --------------------- |
+| New match         | Hey! Come back to the application, you get a new match! |
+| New Message       | Hey! Come back to the application, you get a new message! |
+| Long time no see  | Hi... It's been a long time since we last saw you on the application. Did you find a job? |
+| New job applying  | Hey! Come back to the application, there is ... new job applying in your area! |
+| New Certification available | This company sent you a new certification. Come back and pass it! |
+| Job applying denial | Hi... Your application has been denied, come find others. |
+| Job applying acceptance | Hi... Your application has been accepted, come talk to the company! |
 
-New Message
-Hey! Come back to the application, you get a new message!
-
-Long time no see
-Hi... It's been a long time since we last saw you on the application. Did you find a job?
-
-New job applying
-Hey! Come back to the application, there is ... new job applying in your area!
-
-New Certification available
-This company sent you a new certification. Come back and pass it!
-
-Job applying denial
-Hi... Your application has been denied, come find others.
 
 ### 2. Job Applications
 
@@ -560,21 +603,20 @@ graph TD
     B2 --> B7[Browse Available Certifications]
     B7 --> B8[Select and Complete Certifications]
     
-    B3 --> B9[View Job Offers]
+    A6 --> B9[View Job Offers]
     B9 --> B10[Tap Company Logo]
     B10 --> B11[View Job Description]
     B11 --> B12[Swipe Right to Apply]
     B11 --> B13[Swipe Left to Decline]
     B12 --> B14[Receive Confirmation]
 
-    B3 --> B17[Matches Page]
-    B17 --> B18[View all Matches]
+    B3 --> B18[View all Matches]
     B18 --> B19[Tap on a match]
     B19 --> B20[Communicate with the company]
     
     
     A6 --> B15[Receive Notifications]
-    A6 --> B16[Logout]
+    B1 --> B16[Logout]
   end
 ```
 
@@ -604,25 +646,14 @@ graph TD
   end
 ```
 
-## III. Non-Functional Requirements
+## IV. Non-Functional Requirements
 
-### 1. User Interface Design
-
-#### ➭ Visual Design
-
-<!-- Insert mock-up 
-Logo, color pallet, page template, avatars -->
-
-#### ➭ Branding
-
-#### ➭ Accessibility
-
-### 2. Security 
+### 1. Security 
 
 For the project "Adopte un Candidat". The team was asked to focus mainly on the front-end and not on the back-end. Therefore, the security would not be a priority or implementable on the application. However, there are some ideas to use afterward:
 <!-- TODO -->
 
-### 3. Performance
+### 2. Performance
 
 #### ➭ Responsiveness
 
