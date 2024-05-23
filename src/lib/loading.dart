@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 import 'package:go_router/go_router.dart';
 
 const int maxSeeds = 250;
@@ -64,7 +63,6 @@ class _SunflowerState extends State<Loading> {
   }
 
   void _redirect() {
-    developer.log('Redirecting to splash screen');
     if (_isMounted) {
       GoRouter.of(context).go('/splashScreen');
     }

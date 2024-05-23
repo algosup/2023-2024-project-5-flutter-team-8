@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+
+import 'constants.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -9,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+      backgroundColor: backgroundColor,
       body: Center(
         child: Column(
           children: [
@@ -68,8 +71,8 @@ class SplashScreen extends StatelessWidget {
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
-                            color: Color.fromRGBO(214, 205, 254, 1),
-                            decorationColor: Color.fromRGBO(214, 205, 254, 1),
+                            color: purpleColor,
+                            decorationColor: purpleColor,
                             height: 0.9,
                           ),
                         ),
@@ -80,8 +83,8 @@ class SplashScreen extends StatelessWidget {
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
-                            color: Color.fromRGBO(214, 205, 254, 1),
-                            decorationColor: Color.fromRGBO(214, 205, 254, 1),
+                            color: purpleColor,
+                            decorationColor: purpleColor,
                             height: 0.9,
                           ),
                         ),
@@ -100,7 +103,7 @@ class SplashScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'Soft Skills Rule the Hiring Game,',
+                              'Soft Skills Rule the Hiring Game!',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'DM Sans',
@@ -120,13 +123,14 @@ class SplashScreen extends StatelessWidget {
                       width: size.height * 0.08,
                       child: GestureDetector(
                         onTap: () {
-                          // Your onPressed logic here
+                          GoRouter.of(context).go('/loading');
                         },
                         child: Container(
+                          // #TODO: Add a clean shadow and an animation when the button is clicked
                           height: size.height * 0.08,
                           width: size.height * 0.08,
                           decoration: const BoxDecoration(
-                            color: Color.fromRGBO(214, 205, 254, 1),
+                            color: purpleColor,
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.all(Radius.circular(100)),
                           ),
