@@ -29,6 +29,12 @@
   - [VI. Functional Requirements](#vi-functional-requirements)
     - [1. User Authentication](#1-user-authentication)
     - [2. User Profile Management](#2-user-profile-management)
+      - [2.1. Personal Information](#21-personal-information)
+      - [2.2. Skills](#22-skills)
+      - [2.3. Certifications](#23-certifications)
+      - [2.4. Notifications](#24-notifications)
+      - [2.5. Jobs Liked](#25-jobs-liked)
+      - [2.6. Logout](#26-logout)
     - [3. Job Offer Matching](#3-job-offer-matching)
     - [4. Swiping Interface](#4-swiping-interface)
     - [5. Notifications](#5-notifications)
@@ -158,6 +164,7 @@ This project has two main naming conventions, which are the repository naming co
 
 Some of the coding naming conventions were defined above in the previous section. Here are the missing ones:
 ```
+path: kebab-case
 function: camelCase
 class: PascalCase
 widget: PascalCase
@@ -285,50 +292,64 @@ GoRouter goRouter() {
   );
 }
 ```
+
+```Dart
+GoRouter.of(context).go('/splashScreen');
+```
+
+```Dart
+@override
+Widget build(BuildContext context) {
+  return MaterialApp.router(
+    routerConfig: router,
+  ),
+}
+```
+
 This is only a simple preview for the first two pages, all the pages would be defined hereunder:
 | Names | Path | Descriptions |
 | ----- | ---- | ------------ |
-| 'logo' | '/logo' ||
-| 'splashScreen' | '/splashScreen' ||
-| 'login' | '/login' ||
-| 'forgetPassword' | '/forgetPassword' ||
-| 'typeUserChoice' | '/typeUserChoice' ||
-| 'signUpUser' | '/signUpUser' ||
-| 'softSkillsChoices' | '/softSkillsChoices' ||
-| 'softSkillsRank' | '/softSkillsRank' ||
-| 'location' | '/location' ||
-| 'profilePicture' | '/profilePicture' ||
-| 'checkYourEmail' | '/checkYourEmail' ||
-| 'successfully' | '/successfully' ||
-| 'homeScreen' | '/homeScreen' ||
-| 'jobInfo' | '/jobInfo' ||
-| 'skillsCategories' | '/skillsCategories' ||
-| 'skillsSelection' | '/skillsSelection' ||
-| 'message' | '/message' ||
-| 'chat' | '/chat' ||
-| 'noMessage' | '/noMessage' ||
-| 'profile' | '/profile' ||
-| 'personalInformation' | '/personalInformation' ||
-| 'updatePassword' | '/updatePassword' ||
-| 'updateProfilePicture' | '/updateProfilePicture' ||
-| 'settings' | '/settings' ||
-| 'jobsLiked' | '/jobsLiked' ||
-| 'profileCertification' | '/profileCertification' ||
-| 'profileSkills' | '/profileSkills' ||
-| 'profileAddSkills' | '/profileAddSkills' ||
-| 'profileRankSkills' | '/profileRankSkills' ||
-| 'signUpCompany' | '/signUpCompany' ||
-| 'profilePictureCompany' | '/profilePictureCompany' ||
-| 'companyHomeScreen' | '/companyHomeScreen' ||
-| 'noOffer' | '/noOffer' ||
-| 'addJobOffer' | '/addJobOffer' ||
-| 'addImages' | '/addImages' ||
-| 'addSoftSkillsJob' | '/addSoftSkillsJob' ||
-| 'SkillsCategoriesCompany' | '/SkillsCategoriesCompany' ||
-| 'SkillsSelectionCompany' | '/SkillsSelectionCompany' ||
-| 'messageQualifiedCompany' | '/messageQualifiedCompany' ||
-| 'messageUnqualifiedCompany' | '/messageUnqualifiedCompany' ||
-| 'profileCompany' | '/profileCompany' ||
+| 'logo' | '/logo' | loading screen |
+| 'splash-screen' | '/splash-screen' | Description of the application|
+| 'login' | '/login' | login with a password and a mail account|
+| 'forget-password' | '/forget-password' |ask for a new password via the mail|
+| 'type-user-choice' | '/type-user-choice' |chose if you are a company or a candidate|
+| 'sign-up-user' | '/sign-up-user' | ask for the full name, the mail and the password of the user |
+| 'soft-skills-choices' | '/soft-skills-choices' | a page with 40 skills predifined |
+| 'soft-skills-rank' | '/soft-skills-rank' | page to rank the previously selected skills |
+| 'location' | '/location' | page to put the address and the range around it |
+| 'profile-picture' | '/profile-picture' | page to define user's profile picture|
+| 'check-your-email' | '/check-your-email' | waiting screen for the mail to be checked|
+| 'successfully' | '/successfully' | page when succesfully checked |
+| 'home-screen' | '/home-screen' |main page with the job offer on bubble form |
+| 'job-info' | '/job-info' | page when a bubble is clicked to have more information about the job|
+| 'skills-categories' | '/skills-categories' | page where all the big certification categories are displayed |
+| 'skills-selection' | '/skills-selection' | page where the certification are shown |
+| 'message' | '/message' | page where all the chats are listed |
+| 'chat' | '/chat' | specific chat with one company|
+| 'no-message' | '/no-message' | page displayed when no messages|
+| 'profile' | '/profile' | page to acces to the diverse settings |
+| 'personal-information' | '/personal-information' | page displaying user's full name, mail, password and location |
+| 'update-password' | '/update-password' |page to change the password |
+| 'update-profile-picture' | '/update-profile-picture' | page tochange of profle picture|
+| 'settings' | '/settings' | containing all the different kinds of notifications |
+| 'jobs-liked' | '/jobs-liked' | containing a list of the jobs liked |
+| 'profile-certification' | '/profile-certification' | the page to see the list of certification got |
+| 'profile-skills' | '/profile-skills' | skills selected when registered |
+| 'profile-add-skills' | '/profile-add-skills' | to add more or change the skills selected |
+| 'profile-rank-skills' | '/profile-rank-skills' |to rank the skills selected |
+| 'sign-up-company' | '/sign-up-company' | ask for company's name and registration number as well as responsible's mail and password|
+| 'profile-picture-company' | '/profile-picture-company' | select a logo for the company |
+| 'company-home-screen' | '/company-home-screen' | page where all the company's job offer are |
+| 'noOffer' | '/no-offer' | page displayed when no job offer proposed |
+| 'add-job-offer' | '/add-job-offer' | ask for the needed informaion (see the functional specification)|
+| 'add-images' | '/add-images' | 6 slots to import images |
+| 'add-soft-skills-job' | '/add-soft-skills-job' | select the soft skills needed for the job offer |
+| 'skills-categories-company' | '/skills-categories-company' | big categorie for the certifications |
+| 'skills-selection-company' | '/skills-selection-company' | list of the different certification created by the company on a specific category |
+| 'message-qualified-company' | '/message-qualified-company' | chat list where the candidate met the prerequisites |
+| 'message-unqualified-company' | '/message-unqualified-company' | chat list where the candidate don't met the prerequisites |
+| 'profile-company' | '/profile-company' | where the profile is displayed |
 
 ## V. Data Management
 
@@ -345,10 +366,87 @@ This is only a simple preview for the first two pages, all the pages would be de
 ### 1. User Authentication
 
 <!-- Describe the user authentication process and integration with back-end services. -->
+For the user authentication, only the front end is asked. Two profiles would then be set beforehand, one for the company and one for the user. \
+To see if the authentification is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
+For this, a textfield and a controller would be used for simpler usage. \
+The mail Textfield will be checked first to know which password is the right one, if the authentification is passed the password textfield is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
+There is a diagram to understand it better:
+![alt text](img/authentification_check.png)
+
+The code in the router file would have a builder like this:
+```Dart
+builder: (context, state) {
+  if (authService.isAuthenticated == true){
+    return const Settings();
+  }
+  return const LoginScreen();
+}
+```
+The authentification class should be expressed this way:
+```Dart
+class AuthService {
+  bool isAuthenticated = false;
+
+  login (String code){
+      isAuthenticated = (code == '1234');
+      return isAuthenticated;
+  }
+
+  logout (){
+    isAuthenticated = false;
+  }
+}
+final AuthService authService = AuthService();
+```
+Finally, textfields would be similar to this example (obscureText only for the password):
+```Dart
+_passwordController.value;
+
+TextField(
+    controller: _passwordController,
+    decoration: const InputDecoration(labelText: 'Password'),
+    obscureText: true,
+  ),
+```
 
 ### 2. User Profile Management
 
 <!-- Detail how users can manage their profiles (e.g., update soft skills, personal info). -->
+To access the User Profile you should click on the bottom right icon (![alt text](../functional_specification/img/app_img/profile_logo.png)) in the bottomBar provided by Flutter.
+When on the User Profile Page the icon changes to this ![alt text](../functional_specification/img/app_img/profile_logo_black.png) implying you are on the right page.
+It would look like that:
+```Dart
+
+```
+When on the page, six buttons will be displayed to access respectively:
+- Personal Information
+- Skills
+- Certifications
+- Notifications
+- Jobs liked
+- Logout
+ 
+When pressed, it would redirect to the corresponding page.
+To get back to the Profile Page, the left arrow on the AppBar should be clicked.
+
+#### 2.1. Personal Information
+
+This page would be composed of many ``textField`` Boxes containing the Full name, the password, the e-mail and the Location.
+Under them should be displayed a sliding range bar to express the radius around the location to find a job.
+For this bar, the Widget used will be ``Slider`` here is an example of how to use it:
+```Dart
+
+```
+
+#### 2.2. Skills
+
+#### 2.3. Certifications
+
+#### 2.4. Notifications
+
+#### 2.5. Jobs Liked
+
+#### 2.6. Logout
 
 ### 3. Job Offer Matching
 
