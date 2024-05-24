@@ -51,6 +51,50 @@ Legend:
 
 ## Key Performance Indicators
 
+### Definition of our KPIs
+
+In order for the client to follow our project's milestones, several KPIs quantitatively measurable were defined. You can find in the following list those ones along with their calculation.
+
+#### Documents
+
+This section includes the following KPIs:
+
+- **Functional specifications**
+- **Technical specifications**
+- **Test Plan**
+- **User Manual**
+
+It was decided the KPI calculation for the documents of this project would solely rely on this function:
+
+>  *(current_number_of_sections / total_number_of_sections) \* 100*
+
+In this calculation, this is the meaning of the following variables:
+
+- ***current_number_of_sections***: The number of sections which has its content completely done.
+- ***total_number_of_sections***: The number of already defined categories in the skeleton. This number can evolve over weeks.
+
+#### Design
+
+This section includes the following KPIs:
+
+- **Mock-ups**
+- **User journey roadmap**
+
+#### Development
+
+- **Logged out interfaces:**
+- **User interfaces:**
+- **Company interfaces:**
+
+#### Human Resources
+
+- **Unjustified absence time:**
+- **Overtime:**
+
+### Link to the project's KPIs
+
+You can see our project's KPIs which were explained above following [this link](https://docs.google.com/spreadsheets/d/13r3LjiBo7af3gUG_U1R8BDZ1rG9yWM4tQpzGxaaGdE4/edit?usp=sharing).
+
 ## Weekly reports
 
 The weekly reports' folder can be found following [this link](/documents/management/weekly_reports/).
