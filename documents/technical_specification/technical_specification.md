@@ -29,6 +29,12 @@
   - [VI. Functional Requirements](#vi-functional-requirements)
     - [1. User Authentication](#1-user-authentication)
     - [2. User Profile Management](#2-user-profile-management)
+      - [2.1. Personal Information](#21-personal-information)
+      - [2.2. Skills](#22-skills)
+      - [2.3. Certifications](#23-certifications)
+      - [2.4. Notifications](#24-notifications)
+      - [2.5. Jobs Liked](#25-jobs-liked)
+      - [2.6. Logout](#26-logout)
     - [3. Job Offer Matching](#3-job-offer-matching)
     - [4. Swiping Interface](#4-swiping-interface)
     - [5. Notifications](#5-notifications)
@@ -158,6 +164,7 @@ This project has two main naming conventions, which are the repository naming co
 
 Some of the coding naming conventions were defined above in the previous section. Here are the missing ones:
 ```
+path: kebab-case
 function: camelCase
 class: PascalCase
 widget: PascalCase
@@ -303,46 +310,46 @@ This is only a simple preview for the first two pages, all the pages would be de
 | Names | Path | Descriptions |
 | ----- | ---- | ------------ |
 | 'logo' | '/logo' | loading screen |
-| 'splashScreen' | '/splashScreen' | Description of the application|
+| 'splash-screen' | '/splash-screen' | Description of the application|
 | 'login' | '/login' | login with a password and a mail account|
-| 'forgetPassword' | '/forgetPassword' |ask for a new password via the mail|
-| 'typeUserChoice' | '/typeUserChoice' |chose if you are a company or a candidate|
-| 'signUpUser' | '/signUpUser' | ask for the full name, the mail and the password of the user |
-| 'softSkillsChoices' | '/softSkillsChoices' | a page with 40 skills predifined |
-| 'softSkillsRank' | '/softSkillsRank' | page to rank the previously selected skills |
+| 'forget-password' | '/forget-password' |ask for a new password via the mail|
+| 'type-user-choice' | '/type-user-choice' |chose if you are a company or a candidate|
+| 'sign-up-user' | '/sign-up-user' | ask for the full name, the mail and the password of the user |
+| 'soft-skills-choices' | '/soft-skills-choices' | a page with 40 skills predifined |
+| 'soft-skills-rank' | '/soft-skills-rank' | page to rank the previously selected skills |
 | 'location' | '/location' | page to put the address and the range around it |
-| 'profilePicture' | '/profilePicture' | page to define user's profile picture|
-| 'checkYourEmail' | '/checkYourEmail' | waiting screen for the mail to be checked|
+| 'profile-picture' | '/profile-picture' | page to define user's profile picture|
+| 'check-your-email' | '/check-your-email' | waiting screen for the mail to be checked|
 | 'successfully' | '/successfully' | page when succesfully checked |
-| 'homeScreen' | '/homeScreen' |main page with the job offer on bubble form |
-| 'jobInfo' | '/jobInfo' | page when a bubble is clicked to have more information about the job|
-| 'skillsCategories' | '/skillsCategories' | page where all the big certification categories are displayed |
-| 'skillsSelection' | '/skillsSelection' | page where the certification are shown |
+| 'home-screen' | '/home-screen' |main page with the job offer on bubble form |
+| 'job-info' | '/job-info' | page when a bubble is clicked to have more information about the job|
+| 'skills-categories' | '/skills-categories' | page where all the big certification categories are displayed |
+| 'skills-selection' | '/skills-selection' | page where the certification are shown |
 | 'message' | '/message' | page where all the chats are listed |
 | 'chat' | '/chat' | specific chat with one company|
-| 'noMessage' | '/noMessage' | page displayed when no messages|
+| 'no-message' | '/no-message' | page displayed when no messages|
 | 'profile' | '/profile' | page to acces to the diverse settings |
-| 'personalInformation' | '/personalInformation' | page displaying user's full name, mail, password and location |
-| 'updatePassword' | '/updatePassword' |page to change the password |
-| 'updateProfilePicture' | '/updateProfilePicture' | page tochange of profle picture|
+| 'personal-information' | '/personal-information' | page displaying user's full name, mail, password and location |
+| 'update-password' | '/update-password' |page to change the password |
+| 'update-profile-picture' | '/update-profile-picture' | page tochange of profle picture|
 | 'settings' | '/settings' | containing all the different kinds of notifications |
-| 'jobsLiked' | '/jobsLiked' | containing a list of the jobs liked |
-| 'profileCertification' | '/profileCertification' | the page to see the list of certification got |
-| 'profileSkills' | '/profileSkills' | skills selected when registered |
-| 'profileAddSkills' | '/profileAddSkills' | to add more or change the skills selected |
-| 'profileRankSkills' | '/profileRankSkills' |to rank the skills selected |
-| 'signUpCompany' | '/signUpCompany' | ask for company's name and registration number as well as responsible's mail and password|
-| 'profilePictureCompany' | '/profilePictureCompany' | select a logo for the company |
-| 'companyHomeScreen' | '/companyHomeScreen' | page where all the company's job offer are |
-| 'noOffer' | '/noOffer' | page displayed when no job offer proposed |
-| 'addJobOffer' | '/addJobOffer' | ask for the needed informaion (see the functional specification)|
-| 'addImages' | '/addImages' | 6 slots to import images |
-| 'addSoftSkillsJob' | '/addSoftSkillsJob' | select the soft skills needed for the job offer |
-| 'SkillsCategoriesCompany' | '/SkillsCategoriesCompany' | big categorie for the certifications |
-| 'SkillsSelectionCompany' | '/SkillsSelectionCompany' | list of the different certification created by the company on a specific category |
-| 'messageQualifiedCompany' | '/messageQualifiedCompany' | chat list where the candidate met the prerequisites |
-| 'messageUnqualifiedCompany' | '/messageUnqualifiedCompany' | chat list where the candidate don't met the prerequisites |
-| 'profileCompany' | '/profileCompany' | where the profile is displayed |
+| 'jobs-liked' | '/jobs-liked' | containing a list of the jobs liked |
+| 'profile-certification' | '/profile-certification' | the page to see the list of certification got |
+| 'profile-skills' | '/profile-skills' | skills selected when registered |
+| 'profile-add-skills' | '/profile-add-skills' | to add more or change the skills selected |
+| 'profile-rank-skills' | '/profile-rank-skills' |to rank the skills selected |
+| 'sign-up-company' | '/sign-up-company' | ask for company's name and registration number as well as responsible's mail and password|
+| 'profile-picture-company' | '/profile-picture-company' | select a logo for the company |
+| 'company-home-screen' | '/company-home-screen' | page where all the company's job offer are |
+| 'noOffer' | '/no-offer' | page displayed when no job offer proposed |
+| 'add-job-offer' | '/add-job-offer' | ask for the needed informaion (see the functional specification)|
+| 'add-images' | '/add-images' | 6 slots to import images |
+| 'add-soft-skills-job' | '/add-soft-skills-job' | select the soft skills needed for the job offer |
+| 'skills-categories-company' | '/skills-categories-company' | big categorie for the certifications |
+| 'skills-selection-company' | '/skills-selection-company' | list of the different certification created by the company on a specific category |
+| 'message-qualified-company' | '/message-qualified-company' | chat list where the candidate met the prerequisites |
+| 'message-unqualified-company' | '/message-unqualified-company' | chat list where the candidate don't met the prerequisites |
+| 'profile-company' | '/profile-company' | where the profile is displayed |
 
 ## V. Data Management
 
@@ -405,6 +412,41 @@ TextField(
 ### 2. User Profile Management
 
 <!-- Detail how users can manage their profiles (e.g., update soft skills, personal info). -->
+To access the User Profile you should click on the bottom right icon (![alt text](../functional_specification/img/app_img/profile_logo.png)) in the bottomBar provided by Flutter.
+When on the User Profile Page the icon changes to this ![alt text](../functional_specification/img/app_img/profile_logo_black.png) implying you are on the right page.
+It would look like that:
+```Dart
+
+```
+When on the page, six buttons will be displayed to access respectively:
+- Personal Information
+- Skills
+- Certifications
+- Notifications
+- Jobs liked
+- Logout
+ 
+When pressed, it would redirect to the corresponding page.
+To get back to the Profile Page, the left arrow on the AppBar should be clicked.
+
+#### 2.1. Personal Information
+
+This page would be composed of many ``textField`` Boxes containing the Full name, the password, the e-mail and the Location.
+Under them should be displayed a sliding range bar to express the radius around the location to find a job.
+For this bar, the Widget used will be ``Slider`` here is an example of how to use it:
+```Dart
+
+```
+
+#### 2.2. Skills
+
+#### 2.3. Certifications
+
+#### 2.4. Notifications
+
+#### 2.5. Jobs Liked
+
+#### 2.6. Logout
 
 ### 3. Job Offer Matching
 
