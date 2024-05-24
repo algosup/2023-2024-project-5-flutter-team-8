@@ -341,7 +341,7 @@ This is only a simple preview for the first two pages, all the pages would be de
 | 'sign-up-company' | '/sign-up-company' | ask for company's name and registration number as well as responsible's mail and password|
 | 'profile-picture-company' | '/profile-picture-company' | select a logo for the company |
 | 'company-home-screen' | '/company-home-screen' | page where all the company's job offer are |
-| 'noOffer' | '/no-offer' | page displayed when no job offer proposed |
+| 'no-offer' | '/no-offer' | page displayed when no job offer proposed |
 | 'add-job-offer' | '/add-job-offer' | ask for the needed informaion (see the functional specification)|
 | 'add-images' | '/add-images' | 6 slots to import images |
 | 'add-soft-skills-job' | '/add-soft-skills-job' | select the soft skills needed for the job offer |
@@ -371,7 +371,7 @@ To see if the authentification is done the text put in the box should be the sam
 For this, a textfield and a controller would be used for simpler usage. \
 The mail Textfield will be checked first to know which password is the right one, if the authentification is passed the password textfield is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
 There is a diagram to understand it better:
-![alt text](img/authentification_check.png)
+![authentication_diagram](img/authentification_check.png)
 
 The code in the router file would have a builder like this:
 ```Dart
@@ -398,7 +398,7 @@ class AuthService {
 }
 final AuthService authService = AuthService();
 ```
-Finally, textfields would be similar to this example (obscureText only for the password):
+Finally, textfields would be similar to this example (``obscureText`` only for the password):
 ```Dart
 _passwordController.value;
 
@@ -431,14 +431,64 @@ To get back to the Profile Page, the left arrow on the AppBar should be clicked.
 
 #### 2.1. Personal Information
 
-This page would be composed of many ``textField`` Boxes containing the Full name, the password, the e-mail and the Location.
+This page would be composed of many ``TextField`` Boxes containing the Full name, the password, the e-mail and the Location.
 Under them should be displayed a sliding range bar to express the radius around the location to find a job.
+
+In the password's ``TextField`` there should be a right arrow in the right of the box.
+When clicked, a new page should open. This page would be used to update/change the password. For this, the page would contain three others ``TextField`` for the old password, the new password, and the confirmation of the new password. All of these three boxes should have ``obscureText`` set as true inside.
+A button would be displayed at the bottom of the page to update the password when pressed.
+
 For this bar, the Widget used will be ``Slider`` here is an example of how to use it:
+```Dart
+class SliderExample extends StatefulWidget {
+  const SliderExample({super.key});
+
+  @override
+  State<SliderExample> createState() => _SliderExampleState();
+}
+
+class _SliderExampleState extends State<SliderExample> {
+  double _currentSliderValue = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Slider(
+        value: _currentSliderValue,
+        max: 100,
+        label: _currentSliderValue.round().toString(),
+        onChanged: (double value) {
+          setState(() {
+            _currentSliderValue = value;
+          });
+        },
+      ),
+    );
+  }
+}
+```
+
+At the bottom of the page, a saving button would be displayed to keep the new information, if the user leaves the page without saving, the information wouldn't be saved.
+
+#### 2.2. Skills
+
+In this page would be displayed all the soft skills pre-selected by the user during is registration. All of them would be put inside ``SizedBox`` containing the name of the soft skill and a little cross, if the user wants to remove this soft skill.
+Moreover, at the bottom of the page will be another button to change the soft skills selection.
+When pressed, it would redirect to another page (profile-add-skills).
+
+On this page, the soft skills would appear under the form of buttons, darkened when selected. If the user clicks on one it would change the shade to selected or unselected depending on the initial state. However, it could not overpass 15 soft skills selected at once.
+To do the shading we will use:
 ```Dart
 
 ```
+And for the overpass:
+```Dart
 
-#### 2.2. Skills
+```
+It would follow this logic:
+![add_skill_diagram](img/add_skill.png)
+
+<!-- Ranking to do -->
 
 #### 2.3. Certifications
 
