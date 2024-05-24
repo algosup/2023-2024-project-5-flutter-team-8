@@ -459,7 +459,7 @@ Here are the soft skills that the user can select from and the categories they b
 |                    | know how to organise                  |
 |                    | ability to concentrate                |
 |                    | meeting deadlines                     |
-|                    | pression handling                     |
+|                    | pressure handling                     |
 |                    | Process Optimisation                  |
 |                    | ability to delegate / entrust         |
 |                    | problem solving                       |
