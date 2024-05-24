@@ -29,6 +29,7 @@
     - [➭ Milestones](#-milestones)
     - [➭ Dependencies](#-dependencies)
     - [➭ Assumptions/Constraints](#-assumptionsconstraints)
+    - [➭ Risks / Mitigation](#-risks--mitigation)
 - [II. UX/UI](#ii-uxui)
   - [1. Visual Design](#1-visual-design)
     - [➭ Mockups](#-mockups)
@@ -41,15 +42,24 @@
     - [➭ User Registration](#-user-registration)
       - [➭ Candidate Registration](#-candidate-registration)
       - [➭ Company Registration](#-company-registration)
-    - [➭ Candidate Management](#-candidate-management)
-    - [➭ Candidate Anonymity](#-candidate-anonymity)
-    - [➭ Soft Skills Assessment](#-soft-skills-assessment)
+  - [2. Job Offers](#2-job-offers)
+    - [➭ Job List Candidate Side](#-job-list-candidate-side)
+    - [➭ Job List Company Side](#-job-list-company-side)
     - [➭ Job Creation](#-job-creation)
-    - [➭ Notifications](#-notifications)
-  - [2. Job Applications](#2-job-applications)
     - [➭ Job Matching](#-job-matching)
     - [➭ Soft skills list](#-soft-skills-list)
-  - [3. Language Support](#3-language-support)
+  - [3. Match Management](#3-match-management)
+    - [➭ Candidate Side](#-candidate-side)
+    - [➭ Candidate Management Company Side](#-candidate-management-company-side)
+    - [➭ Candidate Anonymity](#-candidate-anonymity)
+  - [3. Soft Skills Assessment](#3-soft-skills-assessment)
+    - [➭ Candidate Side](#-candidate-side-1)
+    - [➭ Company Side](#-company-side)
+  - [4. Profile](#4-profile)
+    - [➭ Personal Information](#-personal-information)
+    - [➭ Job Liked](#-job-liked)
+    - [➭ Certifications Passed](#-certifications-passed)
+    - [➭ Notifications](#-notifications)
     - [➭ Language Options](#-language-options)
   - [4. Device Compatibility](#4-device-compatibility)
     - [➭ Supported Devices](#-supported-devices)
@@ -66,6 +76,12 @@
   - [2. Performance](#2-performance)
     - [➭ Responsiveness](#-responsiveness)
     - [➭ Load Time](#-load-time)
+  - [3. Market Analysis: Competitors and Differentiators.](#3-market-analysis-competitors-and-differentiators)
+    - [➭ Market Landscape](#-market-landscape)
+    - [➭ Differentiators](#-differentiators)
+  - [4. Technical Requirements](#4-technical-requirements)
+    - [➭ Technical Specifications](#-technical-specifications)
+    - [➭ Constraints and Limitations](#-constraints-and-limitations)
 
 
 ## I. Introduction
@@ -294,6 +310,16 @@ Launch of the new "Adopte un Candidat" application by June 21, 2024.
 Candidates' personal information must remain confidential. Companies will only have access to soft skill profiles, unique user IDs, and selected animal avatars.
 
 
+#### ➭ Risks / Mitigation
+
+| ID  | Description                                                                    | Consequence                                                       | Impact   | Likelihood | Mitigation/Avoidance                                                                |
+| --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------- | ---------- | ----------------------------------------------------------------------------------- |
+| 1   | Flutter is a laguage to which we are not yet used to.                          | Development pace might be hindered                                | High     | Medium     | Ask for help to the other team members                                              |
+| 2   | The client might want to change /add requirements                              | We might need to change how the solution is developed             | Medium   | Low        | Validate every step of the project with the client, to ensure the solution fits him |
+| 3   | We might create a clone of an already exisiting solution and infringe a patent | The client couldn't develop their solution based on our prototype | High     | Low        | Check for any patent and find our unique selling point (USP)                        |
+| 4   | Misinterpretation of the project                                               | Incorrect implementation of the software                          | Critical | Medium     | Regular communication with the client to understand their needs, and stick to them. |
+| 5   | Team member leaving                                                            | Tasks left to the remaining members without any assignee          | High     | Unlikely   | Sharing the tasks among the remaining team members.                                 |
+
 ## II. UX/UI
 
 ### 1. Visual Design
@@ -332,12 +358,11 @@ The color palette for the application is as follows:
 
 #### ➭ Font 
 
-We will use DM Sans as the primary font for the "Adopte Un Candidat" application.
+We will use DM Sans as the primary font for the application.
 
 #### ➭ Image Assets
 
 All images used in the application are available in a dedicated folder accessible via the following link: [Image Assets Folder](./img/app_img/)
-
 
 
 
@@ -369,80 +394,58 @@ After the registration process, the user will be redirected to the home page.
 
 ##### ➭ Company Registration
 
-To register as a company it is way simple.
+Registering as a company is straightforward:
 
-The first step would be nearly the same as for the users, the company would need to register an e-mail account, a password, the name of the company and the company registration number (SIRET number).
+1. **Registration**: Provide an email, password, company name, and company registration (SIRET) number.
+2. **Logo Submission**: Upload the company logo.
+3. **Email Confirmation**: Receive a confirmation email to complete registration.
 
-After this, they would have to give their Logo to the application.
+After registration, the company will be redirected to the dashboard home page.
 
-Finally, they would receive an e-mail in his mailbox to confirm their registration.
+### 2. Job Offers
 
-#### ➭ Candidate Management
+#### ➭ Job List Candidate Side
 
-A list would be provided on the communication page for the company. This page would contain all the matching users who are interested in the job offer provided.
-They would be able to click on each profile to see the redirected e-mail, but also the certification and a more detailed view of the soft skills selected by the user.
+Upon logging in, users are greeted with the main feature of the application: the job list, presented as bubbles on the screen. These job offers are sorted based on the user's specified area during account creation. Users can click on a bubble to view the job offer details and then decide whether to apply or decline. If a user accepts a job offer, their profile becomes visible to the company, allowing the company to decide whether to initiate communication. To prevent users from feeling overwhelmed, the application limits the number of displayed job offer bubbles to 8 at a time. If a user declines an offer, the bubble disappears and is replaced by another one.   
 
-#### ➭ Candidate Anonymity
+#### ➭ Job List Company Side
 
-According to the requirements and the fact that the application is based solely on "soft skills", the candidate dashboard on the company side would be anonymized to prefer impartiality. \
-Therefore, only the avatar, the ID registration number and the soft skills of the user would be visible. \
-It would also be a redirected mail to communicate between the two if the company is interested in the user profile. \
-However, the e-mail provided would not be the user's personal e-mail to certify the anonymity once again.
+Upon logging in, companies are directed to the same home page layout as the candidate side. However, instead of job offer bubbles, companies are presented with a list of all their active job offers. This list includes the number of candidates who have liked each offer.
 
-#### ➭ Soft Skills Assessment
-
-To assess the level of soft skills mentioned by the user, the company would be able to create its own certification as a way to certify the user's claims.
-The certification could be a simple multiple-choice questionnaire where the company sets a percentage of wanted answers to give the certification.
-Of course, a user with a certification would benefit from one who doesn't have it.
+Companies can sort their job offers based on criteria such as creation date or the number of candidates who have liked each offer. This functionality allows companies to efficiently manage their job postings and prioritize those that are generating the most interest from candidates.
 
 #### ➭ Job Creation
 
-Another requested feature is to create job offers. \
-To create a job offer, the company should register the type of contract they need and also the contract start date (according to the type of contract the end date could be requested).
-The next step would be to register the job's title and a short description of it. \
-After this, the company should register the location of the workplace and it could add some images of it. It is not mandatory but highly recommended, since it could help users to accept the job offer. \
-Finally, the company needs to register the researched soft skills which will not be visible on the user side.
+New companies will naturally begin without any job offers, necessitating the creation of new listings. To create a job offer, companies will click on the "Add Offer" button on the home page. This action redirects them to a page where they can input various details about the job, including the job title, company name, start date, end date, contract type, location, and job description.
 
-#### ➭ Notifications
+Additionally, companies will specify the soft skills they are seeking for the job. Optionally, they can also include pictures of the workplace to provide further context to potential candidates. Upon completing the offer creation process, the job listing will be posted on the application for candidates to view and apply.
 
-This kind of application needs notifications to keep the user up to date and inform on what is happening on its profile. The following notifications have been thought of according to the main functionalities of the application.
-
-| Notification Type | Notification Content |
-| ----------------- | --------------------- |
-| New match         | Hey! Come back to the application, you get a new match! |
-| New Message       | Hey! Come back to the application, you get a new message! |
-| Long time no see  | Hi... It's been a long time since we last saw you on the application. Did you find a job? |
-| New job applying  | Hey! Come back to the application, there is ... new job applying in your area! |
-| New Certification available | This company sent you a new certification. Come back and pass it! |
-| Job applying denial | Hi... Your application has been denied, come find others. |
-| Job applying acceptance | Hi... Your application has been accepted, come talk to the company! |
-
-
-### 2. Job Applications
 
 #### ➭ Job Matching
 
-As this app is a "Tinder-like" application, a match system was needed.
-This system is defined as follows:
-First, the app will do a preventive match depending on the soft skills of the job-seeker and the ones researched by a company for a job. Then, these offers will appear on the screen of the job seeker so that he can select the ones he is interested in and only then the company will be able to see his profile and accept it to have the final "match". the specific steps of this concept are defined below:
+As a "Tinder-like" application, a match system is essential. The system functions as follows:
 
-- Application matches job-seeker and job offers depending on the soft skills researched.
-  - Companies will be able to select "big" soft skills for their job offer and job-seekers will be able to select "small" soft skills
-  - If four of a job-seeker's soft skills are in the "big categories" that the company is looking for then there is a first "match".
-- The Home page of the job-seeker will display those first matches with "bubbles" containing companies' logos.
-  - When clicked, a pop-up page will appear, with the company's logo, the company's name, a starting date, the job name, the company's location and a little job description. To see some images you would be able to swipe to the right.
-  - To apply or deny the job offer, the job-seeker will click on the according button.
-- The company will see the user's profile that have liked them and they will be able to like them when they find them interesting. 
-- In that case, there will be a match which means the company and the job-seeker will then be able to talk to each other.
+First, the app performs a preliminary match based on the location provided by the candidate and the location specified by the company for the job offer. The home page of the job-seeker displays these preliminary matches using "bubbles" that contain the companies' logos.
 
-One thing to be added is that if a job offer has no job-seeker yet, all job-seeker will be able to see it and not only the ones that have had a preventive match with it.
+The application then matches job-seekers and job offers based on the soft skills sought. Companies can select two "categories" of soft skills for their job offers, and job-seekers can choose specific soft skills from a list. Each soft skill in this list corresponds to a particular category, though candidates will not see the categories themselves.
+
+   1. **Focused Recruitment**: By allowing companies to select two "categories" of soft skills, the application helps employers target candidates with the most relevant behavioral traits and competencies, ensuring a better fit for the job and company culture.
+
+   2. **Streamlined Process**: Candidates choose specific soft skills from a predefined list, simplifying the process and reducing ambiguity. This approach helps candidates highlight their strengths effectively.
+
+   3. **Enhanced Matching Accuracy**: Each soft skill in the list corresponds to a specific category, though candidates are unaware of these categories. This design ensures that matches are based on genuine skill alignment rather than candidate guesswork, leading to more accurate and meaningful connections.
+
+   4. **Objective Evaluation**: Focusing on soft skills levels the playing field, especially for candidates with limited formal qualifications or experience. This method emphasizes intrinsic qualities that contribute to job performance and team dynamics.
+
+   5. **Reduction of Bias**: By focusing on soft skills rather than traditional qualifications, the application helps reduce biases related to education, work history, and other factors, promoting diversity and inclusion in the hiring process.
+
+A "match" is established if at least four of a job-seeker's soft skills fall within the categories the company is looking for. This system ensures that both parties find suitable and relevant matches, enhancing the overall recruitment experience.
 
 #### ➭ Soft skills list
 
-The "soft skills" mentioned in the section above have been separated into two categories, the "Big Skills" and the "Small Skills".
-The "Big Skills" are categories including four to fourteen "Small Skills".
+Here are the soft skills that the user can select from and the categories they belong to:
 
-| Big Skills         | Small Skill                           |
+| Categories         | Soft Skils                            |
 | ------------------ | ------------------------------------- |
 | LEADERSHIP         | Influence                             |
 |                    | Self-Confidence                       |
@@ -485,7 +488,80 @@ The "Big Skills" are categories including four to fourteen "Small Skills".
 |                    | curiosity                             |
 |                    | risk-taking                           |
 
-### 3. Language Support
+
+
+### 3. Match Management
+
+#### ➭ Candidate Side
+
+All matches that a user receives will be displayed on the "Matches" page, accessible from the navigation bar on the home page. Users will be notified of new matches through notifications. On the "Matches" page, all conversations related to job offers will be displayed. 
+
+Users can select a conversation to chat with the company or remove a conversation if they no longer wish to engage with that company. At this stage, the user remains anonymous to the company until they decide to advance the conversation to the next step, such as scheduling an interview or sharing their CV.
+
+
+
+#### ➭ Candidate Management Company Side
+
+
+The "Matches" page on the company side will have a distinct layout and functionality. Companies will have access to all candidates who have liked their job offers. These candidates will be automatically sorted by the app according to the number of soft skills they have in common with the job offer. This feature simplifies the company's workflow and provides a clear overview of the most relevant candidates.
+
+If no candidates meet the company's expectations, a separate category on the same page will display those who liked the job offer but do not match the required soft skills. This allows companies in critical situations to consider candidates who may not meet all the soft skill criteria but still show interest in the position.
+
+Companies can view candidates' profiles, including their soft skills and avatars. They can also see any certifications the candidates have obtained. Companies can shortlist candidates they are interested in, reject others, and initiate communication with selected candidates by sending messages. This comprehensive view and interaction capability helps companies efficiently manage their recruitment process.
+
+
+#### ➭ Candidate Anonymity
+
+According to the requirements and the application's focus on "soft skills," companies will not have access to candidates' personal information at any time. This includes real names, email addresses, and locations. The only information companies will have access to includes the candidate's avatar picture, selected "soft skills," and certifications obtained within the app. 
+
+
+### 3. Soft Skills Assessment
+
+We are introducing a soft skills assessment feature within the app to allow candidates to evaluate their skills according to the needs of companies. This feature mimics the LinkedIn assessment process.
+
+#### ➭ Candidate Side
+
+On the certification page, candidates can choose a category of soft skills they want to be certified in. The available categories include:
+
+- Communication
+- Leadership
+- Agile Efficiency
+- Management
+- Oral Skills
+
+Once a category is selected, a list of all certifications related to that category will be displayed. Each certification is designed as a multiple-choice questionnaire (MCQ). After completing the MCQ, candidates will be notified whether they have passed. Successful certifications can then be added to their app profile, enhancing their appeal to potential employers.
+
+#### ➭ Company Side
+
+Companies will also have access to the certification feature. They can choose a category and create their own certifications tailored to their specific needs. This ensures that candidates who pass the company's customized assessments possess the precise soft skills required for the job, leading to a better match between candidates and job requirements.
+
+
+
+### 4. Profile 
+
+#### ➭ Personal Information
+
+
+#### ➭ Job Liked
+
+#### ➭ Certifications Passed 
+
+
+#### ➭ Notifications
+
+To keep users engaged and informed about their activity on the app, we have implemented a notification system. This list of notifications is not exhaustive and can be expanded or reduced according to user needs.
+
+| Notification Type             | Notification Content                                                       |
+|-------------------------------|----------------------------------------------------------------------------|
+| New Match                     | Hey! Come back to the application, you have a new match!                   |
+| New Message                   | Hey! Come back to the application, you have a new message!                 |
+| Long Time No See              | Hi... It's been a long time since we last saw you on the application. Did you find a job? |
+| New Job Available             | Hey! Come back to the application, there is a new job opening in your area! |
+| New Certification Available   | This company sent you a new certification. Come back and take the test!    |
+| Job Application Denied        | Hi... Your application has been denied. Come find other opportunities.     |
+| Job Application Accepted      | Hi... Your application has been accepted. Come talk to the company!       |
+
+Users have the option to turn off notifications in the profile page of the app.
 
 #### ➭ Language Options
 
@@ -650,33 +726,123 @@ graph TD
 
 ### 1. Security 
 
-For the project "Adopte un Candidat". The team was asked to focus mainly on the front-end and not on the back-end. Therefore, the security would not be a priority or implementable on the application. However, there are some ideas to use afterward:
-<!-- TODO -->
+For the project, the primary focus is on front-end development, with minimal attention to back-end implementation. As a result, security features may not be prioritized or fully implemented in the initial version of the application. However, some ideas for enhancing security in future iterations include:
+
+1. **Authentication System**: Implementing a robust authentication system to ensure secure user access and prevent unauthorized access to sensitive data.
+  
+2. **Data Encryption**: Utilizing encryption techniques to protect sensitive user information stored within the application's database, ensuring confidentiality and integrity.
+  
+3. **Secure Communication**: Implementing secure communication protocols, such as HTTPS, to encrypt data transmitted between the client and server, safeguarding against interception and tampering.
+  
+4. **Input Validation**: Implementing input validation mechanisms to sanitize user input and prevent common security vulnerabilities such as SQL injection and cross-site scripting (XSS) attacks.
+  
+5. **Authorization Controls**: Implementing role-based access controls (RBAC) to restrict access to certain features or data within the application based on user roles and permissions.
+  
+6. **Monitoring and Logging**: Implementing logging mechanisms to track and monitor user activities within the application, facilitating audit trails and forensic analysis in case of security incidents.
+  
 
 ### 2. Performance
 
 #### ➭ Responsiveness
 
-Since this application is not a high-performance one, the responsiveness depending on the Open Source has been set as follows:
-- **Windows**: 100-200ms
-- **macOS**: 80-150ms
-- **Linux**: 50-200ms
-- **Android**: 100-250ms
-- **iOS**: 70-130ms
+The responsiveness of an application refers to its ability to quickly respond to user interactions and provide smooth and seamless user experiences across different devices and platforms.
+
+**Industry Standards and Device-specific Data:**
+- **Windows, macOS, Linux**: Desktop platforms typically aim for responsiveness in the range of 50-200 milliseconds (ms), ensuring smooth interactions and minimal delay in user feedback.
+- **Android, iOS**: Mobile platforms prioritize even faster responsiveness, typically targeting response times between 70-250ms to deliver fluid and intuitive user experiences.
+
+**Impact of Responsiveness on User Experience:**
+- **Fast Response Times**: Users perceive an application as more efficient and user-friendly when interactions yield immediate responses, enhancing overall satisfaction and usability.
+- **Slow Response Times**: Delays in responsiveness can lead to frustration and dissatisfaction among users, resulting in lower engagement and increased likelihood of abandoning the app.
+
+**Target Responsiveness:**
+Considering the requirements and user expectations, the target responsiveness for the app across different platforms should be:
+- **Desktop Platforms (Windows, macOS, Linux)**: Aim for response times within the range of 100-200ms.
+- **Mobile Platforms (Android, iOS)**: Target faster response times between 70-150ms.
+
+
 
 #### ➭ Load Time
 
-All applications have load time in it to wait for the application to charge before opening it. The application "Adopte un Candidat" is no exception. There are two kinds of load time, the important one and the small one.
-For the important one, we aimed for two seconds on average and three seconds at the maximum, over this load time it could discourage some users. For the small one, we aimed for less than one second per load time.
+The load time of an application is a critical factor that directly impacts user engagement and retention. It's essential to ensure that the load time is minimized to enhance the user experience and maintain interest.
 
-<!-- ### 4) Reliability
+**Industry Standards and Competitor Data:**
+- **LinkedIn**: LinkedIn aims for a load time of under 2 seconds on mobile devices. Research indicates that a load time longer than this can result in a significant drop in user engagement.
+- **Indeed**: Indeed strives for a load time of around 3 seconds. Their data suggests that each additional second of load time can decrease user satisfaction by up to 7%.
+- **Glassdoor**: Glassdoor maintains an optimal load time of under 2.5 seconds, understanding that delays beyond this threshold can lead to higher bounce rates and lower user retention.
 
-#### ➭ System Stability
+**Impact of Load Time on User Interest:**
+Studies show that if an app's load time exceeds 3 seconds, users are likely to lose interest and abandon the application. Specifically:
+- **1-3 seconds**: Optimal load time; highest user retention and satisfaction.
+- **3-5 seconds**: Noticeable delay; potential drop in user engagement by up to 30%.
+- **5+ seconds**: Significant delay; can lead to a drop in interest by more than 50% and increased likelihood of users abandoning the app entirely.
 
-#### ➭ Error Handling
+**Target Load Time:**
+To ensure a competitive edge and high user retention, the app should target a load time of under 2.5 seconds. Achieving this will:
+- Enhance user satisfaction.
+- Improve user retention rates.
+- Increase the likelihood of positive user reviews and recommendations.
 
-### 5) Usability
+### 3. Market Analysis: Competitors and Differentiators.
 
-#### ➭ Intuitive Navigation
+#### ➭ Market Landscape 
 
-#### ➭ User Feedback -->
+The job-matching app market has evolved significantly over the past decade, with a growing emphasis on the importance of soft skills alongside technical qualifications. This shift is driven by the recognition that soft skills—such as communication, leadership, and teamwork—are critical for long-term job success and cultural fit within companies. As a result, several innovative platforms have emerged, leveraging advanced technologies such as artificial intelligence (AI), machine learning, and gamified assessments to enhance the recruitment process.
+
+| **App Name**            | **Audience**                                  | **Launch Date** | **Main Characteristics**                                                                                                                                         |
+|-------------------------|-----------------------------------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Pymetrics**           | Job seekers and recruiters                    | 2013            | Uses neuroscience-based games to assess cognitive and emotional traits, matching candidates to jobs where they would excel.                                       |
+| **Good&Co**             | Job seekers, companies                        | 2012            | Offers personality quizzes to assess fit with company culture and team dynamics, providing insights into workplace compatibility.                                 |
+| **HireVue**             | Employers, HR professionals                    | 2004            | Utilizes AI-driven video assessments and gamified cognitive tests to evaluate candidates' soft skills and predict job performance.                                |
+| **WayUp**               | College students, recent graduates            | 2014            | Focuses on entry-level jobs and internships, offering skill assessments and employer-matching based on candidates' profiles and interests.                        |
+| **Vervoe**              | Employers, job seekers                        | 2016            | Conducts skill assessments and job simulations to evaluate candidates' abilities and fit for specific roles, emphasizing practical skills over traditional resumes.|
+| **Soft Skills**         | Job seekers, companies                        | 2020            | Aims to match candidates with job offers based on their soft skills, providing both parties with detailed insights into personality and compatibility.             |
+| **JobGet**              | Hourly workers, employers in service industries| 2019            | Offers a quick application process, focusing on immediate hires and soft skill compatibility for roles in retail, hospitality, and customer service sectors.     |
+| **Leap.ai**             | Tech professionals, employers                 | 2017            | Uses AI to match candidates with jobs based on soft skills, career goals, and company culture, emphasizing personalized career development.                       |
+
+These apps focus on the importance of soft skills in the hiring process, leveraging various innovative methods to assess and match candidates based on their behavioral traits, cognitive abilities, and cultural fit with potential employers【108†source】【109†source】.
+
+#### ➭ Differentiators
+
+- 1. **Soft Skills-First Approach**
+Unlike many traditional job matching apps that emphasize technical skills and work experience, Adopte 1 Candidat focuses primarily on soft skills. This approach aligns with the growing recognition that interpersonal abilities and emotional intelligence are critical for job performance and workplace harmony.
+
+- 2. **Innovative Matching System**
+Adopte 1 Candidat employs a "Tinder-like" matching system, where candidates and job offers are displayed as bubbles. This engaging and interactive design makes the job search process more enjoyable and visually appealing. The bubble system ensures that users are not overwhelmed by numerous job offers at once, maintaining focus and simplicity.
+
+- 3. **Anonymous Matching**
+To prioritize privacy and unbiased evaluation, candidates remain anonymous to companies until a match is made and both parties decide to proceed with communication. This feature helps reduce potential biases based on personal information, allowing soft skills and job fit to drive the initial stages of the recruitment process.
+
+- 4. **Customizable Soft Skills Assessments**
+Adopte 1 Candidat allows both candidates and companies to create and take custom soft skills assessments. Candidates can take assessments to validate their skills, similar to LinkedIn's assessment feature, and display their certifications on their profiles. Companies can also create their own assessments tailored to specific job roles, ensuring that candidates meet their unique requirements.
+
+- 5. **User-Centric Design**
+The app's user interface is designed to be intuitive and user-friendly, with a focus on providing a seamless experience. The use of a light purple and light grey color palette, along with clean and modern design elements, ensures that the app is visually appealing and easy to navigate.
+
+- 6. **Focus on Inclusive Hiring**
+Adopte 1 Candidat aims to assist job seekers who may face discrimination based on traditional qualifications or other biases. By emphasizing soft skills and anonymous matching, the app helps level the playing field, providing equal opportunities for all candidates, particularly those with limited formal qualifications or who face hiring biases.
+
+### 4. Technical Requirements
+
+The project will be developed using Flutter. Flutter allows for the creation of natively compiled applications from a single codebase, which is particularly advantageous for this project, given its requirement to support multiple platforms including iOS, Android, and desktop environments.
+
+**Why Flutter?**
+- **Cross-Platform Compatibility**: Flutter enables the development of applications that work seamlessly on iOS, Android, and desktop platforms.
+- **Single Codebase**: By writing code once and deploying it across various platforms, Flutter significantly reduces development time and effort, making it an efficient choice for a project with limited resources.
+- **Rich UI Components**: Flutter's extensive library of pre-designed widgets and its capability to create custom widgets allow for a highly customizable and responsive user interface.
+
+
+#### ➭ Technical Specifications
+- **Development Framework**: Flutter
+- **Programming Language**: Dart
+- **Target Platforms**: iOS, Android, Desktop (Windows, macOS, Linux)
+- **Database**: Simulated for the scope of this project (potential future integration with a backend database)
+- **Authentication**: Simulated for the scope of this project (potential future integration with a secure authentication service)
+- **APIs**: Placeholder APIs for simulating backend interactions (potential future integration with Monkey Tie APIs)
+
+#### ➭ Constraints and Limitations
+- **Scope Limitation**: The current project scope is limited to the frontend implementation and a simulated backend for authentication and data storage.
+- **Resource Constraints**: As a school project, the development team is restricted by time and resource availability.
+- **Mandatory Framework**: The use of Flutter is a requirement imposed by the educational context of the project.
+
+
