@@ -144,13 +144,6 @@ requirements for potential employees.
   on a dedicated application. This facilitates interaction between 
   candidates and companies.
 
-- **Process**: In our approach, we do not have tests, quizzes, or games. 
-  Instead, candidates will have the opportunity to select their soft 
-  skills from a provided list, while recruiters will choose the desired 
-  skills from the same list. The "match" will occur when there is a 50% 
-  overlap of soft skills between the candidate and the company. Our 
-  concept is inspired by the functionality of the "Tinder" application 
-  for recruitment.
 
 #### ➭ Scope
 
@@ -347,9 +340,9 @@ To enhance user engagement, we've designed Job Offer Bubbles, a unique feature i
 - **Navigation**: Within the pop-up, users can swipe through job images.
 - **Acceptance**: Accept or decline job offers by clicking the corresponding buttons.
 
-![Home](./img/Home%20Screen.png)
-![Job Bubble 1](./img/Job%20Info.jpg)
-![Job Bubble 2](./img/Job%20Info%202.jpg)
+![Home](./img/home_screen.png)
+![Job Bubble 1](./img/job_info.jpg)
+![Job Bubble 2](./img/job_info_2.jpg)
 
 
 This feature adds a dynamic and playful element to the app, making job browsing more interactive and enjoyable for candidates.
@@ -358,6 +351,7 @@ This feature adds a dynamic and playful element to the app, making job browsing 
 
 The color palette for the application is as follows:
 - Primary Color: #D6CDFE (Light Purple) 
+- Secondary Color: #000000 (Black)
 - Background Color: #F9F9F9 (Light Grey)
 - Text Color: Black (#000000) for primary text, White (#FFFFFF) for secondary text
 
@@ -465,7 +459,7 @@ Here are the soft skills that the user can select from and the categories they b
 |                    | know how to organise                  |
 |                    | ability to concentrate                |
 |                    | meeting deadlines                     |
-|                    | pression handling                     |
+|                    | pressure handling                     |
 |                    | Process Optimisation                  |
 |                    | ability to delegate / entrust         |
 |                    | problem solving                       |
@@ -774,16 +768,16 @@ These apps focus on the importance of soft skills in the hiring process, leverag
 
 #### ➭ Differentiators
 
-- 1. **Soft Skills-First Approach**
+- **Soft Skills-First Approach**
 Unlike many traditional job matching apps that emphasize technical skills and work experience, Adopte 1 Candidat focuses primarily on soft skills. This approach aligns with the growing recognition that interpersonal abilities and emotional intelligence are critical for job performance and workplace harmony.
 
-- 2. **Innovative Matching System**
+- **Innovative Matching System**
 Adopte 1 Candidat employs a "Tinder-like" matching system, where candidates and job offers are displayed as bubbles. This engaging and interactive design makes the job search process more enjoyable and visually appealing. The bubble system ensures that users are not overwhelmed by numerous job offers at once, maintaining focus and simplicity.
 
-- 3. **Anonymous Matching**
+-  **Anonymous Matching**
 To prioritize privacy and unbiased evaluation, candidates remain anonymous to companies until a match is made and both parties decide to proceed with communication. This feature helps reduce potential biases based on personal information, allowing soft skills and job fit to drive the initial stages of the recruitment process.
 
-- 4. **Customizable Soft Skills Assessments**
+- **Customizable Soft Skills Assessments**
 Adopte 1 Candidat allows both candidates and companies to create and take custom soft skills assessments. Candidates can take assessments to validate their skills, similar to LinkedIn's assessment feature, and display their certifications on their profiles. Companies can also create their own assessments tailored to specific job roles, ensuring that candidates meet their unique requirements.
 
 - 5. **User-Centric Design**
