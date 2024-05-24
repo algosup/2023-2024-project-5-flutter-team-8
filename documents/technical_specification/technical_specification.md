@@ -285,50 +285,64 @@ GoRouter goRouter() {
   );
 }
 ```
+
+```Dart
+GoRouter.of(context).go('/splashScreen');
+```
+
+```Dart
+@override
+Widget build(BuildContext context) {
+  return MaterialApp.router(
+    routerConfig: router,
+  ),
+}
+```
+
 This is only a simple preview for the first two pages, all the pages would be defined hereunder:
 | Names | Path | Descriptions |
 | ----- | ---- | ------------ |
-| 'logo' | '/logo' ||
-| 'splashScreen' | '/splashScreen' ||
-| 'login' | '/login' ||
-| 'forgetPassword' | '/forgetPassword' ||
-| 'typeUserChoice' | '/typeUserChoice' ||
-| 'signUpUser' | '/signUpUser' ||
-| 'softSkillsChoices' | '/softSkillsChoices' ||
-| 'softSkillsRank' | '/softSkillsRank' ||
-| 'location' | '/location' ||
-| 'profilePicture' | '/profilePicture' ||
-| 'checkYourEmail' | '/checkYourEmail' ||
-| 'successfully' | '/successfully' ||
-| 'homeScreen' | '/homeScreen' ||
-| 'jobInfo' | '/jobInfo' ||
-| 'skillsCategories' | '/skillsCategories' ||
-| 'skillsSelection' | '/skillsSelection' ||
-| 'message' | '/message' ||
-| 'chat' | '/chat' ||
-| 'noMessage' | '/noMessage' ||
-| 'profile' | '/profile' ||
-| 'personalInformation' | '/personalInformation' ||
-| 'updatePassword' | '/updatePassword' ||
-| 'updateProfilePicture' | '/updateProfilePicture' ||
-| 'settings' | '/settings' ||
-| 'jobsLiked' | '/jobsLiked' ||
-| 'profileCertification' | '/profileCertification' ||
-| 'profileSkills' | '/profileSkills' ||
-| 'profileAddSkills' | '/profileAddSkills' ||
-| 'profileRankSkills' | '/profileRankSkills' ||
-| 'signUpCompany' | '/signUpCompany' ||
-| 'profilePictureCompany' | '/profilePictureCompany' ||
-| 'companyHomeScreen' | '/companyHomeScreen' ||
-| 'noOffer' | '/noOffer' ||
-| 'addJobOffer' | '/addJobOffer' ||
-| 'addImages' | '/addImages' ||
-| 'addSoftSkillsJob' | '/addSoftSkillsJob' ||
-| 'SkillsCategoriesCompany' | '/SkillsCategoriesCompany' ||
-| 'SkillsSelectionCompany' | '/SkillsSelectionCompany' ||
-| 'messageQualifiedCompany' | '/messageQualifiedCompany' ||
-| 'messageUnqualifiedCompany' | '/messageUnqualifiedCompany' ||
-| 'profileCompany' | '/profileCompany' ||
+| 'logo' | '/logo' | loading screen |
+| 'splashScreen' | '/splashScreen' | Description of the application|
+| 'login' | '/login' | login with a password and a mail account|
+| 'forgetPassword' | '/forgetPassword' |ask for a new password via the mail|
+| 'typeUserChoice' | '/typeUserChoice' |chose if you are a company or a candidate|
+| 'signUpUser' | '/signUpUser' | ask for the full name, the mail and the password of the user |
+| 'softSkillsChoices' | '/softSkillsChoices' | a page with 40 skills predifined |
+| 'softSkillsRank' | '/softSkillsRank' | page to rank the previously selected skills |
+| 'location' | '/location' | page to put the address and the range around it |
+| 'profilePicture' | '/profilePicture' | page to define user's profile picture|
+| 'checkYourEmail' | '/checkYourEmail' | waiting screen for the mail to be checked|
+| 'successfully' | '/successfully' | page when succesfully checked |
+| 'homeScreen' | '/homeScreen' |main page with the job offer on bubble form |
+| 'jobInfo' | '/jobInfo' | page when a bubble is clicked to have more information about the job|
+| 'skillsCategories' | '/skillsCategories' | page where all the big certification categories are displayed |
+| 'skillsSelection' | '/skillsSelection' | page where the certification are shown |
+| 'message' | '/message' | page where all the chats are listed |
+| 'chat' | '/chat' | specific chat with one company|
+| 'noMessage' | '/noMessage' | page displayed when no messages|
+| 'profile' | '/profile' | page to acces to the diverse settings |
+| 'personalInformation' | '/personalInformation' | page displaying user's full name, mail, password and location |
+| 'updatePassword' | '/updatePassword' |page to change the password |
+| 'updateProfilePicture' | '/updateProfilePicture' | page tochange of profle picture|
+| 'settings' | '/settings' | containing all the different kinds of notifications |
+| 'jobsLiked' | '/jobsLiked' | containing a list of the jobs liked |
+| 'profileCertification' | '/profileCertification' | the page to see the list of certification got |
+| 'profileSkills' | '/profileSkills' | skills selected when registered |
+| 'profileAddSkills' | '/profileAddSkills' | to add more or change the skills selected |
+| 'profileRankSkills' | '/profileRankSkills' |to rank the skills selected |
+| 'signUpCompany' | '/signUpCompany' | ask for company's name and registration number as well as responsible's mail and password|
+| 'profilePictureCompany' | '/profilePictureCompany' | select a logo for the company |
+| 'companyHomeScreen' | '/companyHomeScreen' | page where all the company's job offer are |
+| 'noOffer' | '/noOffer' | page displayed when no job offer proposed |
+| 'addJobOffer' | '/addJobOffer' | ask for the needed informaion (see the functional specification)|
+| 'addImages' | '/addImages' | 6 slots to import images |
+| 'addSoftSkillsJob' | '/addSoftSkillsJob' | select the soft skills needed for the job offer |
+| 'SkillsCategoriesCompany' | '/SkillsCategoriesCompany' | big categorie for the certifications |
+| 'SkillsSelectionCompany' | '/SkillsSelectionCompany' | list of the different certification created by the company on a specific category |
+| 'messageQualifiedCompany' | '/messageQualifiedCompany' | chat list where the candidate met the prerequisites |
+| 'messageUnqualifiedCompany' | '/messageUnqualifiedCompany' | chat list where the candidate don't met the prerequisites |
+| 'profileCompany' | '/profileCompany' | where the profile is displayed |
 
 ## V. Data Management
 
@@ -345,6 +359,48 @@ This is only a simple preview for the first two pages, all the pages would be de
 ### 1. User Authentication
 
 <!-- Describe the user authentication process and integration with back-end services. -->
+For the user authentication, only the front end is asked. Two profiles would then be set beforehand, one for the company and one for the user. \
+To see if the authentification is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
+For this, a textfield and a controller would be used for simpler usage. \
+The mail Textfield will be checked first to know which password is the right one, if the authentification is passed the password textfield is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
+There is a diagram to understand it better:
+![alt text](img/authentification_check.png)
+
+The code in the router file would have a builder like this:
+```Dart
+builder: (context, state) {
+  if (authService.isAuthenticated == true){
+    return const Settings();
+  }
+  return const LoginScreen();
+}
+```
+The authentification class should be expressed this way:
+```Dart
+class AuthService {
+  bool isAuthenticated = false;
+
+  login (String code){
+      isAuthenticated = (code == '1234');
+      return isAuthenticated;
+  }
+
+  logout (){
+    isAuthenticated = false;
+  }
+}
+final AuthService authService = AuthService();
+```
+Finally, textfields would be similar to this example (obscureText only for the password):
+```Dart
+_passwordController.value;
+
+TextField(
+    controller: _passwordController,
+    decoration: const InputDecoration(labelText: 'Password'),
+    obscureText: true,
+  ),
+```
 
 ### 2. User Profile Management
 
