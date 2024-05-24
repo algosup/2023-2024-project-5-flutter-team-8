@@ -1,14 +1,15 @@
-import 'package:adopte_1_candidat/login/email_field.dart';
-import 'package:adopte_1_candidat/login/password_field.dart';
-import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants.dart';
+import 'package:adopte_1_candidat/login/checkbox.dart';
+import 'package:adopte_1_candidat/login/email_field.dart';
+import 'package:adopte_1_candidat/login/password_field.dart';
+import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  const Login({Key? key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -18,6 +19,7 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _rememberMe = false;
 
   @override
   void dispose() {
@@ -66,36 +68,121 @@ class _LoginState extends State<Login> {
                   height: size.height * 0.08,
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Email',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Email',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: size.height * 0.01,
+                          ),
+                          child: emailField(_emailController, size),
+                        ),
+                        const Text(
+                          'Password',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        PasswordField(controller: _passwordController),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                CustomCheckbox(
+                                  value: _rememberMe,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _rememberMe = value ?? false;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(width: 5),
+                                const Text(
+                                  'Remember Me',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(0, 0, 0, 0.5),
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                GoRouter.of(context).go('/forgot-password');
+                              },
+                              style: ButtonStyle(
+                                overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                              ),
+                              child: const Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: size.height * 0.01,),
-                      child: emailField(_emailController, size),
+                    // Replaced RectangleButton with LoginButton
+                    LoginButton(
+                      size: size,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          GoRouter.of(context).go('/home');
+                        }
+                      },
                     ),
-                    const Text(
-                      'Password',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    PasswordField(controller: _passwordController),
                     SizedBox(
-                      height: size.height * 0.05,
+                      height: size.height * 0.01,
                     ),
-                    rectangleButton(_formKey),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'You don\'t have an account yet?',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            GoRouter.of(context).go('/signup');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                          ),
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              color: purpleColor,
+                              decoration: TextDecoration.underline,
+                              decorationColor: purpleColor,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
