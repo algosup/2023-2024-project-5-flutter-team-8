@@ -351,6 +351,7 @@ This feature adds a dynamic and playful element to the app, making job browsing 
 
 The color palette for the application is as follows:
 - Primary Color: #D6CDFE (Light Purple) 
+- Secondary Color: #000000 (Black)
 - Background Color: #F9F9F9 (Light Grey)
 - Text Color: Black (#000000) for primary text, White (#FFFFFF) for secondary text
 
