@@ -31,12 +31,11 @@
     - [➭ Assumptions/Constraints](#-assumptionsconstraints)
     - [➭ Risks / Mitigation](#-risks--mitigation)
 - [II. UX/UI](#ii-uxui)
-  - [1. Visual Design](#1-visual-design)
-    - [➭ Mockups](#-mockups)
-    - [➭ Unique UI Feature:](#-unique-ui-feature)
-    - [➭ Color Palette](#-color-palette)
-    - [➭ Font](#-font)
-    - [➭ Image Assets](#-image-assets)
+  - [1. Mockups](#1-mockups)
+  - [2. Unique UI Feature:](#2-unique-ui-feature)
+  - [3. Color Palette](#3-color-palette)
+  - [4. Font](#4-font)
+  - [5. Image Assets](#5-image-assets)
 - [III. Functional Requirements](#iii-functional-requirements)
   - [1. Registration](#1-registration)
     - [➭ User Registration](#-user-registration)
@@ -333,18 +332,13 @@ Candidates' personal information must remain confidential. Companies will only h
 
 ## II. UX/UI
 
-### 1. Visual Design
-
-
-The design of the application follows a user-centered approach, prioritizing ease of use and visual appeal. 
-
-#### ➭ Mockups
+### 1. Mockups
 
 The mockups for the application can be accessed via the following link: [Mockup PDF](./Adopte1CandidatMockup.pdf)
 
 The mockups are organized in the order of the user workflow, starting from registration/login and progressing through profile creation, soft skills selection...
 
-#### ➭ Unique UI Feature:
+### 2. Unique UI Feature:
 
 To enhance user engagement, we've designed Job Offer Bubbles, a unique feature in the app:
 
@@ -360,18 +354,18 @@ To enhance user engagement, we've designed Job Offer Bubbles, a unique feature i
 
 This feature adds a dynamic and playful element to the app, making job browsing more interactive and enjoyable for candidates.
 
-#### ➭ Color Palette
+### 3. Color Palette
 
 The color palette for the application is as follows:
 - Primary Color: #D6CDFE (Light Purple) 
 - Background Color: #F9F9F9 (Light Grey)
 - Text Color: Black (#000000) for primary text, White (#FFFFFF) for secondary text
 
-#### ➭ Font 
+### 4. Font 
 
 We will use DM Sans as the primary font for the application.
 
-#### ➭ Image Assets
+### 5. Image Assets
 
 All images used in the application are available in a dedicated folder accessible via the following link: [Image Assets Folder](./img/app_img/)
 
