@@ -52,25 +52,22 @@
     - [➭ Candidate Side](#-candidate-side)
     - [➭ Candidate Management Company Side](#-candidate-management-company-side)
     - [➭ Candidate Anonymity](#-candidate-anonymity)
-  - [3. Soft Skills Assessment](#3-soft-skills-assessment)
+  - [4. Soft Skills Assessment](#4-soft-skills-assessment)
     - [➭ Candidate Side](#-candidate-side-1)
     - [➭ Company Side](#-company-side)
-  - [4. Profile](#4-profile)
+  - [5. Profile](#5-profile)
     - [➭ Personal Information](#-personal-information)
     - [➭ Job Liked](#-job-liked)
     - [➭ Certifications Passed](#-certifications-passed)
     - [➭ Notifications](#-notifications)
     - [➭ Language Options](#-language-options)
-  - [4. Device Compatibility](#4-device-compatibility)
+  - [6. Device Compatibility](#6-device-compatibility)
     - [➭ Supported Devices](#-supported-devices)
     - [➭ Cross-Platform Compatibility](#-cross-platform-compatibility)
-  - [5. Target Audience](#5-target-audience)
+  - [7. Target Audience](#7-target-audience)
     - [➭ Job Seekers](#-job-seekers)
     - [➭ Companies](#-companies)
-  - [6. Candidate Privacy](#6-candidate-privacy)
-    - [➭ Confidentiality Measures](#-confidentiality-measures)
-    - [➭ Data Visibility](#-data-visibility)
-  - [7. User Workflow](#7-user-workflow)
+  - [8. User Workflow](#8-user-workflow)
 - [IV. Non-Functional Requirements](#iv-non-functional-requirements)
   - [1. Security](#1-security)
   - [2. Performance](#2-performance)
@@ -87,6 +84,21 @@
 ## I. Introduction
 
 ### 1. Glossary
+
+| Term                                | Definition                                                                                                              |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| Soft skills                         | Non-technical skills related to interpersonal communication, teamwork, problem-solving, adaptability, etc.            |
+| Dashboard                           | A visual interface that provides an overview of important information and key metrics, often used for monitoring.       |
+| Contract type                       | The classification of employment agreements, such as full-time, part-time, temporary, or freelance contracts.         |
+| Cross-platform framework            | A software development framework that allows for the creation of applications compatible with multiple platforms.      |
+| Encryption algorithms               | Mathematical procedures used to encode data, ensuring that only authorized parties can access and decipher it.       |
+| APIs                                | Application Programming Interfaces (APIs) define how different software components interact and communicate with each other. |
+| Multi-factor authentication (MFA)   | A security measure that requires users to provide multiple forms of identification (e.g., password and SMS code) to access an account. |
+| Role-based access control (RBAC)    | A method of restricting system access based on the roles of individual users within an organization.                    |
+| Single codebase                     | A development approach where a single source code is used to build applications for multiple platforms or environments. |
+| Dart programming language           | A programming language developed by Google, commonly used with the Flutter framework for building cross-platform applications. |
+| Simulated database                  | A placeholder or imitation database used for development and testing purposes, mimicking the behavior of a real database. |
+
 
 
 ### 2. Project Overview
@@ -194,11 +206,11 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 
 | Role                   | Description                                                                                   | Name |
 | ---------------------- | --------------------------------------------------------------------------------------------- | -----|
-| Project Manager        | Responsible for the overall planning, execution, and success of the project.                 | Antoine PREVOST |
-| Program Manager        | Makes sure the project meets expectation. Is in charge of design. Is responsible for writing the Functional Specifications | Thomas PLANCHARD |
-| Tech Lead              | Makes the technical decision in the project. Translates the Functional Specification into Technical Specifications. Does code review. | Maxime THIZEAU |
-| Senior Software Engineer | Writes the code. Writes documentation. Participate in the technical design. | Quentin CLEMENT |
-| Quality Assurance      | Tests all the functionalities of a product to find bugs and issue. Document bugs and issues. Write the test plan. Check that issues have been fixed.     | Pavlo PRENDI |
+| Project Manager        | Responsible for the overall planning, execution, and success of the project.                  | Antoine PREVOST |
+| Program Manager        | Makes sure the project meets expectation. <br> Is in charge of design. Is responsible for writing the Functional Specifications              | Thomas PLANCHARD |
+| Tech Lead              | Makes the technical decision in the project. <br> Translates the Functional Specification into Technical Specifications. <br> Does code review. | Maxime THIZEAU |
+| Senior Software Engineer | Writes the code. <br> Writes documentation. <br> Participate in the technical design. | Quentin CLEMENT |
+| Quality Assurance      | Tests all the functionalities of a product to find bugs and issue. <br> Document bugs and issues. <br> Write the test plan. <br> Check that issues have been fixed.     | Pavlo PRENDI |
 | Technical Writer       | Responsible for creating and maintaining the project's documentation.                        | Arthur LEMOINE |
 
 
@@ -263,8 +275,7 @@ Launch of the new "Adopte un Candidat" application by June 21, 2024.
 **Resource Dependencies**:
 
 - QA Team must be available for continuous testing from June 7 to June 14, 2024.
-
-
+- Tech Lead must be available for code review from June 12 to June 14, 2024.
 
 #### ➭ Assumptions/Constraints
 
@@ -312,8 +323,8 @@ Candidates' personal information must remain confidential. Companies will only h
 
 #### ➭ Risks / Mitigation
 
-| ID  | Description                                                                    | Consequence                                                       | Impact   | Likelihood | Mitigation/Avoidance                                                                |
-| --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------- | ---------- | ----------------------------------------------------------------------------------- |
+| ID  | Description  | Consequence | Impact   | Likelihood | Mitigation/Avoidance     |
+| --- | ------------------------------------- | --------------------------- | -------- | ---------- | ---------------------------------- |
 | 1   | Flutter is a laguage to which we are not yet used to.                          | Development pace might be hindered                                | High     | Medium     | Ask for help to the other team members                                              |
 | 2   | The client might want to change /add requirements                              | We might need to change how the solution is developed             | Medium   | Low        | Validate every step of the project with the client, to ensure the solution fits him |
 | 3   | We might create a clone of an already exisiting solution and infringe a patent | The client couldn't develop their solution based on our prototype | High     | Low        | Check for any patent and find our unique selling point (USP)                        |
@@ -365,7 +376,6 @@ We will use DM Sans as the primary font for the application.
 All images used in the application are available in a dedicated folder accessible via the following link: [Image Assets Folder](./img/app_img/)
 
 
-
 ## III. Functional Requirements
 
 
@@ -406,7 +416,7 @@ After registration, the company will be redirected to the dashboard home page.
 
 #### ➭ Job List Candidate Side
 
-Upon logging in, users are greeted with the main feature of the application: the job list, presented as bubbles on the screen. These job offers are sorted based on the user's specified area during account creation. Users can click on a bubble to view the job offer details and then decide whether to apply or decline. If a user accepts a job offer, their profile becomes visible to the company, allowing the company to decide whether to initiate communication. To prevent users from feeling overwhelmed, the application limits the number of displayed job offer bubbles to 8 at a time. If a user declines an offer, the bubble disappears and is replaced by another one.   
+Upon logging in, users see the main feature of the application: job offers presented as bubbles. These offers are sorted based on the user's specified location during account creation. Users can click on a bubble to view details and decide whether to apply or decline. Accepting a job offer makes the user's profile visible to the company, which can then decide to initiate communication. To avoid overwhelming users, the app limits the displayed job offer bubbles to 8 at a time. Declining an offer removes the bubble and replaces it with another.
 
 #### ➭ Job List Company Side
 
@@ -416,9 +426,9 @@ Companies can sort their job offers based on criteria such as creation date or t
 
 #### ➭ Job Creation
 
-New companies will naturally begin without any job offers, necessitating the creation of new listings. To create a job offer, companies will click on the "Add Offer" button on the home page. This action redirects them to a page where they can input various details about the job, including the job title, company name, start date, end date, contract type, location, and job description.
+New companies, starting without any job offers, will need to create new listings. To do so, they'll click on the "Add Offer" button on the home page, which redirects them to a page where they can input various job details. These details include the job title, company name, start and end dates, contract type, location, and job description.
 
-Additionally, companies will specify the soft skills they are seeking for the job. Optionally, they can also include pictures of the workplace to provide further context to potential candidates. Upon completing the offer creation process, the job listing will be posted on the application for candidates to view and apply.
+Additionally, companies will specify the soft skills they seek for the job. Optionally, they can include pictures of the workplace to provide further context to potential candidates. Once the offer creation process is complete, the job listing will be posted on the application for candidates to view and apply.
 
 
 #### ➭ Job Matching
@@ -515,7 +525,7 @@ Companies can view candidates' profiles, including their soft skills and avatars
 According to the requirements and the application's focus on "soft skills," companies will not have access to candidates' personal information at any time. This includes real names, email addresses, and locations. The only information companies will have access to includes the candidate's avatar picture, selected "soft skills," and certifications obtained within the app. 
 
 
-### 3. Soft Skills Assessment
+### 4. Soft Skills Assessment
 
 We are introducing a soft skills assessment feature within the app to allow candidates to evaluate their skills according to the needs of companies. This feature mimics the LinkedIn assessment process.
 
@@ -533,19 +543,23 @@ Once a category is selected, a list of all certifications related to that catego
 
 #### ➭ Company Side
 
-Companies will also have access to the certification feature. They can choose a category and create their own certifications tailored to their specific needs. This ensures that candidates who pass the company's customized assessments possess the precise soft skills required for the job, leading to a better match between candidates and job requirements.
+Companies will also have access to the certification feature. They can choose a category and create their own certifications tailored to their specific needs. This guarantees that candidates who pass the company's customized assessments have the precise soft skills required for the job, leading to a better match between candidates and job requirements.
 
+### 5. Profile 
 
-
-### 4. Profile 
+The profile page, accessible from the navigation bar on the home page, serves as a centralized hub for all user-related information. Additionally, users can log out from this page. The profile page is divided into several sections:
 
 #### ➭ Personal Information
 
+This section displays the user's basic information: name, email, password, and location. Users will have the ability to modify this information according to their needs, ensuring their profile is always up-to-date and accurate.
 
 #### ➭ Job Liked
 
+Here, users can view the list of job offers they have liked. This section helps users keep track of the opportunities they are interested in, facilitating easy access and management of their job applications.
+
 #### ➭ Certifications Passed 
 
+This section displays all certifications the user has passed. Users can view the details of each certification, including the category, certification name, and date of completion.
 
 #### ➭ Notifications
 
@@ -561,7 +575,7 @@ To keep users engaged and informed about their activity on the app, we have impl
 | Job Application Denied        | Hi... Your application has been denied. Come find other opportunities.     |
 | Job Application Accepted      | Hi... Your application has been accepted. Come talk to the company!       |
 
-Users have the option to turn off notifications in the profile page of the app.
+Users have the option to turn off notifications on the profile page of the app.
 
 #### ➭ Language Options
 
@@ -572,35 +586,24 @@ Other languages could be implemented afterward, depending on which country would
 
 To change the language option, access to the settings will be created on the settings page.
 
-### 4. Device Compatibility
+### 6. Device Compatibility
 
 #### ➭ Supported Devices
 
-Since the programming language for this project is Flutter. The application would be supported by a large amount of devices.
-The supported devices would be:
-- Computer
-- Android
-- iOS
+The application should be accessible on computers, iOS devices, and Android devices. Candidates are likely to use it mainly on their mobile phones, while companies are expected to primarily use it on computers for ease and productivity.
 
 #### ➭ Cross-Platform Compatibility
 
-Google Chrome will be used to run the application on different computers. Therefore, the computer used will need:
+The app must ensure compatibility with all iPhones currently supported by the latest version of iOS. This includes iPhones running iOS 13 
+and above, as statistics show that over 90% of iPhone users have adopted iOS 13 or later versions. Similarly, for Android devices, the app 
+should be compatible with devices running Android 8.0 (Oreo) and newer versions, considering that around 85% of Android users are on Android 
+8.0 or higher.
 
-To use Chrome on Windows with an Intel processor, you'll need:
-- Windows 10 and up
-- An Intel Pentium 4 processor or later that's SSE3 capable.
+Regarding computer usage, the app should be accessible on widely used web browsers such as Google Chrome, Safari, Mozilla Firefox, and 
+Microsoft Edge. Data reveals that these browsers collectively account for over 95% of global web traffic on desktop and laptop devices. 
+Therefore, compatibility with these browsers will maximize the app's reach and accessibility across various platforms.
 
-To use Chrome on Windows with an ARM processor, you'll need:
-- Windows 11 and up
-
-To use Chrome on Mac, you'll need:
-- macOS Catalina 10.15 and up
-
-To use Chrome on Linux, you'll need:
-- 64-bit Ubuntu 18.04+, Debian 10+, openSUSE 15.2+, or Fedora Linux 32+
-- An Intel Pentium 4 processor or later that's SSE3 capable
-
-### 5. Target Audience
+### 7. Target Audience
 
 #### ➭ Job Seekers
 
@@ -618,46 +621,8 @@ To use Chrome on Linux, you'll need:
 
 ![Perona 3 - SUBLIMINAL](img/subliminal.png)
 
-### 6. Candidate Privacy
 
-#### ➭ Confidentiality Measures
-
-The role of this application is to give an equal chance to get hired for a job not depending on anything else than the "soft skills".
-One of the best ways to do so is to anonymize the candidate profiles to avoid all kinds of stereotypes or discrimination. 
-
-#### ➭ Data Visibility
-
-**Candidate side**: 
-
-Information visible are:
-- Profile ID
-- Avatar picture
-- "Soft skills"
-- Certifications
-
-Information hidden are:
-- Personal e-mail
-- Password
-- Full name
-- Location
-
-**Company side**: 
-
-Information visible are:
-- Company's name
-- Company's logo
-- Job title
-- Job description
-- Location
-- Workplace Images
-
-Information hidden are:
-- Personal e-mail
-- Password
-- company registration number (SIRET number)
-- "Soft skills"
-
-### 7. User Workflow 
+### 8. User Workflow 
 
 ```mermaid
 graph TD
@@ -728,18 +693,29 @@ graph TD
 
 For the project, the primary focus is on front-end development, with minimal attention to back-end implementation. As a result, security features may not be prioritized or fully implemented in the initial version of the application. However, some ideas for enhancing security in future iterations include:
 
-1. **Authentication System**: Implementing a robust authentication system to ensure secure user access and prevent unauthorized access to sensitive data.
-  
-2. **Data Encryption**: Utilizing encryption techniques to protect sensitive user information stored within the application's database, ensuring confidentiality and integrity.
-  
-3. **Secure Communication**: Implementing secure communication protocols, such as HTTPS, to encrypt data transmitted between the client and server, safeguarding against interception and tampering.
-  
-4. **Input Validation**: Implementing input validation mechanisms to sanitize user input and prevent common security vulnerabilities such as SQL injection and cross-site scripting (XSS) attacks.
-  
-5. **Authorization Controls**: Implementing role-based access controls (RBAC) to restrict access to certain features or data within the application based on user roles and permissions.
-  
-6. **Monitoring and Logging**: Implementing logging mechanisms to track and monitor user activities within the application, facilitating audit trails and forensic analysis in case of security incidents.
-  
+1. **Authentication System**:
+   - Employing industry-standard authentication protocols such as OAuth and OpenID Connect.
+   - Implementation of multi-factor authentication (MFA) adds an additional layer of security.
+   - Utilizing secure token-based authentication mechanisms like JSON Web Tokens (JWT) protects against common threats like session hijacking.
+
+2. **Data Encryption**:
+   - Advanced encryption algorithms such as AES with strong key management practices.
+
+3. **Secure Communication**:
+   - Secure communication protocols like HTTPS establish a secure and encrypted channel for data transmission between the client and server.
+   - Integration of TLS/SSL certificates from reputable certificate authorities (CAs) ensures the authenticity and integrity of the communication channel.
+   - Implementation of Perfect Forward Secrecy (PFS) protocols protects against the compromise of past session keys.
+
+
+4. **Input Validation**:
+   - Input validation mechanisms sanitize and validate user input to prevent common security vulnerabilities such as SQL injection and cross-site scripting (XSS) attacks.
+   - Parameterized queries and stored procedures for database interactions mitigate the risk of SQL injection by separating data from SQL commands.
+
+5. **Authorization Controls**:
+   - Authorization controls govern user access to application resources and functionalities based on predefined roles and permissions.
+   - Role-based access control (RBAC) models assign users specific roles with associated permissions.
+
+
 
 ### 2. Performance
 
@@ -753,7 +729,7 @@ The responsiveness of an application refers to its ability to quickly respond to
 
 **Impact of Responsiveness on User Experience:**
 - **Fast Response Times**: Users perceive an application as more efficient and user-friendly when interactions yield immediate responses, enhancing overall satisfaction and usability.
-- **Slow Response Times**: Delays in responsiveness can lead to frustration and dissatisfaction among users, resulting in lower engagement and increased likelihood of abandoning the app.
+- **Slow Response Times**: Delays in responsiveness can lead to frustration and dissatisfaction among users, resulting in lower engagement and an increased likelihood of abandoning the app.
 
 **Target Responsiveness:**
 Considering the requirements and user expectations, the target responsiveness for the app across different platforms should be:
@@ -800,7 +776,7 @@ The job-matching app market has evolved significantly over the past decade, with
 | **JobGet**              | Hourly workers, employers in service industries| 2019            | Offers a quick application process, focusing on immediate hires and soft skill compatibility for roles in retail, hospitality, and customer service sectors.     |
 | **Leap.ai**             | Tech professionals, employers                 | 2017            | Uses AI to match candidates with jobs based on soft skills, career goals, and company culture, emphasizing personalized career development.                       |
 
-These apps focus on the importance of soft skills in the hiring process, leveraging various innovative methods to assess and match candidates based on their behavioral traits, cognitive abilities, and cultural fit with potential employers【108†source】【109†source】.
+These apps focus on the importance of soft skills in the hiring process, leveraging various innovative methods to assess and match candidates based on their behavioral traits, cognitive abilities, and cultural fit with potential employers.
 
 #### ➭ Differentiators
 
