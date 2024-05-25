@@ -64,11 +64,11 @@ This section includes the following KPIs:
 - **Test Plan**
 - **User Manual**
 
-It was decided the KPI calculation for the documents of this project would solely rely on this function:
+It was decided the KPI calculation for the progression of the documents of this project would solely rely on this function:
 
->  *(current_number_of_sections / total_number_of_sections) \* 100*
+> *(current_number_of_sections / total_number_of_sections) \* 100*
 
-In this calculation, this is the meaning of the following variables:
+In this calculation, this is the meaning of the mentionned variables:
 
 - ***current_number_of_sections***: The number of sections which has its content completely done.
 - ***total_number_of_sections***: The number of already defined categories in the skeleton. This number can evolve over weeks.
@@ -80,16 +80,43 @@ This section includes the following KPIs:
 - **Mock-ups**
 - **User journey roadmap**
 
+The percentage indicated for those KPIs is processed using this function:
+
+> *(current_number_of_pages_designed / total_number_of_pages_to_design ) \* 100*
+
+In this function, this is the meaning of the indicated variables:
+
+- ***current_number_of_pages_designed***: The number of pages already prototyped
+- ***total_number_of_pages_to_design***: The nulber of pages that were planned to be designed during the project analysis.
+
 #### Development
 
-- **Logged out interfaces:**
-- **User interfaces:**
-- **Company interfaces:**
+This section includes the following KPIs:
+
+- **Logged out interfaces**
+- **User interfaces**
+- **Company interfaces**
+
+As development can take a long time, we also added an approximation to take into account progress made on the unfinished pages in the calculation for this category. For each of those pages, we will take into account the proportion of the elements already realised to the ones which should be present, leaving us with the following formula:
+
+> *((current_number_of_fully_coded_pages + sum_unfinished_pages_advancements)/ total_designed_pages ) \* 100*
+
+In this function, this is the meaning of the written variables:
+
+- ***current_number_of_fully_coded_pages***: The number of pages in the app which have been finished
+- ***sum_unfinished_pages_advancements***: The sum of each unfinished page advancement. The advancement of each page can go from 0 to 1.
+- ***total_designed_pages***: The total number of pages defined during the project analysis and designed.
 
 #### Human Resources
 
-- **Unjustified absence time:**
-- **Overtime:**
+This section includes the following KPIs along with their definition:
+
+- **Unjustified absence time:** Number of manhours which were not worked on the project by a member.
+- **Overtime:** The total number of manhours done on a member's personal time.
+
+#### Mood
+
+This KPI is calculated by doing the average of the percentage given by the members at the end of each week.
 
 ### Link to the project's KPIs
 
