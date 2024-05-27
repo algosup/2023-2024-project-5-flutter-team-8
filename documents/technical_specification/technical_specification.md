@@ -414,7 +414,7 @@ TextField(
 <!-- Detail how users can manage their profiles (e.g., update soft skills, personal info). -->
 To access the User Profile you should click on the bottom right icon (![alt text](../functional_specification/img/app_img/profile_logo.png)) in the bottomBar provided by Flutter.
 When on the User Profile Page the icon changes to this ![alt text](../functional_specification/img/app_img/profile_logo_black.png) implying you are on the right page.
-It would look like that:
+It would look like this:
 ```Dart
 
 ```
@@ -472,23 +472,93 @@ At the bottom of the page, a saving button would be displayed to keep the new in
 
 #### 2.2. Skills
 
-In this page would be displayed all the soft skills pre-selected by the user during is registration. All of them would be put inside ``SizedBox`` containing the name of the soft skill and a little cross, if the user wants to remove this soft skill.
+This page would display all the soft skills pre-selected by the user during its registration. All of them would be put inside ``SizedBox`` containing the name of the soft skill and a little cross, if the user wants to remove this soft skill.
 Moreover, at the bottom of the page will be another button to change the soft skills selection.
 When pressed, it would redirect to another page (profile-add-skills).
 
-On this page, the soft skills would appear under the form of buttons, darkened when selected. If the user clicks on one it would change the shade to selected or unselected depending on the initial state. However, it could not overpass 15 soft skills selected at once.
+On this page, the soft skills would appear under the form of tags, boldened when selected. If the user clicks on one it would change the weight to selected or unselected depending on the initial state. However, it could not overpass 15 soft skills selected at once.
 To do the shading we will use:
 ```Dart
+final notifier = ref.read(tagsProvider.notifier);
 
+fontWeight: notifier.isSelected(tag) ? FontWeight.bold : FontWeight.normal,
+
+bool isSelected(Tag tag){
+    return state.selectedTags.contains(tag);
+  }
 ```
 And for the overpass:
 ```Dart
+GestureDetector(
+  onTap: () {
+    notifier.toggleTag(tag);
+  },
+),
 
+void toggleTag(Tag tag) {
+  if (isSelected(tag)){
+    _deselectTag(tag);
+  } else if (tag.number < 15){
+    _selectTag(tag);
+  }
+}
 ```
 It would follow this logic:
 ![add_skill_diagram](img/add_skill.png)
 
-<!-- Ranking to do -->
+The ranking part would be done on another page only for this. It would be composed of three columns in a row.
+The first one would be dedicated to the ranking by numbering them from one to fifteen.
+The second one would be composed of ``DragTarget`` Elements. They would host the elements from the third column.
+```Dart
+// ElevatedButton are here for the example and not relevant of the actual code
+DragTarget<ElevatedButton>(
+  onAcceptWithDetails: (details) {
+    ElevatedButton(onPressed: () {       
+    }, 
+    child: Text(string)
+    );
+  },
+  builder: (
+    BuildContext context,
+    List<dynamic> accepted,
+    List<dynamic> rejected,
+  ) {
+  return Container(
+    child: ElevatedButton(
+      onPressed: () {                 
+      }, 
+      child: Text(accepted.isEmpty ? string = "NoData" : string = "Data")
+      ),
+    );
+  },
+),
+```
+The third column would be composed of ``Draggable`` Elements to move them from their original place to the expected ranking place.
+```Dart
+// ElevatedButton are here for the example and not relevant of the actual code
+Draggable(
+  feedback: ElevatedButton(
+    onPressed: () {         
+    }, 
+    child: const Text('data')
+  ),
+  childWhenDragging: ElevatedButton(
+    onPressed: () {
+    },
+    child: const Text('data')
+  ),
+  child: ElevatedButton(
+    onPressed: () {
+    }, 
+    child: const Text('data')
+  ),
+),
+```
+When a ``Draggable`` Element is held it should appear under the mouse/finger and follow it with an opacity of 0.5.
+If it is released on top of an empty ``DragTarget`` then it would take the place of it.
+Else if the ``DragTarget`` is not empty, an error message should be sent in the scaffold.
+
+![drag_and_relase_diagram](img/drag_and_release_diagram.png)
 
 #### 2.3. Certifications
 
