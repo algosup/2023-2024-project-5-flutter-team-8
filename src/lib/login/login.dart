@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants.dart';
@@ -9,9 +8,10 @@ import 'package:adopte_1_candidat/login/password_field.dart';
 import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginState createState() => _LoginState();
 }
 
@@ -106,7 +106,7 @@ class _LoginState extends State<Login> {
                                   value: _rememberMe,
                                   onChanged: (value) {
                                     setState(() {
-                                      _rememberMe = value ?? false;
+                                      _rememberMe = value; // ?? false;
                                     });
                                   },
                                 ),
@@ -142,14 +142,12 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
-                    // Replaced RectangleButton with LoginButton
                     LoginButton(
+                      context: context,
                       size: size,
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          GoRouter.of(context).go('/home');
-                        }
-                      },
+                      emailController: _emailController,
+                      passwordController: _passwordController,
+                      formKey: _formKey,
                     ),
                     SizedBox(
                       height: size.height * 0.01,

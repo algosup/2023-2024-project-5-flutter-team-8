@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:adopte_1_candidat/database.dart'; // Ensure this file contains the users list and User class
 
 class RectangleButton extends StatelessWidget {
   final Size size;
@@ -7,12 +10,12 @@ class RectangleButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const RectangleButton({
-    super.key, 
+    Key? key,
     required this.size,
     required this.color,
     required this.text,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,42 +44,100 @@ class RectangleButton extends StatelessWidget {
 
 class BlackRectangleButton extends RectangleButton {
   const BlackRectangleButton({
-    super.key, 
-    required super.size,
-    required super.text,
-    required super.onPressed,
+    Key? key,
+    required Size size,
+    required String text,
+    required VoidCallback onPressed,
   }) : super(
-    color: Colors.black,
-  );
+          key: key,
+          size: size,
+          color: Colors.black,
+          text: text,
+          onPressed: onPressed,
+        );
 }
 
 class PurpleRectangleButton extends RectangleButton {
   const PurpleRectangleButton({
-    super.key, 
-    required super.size,
-    required super.text,
-    required super.onPressed,
+    Key? key,
+    required Size size,
+    required String text,
+    required VoidCallback onPressed,
   }) : super(
-    color: Colors.purple,
-  );
+          key: key,
+          size: size,
+          color: Colors.purple,
+          text: text,
+          onPressed: onPressed,
+        );
 }
 
-class LoginButton extends BlackRectangleButton {
-  const LoginButton({
-    super.key, 
-    required super.size,
-    required super.onPressed,
-  }) : super(
-    text: 'Log In',
-  );
-
-  // #TODO modify the onPressed method
-
-  void isEmailValid() {
-    // Check if email is valid
+bool isEmailValid(String email) {
+    for (var user in users) {
+      if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  void isPasswordValid() {
-    // Check if password is valid
-  } 
+  bool isPasswordValid(String password) {
+    for (var user in users) {
+      if (user.password == password) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+class LoginButton extends BlackRectangleButton {
+  final BuildContext context;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
+
+  LoginButton({
+    Key? key,
+    required Size size,
+    required this.context, // Add context here
+    required this.emailController,
+    required this.passwordController,
+    required this.formKey,
+  }) : super(
+          key: key,
+          size: size,
+          text: 'Log In',
+          onPressed: () {
+            String email = emailController.text;
+            String password = passwordController.text;
+
+            bool emailValid = isEmailValid(email);
+            bool passwordValid = isPasswordValid(password);
+
+            if (emailValid && passwordValid) {
+              GoRouter.of(context).go('/loading');
+            } else {
+              formKey.currentState?.validate();
+            }
+          },
+        );
+
+  // Static methods can be moved outside the class for better organization
+  static bool isEmailValid(String email) {
+    for (var user in users) {
+      if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  static bool isPasswordValid(String password) {
+    for (var user in users) {
+      if (user.password == password) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

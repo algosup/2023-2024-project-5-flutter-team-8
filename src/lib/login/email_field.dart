@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:adopte_1_candidat/constants.dart';
 
@@ -23,18 +22,18 @@ Widget emailField(TextEditingController controller, Size size) {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: purpleColor),
+          borderSide: const BorderSide(color: purpleColor),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: Colors.red),
         ),
       ),
-      obscureText: false, // Email fields should not be obscure
+      obscureText: false,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter an email';
