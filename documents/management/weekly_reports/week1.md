@@ -26,6 +26,8 @@ This week marked the beginning of our project with a strong focus on the kick-of
    - While Flutter is relatively straightforward, most team members are new to it and are currently building their proficiency.
 3. **Integration of a New Student**
    - We welcomed a new team member, Pavlo, and are assisting him in acclimating to the school's environment and team processes.
+4. **Creation of a graphical charter Causing Delays**
+   - To create the mock-ups of the app, we had to create a graphical charter. This additional step hindered our productivity and caused slight delays. Next week, we plan to catch up the schedule by doing at least 10 hours of overtime.
 
 ## Plan for Next Week
 
