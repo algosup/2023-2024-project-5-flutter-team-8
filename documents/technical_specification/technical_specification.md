@@ -562,19 +562,80 @@ Else if the ``DragTarget`` is not empty, an error message should be sent in the 
 
 #### 2.3. Certifications
 
+The certification page would contain The big categories of certification which would be:
+- Leadership
+- Efficiency
+- Social competences
+- Agile competences
+Each of them would be a ``container`` with round borders, an image in the center of it and a name under it.
+```Dart
+// container, borderRadius, etc
+```
+The images for the big certification would be:
+|Names|Pictures|
+|-----|--------|
+|Leadership|![alt text](img/leadership_logo.png)|
+|Efficiency|![alt text](img/efficiency_logo.png)|
+|Social competences|![alt text](img/communication_logo.png)|
+|Agile competences|![alt text](img/agile_logo.png)|
+
+When clicked, it would open the corresponding page with the certification corresponding to it. It would be a ``List<Certification>`` named certifications.
+
+For this List of elements, a Provider would be needed to change the different states of the List and then always have it shown. This Provider would be used with the dependencies of Riverpod, using a ``StateNotifierProvider``.
+
+There, all the certifications would be clickable to see a better definition, passage procedures and what the certification would be.
+
 #### 2.4. Notifications
 
 #### 2.5. Jobs Liked
 
+To keep a touch on the job you applied for, a page dedicated to them is joinable from the account profile. It would be a ``List``. The number of the list's elements should be incremented each time a job offer is applied. The class for it would be designed like this:
+
+```Dart
+class JobOffer {
+  String logo;
+  String nameOfTheJob;
+  String date;
+
+  JobOffer({this.logo, required this.nameOfTheJob, required this.date});
+}
+```
+
 #### 2.6. Logout
+
+Once the application is not needed anymore, or to close the account, a logout button is available in the profile user account. It is a simple `ElevatedButton` that leads to the login page when clicked. It should close all the pages of the application open and you could not go back to the page before with the arrow of your smartphone. To get access to the application again, the login should be done once more. If you close the application and open it again, it will not send you to the login page if you did not logout before leaving the application.
+
+![logout_diagram](img/logout_diagram.png)
 
 ### 3. Job Offer Matching
 
 <!-- Explain the logic for displaying job offers based on soft skills. -->
+To have a job offer on the home page screen, it should have a match of over 50% of the soft skills selected by the company and by the user.
+To make things easier to understand. 
+Companies would have to choose which of the four categories they judge useful for the job offer.
+The user has to select 15 skills at the registration. These skills belong to bigger categories of soft skills (more defined in [2.3. Certifications](#23-certifications)). If in these 15 skills, more than half of the categories are selected, the category is assumed as acquired.
+Finally, if the user has more than half the categories asked by the company, he would see the bubble, corresponding to the said job offer.
+Here is a diagram for better comprehension:
+
+![job_matching_diagram](img/job_matching_diagram.png)
 
 ### 4. Swiping Interface
 
 <!-- Describe the Tinder-like swiping interface for browsing job offers. -->
+Once on the Home screen, the job offer matching is done. It should appear some bubbles on the screen, depending on the job offers you might apply. The bubbles are designed with a circle around the company's logo.
+When a bubble is cliqued. A pop-up appears on the screen, containing the logo, description of the job, and date for the upper part, whereas, in the bottom part, two buttons would be displayed, one to deny the match, and another to accept it.
+Here are the visuals:
+|Names|Logos|
+|-----|-----|
+|Deny |![denied_logo](../functional_specification/img/app_img/denied_logo.png)|
+|Apply|![apply_logo](../functional_specification/img/app_img/apply_logo.png)|
+
+For this pattern, the Widget use would be ````.
+<!-- To search -->
+Moreover, when the user has the pop-up, the possibility to swipe to complementary options is available. By swiping he could see more images from his potential workplace.
+To swipe, the Widget used would be ````.
+<!-- To search -->
+Finally, if the user denies the the job offer, the bubble would just disappear, in the other case, the match would be sent to the [jobs liked section](#25-jobs-liked) on the profile page.
 
 ### 5. Notifications
 
