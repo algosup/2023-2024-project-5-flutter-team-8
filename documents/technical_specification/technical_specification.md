@@ -45,6 +45,8 @@
   - [VIII. Integration and Deployment](#viii-integration-and-deployment)
     - [1. Continuous Integration](#1-continuous-integration)
     - [2. Deployment Strategy](#2-deployment-strategy)
+      - [2.1. App Store](#21-app-store)
+      - [2.2. Google Play Store](#22-google-play-store)
     - [3. Environment Configuration](#3-environment-configuration)
   - [IX. Maintenance and Support](#ix-maintenance-and-support)
     - [1. Logging and Monitoring](#1-logging-and-monitoring)
@@ -254,6 +256,7 @@ For this project, it has been decided to use the Flutter/Dart language as well a
 - [go_router](https://pub.dev/packages/go_router): a declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens. You can define URL patterns, navigate using a URL, handle deep links, and a number of other navigation-related scenarios.
 The Project would be held on GitHub for better development and sharing in the project team.
 The IDE use for this project would be VSCode.
+To simulate the back-end, it is recommended to use [PocketBase](https://pocketbase.io/).
 
 ### 3. Key Components
 
@@ -265,10 +268,37 @@ The IDE use for this project would be VSCode.
 ### 1. Design Patterns
 
 <!-- Discuss the design patterns employed in the application (e.g., MVVM, BLoC). -->
+**The Model:**
+
+<!-- Contains the data structure, business rules, and data access layer. For example, a Customer class with properties like Name, Address, and methods to save or retrieve data from a database. -->
+
+**The View:**
+
+<!-- A user interface that displays the Customer information and allows user interaction. In WPF, this could be an XAML file defining a form with text boxes and buttons. -->
+
+**The ViewModel:**
+
+<!-- Exposes properties and commands that the View binds to. For example, a CustomerViewModel class with properties CustomerName, CustomerAddress, and a command SaveCustomerCommand to handle saving the customer. -->
 
 ### 2. State Management
 
 <!-- Describe the state management approach used (e.g., Provider, Riverpod, BLoC). -->
+To manage the state of the application, Riverpod will be used. It is a dependency allowing the development team to manage the state way more easily. The development team will principally use the ``Notifier`` and ``Provider`` to change the state of the application easily.
+To help the development team, it is recommended to install the VSCode extension named ``Flutter Riverpod Snippets`` to get snippets.
+Example of Provider and Notifier:
+```Dart
+class AuthNotifier extends StateNotifier<AuthState> {
+
+  AuthNotifier()
+  : super(
+    AuthState(isAuthenticated: false, error: null),
+  );
+}
+
+final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
+  (ref) => AuthNotifier(),
+);
+```
 
 ### 3. Navigation
 
@@ -344,10 +374,63 @@ This is only a simple preview for the first two pages, all the pages would be de
 ### 1. Data Models
 
 <!-- Define the data models used in the application (e.g., JobOffer, User, SoftSkill). -->
+This application will need data management when it would be released, to help this management and the development team, these data would be stored in classes as templates.
+The job offer class would look like this:
+```Dart
+class JobOffer {
+  String logo;
+  String companyName;
+  String nameOfTheJob;
+  String startDate;
+  String endDate;
+  String contractType; 
+  String location, 
+  String jobDescription
+
+  JobOffer({required this.logo, required this.companyName, required this.nameOfTheJob, required this.startDate, required this.endDate, required this.contractType, required this.location, required this.jobDescription});
+}
+```
+The User class like that:
+```Dart
+class User {
+  String fullName;
+  String email;
+  String password;
+  int range;
+  String address;
+  String avatar;
+
+  User({required this.fullName, required this.email, required this.password, required this.range, required this.address, required this.avatar});
+}
+```
+The company class will be a bit similar to the User class:
+```Dart
+class Company {
+  String companyName;
+  String companyRegistrationNumber;
+  String email;
+  String password;
+  String logo;
+
+  User({required this.companyName, required this.companyRegistrationNumber, required this.email, required this.password, required this.logo});
+}
+```
+And finally, the soft skills class should look this way:
+```Dart
+class SoftSkills {
+  String name;
+  String categories;
+  bool selected;
+
+  SoftSkills({required this.name, required this.categories, required this.selected});
+}
+```
 
 ### 2. Local Storage
 
 <!-- Describe any local storage mechanisms used (e.g., shared_preferences, SQLite). -->
+The local storage would be done on the device memory since there is no real backend asked for the project. However, it could be simulated with an open source backend consisting of embedded database named pocketbase.
+This Storage would allow the development team to simulate a User on both the candidate and company sides. It would also help the Quality Assurance team to do tests, such as the account creation.
 
 ## VI. Functional Requirements
 
@@ -598,7 +681,7 @@ At the bottom of the page would be an ``ElevatedButton`` to save the changes mad
 To keep a touch on the job you applied for, a page dedicated to them is joinable from the account profile. It would be a ``List``. The number of the list's elements should be incremented each time a job offer is applied. The class for it would be designed like this:
 
 ```Dart
-class JobOffer {
+class JobsLiked {
   String logo;
   String nameOfTheJob;
   String date;
@@ -679,10 +762,44 @@ Finally, for every three new job offers, a certification would be sent to the us
 ### 1. Continuous Integration
 
 <!-- Describe the CI pipeline for the front-end (e.g., GitHub Actions, Bitrise). -->
+The continuous integration will mainly be held by GitHub and the repository, allowing all the team members to create branches and work simultaneously on different parts of the code. 
+
+The merge and pull request would be done regularly with a check by the quality assurance before any of the pull requests to the dev and main branches. It would avoid stress by pushing a wrong version in the main branch but would also highly enhance the code quality.
 
 ### 2. Deployment Strategy
 
 <!-- Detail the deployment process for the front-end application (e.g., to App Store, Google Play Store). -->
+To deploy this strategy it has been set to target the two main stores which are the App Store and the Google Play Store. They both have their own prerequisites to deploy an application.
+Nevertheless, the project is to create a front-end application, without any back-end it would be unuseful to publish it and non-lucrative.
+However, here are the different ways to publish the application on both of them.
+
+#### 2.1. App Store
+
+The App Store publishing process can be summarized in just six steps.
+
+1. Sign up for the Apple developer program.
+2. Prepare the app for submission.
+3. Create a listing via App Store Connect.
+4. Capture App Store screenshots.
+5. Upload the app using Xcode.
+6. Submit the app to be reviewed by Apple.
+
+However, getting the Apple developer program has a cost non-negligible since our project isn't funded.
+
+#### 2.2. Google Play Store
+
+Here is a simple way to publish an application on the Google Play Store Step-by-Step:
+
+1. Sign up for the Google Play Developer Console.
+2. Link Developer Account with Google Wallet Merchant Account.
+3. Create Application. 
+4. App Store Listing.
+5. Upload App Bundles or APK To Google Play.
+6. Time For Content Rating. 
+7. Fix App Pricing and Distribution.
+8. Publish the Application.
+
+There are a bit more steps than the App Store but the price is lower (25$ for the fee, then free).
 
 ### 3. Environment Configuration
 
