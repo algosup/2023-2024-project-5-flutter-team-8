@@ -73,71 +73,58 @@ class PurpleRectangleButton extends RectangleButton {
 }
 
 bool isEmailValid(String email) {
-    for (var user in users) {
-      if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
-        return true;
-      }
+  for (var user in users) {
+    if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
+      return true;
     }
-    return false;
   }
+  return false;
+}
 
-  bool isPasswordValid(String password) {
-    for (var user in users) {
-      if (user.password == password) {
-        return true;
-      }
+bool isPasswordValid(String password) {
+  for (var user in users) {
+    if (user.password == password) {
+      return true;
     }
-    return false;
   }
+  return false;
+}
 
 class LoginButton extends BlackRectangleButton {
   final BuildContext context;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final GlobalKey<FormState> formKey;
+  final Function(String?) onError;
 
   LoginButton({
     Key? key,
     required Size size,
-    required this.context, // Add context here
+    required this.context,
     required this.emailController,
     required this.passwordController,
     required this.formKey,
+    required this.onError,
   }) : super(
           key: key,
           size: size,
           text: 'Log In',
           onPressed: () {
-            String email = emailController.text;
-            String password = passwordController.text;
+            if (formKey.currentState?.validate() ?? false) {
+              String email = emailController.text;
+              String password = passwordController.text;
 
-            bool emailValid = isEmailValid(email);
-            bool passwordValid = isPasswordValid(password);
+              bool emailValid = isEmailValid(email);
+              bool passwordValid = isPasswordValid(password);
 
-            if (emailValid && passwordValid) {
-              GoRouter.of(context).go('/loading');
-            } else {
-              formKey.currentState?.validate();
+              if (emailValid && passwordValid) {
+                GoRouter.of(context).go('/loading');
+              } else {
+                if (!emailValid && !passwordValid) {
+                  onError('Email or password incorrect');
+                }
+              }
             }
           },
         );
-
-  // Static methods can be moved outside the class for better organization
-  static bool isEmailValid(String email) {
-    for (var user in users) {
-      if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  static bool isPasswordValid(String password) {
-    for (var user in users) {
-      if (user.password == password) {
-        return true;
-      }
-    }
-    return false;
-  }
 }

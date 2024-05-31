@@ -1,3 +1,4 @@
+import 'package:adopte_1_candidat/database.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +12,6 @@ class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginState createState() => _LoginState();
 }
 
@@ -20,6 +20,7 @@ class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _rememberMe = false;
+  String? _emailPasswordError;
 
   @override
   void dispose() {
@@ -85,7 +86,7 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.symmetric(
                             vertical: size.height * 0.01,
                           ),
-                          child: emailField(_emailController, size),
+                          child: EmailField(controller: _emailController, errorText: _emailPasswordError),
                         ),
                         const Text(
                           'Password',
@@ -96,7 +97,12 @@ class _LoginState extends State<Login> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        PasswordField(controller: _passwordController),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: size.height * 0.01,
+                          ),
+                          child: PasswordField(controller: _passwordController, errorText: _emailPasswordError),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -106,7 +112,7 @@ class _LoginState extends State<Login> {
                                   value: _rememberMe,
                                   onChanged: (value) {
                                     setState(() {
-                                      _rememberMe = value; // ?? false;
+                                      _rememberMe = value ?? false;
                                     });
                                   },
                                 ),
@@ -125,7 +131,7 @@ class _LoginState extends State<Login> {
                                 GoRouter.of(context).go('/forgot-password');
                               },
                               style: ButtonStyle(
-                                overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                                overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
                               ),
                               child: const Text(
                                 'Forgot Password?',
@@ -148,6 +154,11 @@ class _LoginState extends State<Login> {
                       emailController: _emailController,
                       passwordController: _passwordController,
                       formKey: _formKey,
+                      onError: (String? error) {
+                        setState(() {
+                          _emailPasswordError = error;
+                        });
+                      },
                     ),
                     SizedBox(
                       height: size.height * 0.01,
@@ -167,7 +178,7 @@ class _LoginState extends State<Login> {
                             GoRouter.of(context).go('/signup');
                           },
                           style: ButtonStyle(
-                            overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                            overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
                           ),
                           child: const Text(
                             'Sign Up',
