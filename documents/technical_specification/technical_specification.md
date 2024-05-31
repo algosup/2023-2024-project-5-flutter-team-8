@@ -252,6 +252,8 @@ For this project, it has been decided to use the Flutter/Dart language as well a
 - [riverpod](https://riverpod.dev/): which is a reactive caching framework for Flutter/Dart. Using declarative and reactive programming, Riverpod takes care of a large part of your application's logic for you.
 - [freezed](https://pub.dev/packages/freezed): a code generator for data-classes/unions/pattern-matching/cloning.
 - [go_router](https://pub.dev/packages/go_router): a declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens. You can define URL patterns, navigate using a URL, handle deep links, and a number of other navigation-related scenarios.
+The Project would be held on GitHub for better development and sharing in the project team.
+The IDE use for this project would be VSCode.
 
 ### 3. Key Components
 
@@ -587,6 +589,24 @@ There, all the certifications would be clickable to see a better definition, pas
 
 #### 2.4. Notifications
 
+The notification page would be a list of six ``sizedBox``s with ``BorderRadius``. They would contain each, the name of the notification (see [Functional Specification]()) and a switch to disable them if wanted (All the notifications would be set as true at the beginning).
+The only one that would differ would be the first one, it would contain a leading bell icon, the name would be Notifications, and also a switch. This one particularly would disable all of the Notifications in one click.
+Here is an example of a switch:
+```Dart
+Switch(
+  value: light,
+  overlayColor: overlayColor,
+  trackColor: trackColor,
+  thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
+  onChanged: (bool value) {
+    setState(() {
+      light = value;
+    });
+  },
+);
+```
+At the bottom of the page would be an ``ElevatedButton`` to save the changes made during the time the page is open. However, if the page is closed or returned to a previous one whereas the button is not clicked, the changes would not be taken in count and the previous settings would be set as the previous one.
+
 #### 2.5. Jobs Liked
 
 To keep a touch on the job you applied for, a page dedicated to them is joinable from the account profile. It would be a ``List``. The number of the list's elements should be incremented each time a job offer is applied. The class for it would be designed like this:
@@ -640,6 +660,19 @@ Finally, if the user denies the the job offer, the bubble would just disappear, 
 ### 5. Notifications
 
 <!-- Detail how notifications are handled within the application (e.g., local notifications). -->
+The notification would be little pop-ups, appearing on the top of the screen. There are many types of them that you can see in the [functional specification]().
+To create this, the Widget ```` would be used.
+Here is an example of how to use it:
+```Dart
+// Search for example
+```
+The notification settings could be modified in the Profil Parameter, which refers to [2.4 Notifications](#24-notifications) for more information.
+
+If a company sends a positive answer to a job application, the user should get a notification to inform it of the advancement of his proposition. To keep a hand on the advancement, a notification would also be sent every time a new message is received, except if the user is already on the chat page, in that case, only the message would darken, to inform the user a new message isn't read.
+The two last notifications a user could receive are the certification and job offer ones.
+For the certification, the user would receive a notification in case the certification is needed for his skills. For example, if a new certification is available for a soft skill not selected by the user, he would not be informed. However, if the certification is about one of their soft skills, a notification would be sent as a pop-up bar.
+Finally, for every three new job offers, a certification would be sent to the user. Like this, they could be informed without being harrassed by notifications.
+<!-- Diagram? -->
 
 ## VII. User Interface Design
 
