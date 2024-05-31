@@ -153,7 +153,7 @@ export 'src/error.dart';
 
 Format comments like sentences for better understanding:
 ```Dart
-// This comment explain ...
+// This comment explains ...
 ```
 Avoid using block comments for documentation
 
