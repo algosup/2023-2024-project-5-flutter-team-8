@@ -165,8 +165,8 @@ The purpose of this document is to catalog the tests that will be performed rank
 
 | ID | T07 |
 | -- | --- |
-| Test Description | Verify that in the certifications page the user can jump in a certification, take a quick quiz, and get certifications according to how they did |
-|Step(s) | 1.test all the specification options, 2. create a "dummy" test to complete 3. see the results 4.test the search bar  |
+| Test Description | Verify that the certifications function work as expected  |
+|Step(s) | 1.test all the specification options, 2. create a "dummy" test to complete 3. see the results 4.check certifications page if it gets added after |
 | Expected Result | The certifications page and function works as expected |
 | Priority | 🟧 | <-----
 
@@ -188,25 +188,72 @@ The purpose of this document is to catalog the tests that will be performed rank
 | Expected Result | All the additional functions word as expected |
 | Priority | 🟥 |
 
-## . Profile page
-
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the profile page and it's functions all work as expected |
-|Step(s) | 1.test all the options on the page, 2.test if the a |
-| Expected Result |  |
-| Priority | 🟥 |
-
 ## . Personal information page
 
 | ID | T07 |
 | -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |  |
+| Test Description | Verify that you can change and save the personal information of the user successfully |
+|Step(s) | 1.change the fullname, 2.change the password, 3. change the profile picture |
+| Expected Result | Information is changed and saved successfully |
+| Priority | 🟨 |
+
+## . Notifications page
+
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that the notification options work as expected  |
+|Step(s) | 1.test "notifications", 2. test "new job alert" 3. test "message from company" 4.test "new matches" 5.test "application rejection" 6/ test "new certification available" |
+| Expected Result | The notifications are able to be adjusted accordingly|
+| Priority | 🟨 |
+
+## . Logout function
+
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that the user/company is able to logout out of their account |
+|Step(s) | 1.click logout from the profile page, 2. click yes |
+| Expected Result | The user/company can successfully log out |
+| Priority | 🟧 |
+
+## . Jobs Liked page
+ 
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that when you like a job it shows up on your "jobs liked" page |
+|Step(s) | 1. like a job, 2. check if it's added to the "jobs liked" page |
+| Expected Result | Liked jobs are added to the "jobs liked" page |
 | Priority | 🟥 |
 
-## . Update password (through personal information page)
+## . My skills page
+
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that all the skills that the user has show up and can be changed |
+|Step(s) | 1. check if all the skills show up, 2. change the around |
+| Expected Result | The skills are present and can be changed accordingly |
+| Priority | 🟧 |
+
+### **Company side**
+
+## . Create an Account screen
+
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that the company can create an account |
+|Step(s) | 1.Enter company name, 2.enter company registration number, 3.enter e-mail, 4. enter password |
+| Expected Result | The company can successfully create an account |
+| Priority | 🟥 |
+
+## . Profile picture screen 
+
+| ID | T07 |
+| -- | --- |
+| Test Description | Verify that the company can add their company logo |
+|Step(s) | 1. Add the logo, 2. check result |
+| Expected Result | The company logo has been added |
+| Priority | 🟥 |
+
+## . Ranking screen
 
 | ID | T07 |
 | -- | --- |
@@ -215,104 +262,14 @@ The purpose of this document is to catalog the tests that will be performed rank
 | Expected Result |  |
 | Priority | 🟥 |
 
-## . Update profile picture
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Notifications page
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Logout function
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Jobs Liked page
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . My certifications page
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . My skills page
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-### **Company side**
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Create an Account screen
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Profile picture screen 
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
-## . Ranking screen
-
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |   |
-| Expected Result |   |
-| Priority | 🟥 |
-
 
 ## . Settings
 
 | ID | T08 |
 | -- | --- |
 | Test Description | Verify that the settings work as expected  |
-|Step(s) |   |
-| Expected Result |   |
+|Step(s) |  |
+| Expected Result |  |
 | Priority | 🟨 |
 
 
@@ -322,4 +279,4 @@ The purpose of this document is to catalog the tests that will be performed rank
 
 | Created on | Updated on | 
 | ---------- | ---------- |
-| 05/18/2024 | 05/24/2024 | 
+| 05/18/2024 | 05/31/2024 | 
