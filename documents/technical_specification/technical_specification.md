@@ -294,46 +294,32 @@ GoRouter goRouter() {
   );
 }
 ```
-
-```Dart
-GoRouter.of(context).go('/splashScreen');
-```
-
-```Dart
-@override
-Widget build(BuildContext context) {
-  return MaterialApp.router(
-    routerConfig: router,
-  ),
-}
-```
-
 This is only a simple preview for the first two pages, all the pages would be defined hereunder:
 | Names | Path | Descriptions |
 | ----- | ---- | ------------ |
 | 'logo' | '/logo' | loading screen |
-| 'splash-screen' | '/splash-screen' | Description of the application|
+| 'splashScreen' | '/splashScreen' | Description of the application|
 | 'login' | '/login' | login with a password and a mail account|
-| 'forget-password' | '/forget-password' |ask for a new password via the mail|
-| 'type-user-choice' | '/type-user-choice' |chose if you are a company or a candidate|
-| 'sign-up-user' | '/sign-up-user' | ask for the full name, the mail and the password of the user |
-| 'soft-skills-choices' | '/soft-skills-choices' | a page with 40 skills predifined |
-| 'soft-skills-rank' | '/soft-skills-rank' | page to rank the previously selected skills |
+| 'forgetPassword' | '/forgetPassword' |ask for a new password via the mail|
+| 'typeUserChoice' | '/typeUserChoice' |chose if you are a company or a candidate|
+| 'signUpUser' | '/signUpUser' | ask for the full name, the mail and the password of the user |
+| 'softSkillsChoices' | '/softSkillsChoices' | a page with 40 skills predifined |
+| 'softSkillsRank' | '/softSkillsRank' | page to rank the previously selected skills |
 | 'location' | '/location' | page to put the address and the range around it |
-| 'profile-picture' | '/profile-picture' | page to define user's profile picture|
-| 'check-your-email' | '/check-your-email' | waiting screen for the mail to be checked|
+| 'profilePicture' | '/profilePicture' | page to define user's profile picture|
+| 'checkYourEmail' | '/checkYourEmail' | waiting screen for the mail to be checked|
 | 'successfully' | '/successfully' | page when succesfully checked |
-| 'home-screen' | '/home-screen' |main page with the job offer on bubble form |
-| 'job-info' | '/job-info' | page when a bubble is clicked to have more information about the job|
-| 'skills-categories' | '/skills-categories' | page where all the big certification categories are displayed |
-| 'skills-selection' | '/skills-selection' | page where the certification are shown |
+| 'homeScreen' | '/homeScreen' |main page with the job offer on bubble form |
+| 'jobInfo' | '/jobInfo' | page when a bubble is clicked to have more information about the job|
+| 'skillsCategories' | '/skillsCategories' | page where all the big certification categories are displayed |
+| 'skillsSelection' | '/skillsSelection' | page where the certification are shown |
 | 'message' | '/message' | page where all the chats are listed |
 | 'chat' | '/chat' | specific chat with one company|
-| 'no-message' | '/no-message' | page displayed when no messages|
+| 'noMessage' | '/noMessage' | page displayed when no messages|
 | 'profile' | '/profile' | page to acces to the diverse settings |
-| 'personal-information' | '/personal-information' | page displaying user's full name, mail, password and location |
-| 'update-password' | '/update-password' |page to change the password |
-| 'update-profile-picture' | '/update-profile-picture' | page tochange of profle picture|
+| 'personalInformation' | '/personalInformation' | page displaying user's full name, mail, password and location |
+| 'updatePassword' | '/updatePassword' |page to change the password |
+| 'updateProfilePicture' | '/updateProfilePicture' | page tochange of profle picture|
 | 'settings' | '/settings' | containing all the different kinds of notifications |
 | 'jobs-liked' | '/jobs-liked' | containing a list of the jobs liked |
 | 'profile-certification' | '/profile-certification' | the page to see the list of certification got |
