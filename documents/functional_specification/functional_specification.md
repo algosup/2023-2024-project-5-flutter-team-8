@@ -227,7 +227,7 @@ In addition, a presentation of our work will be done to the client as a 15-minut
 | Program Manager        | Makes sure the project meets expectation. <br> Is in charge of design. Is responsible for writing the Functional Specifications              | Thomas PLANCHARD |
 | Tech Lead              | Makes the technical decision in the project. <br> Translates the Functional Specification into Technical Specifications. <br> Does code review. | Maxime THIZEAU |
 | Senior Software Engineer | Writes the code. <br> Writes documentation. <br> Participate in the technical design. | Quentin CLEMENT |
-| Quality Assurance      | Tests all the functionalities of a product to find bugs and issue. <br> Document bugs and issues. <br> Write the test plan. <br> Check that issues have been fixed.     | Pavlo PRENDI |
+| Quality Assurance      | Tests all the functionalities of a product to find bugs and issues. <br> Document bugs and issues. <br> Write the test plan. <br> Check that issues have been fixed.     | Pavlo PRENDI |
 | Technical Writer       | Responsible for creating and maintaining the project's documentation.                        | Arthur LEMOINE |
 
 
@@ -344,8 +344,8 @@ Candidates' personal information must remain confidential. Companies will only h
 
 | ID  | Description  | Consequence | Impact   | Likelihood | Mitigation/Avoidance     |
 | --- | ------------------------------------- | --------------------------- | -------- | ---------- | ---------------------------------- |
-| 1   | Flutter is a laguage to which we are not yet used to.                          | Development pace might be hindered                                | High     | Medium     | Ask for help to the other team members                                              |
-| 2   | The client might want to change /add requirements                              | We might need to change how the solution is developed             | Medium   | Low        | Validate every step of the project with the client, to ensure the solution fits him |
+| 1   | Flutter is a language to which we are not yet used to.                          | Development pace might be hindered                                | High     | Medium     | Ask for help from the other team members                                              |
+| 2   | The client might want to change /add requirements                              | We might need to change how the solution is developed             | Medium   | Low        | Validate every step of the project with the client, to ensure the solution fits their requirements |
 | 3   | We might create a clone of an already exisiting solution and infringe a patent | The client couldn't develop their solution based on our prototype | High     | Low        | Check for any patent and find our unique selling point (USP)                        |
 | 4   | Misinterpretation of the project                                               | Incorrect implementation of the software                          | Critical | Medium     | Regular communication with the client to understand their needs, and stick to them. |
 | 5   | Team member leaving                                                            | Tasks left to the remaining members without any assignee          | High     | Unlikely   | Sharing the tasks among the remaining team members.                                 |
@@ -450,7 +450,7 @@ After registration, the company will be redirected to the dashboard home page.
 
 #### ➭ Job List Candidate Side
 
-Upon logging in, users see the main feature of the application: job offers presented as bubbles. These offers are sorted based on the user's specified location during account creation. Users can click on a bubble to view details and decide whether to apply or decline. Accepting a job offer makes the user's profile visible to the company, which can then decide to initiate communication. To avoid overwhelming users, the app limits the displayed job offer bubbles to 8 at a time. Declining an offer removes the bubble and replaces it with another.
+Upon logging in, users will see the main feature of the application: job offers presented as bubbles. These offers are sorted based on the user's specified location during account creation. Users can click on a bubble to view details and decide whether to apply or decline. Accepting a job offer makes the user's profile visible to the company, which they can then decide to initiate communication. To avoid overwhelming users, the app limits the displayed job offer bubbles to 8 at a time. Declining an offer removes the bubble and replaces it with another.
 
 #### ➭ Job List Company Side
 
@@ -626,7 +626,7 @@ The application then matches job-seekers and job offers based on the soft skills
 
    5. **Reduction of Bias**: By focusing on soft skills rather than traditional qualifications, the application helps reduce biases related to education, work history, and other factors, promoting diversity and inclusion in the hiring process.
 
-A "match" is established if at least four of a job-seeker's soft skills fall within the categories the company is looking for. This system ensures that both parties find suitable and relevant matches, enhancing the overall recruitment experience.
+A "match" is established if at least four soft skills of a job-seeker fall within the categories the company is looking for. This system ensures that both parties find suitable and relevant matches, enhancing the overall recruitment experience.
 
 #### ➭ Soft skills list
 
@@ -641,39 +641,39 @@ Here are the soft skills that the user can select from and the categories they b
 |                    | Empathy                               |
 | Efficiency         | Efficiency                            |
 |                    | ability to focus                      |
-|                    | time management                       |
-|                    | stress management                     |
-|                    | sense of priorities                   |
-|                    | being organised                       |
-|                    | know how to organise                  |
-|                    | ability to concentrate                |
-|                    | meeting deadlines                     |
-|                    | pressure handling                     |
-|                    | Process Optimisation                  |
-|                    | ability to delegate / entrust         |
-|                    | problem solving                       |
-|                    | file gestion                          |
-| Social competences | Team Work                             |
+|                    | Time management                       |
+|                    | Stress management                     |
+|                    | Sense of priorities                   |
+|                    | Being organised                       |
+|                    | Know how to organise                  |
+|                    | Ability to concentrate                |
+|                    | Meeting deadlines                     |
+|                    | Pressure handling                     |
+|                    | Process optimisation                  |
+|                    | Ability to delegate / entrust         |
+|                    | Problem solving                       |
+|                    | File management                       |
+| Social competences | Teamwork                              |
 |                    | Team Spirit                           |
-|                    | sense of service                      |
+|                    | Sense of service                      |
 |                    | Coordination                          |
-|                    | ability to infer confidence           |
-|                    | being engaged                         |
-|                    | ability to create human relationships |
+|                    | Ability to infer confidence           |
+|                    | Being engaged                         |
+|                    | Ability to create human relationships |
 |                    | Cooperation & collaboration           |
 | Agile competences  | Flexibility                           |
-|                    | adaptability (when facing changes)    |
-|                    | being open to changes                 |
-|                    | self-questioning                      |
-|                    | anticipation                          |
+|                    | Adaptability (when facing changes)    |
+|                    | Being open to changes                 |
+|                    | Self-reflective                       |
+|                    | Anticipation                          |
 |                    | Innovation                            |
-|                    | creativity                            |
+|                    | Creativity                            |
 |                    | Optimism                              |
 |                    | Self-improvement                      |
-|                    | getting out of comfort-zone           |
-|                    | audacity                              |
-|                    | curiosity                             |
-|                    | risk-taking                           |
+|                    | Getting out of comfort-zone           |
+|                    | Audacity                              |
+|                    | Curiosity                             |
+|                    | Risk-taking                           |
 
 
 
@@ -699,7 +699,7 @@ Companies can view candidates' profiles, including their soft skills and avatars
 
 #### ➭ Candidate Anonymity
 
-According to the requirements and the application's focus on "soft skills," companies will not have access to candidates' personal information at any time. This includes real names, email addresses, and locations. The only information companies will have access to includes the candidate's avatar picture, selected "soft skills," and certifications obtained within the app. 
+According to the requirements and the application's focus on "soft skills," companies will not have access to candidates' personal information at any time. This includes real names, email addresses, and locations. The only information companies will have access to includes the candidate's avatar picture, selected "soft skills" and certifications obtained within the app. 
 
 
 ### 4. Soft Skills Assessment
@@ -730,7 +730,7 @@ The profile page, accessible from the navigation bar on the home page, serves as
 
 This section displays the user's basic information: name, email, password, and location. Users will have the ability to modify this information according to their needs, ensuring their profile is always up-to-date and accurate.
 
-#### ➭ Job Liked
+#### ➭ Jobs Liked
 
 Here, users can view the list of job offers they have liked. This section helps users keep track of the opportunities they are interested in, facilitating easy access and management of their job applications.
 
@@ -756,10 +756,10 @@ Users have the option to turn off notifications on the profile page of the app.
 
 #### ➭ Language Options
 
-Since the targeted audience for this application is France, it is meant to be in the French language at first.
+Since the targeted audience for this application is France, it was meant to be in the French language at first.
 However, to facilitate the expansion of the application in foreign countries, a language setting was added.
-Then, at the launching of the product, there would only be English and French language.
-Other languages could be implemented afterward, depending on which country would use the application.
+Once the product is launched, there will be an option between French and English.
+Other languages could be implemented afterwards, depending on which country would use the application.
 
 To change the language option, access to the settings will be created on the settings page.
 
@@ -1096,5 +1096,3 @@ The project will be developed using Flutter. Flutter allows for the creation of 
 - **Scope Limitation**: The current project scope is limited to the frontend implementation and a simulated backend for authentication and data storage.
 - **Resource Constraints**: As a school project, the development team is restricted by time and resource availability.
 - **Mandatory Framework**: The use of Flutter is a requirement imposed by the educational context of the project.
-
-
