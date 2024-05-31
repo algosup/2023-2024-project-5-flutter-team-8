@@ -6,7 +6,7 @@ The purpose of this document is to catalog the tests that will be performed rank
 - medium priority 🟧
 - high priority 🟥
 
-## . Login the app (main function)
+## . Login the app
 
 | ID | T01 |
 | -- | --- |
