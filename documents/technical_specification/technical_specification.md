@@ -40,14 +40,18 @@
     - [5. Notifications](#5-notifications)
   - [VII. User Interface Design](#vii-user-interface-design)
     - [1. UI Components](#1-ui-components)
-    - [2. Screen Layouts](#2-screen-layouts)
-    - [3. Themes and Styles](#3-themes-and-styles)
+    - [2. Themes and Styles](#2-themes-and-styles)
   - [VIII. Integration and Deployment](#viii-integration-and-deployment)
     - [1. Continuous Integration](#1-continuous-integration)
     - [2. Deployment Strategy](#2-deployment-strategy)
       - [2.1. App Store](#21-app-store)
       - [2.2. Google Play Store](#22-google-play-store)
     - [3. Environment Configuration](#3-environment-configuration)
+      - [3.1. VSCode Installation](#31-vscode-installation)
+      - [3.2. Flutter Installation](#32-flutter-installation)
+      - [3.3. Riverpod Installation](#33-riverpod-installation)
+      - [3.4. Freezed Installation](#34-freezed-installation)
+      - [3.5. Go\_router Installation](#35-go_router-installation)
   - [IX. Maintenance and Support](#ix-maintenance-and-support)
     - [1. Logging and Monitoring](#1-logging-and-monitoring)
     - [2. Bug Reporting and Tracking](#2-bug-reporting-and-tracking)
@@ -55,7 +59,6 @@
   - [X.  Appendices](#x--appendices)
     - [1. Glossary](#1-glossary)
     - [2. References](#2-references)
-    - [3. Document Revision History](#3-document-revision-history)
 
 </details>
 
@@ -748,14 +751,26 @@ Finally, for every three new job offers, a certification would be sent to the us
 ### 1. UI Components
 
 <!-- Detail the UI components used and their purposes. -->
+The UI components are used to simplify the development team's work by reducing the time of the design creation and focusing more on the algorithm part of the application. To do so, a lot of the icons predefined in the mock-up will be used as images and not created by hand by the development team.
+Moreover, the mock-up is the first version of the application and the ideal view we want it to be, it could, however, be changed during the creation phase, since the time to do the mock-up was short and if new ideas come to mind afterward, they could be added to the last version of the application.
+To see the mock-up or a better definition of the UI designed by the program manager, here are the links to:
+- [The Functional Specification]()
+- [The Application Mock-up]()
 
-### 2. Screen Layouts
-
-<!-- Provide mock-ups and descriptions of each screen layout. -->
-
-### 3. Themes and Styles
+### 2. Themes and Styles
 
 <!-- Explain the theming and styling approach (e.g., light/dark mode). -->
+The application would only have the light mode at the launch. It was set as not a primordial feature for the good functioning of the application. It is then not needed to add lines for the light mode or to change modes between dark and light.
+However, when the dark mode would be implemented in a near future, these lines in the Flutter files would be needed:
+```Dart
+theme: ThemeData(
+  colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 20, 0, 43)),
+  useMaterial3: true,
+),
+```
+This code should be put in the ``MaterialApp`` widget.
+
+To change the theme, a ``switch`` in the profile account would be implemented.
 
 ## VIII. Integration and Deployment
 
@@ -804,6 +819,98 @@ There are a bit more steps than the App Store but the price is lower (25$ for th
 ### 3. Environment Configuration
 
 <!-- Explain environment configurations for the front-end (e.g., development, staging, production). -->
+To achieve this project you would need:
+- VSCode 1.77 or later
+- Flutter
+- Riverpod
+- Freezed
+- Go_router
+
+#### 3.1. VSCode Installation
+
+To install VSCode, you can follow these steps:
+1. Download the VS Code file from the [Official Website](https://code.visualstudio.com/docs/setup/setup-overview).
+2. Execute the download file.
+3. Accept the Terms & Conditions.
+4. Click on the Install button.
+5. Wait for the installation to complete.
+6. Click on the Launch button to start it.
+
+If you already have VSCode installed on your machine, you can check for any updates by going to: 
+On Windows and Linux:
+``Help > Check for Updates``
+On macOS:
+``Code > Check for Updates``
+
+#### 3.2. Flutter Installation
+
+Flutter packages depend on your open source, to install it you can follow the guide provided by flutter.dev.
+To access easily the page follow the links hereunder:
+
+**On Windows**: [Flutter.dev](https://docs.flutter.dev/get-started/install/windows/mobile?tab=vscode)
+
+**On macOS**: [Flutter.dev](https://docs.flutter.dev/get-started/install/macos/mobile-ios?tab=vscode)
+
+**On Linux**: [Flutter.dev]
+
+Some VSCode extensions could be useful:
+- **Flutter**
+- **Awesome Flutter Snippets**
+
+#### 3.3. Riverpod Installation
+
+Riverpod is an extension of Flutter. It could be installed by entering these command lines in the VSCode terminal, at the root of your project:
+```terminal
+flutter pub add flutter_riverpod
+flutter pub add riverpod_annotation
+flutter pub add dev:riverpod_generator
+flutter pub add dev:build_runner
+flutter pub add dev:custom_lint
+flutter pub add dev:riverpod_lint
+```
+Once all the dependencies are installed, check if there are major versions by typing:
+```terminal
+flutter pub outdated
+```
+If there actually are new versions available, the dependencies can be upgraded with:
+```terminal
+flutter pub upgrade
+// or
+flutter pub upgrade --major-versions
+```
+Finally, to get them, write this command line:
+```terminal
+flutter pub get
+```
+
+If you want a more complete page dedicated to Riverpod's installation, [here](https://riverpod.dev/docs/introduction/getting_started) is the website page for it.
+
+Some Riverpod extensions could be useful:
+- **Flutter Riverpod Snippets**
+- **Riverpod Consumer**
+
+#### 3.4. Freezed Installation
+
+Freezed is an extension of Flutter. It could be installed by entering these command lines in the VSCode terminal, at the root of your project:
+```terminal
+dart pub add freezed
+```
+Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
+
+If you want a more complete page dedicated to Freezed's installation, [here](https://pub.dev/packages/freezed/install) is the website page for it.
+
+Some Riverpod extensions could be useful:
+- **Flutter freezed Helpers**
+
+#### 3.5. Go_router Installation
+
+Go_router is an extension of Flutter. It could be installed by entering these command lines in the VSCode terminal, at the root of your project:
+```terminal
+flutter pub add go_router
+```
+Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
+
+If you want a more complete page dedicated to Go_router's installation, [here](https://pub.dev/packages/go_router/install) is the website page for it.
 
 ## IX. Maintenance and Support
 
@@ -828,7 +935,3 @@ There are a bit more steps than the App Store but the price is lower (25$ for th
 ### 2. References
 
 <!-- List references and resources used in the preparation of the document. -->
-
-### 3. Document Revision History
-
-<!-- Include a table documenting the revision history of the technical specification document. -->
