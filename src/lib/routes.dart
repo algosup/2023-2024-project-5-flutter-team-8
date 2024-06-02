@@ -3,10 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:adopte_1_candidat/loading.dart';
 import 'package:adopte_1_candidat/splash_screen.dart';
 import 'package:adopte_1_candidat/login/login.dart';
+import 'package:adopte_1_candidat/signup/signup.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/signup',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
@@ -22,6 +23,11 @@ GoRouter goRouter() {
         path: '/login',
         name: 'login',
         builder: (context, state) => const Login(),
+      ),
+      GoRoute(
+        path: '/signup',
+        name: 'signup',
+        builder: (context, state) => const Signup(),
       ),
     ],
   );

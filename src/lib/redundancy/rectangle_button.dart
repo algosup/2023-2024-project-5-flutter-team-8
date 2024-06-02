@@ -7,7 +7,7 @@ class RectangleButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const RectangleButton({
-    super.key, 
+    super.key,
     required this.size,
     required this.color,
     required this.text,
@@ -41,42 +41,30 @@ class RectangleButton extends StatelessWidget {
 
 class BlackRectangleButton extends RectangleButton {
   const BlackRectangleButton({
-    super.key, 
-    required super.size,
-    required super.text,
-    required super.onPressed,
+    Key? key,
+    required Size size,
+    required String text,
+    required VoidCallback onPressed,
   }) : super(
-    color: Colors.black,
-  );
+          key: key,
+          size: size,
+          color: Colors.black,
+          text: text,
+          onPressed: onPressed,
+        );
 }
 
 class PurpleRectangleButton extends RectangleButton {
   const PurpleRectangleButton({
-    super.key, 
-    required super.size,
-    required super.text,
-    required super.onPressed,
+    Key? key,
+    required Size size,
+    required String text,
+    required VoidCallback onPressed,
   }) : super(
-    color: Colors.purple,
-  );
-}
-
-class LoginButton extends BlackRectangleButton {
-  const LoginButton({
-    super.key, 
-    required super.size,
-    required super.onPressed,
-  }) : super(
-    text: 'Log In',
-  );
-
-  // #TODO modify the onPressed method
-
-  void isEmailValid() {
-    // Check if email is valid
-  }
-
-  void isPasswordValid() {
-    // Check if password is valid
-  } 
+          key: key,
+          size: size,
+          color: Colors.purple,
+          text: text,
+          onPressed: onPressed,
+        );
 }

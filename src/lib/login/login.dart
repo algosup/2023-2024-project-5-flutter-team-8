@@ -1,15 +1,14 @@
+import 'package:adopte_1_candidat/database.dart';
+import 'package:adopte_1_candidat/redundancy/text_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants.dart';
 import 'package:adopte_1_candidat/login/checkbox.dart';
-import 'package:adopte_1_candidat/login/email_field.dart';
-import 'package:adopte_1_candidat/login/password_field.dart';
 import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   _LoginState createState() => _LoginState();
@@ -20,6 +19,7 @@ class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _rememberMe = false;
+  String? _emailPasswordError;
 
   @override
   void dispose() {
@@ -85,7 +85,7 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.symmetric(
                             vertical: size.height * 0.01,
                           ),
-                          child: emailField(_emailController, size),
+                          child: EmailField(controller: _emailController, errorText: _emailPasswordError),
                         ),
                         const Text(
                           'Password',
@@ -96,7 +96,12 @@ class _LoginState extends State<Login> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        PasswordField(controller: _passwordController),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: size.height * 0.01,
+                          ),
+                          child: PasswordField(controller: _passwordController, errorText: _emailPasswordError),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -106,7 +111,7 @@ class _LoginState extends State<Login> {
                                   value: _rememberMe,
                                   onChanged: (value) {
                                     setState(() {
-                                      _rememberMe = value ?? false;
+                                      _rememberMe = value;
                                     });
                                   },
                                 ),
@@ -125,7 +130,7 @@ class _LoginState extends State<Login> {
                                 GoRouter.of(context).go('/forgot-password');
                               },
                               style: ButtonStyle(
-                                overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                                overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
                               ),
                               child: const Text(
                                 'Forgot Password?',
@@ -142,13 +147,16 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
-                    // Replaced RectangleButton with LoginButton
                     LoginButton(
+                      context: context,
                       size: size,
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          GoRouter.of(context).go('/home');
-                        }
+                      emailController: _emailController,
+                      passwordController: _passwordController,
+                      formKey: _formKey,
+                      onError: (String? error) {
+                        setState(() {
+                          _emailPasswordError = error;
+                        });
                       },
                     ),
                     SizedBox(
@@ -169,7 +177,7 @@ class _LoginState extends State<Login> {
                             GoRouter.of(context).go('/signup');
                           },
                           style: ButtonStyle(
-                            overlayColor: WidgetStateProperty.all(Colors.transparent), // Remove splash effect
+                            overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
                           ),
                           child: const Text(
                             'Sign Up',
@@ -192,4 +200,57 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+}
+
+bool isEmailValid(String email) {
+  for (var user in users) {
+    if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool isPasswordValid(String password) {
+  for (var user in users) {
+    if (user.password == password) {
+      return true;
+    }
+  }
+  return false;
+}
+
+class LoginButton extends BlackRectangleButton {
+  final BuildContext context;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
+  final Function(String?) onError;
+
+  LoginButton({
+    super.key,
+    required super.size,
+    required this.context,
+    required this.emailController,
+    required this.passwordController,
+    required this.formKey,
+    required this.onError,
+  }) : super(
+          text: 'Log In',
+          onPressed: () {
+            if (formKey.currentState?.validate() ?? false) {
+              final email = emailController.text;
+              final password = passwordController.text;
+
+              final emailValid = isEmailValid(email);
+              final passwordValid = isPasswordValid(password);
+
+              if (emailValid && passwordValid) {
+                GoRouter.of(context).go('/loading');
+              } else {
+                onError('Email or password is incorrect');
+              }
+            }
+          },
+        );
 }
