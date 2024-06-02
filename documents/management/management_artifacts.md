@@ -66,7 +66,7 @@ The following KPIs are included in this section:
 
 The progress of these documents is measured using the following formula:
 
-$$\text{percentage} = (\frac{\text{current\_number\_of\_sections}} {\text{total\_number\_of\_sections}})\times{100}$$
+$$\text{percentage} = (\frac{\text{current number of sections}} {\text{total number of sections}})\times{100}$$
 
 Where:
 
@@ -82,7 +82,7 @@ The KPIs in this section include:
 
 The percentage progress for these KPIs is calculated using this formula:
 
-$$\text{percentage} = (\frac{\text{current\_number\_of\_designed\_pages}} {\text{total\_number\_of\_pages\_to\_design}})\times{100}$$
+$$\text{percentage} = (\frac{\text{current number of designed pages}} {\text{total number of pages to design}})\times{100}$$
 
 Where:
 
@@ -99,7 +99,7 @@ This section tracks the following KPIs:
 
 Given the complexity and time required for development, we include progress on partially completed pages. The progress is calculated using:
 
-$$\text{percentage} = (\frac{({\text{current\_number\_of\_fully\_coded\_pages + sum\_percentages\_unfinished\_pages}})} {\text{total\_designed\_pages}})\times{100}$$
+$$\text{percentage} = (\frac{({\text{current number of fully coded pages + sum percentages unfinished pages}})} {\text{total designed pages}})\times{100}$$
 
 Where:
 
