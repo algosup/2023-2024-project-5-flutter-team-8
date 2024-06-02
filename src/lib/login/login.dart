@@ -1,11 +1,10 @@
 import 'package:adopte_1_candidat/database.dart';
+import 'package:adopte_1_candidat/redundancy/text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants.dart';
 import 'package:adopte_1_candidat/login/checkbox.dart';
-import 'package:adopte_1_candidat/login/email_field.dart';
-import 'package:adopte_1_candidat/login/password_field.dart';
 import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 
 class Login extends StatefulWidget {
@@ -112,7 +111,7 @@ class _LoginState extends State<Login> {
                                   value: _rememberMe,
                                   onChanged: (value) {
                                     setState(() {
-                                      _rememberMe = value ?? false;
+                                      _rememberMe = value;
                                     });
                                   },
                                 ),
@@ -201,4 +200,57 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+}
+
+bool isEmailValid(String email) {
+  for (var user in users) {
+    if (user.email.trim().toLowerCase() == email.trim().toLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool isPasswordValid(String password) {
+  for (var user in users) {
+    if (user.password == password) {
+      return true;
+    }
+  }
+  return false;
+}
+
+class LoginButton extends BlackRectangleButton {
+  final BuildContext context;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
+  final Function(String?) onError;
+
+  LoginButton({
+    super.key,
+    required super.size,
+    required this.context,
+    required this.emailController,
+    required this.passwordController,
+    required this.formKey,
+    required this.onError,
+  }) : super(
+          text: 'Log In',
+          onPressed: () {
+            if (formKey.currentState?.validate() ?? false) {
+              final email = emailController.text;
+              final password = passwordController.text;
+
+              final emailValid = isEmailValid(email);
+              final passwordValid = isPasswordValid(password);
+
+              if (emailValid && passwordValid) {
+                GoRouter.of(context).go('/loading');
+              } else {
+                onError('Email or password is incorrect');
+              }
+            }
+          },
+        );
 }
