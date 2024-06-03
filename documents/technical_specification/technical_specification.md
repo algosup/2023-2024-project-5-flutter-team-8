@@ -893,7 +893,7 @@ Some Riverpod extensions could be useful:
 
 Freezed is an extension of Flutter. It could be installed by entering these command lines in the VSCode terminal, at the root of your project:
 ```terminal
-dart pub add freezed
+flutter pub add freezed
 ```
 Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
 
@@ -917,14 +917,119 @@ If you want a more complete page dedicated to Go_router's installation, [here](h
 ### 1. Logging and Monitoring
 
 <!-- Outline logging and monitoring practices for the front-end (e.g., Firebase Crashlytics). -->
+To log in and monitor this project, it has been set to use Pocketbase.
+For this, the development team will need to install a new dependency called pocketbase by using the command line:
+```terminal
+flutter pub add pocketbase
+```
+Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
+
+If you want a more complete page dedicated to pocketbase's installation, [here](https://pub.dev/packages/pocketbase/install) is the website page for it.
+
+You will also need to install pocketbase in itself. You will then need to follow these steps:
+1. Go on pocketbase.io
+2. Click on read the document
+3. Download the package for your OS
+4. Open a command line window
+5. Go to the folder where the package is installed
+6. write ``pocketbase serve`` and keep the window open
+7. Open a new navigator window and copy and paste the URL from the command line window
+8. Pocketbase is open
+
+To use pocketbase in the code, some new lines are needed:
+- To sing in
+```Dart
+final pb = PocketBase('http://10.0.2.2:8090');
+// or final pb = PocketBase('http://10.0.2.2:8090/'); if emulate on android
+
+Future<void> login({required String email, required String password}) async {
+  try {
+    final authData = await pb.collection('users').authWithPassword(email, password);
+    state = AuthState(isAuthenticated: pb.authStore.isValid, error: null);
+  }catch (e){
+    state = AuthState(isAuthenticated: false, error: e.toString());
+  }
+}
+
+void logout(){
+  pb.authStore.clear();
+  state = AuthState(isAuthenticated: false, error: null);
+}
+```
+- To sign up
+```Dart
+Future<void> signUp() async {
+  final body = <String, dynamic>{
+    "username": "Bob",
+    "email": "bob@example.com",
+    "password": "12345678",
+    "passwordConfirm": "12345678",
+    "name": "Bob Smith"
+  };
+
+  final record = await pb.collection('users').create(body: body);
+  print(record);
+}
+```
 
 ### 2. Bug Reporting and Tracking
 
 <!-- Explain the process for reporting and tracking bugs (e.g., Jira, GitHub Issues). -->
+To handle the errors, some unit tests would be needed in the file.
+In this optic, the development team would need to create a new folder, with a test file for each file in the lib folder.
+The test files would be named the same as the file corresponding in the lib folder but with ``test`` at the end of the name.
+Example:
+```
+/lib -> sign_up.dart
+would become
+/test -> sign_up_test.dart
+```
+For further information, please refer to the [test plan]().
+
+To implement unit tests, a new dependency should be added as well:
+```terminal
+flutter pub add dev:test
+```
+Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
+
+If you want a more complete page dedicated to unit testing's installation, [here](https://docs.flutter.dev/cookbook/testing/unit/introduction) is the website page for it.
+
+Example of Unit test in Flutter:
+```Dart
+import 'package:counter_app/counter.dart';
+import 'package:test/test.dart';
+
+void main() {
+  group('Test start, increment, decrement', () {
+    test('value should start at 0', () {
+      expect(Counter().value, 0);
+    });
+
+    test('value should be incremented', () {
+      final counter = Counter();
+
+      counter.increment();
+
+      expect(counter.value, 1);
+    });
+
+    test('value should be decremented', () {
+      final counter = Counter();
+
+      counter.decrement();
+
+      expect(counter.value, -1);
+    });
+  });
+}
+```
 
 ### 3. Updates and Upgrades
 
 <!-- Describe the strategy for front-end application updates and upgrades. -->
+As this project only has six weeks in length, the development team would do its best to create the application in the most complete way possible.
+All the things that wouldn't be able to be implemented to the release date would be considered as an update for the future.
+Moreover, the most important upgrade would be the backend, which will be added by [We are Evolution.](), the company hiring our team.
 
 ## X.  Appendices
 
@@ -932,6 +1037,13 @@ If you want a more complete page dedicated to Go_router's installation, [here](h
 
 <!-- Provide a glossary of terms used in the document. -->
 
+
 ### 2. References
 
 <!-- List references and resources used in the preparation of the document. -->
+**Flutter Courses**
+**Flutter Documentation**: https://docs.flutter.dev/
+**PocketBase**:
+**Riverpod**:
+**Functional Specification**:
+**Test Plan**:
