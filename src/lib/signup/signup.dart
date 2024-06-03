@@ -209,7 +209,28 @@ bool isPasswordValid(String? value) {
   return value != null && value.length >= 6 && value.contains(RegExp(r'[0-9]')) && value.contains(RegExp(r'[a-z]')) && value.contains(RegExp(r'[A-Z]')) && value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
 }
 
-// TODO: Implement the error message for all the password cases
+//error message for all the password cases
+class PasswordField extends CustomTextField {
+  PasswordField({Key? key, required TextEditingController controller, String? errorText})
+      : super(
+          key: key,
+          controller: controller,
+          hintText: 'Password',
+          errorText: errorText,
+          obscureText: true,
+          keyboardType: TextInputType.text,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a password';
+            } else if (value.length < 6) {
+              return 'Password must be at least 6 characters long';
+            } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))){
+              return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
+            }
+            return null;
+          },
+        );
+}
 
 class ContinueButton extends RoundButton {
   final BuildContext context;
