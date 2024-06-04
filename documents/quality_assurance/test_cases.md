@@ -1,282 +1,256 @@
 # Overview
 
-The purpose of this document is to catalog the tests that will be performed ranked by priority.
+The purpose of this document is to catalog the tests that will be performed to ensure Adopte un Candidat's application meets .
 
-- low priority 🟨 
-- medium priority 🟧
-- high priority 🟥
+## Priority
 
-## . Login the app
+Test priority are indicated following the the below color-code:
 
-| ID | T01 |
-| -- | --- |
-| Test Description | Make sure the user is able to login successfully, |
-|Step(s) | 1. enter email, 2. enter password, 3. click login |
-| Expected Result | User successfully logged in |
-| Priority | 🟥 |
+| Color | Priority        |
+| ----- | --------------- |
+| 🟨     | Low priority    |
+| 🟧     | Medium priority |
+| 🟥     | High priority   |
 
-## . Login the app (additional functions)
+## 1. Login Function Test
 
-| ID | T01 |
-| -- | --- |
-| Test Description | Make sure the additional functions on the screen work as expected |
-|Step(s) | 1.test "show password" button, 2. test "remember me" button, 3. test "sign up button" |
-| Expected Result | All functions work as would be expected  |
-| Priority | 🟧 |
+| ID               | T01                                                                                                                                                                                                              |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure the user is able to login successfully                                                                                                                                                                 |
+| Step(s)          | **1.** On the login page, enter the following e-mail in the e-mail field: quentin.clement@algosup.com<br> **2.** Enter the following password in the password field: 12345<br>**3.** Click on the "Login" button |
+| Expected Result  | User successfully logged in and redirected to another page                                                                                                                                                       |
+| Priority         | 🟥                                                                                                                                                                                                                |
 
-## . Forgot password screen
+## 2. Login page - "Show password"
 
-| ID | T02 |
-| -- | --- |
-| Test Description | Verify that you are able to change your password |
-|Step(s) | 1. Enter your email, 2. click reset password |
-| Expected Result | An email gets sent to the user with the instuctions on how to change their password |
-| Priority | 🟨 |
+| ID               | T02                                                                                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure the user can view the password he typed                                                                                              |
+| Step(s)          | **1.** On the login page, enter a random string in the password field<br>**2.** Click on the icon situated on the right of the password field. |
+| Expected Result  | The string should be displayed as a readable string rather than dots                                                                           |
+| Priority         | 🟨                                                                                                                                              |
 
-## . Forgot password screen (additional functions)
+## 3. Login page - "Remember me"
 
-| ID | T02 |
-| -- | --- |
-| Test Description | Verify that the "back to login" button works as expected |
-|Step(s) | 1.click "back to login" |
-| Expected Result | you are back at the login screen |
-| Priority | 🟨 |
+| ID               | T03                                                                                                                                                                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure the user is automatically logged back in when the remember me field is ticked and the application is restarted                                                                                                                                                                                             |
+| Step(s)          | **1.** On the login page, enter the e-mail and the password as explained in the 2 first steps of the [test case n°1](#1-login-function-test).<br>**2.** Tick the "Remember me" checkbox under the form and then on the "Login button"<br>**3.** Wait to be redirected on another page, close the app and restart it. |
+| Expected Result  | You should be by default on a page different from the login one from now on when restarting the app.                                                                                                                                                                                                                 |
+| Priority         | 🟨                                                                                                                                                                                                                                                                                                                    |
 
-## . Check your email for password reset screen 
+## 4. Login Page - Sign up option
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that an email was sent to the user with the password reset instructions |
-|Step(s) | 1. click on "open your email" |
-| Expected Result | The email has been sent successfully |
-| Priority | 🟨 |
+| ID               | T04                                                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure the user can easily be redirected to the registration page from the login page.                                   |
+| Step(s)          | **1.** On the login page, check for a text saying "Don't have an account yet? Sign up"<br>**2.** Click on the sign-up text. |
+| Expected Result  | Verify you are redirected to the sign-up page                                                                               |
+| Priority         | 🟨                                                                                                                           |
 
-## . Check your email for password reset screen (addidtional functions)
+## 5. Login Page - Forgot Password option
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the additional buttons on the page work as expected |
-|Step(s) | 1. test the "resend" button, 2. test the "back to login button" |
-| Expected Result | The buttons work as expected |
-| Priority | 🟨 |
+| ID               | T05                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| Test Description | Verify that you are able to change your password                                              |
+| Step(s)          | **1.** On the login page, search for the text "Forgot Password?" <br>**2.** Click on the text |
+| Expected Result  | You should be redirected to a page to requesting your e-mail to reset your password           |
+| Priority         | 🟨                                                                                             |
 
-## . Success message screen(for psasword reset)
+## 6. Forgot Password Page - Login Option
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the password hsa been sucessfully changed |
-|Step(s) | 1. login with new password |
-| Expected Result | The user is able to login with their new password  |
-| Priority | 🟨 |
+| ID               | T06                                                                     |
+| ---------------- | ----------------------------------------------------------------------- |
+| Test Description | Verify that the "Back to Login" redirects to the login page             |
+| Step(s)          | **1.** On the forgot password page, click on the "BACK TO LOGIN" button |
+| Expected Result  | You should be back on the login screen                                  |
+| Priority         | 🟨                                                                       |
 
-## . Company/Job seeker selection screen
+## 7. Forgot Password Page - Form Submission
 
-| ID | T03 |
-| -- | --- |
-| Test Description | Verify that clicking the adjacent will send you to the correct page |
-|Step(s) | **1.** click company, **2.** click job seeker  |
-| Expected Result | When clicking "Company" the company's page loads. When clicking "Job Seeker" the user's page loads  |
-| Priority | 🟥 |
+| ID               | T07                                                                                                                                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify the on-app process after forgot password form submission                                                                                                                                                            |
+| Step(s)          | **1.** On the forgot password page, in the e-mail field, fill-in your e-mail and click on the button "RESET PASSWORD"<br>**2.** You should be redirected on a page on which you should press the button "OPEN YOUR E-MAIL" |
+| Expected Result  | The app should prompt your operating system to open e-mails with a specific app, or open your favourite e-mail app                                                                                                         |
+| Priority         | 🟨                                                                                                                                                                                                                          |
 
-### **User Side**
+## 8. Company/Job Seeker Selection Page
 
-## . Create an account screen
+| ID               | T08                                                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Test Description | Verify that clicking an option sends you to the related option form                                                                  |
+| Step(s)          | **1.** Click on "Company" option and verify first expected result **2.** Click "Job Seeker" option and verify second expected result |
+| Expected Result  | **1.** The form contains the "Company name" input field. **2.** The form contains the "Full Name" input field.                       |
+| Priority         | 🟥                                                                                                                                    |
 
-| ID | T04 |
-| -- | --- |
-| Test Description | Verify that the user can successfully create an account |
-|Step(s) | **1.** enter full name, **2.** enter email, **3.** enter password, **4.** click continue |
-| Expected Result | The user has successfully signed in, all their information is saved |
-| Priority | 🟥 |
+## 9. Register Page - "Show password"
 
-## . Create an account screen (additional functions)
+| ID               | T09                                                                                                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure the user can view the password he typed                                                                                                           |
+| Step(s)          | **1.** On the first registration page, enter a random string in the password field<br>**2.** Click on the icon situated on the right of the password field. |
+| Expected Result  | The string should be displayed as a readable string rather than dots                                                                                        |
+| Priority         | 🟨                                                                                                                                                           |
 
-| ID | T04 |
-| -- | --- |
-| Test Description | Verify that the additional buttons on the page work as expected |
-|Step(s) | click the "show password" button, click the "login" button |
-| Expected Result | The buttons work as expected |
-| Priority | 🟨 |
+## 10. Soft Skills Selection Page
 
-## . Soft skills selection screen
+| ID               | T10                                                                                                                                                                                                                                                        |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify the user is able to select 15 soft skills                                                                                                                                                                                                           |
+| Step(s)          | **1.** On the soft skills selection page, choose one soft skill and the "CONTINUE" button, and check first expected result<br>**2.** Choose fifteen soft skills and the "CONTINUE" button, and check second expected result<br>**3.**Choose 16 soft-skills |
+| Expected Result  | **1.** An error indicating not enough choices were done should be triggered<br>**2.** We should go on the next page result<br>**3.** Not more than 15 soft skills should be selected at once.                                                              |
+| Priority         | 🟥                                                                                                                                                                                                                                                          |
 
-| ID | T05 |
-| -- | --- |
-| Test Description | Verify that the user is able to select 1 to 15 soft skills  |
-|Step(s) | 1. select 1 to 15 soft skills |
-| Expected Result | The selected soft skills are added to your profile |
-| Priority | 🟥 |
+## 11. Soft Skills Ranking Page
 
-## . Ranking soft skills screen
+| ID               | T11                                                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the user can rank their soft skills according to their preferences                                                  |
+| Step(s)          | **1.** On the soft skills ranking page, rank the soft skills from strongest to wickest<br>**2.** Click on the "CONTINUE" button |
+| Expected Result  | The soft skills are displayed according to the given rank                                                                       |
+| Priority         | 🟥                                                                                                                               |
 
-| ID | T06 |
-| -- | --- |
-| Test Description | Verify that the user can rank their soft skills according to thir preferences |
-|Step(s) | 1. rank the soft skills from "I believe this is my strongest soft skill" to "I'm not so confident on this soft skill", 2. click continue |
-| Expected Result | The soft skills are registered according to their ranks |
-| Priority | 🟥 |
+## 12. Location Selection Page
 
-## . Location selection screen
+| ID               | T12                                                                                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that you can select your preferred job location                                                                                          |
+| Step(s)          | **1.** On the location selection page,Search for a location<br>**2.** Adjust the slider for the distance radius of research                     |
+| Expected Result  | **1.** A location can be effectively searched<br>**2.** The slider should be movable and modify the radius value indicated but, also on the map |
+| Priority         | 🟥                                                                                                                                               |
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that you can select your preferred job location |
-|Step(s) |  1. Search a location, 2. click on the map, 3. adjust the slider |
-| Expected Result | The location I entered is registered and I get job reccommendations from that area |
-| Priority | 🟥 |
+## 13. Profile picture selection Page
 
-## . Profile picture selection screen
+| ID               | T13                                                                                                                                              |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Test Description | Verify that you are able to select a profile picture                                                                                             |
+| Step(s)          | **1.** On the profile picture selection page, select one of the images of the animals by clicking on it<br>**2.** Click on the "CONTINUE" button |
+| Expected Result  | The animal clicked is set as the user's profile picture                                                                                          |
+| Priority         | 🟥                                                                                                                                                |
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that you are able to select a profile picture |
-|Step(s) | 1. select an animal, 2. click continue  |
-| Expected Result | The animal clicked is set as the users profile picture |
-| Priority | 🟥 |
+## 14. Job Seeker Home Screen - Bubble Interactions & Popups
 
-## . Bubble clicking
-
-| ID | T07 |
-| -- | --- |
+| ID               | T14                                                                             |
+| ---------------- | ------------------------------------------------------------------------------- |
 | Test Description | Verify that when you click on a "job bubble", the company's job listing appears |
-|Step(s) | 1. click on a bubble |
-| Expected Result | The company's job listing appears in a small window with the option to apply or deny the job |
-| Priority | 🟥 |
+| Step(s)          | **1.** On the job seeker homepage, click on one of the displayed bubbles        |
+| Expected Result  | The company's job listing should appear in a small popup                        |
+| Priority         | 🟥                                                                               |
 
-## . Company picture swapping
+## 15. Job Seeker Home Screen Popups- Company Pictures Carousel
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Make sure that you can swap between the company's images |
-|Step(s) | 1. swipe through the images from left to right, and then from right to left  |
-| Expected Result | You can swipe between the company's images  |
-| Priority | 🟧 |
+| ID               | T15                                                                                                                                     |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Make sure that you can swap between the company's carousel images                                                                       |
+| Step(s)          | **1.** On the job seeker homepage, when a job popup is opened, swipe through the images from left to right, and then from right to left |
+| Expected Result  | You can swipe between the company's images                                                                                              |
+| Priority         | 🟧                                                                                                                                       |
 
-## . Apply/Deny function
+## 16. Job Seeker Home Screen Popups - Apply/Deny function
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that when you click "apply" the user has applied successfully and when you click "deny" the user has denied the request successfully|
-|Step(s) | 1.cick "appy", 2. verify that the user has applied. 3.Click "deny" the user has denied the request |
-| Expected Result | The app recognises when the user has accepted or denied the  request |
-| Priority | 🟥 |
+| ID               | T16                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that when you click "apply" the user has applied successfully and when you click "deny" the user has denied the request successfully                          |
+| Step(s)          | **1.** Click on the "APPLY" button<br>**2.** Click on the "DENY" button                                                                                              |
+| Expected Result  | **1.** The "APPLY" button is not clickable anymore but "DENY" is clickable<br>**2.** The "dDENY" button is not clickable anymore and "APPLY" becomse clickable again |
+| Priority         | 🟥                                                                                                                                                                    |
 
-## . Certifications page
+## 17. Messages page
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the certifications function work as expected  |
-|Step(s) | 1.test all the specification options, 2. create a "dummy" test to complete 3. see the results 4.check certifications page if it gets added after |
-| Expected Result | The certifications page and function works as expected |
-| Priority | 🟧 | <-----
+| ID               | T17                                                                                                                                                                                                                                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the messaging aspect of the app works as expected                                                                                                                                                                                                                                                                |
+| Step(s)          | **1.** Test messaging user from company side by writing any text in the message field and clicking on the send button and check the expected result<br>**2.** Test messsaging a company from the user side by writing any text as a reply in the message field and clicking on the send button and check the expected result |
+| Expected Result  | On both sides, the result should be the adddition of a message on the interface in which you are writing, but not on the company side as there is no back-end.                                                                                                                                                               |
+| Priority         | 🟧                                                                                                                                                                                                                                                                                                                            |
 
-## . Messages page
+## 18. Messages Page Features
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the messaging aspect of the app works as expected |
-|Step(s) | 1.Test messaging user from company side, 2.vise versa |
-| Expected Result | Messaging between the 2 parties works as expected |
-| Priority | 🟧 |
+| ID               | T18                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the additional functions in the messages page work as expected                                                                                                                                                                                                                                                                                           |
+| Step(s)          | **1.** Test the search bar and check the first expected result<br>**2.** Test the "CREATE NEW MESSAGE" button and check the second expected result<br>**3.** Click on the "SETTINGS" button and check the third expected result<br>**4.** Test the delete function message function by long-clicking on a specfic message and click on the "Delete message" option   |
+| Expected Result  | **1.** The search bar displays messages containing content from the user or the user profile itself if you are in the conversation's list page.<br> **2.** An empty message page should appear, prompting the user to message.<br>**3.** This should display a dropdown menu containing some options.<br>**4.** The message clicked should dissapear from you screen |
+| Priority         | 🟥                                                                                                                                                                                                                                                                                                                                                                    |
 
-## . Messages page(additional functions)
+## 19. Personal Information page
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the additional functions in the messages page work as expected |
-|Step(s) | 1.test the search bar, 2.test the create new message button 3. test the settings button 4. test the deleting messages function |
-| Expected Result | All the additional functions word as expected |
-| Priority | 🟥 |
+| ID               | T19                                                                                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that you can change and save the personal information of the user successfully                                                                                        |
+| Step(s)          | **1.** Change the fullname & Click on "SAVE" button<br>**2.** Change the password & Click on "SAVE" button<br>**3.** Change the profile picture & Click on the "SAVE" button |
+| Expected Result  | **1.** The displayed information should change by the one provided in all cases                                                                                              |
+| Priority         | 🟨                                                                                                                                                                            |
 
-## . Personal information page
+## 20. Notifications page
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that you can change and save the personal information of the user successfully |
-|Step(s) | 1.change the fullname, 2.change the password, 3. change the profile picture |
-| Expected Result | Information is changed and saved successfully |
-| Priority | 🟨 |
+| ID               | T20                                                                                                                                                       |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the notification options work as expected                                                                                                     |
+| Step(s)          | **1.** Verify "Notifications" button can be disabled by clicking on it.<br>**2.**Reclick on the disabled option and test for all the buttons on the page. |
+| Expected Result  | **1.** The button should be colored in grey                                                                                                               |
+| Priority         | 🟨                                                                                                                                                         |
 
-## . Notifications page
+## 21. Logout function
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the notification options work as expected  |
-|Step(s) | 1.test "notifications", 2. test "new job alert" 3. test "message from company" 4.test "new matches" 5.test "application rejection" 6/ test "new certification available" |
-| Expected Result | The notifications are able to be adjusted accordingly|
-| Priority | 🟨 |
+| ID               | T21                                                                                          |
+| ---------------- | -------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the job seeker/company is able to logout out of their account                    |
+| Step(s)          | **1.** From the profile, click on the "LOGOUT" button<br>**2.** Confirm by clicking on "YES" |
+| Expected Result  | **1.** The user comes back on the homepage for logged out users                              |
+| Priority         | 🟧                                                                                            |
 
-## . Logout function
+## 22. Liked Jobs Page
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the user/company is able to logout out of their account |
-|Step(s) | 1.click logout from the profile page, 2. click yes |
-| Expected Result | The user/company can successfully log out |
-| Priority | 🟧 |
+| ID               | T22                                                                                                                                 |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that when you like a job it shows up on your "Liked Jobs" page                                                               |
+| Step(s)          | **1.** Go on the candidate homepage to like a job<br>**2.** Go back on the "Liked Jobs" page and ensure it is displayed in the list |
+| Expected Result  | The job previously liked should be addded to the "Liked Jobs" page.                                                                 |
+| Priority         | 🟥                                                                                                                                   |
 
-## . Jobs Liked page
- 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that when you like a job it shows up on your "jobs liked" page |
-|Step(s) | 1. like a job, 2. check if it's added to the "jobs liked" page |
-| Expected Result | Liked jobs are added to the "jobs liked" page |
-| Priority | 🟥 |
+## 23. My skills page
 
-## . My skills page
+| ID               | T23                                                                                                                                                                                                                                                              |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that all the skills that the user filled in when registering show up and can be changed                                                                                                                                                                   |
+| Step(s)          | **1.** Compare the skills filled in during the registration process are showing up<br>**2.** Change the order of the skills and save<br>**3.** Change the soft skills present in the list by clicking on "EDIT" and saving.                                      |
+| Expected Result  | **1** The soft skills should be the same<br>**2.** The order of the soft-skills should be changed accordingly to the newly provided order<br>**3.** The soft-skills prsent in the list should be changed accordingly to the ones provided in the new submission. |
+| Priority         | 🟧                                                                                                                                                                                                                                                                |
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that all the skills that the user has show up and can be changed |
-|Step(s) | 1. check if all the skills show up, 2. change the around |
-| Expected Result | The skills are present and can be changed accordingly |
-| Priority | 🟧 |
+## 24. Company Registration Page - Information
 
-### **Company side**
+| ID               | T24                                                                                                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that a company can create an account                                                                                                                     |
+| Step(s)          | **1.** Enter company name, the company registration number, the e-mail used for verifications and the wanted password<br>**2.** Click on the "CONTINUE" button. |
+| Expected Result  | **1.** A company should be created with the provided information                                                                                                |
+| Priority         | 🟥                                                                                                                                                               |
 
-## . Create an Account screen
+## 25. Profile Picture Page
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the company can create an account |
-|Step(s) | 1.Enter company name, 2.enter company registration number, 3.enter e-mail, 4. enter password |
-| Expected Result | The company can successfully create an account |
-| Priority | 🟥 |
+| ID               | T25                                                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the company can add their company logo                                                                                |
+| Step(s)          | **1.** Upload a picture on the "Profile Picture" page from the gallery or the camera.<br>**2.** Go on the Profile of the company. |
+| Expected Result  | The profile of the company should display the submitted logo as their profile picture on their profile page                       |
+| Priority         | 🟥                                                                                                                                 |
 
-## . Profile picture screen 
+## 28. Ranking screen
 
-| ID | T07 |
-| -- | --- |
-| Test Description | Verify that the company can add their company logo |
-|Step(s) | 1. Add the logo, 2. check result |
-| Expected Result | The company logo has been added |
-| Priority | 🟥 |
+| ID               | T07 |
+| ---------------- | --- |
+| Test Description |     |
+| Step(s)          |     |
+| Expected Result  |     |
+| Priority         | 🟥   |
 
-## . Ranking screen
+## 29. Settings
 
-| ID | T07 |
-| -- | --- |
-| Test Description |  |
-|Step(s) |  |
-| Expected Result |  |
-| Priority | 🟥 |
-
-
-## . Settings
-
-| ID | T08 |
-| -- | --- |
-| Test Description | Verify that the settings work as expected  |
-|Step(s) |  |
-| Expected Result |  |
-| Priority | 🟨 |
-
-
-
-
-
-
-| Created on | Updated on | 
-| ---------- | ---------- |
-| 05/18/2024 | 05/31/2024 | 
+| ID               | T08                                       |
+| ---------------- | ----------------------------------------- |
+| Test Description | Verify that the settings work as expected |
+| Step(s)          |                                           |
+| Expected Result  |                                           |
+| Priority         | 🟨                                         |
