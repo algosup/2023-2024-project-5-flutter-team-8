@@ -10,7 +10,6 @@
   - [I. Introduction](#i-introduction)
     - [1. Purpose](#1-purpose)
     - [2. Scope](#2-scope)
-    - [3. Definitions, Acronyms, and Abbreviations](#3-definitions-acronyms-and-abbreviations)
   - [II. Conventions](#ii-conventions)
     - [1. Coding Standards](#1-coding-standards)
     - [2. Naming Conventions](#2-naming-conventions)
@@ -18,7 +17,6 @@
   - [III. System Overview](#iii-system-overview)
     - [1. System Architecture](#1-system-architecture)
     - [2. Technology Stack](#2-technology-stack)
-    - [3. Key Components](#3-key-components)
   - [IV. Application Architecture](#iv-application-architecture)
     - [1. Design Patterns](#1-design-patterns)
     - [2. State Management](#2-state-management)
@@ -67,7 +65,7 @@
 ### 1. Purpose
 
 <!-- Outline the purpose of the document and the application. -->
-This document is meant to explain how to create the application by implementing the features detailed in the [functional specification]().
+This document is meant to explain how to create the application by implementing the features detailed in the [functional specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md).
 The purpose of the application is to create a new way of recruiting people based on their soft skills and not their technical skills. It is also totally anonymized for better equality between the potential candidates.
 
 ### 2. Scope
@@ -76,10 +74,6 @@ The purpose of the application is to create a new way of recruiting people based
 This project should be done using Flutter and be compatible with all types of devices.
 
 This implementation should be only targeting the front-end at first and should offer an interface to candidates, and companies but also "We are evolution." as an administrator.
-
-### 3. Definitions, Acronyms, and Abbreviations
-
-<!-- Provide definitions for any technical terms, acronyms, and abbreviations used in the document. -->
 
 ## II. Conventions
 
@@ -160,7 +154,7 @@ Format comments like sentences for better understanding:
 ```Dart
 // This comment explain ...
 ```
-Avoid using block comments for documentation
+Avoid using block comments for documentation.
 
 ### 2. Naming Conventions
 
@@ -213,42 +207,96 @@ Our GitHub repository will be created following the architecture hereunder:
 
 ```
 Root
-+---documents
-| +---functional_specification
-| | +---img
-| | \---functional_specification.md
-| +---technical_specification
-| | \---technical_specification.md
-| +---quality_assurance
-| | \---test_plan.md
-| | \---test_cases.md
-| +---management
-| | +---weekly_reports
-| | | \---weekly_report_cumulative.md
-| | | \---weekly_report_1.md
-| | | \--- ...
-| +---communication
-| +---user_manual
-| | \---user_manual.pdf
-+---src
-| +---.dart_tool
-| +---.idea
-| +---android
-| +---build
-| +---ios
-| +---lib
-| | \---login.dart
-| | +---candidate
-| | +---company
-| +---linux
-| +---macos
-| +---web
-| +---windows
-\---README.md
-\---.gitignore
+│   .gitignore
+│   CODE_OF_CONDUCT.md
+│   LICENSE
+│   README.md
+│
+├───.github
+│       documentation_report.yml
+│       feature_request.yml
+│       pull_request.yml
+│       software_bug_report.yml
+│
+├───documents
+│   ├───functional_specification
+│   │   │   adopte_1_candidat_mockup.pdf
+│   │   │   functional_specification.md
+│   │   │
+│   │   └───img
+|   |       |
+│   │       └───app_img
+│   │
+│   ├───management
+│   │   │   management_artifacts.md
+│   │   │   project_charter.md
+│   │   │
+│   │   ├───pictures
+│   │   │
+│   │   └───weekly_reports
+│   │           cumulative.md
+│   │           week1.md
+│   │           week2.md
+│   │           week3.md
+│   │           week4.md
+│   │           week5.md
+│   │           week6.md
+│   │
+│   ├───quality_assurance
+│   │       test_cases.md
+│   │       test_plan.md
+│   │
+│   └───technical_specification
+│       │   technical_specification.md
+│       │
+│       └───img
+│
+└───src
+    │   .gitignore
+    │   .metadata
+    │   analysis_options.yaml
+    │   pubspec.lock
+    │   pubspec.yaml
+    │   README.md
+    │
+    ├───android
+    │
+    ├───assets
+    │
+    ├───ios
+    │
+    ├───lib
+    │   │   constants.dart
+    │   │   database.dart
+    │   │   loading.dart
+    │   │   main.dart
+    │   │   routes.dart
+    │   │   splash_screen.dart
+    │   │
+    │   ├───login
+    │   │       checkbox.dart
+    │   │       login.dart
+    │   │
+    │   ├───redundancy
+    │   │       rectangle_button.dart
+    │   │       round_button.dart
+    │   │       text_fields.dart
+    │   │
+    │   └───signup
+    │           signup.dart
+    │
+    ├───linux
+    │
+    ├───macos
+    │
+    ├───test
+    │       widget_test.dart
+    │
+    ├───web
+    │
+    └───windows
 ```
 The architecture of the application will be in the src/lib folder, containing all the pages of both the candidate and company sides.
-<!-- list all the pages? -->
 
 ### 2. Technology Stack
 
@@ -257,14 +305,9 @@ For this project, it has been decided to use the Flutter/Dart language as well a
 - [riverpod](https://riverpod.dev/): which is a reactive caching framework for Flutter/Dart. Using declarative and reactive programming, Riverpod takes care of a large part of your application's logic for you.
 - [freezed](https://pub.dev/packages/freezed): a code generator for data-classes/unions/pattern-matching/cloning.
 - [go_router](https://pub.dev/packages/go_router): a declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens. You can define URL patterns, navigate using a URL, handle deep links, and a number of other navigation-related scenarios.
-The Project would be held on GitHub for better development and sharing in the project team.
-The IDE use for this project would be VSCode.
+
+The Project would be held on GitHub for better development and sharing in the project team. \The IDE IDE used for this project would be VSCode.
 To simulate the back-end, it is recommended to use [PocketBase](https://pocketbase.io/).
-
-### 3. Key Components
-
-<!-- Describe the key components of the front-end (e.g., UI components, state management). -->
-
 
 ## IV. Application Architecture
 
@@ -432,7 +475,7 @@ class SoftSkills {
 ### 2. Local Storage
 
 <!-- Describe any local storage mechanisms used (e.g., shared_preferences, SQLite). -->
-The local storage would be done on the device memory since there is no real backend asked for the project. However, it could be simulated with an open source backend consisting of embedded database named pocketbase.
+The local storage would be done on the device memory since there is no real backend asked for the project. However, it could be simulated with an open-source backend consisting of embedded database named pocketbase. \
 This Storage would allow the development team to simulate a User on both the candidate and company sides. It would also help the Quality Assurance team to do tests, such as the account creation.
 
 ## VI. Functional Requirements
@@ -441,10 +484,11 @@ This Storage would allow the development team to simulate a User on both the can
 
 <!-- Describe the user authentication process and integration with back-end services. -->
 For the user authentication, only the front end is asked. Two profiles would then be set beforehand, one for the company and one for the user. \
-To see if the authentification is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
-For this, a textfield and a controller would be used for simpler usage. \
-The mail Textfield will be checked first to know which password is the right one, if the authentification is passed the password textfield is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
+To see if the authentication is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
+For this, a ``Textfield`` and a controller would be used for simpler usage. \
+The mail ``Textfield`` will be checked first to know which password is the right one, if the authentification is passed the password ``Textfield`` is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
 There is a diagram to understand it better:
+
 ![authentication_diagram](img/authentification_check.png)
 
 The code in the router file would have a builder like this:
@@ -472,7 +516,7 @@ class AuthService {
 }
 final AuthService authService = AuthService();
 ```
-Finally, textfields would be similar to this example (``obscureText`` only for the password):
+Finally, ``TextField``s would be similar to this example (``obscureText`` only for the password):
 ```Dart
 _passwordController.value;
 
@@ -486,11 +530,37 @@ TextField(
 ### 2. User Profile Management
 
 <!-- Detail how users can manage their profiles (e.g., update soft skills, personal info). -->
-To access the User Profile you should click on the bottom right icon (![alt text](../functional_specification/img/app_img/profile_logo.png)) in the bottomBar provided by Flutter.
-When on the User Profile Page the icon changes to this ![alt text](../functional_specification/img/app_img/profile_logo_black.png) implying you are on the right page.
+To access the User Profile you should click on the bottom right icon in the ``bottomBar`` provided by Flutter.
+When on the User Profile Page the icon changes to a black version of the same icon, implying you are on the right page.
+
+|Names|Visuals|
+|-----|-------|
+|Profile Logo|![profile logo](../functional_specification/img/app_img/profile_logo.png)|
+|Profile Logo Black|![profile logo black](../functional_specification/img/app_img/profile_logo_black.png)|
+
 It would look like this:
 ```Dart
-
+Scaffold(
+  bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'Home',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.business),
+        label: 'Business',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.school),
+        label: 'School',
+      ),
+    ],
+    currentIndex: _selectedIndex,
+    selectedItemColor: Colors.amber[800],
+    onTap: _onItemTapped,
+  ),
+);
 ```
 When on the page, six buttons will be displayed to access respectively:
 - Personal Information
@@ -642,16 +712,14 @@ The certification page would contain The big categories of certification which w
 - Social competences
 - Agile competences
 Each of them would be a ``container`` with round borders, an image in the center of it and a name under it.
-```Dart
-// container, borderRadius, etc
-```
+
 The images for the big certification would be:
 |Names|Pictures|
 |-----|--------|
-|Leadership|![alt text](img/leadership_logo.png)|
-|Efficiency|![alt text](img/efficiency_logo.png)|
-|Social competences|![alt text](img/communication_logo.png)|
-|Agile competences|![alt text](img/agile_logo.png)|
+|Leadership|![leadership logo](img/leadership_logo.png)|
+|Efficiency|![efficiency logo](img/efficiency_logo.png)|
+|Social competences|![communication logo](img/communication_logo.png)|
+|Agile competences|![agile logo](img/agile_logo.png)|
 
 When clicked, it would open the corresponding page with the certification corresponding to it. It would be a ``List<Certification>`` named certifications.
 
@@ -661,7 +729,7 @@ There, all the certifications would be clickable to see a better definition, pas
 
 #### 2.4. Notifications
 
-The notification page would be a list of six ``sizedBox``s with ``BorderRadius``. They would contain each, the name of the notification (see [Functional Specification]()) and a switch to disable them if wanted (All the notifications would be set as true at the beginning).
+The notification page would be a list of six ``sizedBox``s with ``BorderRadius``. They would contain each, the name of the notification (see [Functional Specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md)) and a switch to disable them if wanted (All the notifications would be set as true at the beginning).
 The only one that would differ would be the first one, it would contain a leading bell icon, the name would be Notifications, and also a switch. This one particularly would disable all of the Notifications in one click.
 Here is an example of a switch:
 ```Dart
@@ -677,7 +745,7 @@ Switch(
   },
 );
 ```
-At the bottom of the page would be an ``ElevatedButton`` to save the changes made during the time the page is open. However, if the page is closed or returned to a previous one whereas the button is not clicked, the changes would not be taken in count and the previous settings would be set as the previous one.
+At the bottom of the page would be an ``ElevatedButton`` to save the changes made during the time the page is open. However, if the page is closed or returned to a previous one whereas the button is not clicked, the changes would not be taken into account and the previous settings would be set as the previous one.
 
 #### 2.5. Jobs Liked
 
@@ -695,7 +763,7 @@ class JobsLiked {
 
 #### 2.6. Logout
 
-Once the application is not needed anymore, or to close the account, a logout button is available in the profile user account. It is a simple `ElevatedButton` that leads to the login page when clicked. It should close all the pages of the application open and you could not go back to the page before with the arrow of your smartphone. To get access to the application again, the login should be done once more. If you close the application and open it again, it will not send you to the login page if you did not logout before leaving the application.
+Once the application is not needed anymore, or to close the account, a logout button is available in the profile user account. It is a simple `ElevatedButton` that leads to the login page when clicked. It should close all the pages of the application open and you could not go back to the page before with the arrow of your smartphone. To get access to the application again, the login should be done once more. If you close the application and open it again, it will not send you to the login page if you did not log out before leaving the application.
 
 ![logout_diagram](img/logout_diagram.png)
 
@@ -715,36 +783,40 @@ Here is a diagram for better comprehension:
 
 <!-- Describe the Tinder-like swiping interface for browsing job offers. -->
 Once on the Home screen, the job offer matching is done. It should appear some bubbles on the screen, depending on the job offers you might apply. The bubbles are designed with a circle around the company's logo.
-When a bubble is cliqued. A pop-up appears on the screen, containing the logo, description of the job, and date for the upper part, whereas, in the bottom part, two buttons would be displayed, one to deny the match, and another to accept it.
+When a bubble is clicked. A pop-up appears on the screen, containing the logo, description of the job, and date for the upper part, whereas, in the bottom part, two buttons would be displayed, one to deny the match, and another to accept it.
 Here are the visuals:
 |Names|Logos|
 |-----|-----|
 |Deny |![denied_logo](../functional_specification/img/app_img/denied_logo.png)|
 |Apply|![apply_logo](../functional_specification/img/app_img/apply_logo.png)|
 
-For this pattern, the Widget use would be ````.
-<!-- To search -->
+For this pattern, the Widget use would be ``Dialog``.
 Moreover, when the user has the pop-up, the possibility to swipe to complementary options is available. By swiping he could see more images from his potential workplace.
-To swipe, the Widget used would be ````.
-<!-- To search -->
-Finally, if the user denies the the job offer, the bubble would just disappear, in the other case, the match would be sent to the [jobs liked section](#25-jobs-liked) on the profile page.
+To swipe, the Widget used would be ``Draggable``.
+Finally, if the user denies the job offer, the bubble would just disappear, in the other case, the match would be sent to the [jobs liked section](#25-jobs-liked) on the profile page.
 
 ### 5. Notifications
 
 <!-- Detail how notifications are handled within the application (e.g., local notifications). -->
-The notification would be little pop-ups, appearing on the top of the screen. There are many types of them that you can see in the [functional specification]().
-To create this, the Widget ```` would be used.
-Here is an example of how to use it:
-```Dart
-// Search for example
+The notifications would be pop-up bars, appearing on the top of the screen. There are many types of them that you can see in the [functional specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md).
+To create this, another package would be needed, it is called ``flutter_local_notifications``.
+
+It could be installed by entering these command lines in the VSCode terminal, at the root of your project:
+```terminal
+flutter pub add flutter_local_notifications
 ```
+Once it is installed you can check for major versions by following the same steps as for Riverpod (outdated, upgrade, get).
+
+If you want a more complete page dedicated to Go_router's installation, [here](https://pub.dev/packages/flutter_local_notifications/install) is the website page for it.
+
 The notification settings could be modified in the Profil Parameter, which refers to [2.4 Notifications](#24-notifications) for more information.
 
 If a company sends a positive answer to a job application, the user should get a notification to inform it of the advancement of his proposition. To keep a hand on the advancement, a notification would also be sent every time a new message is received, except if the user is already on the chat page, in that case, only the message would darken, to inform the user a new message isn't read.
 The two last notifications a user could receive are the certification and job offer ones.
 For the certification, the user would receive a notification in case the certification is needed for his skills. For example, if a new certification is available for a soft skill not selected by the user, he would not be informed. However, if the certification is about one of their soft skills, a notification would be sent as a pop-up bar.
 Finally, for every three new job offers, a certification would be sent to the user. Like this, they could be informed without being harrassed by notifications.
-<!-- Diagram? -->
+
+![notifications_diagram](img/notifications_diagram.png)
 
 ## VII. User Interface Design
 
@@ -753,9 +825,9 @@ Finally, for every three new job offers, a certification would be sent to the us
 <!-- Detail the UI components used and their purposes. -->
 The UI components are used to simplify the development team's work by reducing the time of the design creation and focusing more on the algorithm part of the application. To do so, a lot of the icons predefined in the mock-up will be used as images and not created by hand by the development team.
 Moreover, the mock-up is the first version of the application and the ideal view we want it to be, it could, however, be changed during the creation phase, since the time to do the mock-up was short and if new ideas come to mind afterward, they could be added to the last version of the application.
-To see the mock-up or a better definition of the UI designed by the program manager, here are the links to:
-- [The Functional Specification]()
-- [The Application Mock-up]()
+To see the mock-up or a better definition of the UI designed by the program manager, here are the links for:
+- [The Functional Specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md)
+- [The Application Mock-up](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/adopte_1_candidat_mockup.pdf)
 
 ### 2. Themes and Styles
 
@@ -844,14 +916,14 @@ On macOS:
 
 #### 3.2. Flutter Installation
 
-Flutter packages depend on your open source, to install it you can follow the guide provided by flutter.dev.
+Flutter packages depend on your open source, to install it you can follow the guide provided by "flutter.dev".
 To access easily the page follow the links hereunder:
 
 **On Windows**: [Flutter.dev](https://docs.flutter.dev/get-started/install/windows/mobile?tab=vscode)
 
 **On macOS**: [Flutter.dev](https://docs.flutter.dev/get-started/install/macos/mobile-ios?tab=vscode)
 
-**On Linux**: [Flutter.dev]
+**On Linux**: [Flutter.dev](https://docs.flutter.dev/get-started/install/linux/android?tab=vscode)
 
 Some VSCode extensions could be useful:
 - **Flutter**
@@ -984,7 +1056,7 @@ Example:
 would become
 /test -> sign_up_test.dart
 ```
-For further information, please refer to the [test plan]().
+For further information, please refer to the [test plan](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/quality_assurance/test_plan.md).
 
 To implement unit tests, a new dependency should be added as well:
 ```terminal
@@ -1029,21 +1101,37 @@ void main() {
 <!-- Describe the strategy for front-end application updates and upgrades. -->
 As this project only has six weeks in length, the development team would do its best to create the application in the most complete way possible.
 All the things that wouldn't be able to be implemented to the release date would be considered as an update for the future.
-Moreover, the most important upgrade would be the backend, which will be added by [We are Evolution.](), the company hiring our team.
+Moreover, the most important upgrade would be the backend, which will be added by [We are Evolution.](https://www.we-are-evolution.com/), the company hiring our team.
 
 ## X.  Appendices
 
 ### 1. Glossary
 
 <!-- Provide a glossary of terms used in the document. -->
-
+|Terms|Definitions|Links|
+|-----|-----------|-----|
+|back-end|The part of a computer system, piece of software, etc., where data is stored or processed rather than the parts that are seen and directly used by the user.|[Cambridge](https://dictionary.cambridge.org/fr/dictionnaire/anglais/back-end)|
+|dart|A programming language designed by Lars Bak and Kasper Lund and developed by Google.[8] It can be used to develop web and mobile apps as well as server and desktop applications.|[Wikipedia](https://en.wikipedia.org/wiki/Dart_(programming_language))|
+|Flutter|An open-source UI software development kit created by Google. It can be used to develop cross platform applications from a single codebase for the web,[4] Fuchsia, Android, iOS, Linux, macOS, and Windows.|[Wikipedia](https://en.wikipedia.org/wiki/Flutter_(software))|
+|framework|A system of rules, ideas, or beliefs that is used to plan or decide something.|[Cambridge](https://dictionary.cambridge.org/dictionary/learner-english/framework)|
+|front end|The development of the graphical user interface of a website.|[Wikipedia](https://en.wikipedia.org/wiki/Front-end_web_development)|
+|Notifier|Are a type of plugin used to configure a notification for a recipient.|[Gravitee](https://docs.gravitee.io/ae/userguide_notifiers.html)|
+|open-source|Having the source code freely available for possible modification and redistribution.|[Merriam-Webster](https://www.merriam-webster.com/dictionary/open-source#:~:text=a,or%20promoting%20open%2Dsource%20software)|
+|pop-up|A small window or banner that appears in the foreground while browsing a website.|[GetResponse](https://www.getresponse.com/blog/what-are-popups)|
+|Provider|A higher order component provided to us by the Context object.|[Patterns](https://www.patterns.dev/vanilla/provider-pattern/#:~:text=A%20Provider%20is%20a%20higher,we%20want%20to%20pass%20down.)|
+|soft skills|A personal attribute that supports situational awareness and enhances an individual's ability to get a job done.|[TechTarget](https://www.techtarget.com/searchcio/definition/soft-skills#:~:text=A%20soft%20skill%20is%20a,people%20skills%20or%20emotional%20intelligence.)|
 
 ### 2. References
 
 <!-- List references and resources used in the preparation of the document. -->
-**Flutter Courses**
+**Flutter Courses**: https://github.com/sgruhier
+
 **Flutter Documentation**: https://docs.flutter.dev/
-**PocketBase**:
-**Riverpod**:
-**Functional Specification**:
-**Test Plan**:
+
+**PocketBase**: https://pocketbase.io/
+
+**Riverpod**: https://riverpod.dev/
+
+**Functional Specification**: https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md
+
+**Test Plan**: https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/quality_assurance/test_plan.md
