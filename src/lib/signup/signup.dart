@@ -155,7 +155,7 @@ class _SignupState extends State<Signup> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              'You don\'t have an account yet?',
+                              'You already have an account?',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
@@ -163,13 +163,13 @@ class _SignupState extends State<Signup> {
                             ),
                             TextButton(
                               onPressed: () {
-                                GoRouter.of(context).go('/signup');
+                                GoRouter.of(context).go('/login');
                               },
                               style: ButtonStyle(
                                 overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
                               ),
                               child: const Text(
-                                'Sign Up',
+                                'Log In',
                                 style: TextStyle(
                                   color: purpleColor,
                                   decoration: TextDecoration.underline,
@@ -261,7 +261,7 @@ class ContinueButton extends RoundButton {
             if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
               users.add(User(fullName: fullName, email: email, password: password));
               // TODO: Fill with an address
-              GoRouter.of(context).push('/login');
+              GoRouter.of(context).push('/selectSoftskills');
             } else {
               onError('Please fill out all fields correctly');
             }
