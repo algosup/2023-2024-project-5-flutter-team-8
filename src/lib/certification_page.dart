@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:adopte_1_candidat/redundancy/navigation_bar.dart';
 import 'package:adopte_1_candidat/redundancy/text_fields.dart';
 
 import 'constants.dart';
@@ -17,6 +18,7 @@ class CertificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final TextEditingController _controller;
+    _controller = TextEditingController();
 
     return Scaffold(
       body: Container(
@@ -27,14 +29,27 @@ class CertificationPage extends StatelessWidget {
               width: size.width,
               height: 48,
             ),
-            const CustomTextField(
-              controller: _controller, 
-              hintText: 'Search',
-              suffixIcon: Icon(Icons.search),              
+            Container(
+              child: TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+
+                    }, 
+                    icon: const Icon(Icons.display_settings)
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10)
+                  )
+                ),              
+              ),
             ),
             SizedBox(
               width: size.width,
-              height: 96,
+              height: 80,
             ),
             const Row(
               children: [
@@ -170,13 +185,7 @@ class CertificationPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'home'),
-          NavigationDestination(icon: Icon(Icons.home), label: 'home'),
-          NavigationDestination(icon: Icon(Icons.home), label: 'home'),
-        ],
-      ),
+      bottomNavigationBar: BottomNavBar(selectedIndex: 2),
     );
   }
 }
