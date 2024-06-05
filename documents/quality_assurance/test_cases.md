@@ -145,7 +145,7 @@ Test priority are indicated following the the below color-code:
 | Test Description | Make sure that you can swap between the company's carousel images                                                                       |
 | Step(s)          | **1.** On the job seeker homepage, when a job popup is opened, swipe through the images from left to right, and then from right to left |
 | Expected Result  | You can swipe between the company's images                                                                                              |
-| Priority         | 🟧                                                                                                                                       |
+| Priority         | 🟥                                                                                                                                       |
 
 ## 16. Job Seeker Home Screen Popups - Apply/Deny function
 
@@ -153,19 +153,19 @@ Test priority are indicated following the the below color-code:
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Test Description | Verify that when you click "apply" the user has applied successfully and when you click "deny" the user has denied the request successfully                          |
 | Step(s)          | **1.** Click on the "APPLY" button<br>**2.** Click on the "DENY" button                                                                                              |
-| Expected Result  | **1.** The "APPLY" button is not clickable anymore but "DENY" is clickable<br>**2.** The "dDENY" button is not clickable anymore and "APPLY" becomse clickable again |
+| Expected Result  | **1.** The "APPLY" button is not clickable anymore but "DENY" is clickable<br>**2.** The "DENY" button is not clickable anymore and "APPLY" becomse clickable again |
 | Priority         | 🟥                                                                                                                                                                    |
 
-## 17. Messages page
+## 17. Messages page (Company/Jobseeker)
 
 | ID               | T17                                                                                                                                                                                                                                                                                                                          |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Test Description | Verify that the messaging aspect of the app works as expected                                                                                                                                                                                                                                                                |
 | Step(s)          | **1.** Test messaging user from company side by writing any text in the message field and clicking on the send button and check the expected result<br>**2.** Test messsaging a company from the user side by writing any text as a reply in the message field and clicking on the send button and check the expected result |
 | Expected Result  | On both sides, the result should be the adddition of a message on the interface in which you are writing, but not on the company side as there is no back-end.                                                                                                                                                               |
-| Priority         | 🟧                                                                                                                                                                                                                                                                                                                            |
+| Priority         | 🟥                                                                                                                                                                                                                                                                                                                            |
 
-## 18. Messages Page Features
+## 18. Messages Page Features (Company/Jobseeker)
 
 | ID               | T18                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -174,11 +174,11 @@ Test priority are indicated following the the below color-code:
 | Expected Result  | **1.** The search bar displays messages containing content from the user or the user profile itself if you are in the conversation's list page.<br> **2.** An empty message page should appear, prompting the user to message.<br>**3.** This should display a dropdown menu containing some options.<br>**4.** The message clicked should dissapear from you screen |
 | Priority         | 🟥                                                                                                                                                                                                                                                                                                                                                                    |
 
-## 19. Personal Information page
+## 19. Personal Information page (Company/Jobseeker)
 
 | ID               | T19                                                                                                                                                                          |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Test Description | Verify that you can change and save the personal information of the user successfully                                                                                        |
+| Test Description | Verify that you can change and save the personal information of the user and the company successfully                                                                                        |
 | Step(s)          | **1.** Change the fullname & Click on "SAVE" button<br>**2.** Change the password & Click on "SAVE" button<br>**3.** Change the profile picture & Click on the "SAVE" button |
 | Expected Result  | **1.** The displayed information should change by the one provided in all cases                                                                                              |
 | Priority         | 🟨                                                                                                                                                                            |
@@ -208,7 +208,7 @@ Test priority are indicated following the the below color-code:
 | Test Description | Verify that when you like a job it shows up on your "Liked Jobs" page                                                               |
 | Step(s)          | **1.** Go on the candidate homepage to like a job<br>**2.** Go back on the "Liked Jobs" page and ensure it is displayed in the list |
 | Expected Result  | The job previously liked should be addded to the "Liked Jobs" page.                                                                 |
-| Priority         | 🟥                                                                                                                                   |
+| Priority         | 🟧                                                                                                                                   |
 
 ## 23. My skills page
 
@@ -225,32 +225,31 @@ Test priority are indicated following the the below color-code:
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Test Description | Verify that a company can create an account                                                                                                                     |
 | Step(s)          | **1.** Enter company name, the company registration number, the e-mail used for verifications and the wanted password<br>**2.** Click on the "CONTINUE" button. |
-| Expected Result  | **1.** A company should be created with the provided information                                                                                                |
+| Expected Result  | **1.** A company should be created with the provided information.                                                                                                |
 | Priority         | 🟥                                                                                                                                                               |
 
-## 25. Profile Picture Page
+## 25. Company Profile Picture Page
 
 | ID               | T25                                                                                                                               |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | Test Description | Verify that the company can add their company logo                                                                                |
 | Step(s)          | **1.** Upload a picture on the "Profile Picture" page from the gallery or the camera.<br>**2.** Go on the Profile of the company. |
-| Expected Result  | The profile of the company should display the submitted logo as their profile picture on their profile page                       |
+| Expected Result  | The profile of the company should display the submitted logo as their profile picture on their profile page.                       |
+| Priority         | 🟥                                                                                                                                 |
+## 26. Company home page
+
+| ID               | T26                                                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the companys' home page has all the prerequisites i.e search bar, job offers they created, create new job offer button                                                                                |
+| Step(s)          | **1.** Click on a job offer .<br>**2.** Test the search bar <br>**3** Click on the "add new job offer" button. |
+| Expected Result  | The company can see and interact with their added job offers, search for them and be able to create new ones through the home page                       |
 | Priority         | 🟥                                                                                                                                 |
 
-## 28. Ranking screen
+## 27. Add job offer function
 
-| ID               | T07 |
-| ---------------- | --- |
-| Test Description |     |
-| Step(s)          |     |
-| Expected Result  |     |
-| Priority         | 🟥   |
-
-## 29. Settings
-
-| ID               | T08                                       |
-| ---------------- | ----------------------------------------- |
-| Test Description | Verify that the settings work as expected |
-| Step(s)          |                                           |
-| Expected Result  |                                           |
-| Priority         | 🟨                                         |
+| ID               | T27                                                                                                                               |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Test Description | Verify that the company can effectively add a new job offer with all their available information                                                                                |
+| Step(s)          | **1.** Add a job title  .<br>**2.** Add the company name <br>**3** Add the start date and end date, <br>**4.** Add the type of contract, <br>**5.** Add the location, <br>**2.** Add a description of the job offer, <br>**6.** Add images, <br>**7.** Add the soft skills required for the job |
+| Expected Result  | The company is able to create a job offer according to the soft skills that they need, with all the information of the job offer required.                       |
+| Priority         | 🟥                                                                                

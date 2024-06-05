@@ -34,17 +34,41 @@ be functional on android, desktop and tablets.
 The app will ensure the anonymization of the user and will focus on the
 soft skills, instead of solely on diplomas and proffesional experience.
 There will be a "matching" proccess that will occur between the user and the 
-company, which then the company will be able to contact the user via email.
+company, which then the company will be able to contact the user via email. We will illustrate the operational flow of the software and provide a visual representation through a diagram. For further details, refer to the [functional specifications](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md) document.
 
 ## 2. Strategy
 
-Due to the fact that the project needs to be completed in a short time period, we will be implementing a regression testing proccess in order for us to be able to catch bugs while we are in developement of the app.
+Due to the fact that the project needs to be completed in a short time period, we will be implementing a regression testing proccess in order for us to be able to catch bugs while we are in developement of the app. 
 
-### 2.1 First steps
+### 2.1 Scope of testing
 
-The first step is to identify the impact and risk of the latest code change.That can be achieved by performing conduct code review sessions by leveraging a version control system such as git to compare the differences between the old and new code. After that, the QA lead will decide which changes should be extensively tested and which could bare with adequate testing. The determining factor will be the impact of the core features that will be affected the most.
+Testing will focus on ensuring the functionality of the application, that is, primarily focusing on the front end. The back end will be simulated as it it not required.
 
-### 2.2 Automation testing 
+#### 2.1.1 In-scope testing 
+
+- Code
+    - Absence of significant bugs
+    - Most important aspecs of the app functionality 
+    - Acceptable visual quality 
+- Documents
+    - Spelling accuracy 
+    - Coherent sentencing
+    - Typographical errors
+
+#### 2.1.2 Out of scope testing
+
+- Backend testing 
+- Full functionality of the app 
+
+### 2.2 First steps
+
+The first step is to identify the impact and risk of the latest code change.That can be achieved by performing conduct code review sessions by leveraging a version control system such as git to compare the differences between the old and new code. After that, the QA lead will decide which changes should be extensively tested and which could bare with adequate testing. The determining factor will be the impact of the core features that will be affected the most. 
+
+### 2.3 Testing Sessions 
+
+Testing sessions will include unit testing to verify the behaviors of certain key functions, methods or classes. 
+
+### 2.4 Automation testing 
 
 Automation testing is a type of testing which uses specialized tools and software to execute predefined test cases automatically.This will be key to our testing proccess considering the time constraint and the fact that manual testing takes a long time and is less effective due to human error. However manual testing will be implemented if neccessary.
 
@@ -95,8 +119,9 @@ This criteria ensures that the app meets the required quality standards before r
 
 | Task | Start Date | End Date | Duration |
 | ---- | ---------- | -------- | -------- |
-| ---- | ---------- | -------- | -------- |
-| ---- | ---------- | -------- | -------- |
+| 01 | 06/06/2024 | 06/06/2024 | 3h30m |
+| 02 | 07/06/2024 | 07/06/2024 | 3h30m |
+| 03 | 10/06/2024 | 10/06/2024 | 3h30m |
 
 ## 5. Glossary
 
