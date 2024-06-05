@@ -72,50 +72,52 @@ Testing sessions will include unit testing to verify the behaviors of certain ke
 
 Automation testing is a type of testing which uses specialized tools and software to execute predefined test cases automatically.This will be key to our testing proccess considering the time constraint and the fact that manual testing takes a long time and is less effective due to human error. However manual testing will be implemented if neccessary.
 
-
 ## 3. Test Criteria
 
 Establishing test criteria is crucial to guarantee the quality of our program before it is released. This represents some standards to which our application must conform to before being sent to customers.
 
-### 3.1 App evaluation
+### 3.3 App evaluation
 
 Here will be presented the most important assessments on how to evaluate the app:
 
-    1. Interface Intuitiveness - The interface should work as expected by the user with no significant errors or overly complex commands that would sway the usage of the app.
+1. Interface Intuitiveness - The interface should work as expected by the user with no significant errors or overly complex commands that would sway the usage of the app.
 
-    2. App performance - The speed at which pages load and tasks will be executed will be at an acceptable rate.
+2. App performance - The speed at which pages load and tasks will be executed will be at an acceptable rate.
 
-    3. App security - The app should be secure and non breachable by any third party, information about the user will remain unknown to anyone unless agreed by the user.
+3. App security - The app should be secure and non breachable by any third party, information about the user will remain unknown to anyone unless agreed by the user.
 
-    4. App relevance to company needs - The app will be constructed as per it has been described by the company We Are Evolution.
+4. App relevance to company needs - The app will be constructed as per it has been described by the company We Are Evolution.
 
-
-### 3.2 Suspension Criteria
+### 3.4 Suspension Criteria
 
 Suspencion criteria are established to define conditions under which testing activities are temporarily halted.Such conditions are:
 
-    1. Critical Bug Threshold - If a critical bug is encountered to which the app becomes non-functional,
+1. Critical Bug Threshold - If a critical bug is encountered to which the app becomes non-functional,
     a temporary suspension is put in place on testing and implementation until the bug has been resolved.
 
-    2. Recource/Environment issues - If for whatever reason there is an issue with the software or environment 
-    that is to be utilized, the testing will be suspended until the issues have been resolved.
+2. Recource/Environment issues - If for whatever reason there is an issue with the software or environment 
+that is to be utilized, the testing will be suspended until the issues have been resolved.
 
-### 3.3 Exit Criteria 
+### 3.5 Exit Criteria 
 
 Before the app can be considered finished, certain milestones need to have been met by the team.
 This criteria ensures that the app meets the required quality standards before reaching the consumer.
 
-    1. Test Case Coverage - A minimum test case coverage of 80% of all the added features and functionalities must be completed with success.
+1. Test Case Coverage - A minimum test case coverage of 80% of all the added features and functionalities must be completed with success.
 
-    2. Bug Resolution Coverage - At least 90% of bugs must be addressed and resolved before the app is considered finished.
+2. Bug Resolution Coverage - At least 90% of bugs must be addressed and resolved before the app is considered finished.
 
-    3. Documentation Completeness - Comprehensive documentation, including test plans, test cases, test results, functional specifications, and technical specifications, must be finalized and reviewed for completeness. Documentation should be easily understandable and accessible to all team members, ensuring a clear understanding of the testing process and results.
+3. Documentation Completeness - Comprehensive documentation, including test plans, test cases, test results, functional specifications, and technical specifications, must be finalized and reviewed for completeness. Documentation should be easily understandable and accessible to all team members, ensuring a clear understanding of the testing process and results.
 
+### 3.6 Test cases
 
+The test cases is a list that catalogs of tests that will be performed by priority. You can find them in the "quality_assurance" document on github or by simply clicking [here](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/quality_assurance/test_cases.md).
 
+## 4. Resources
 
+-----
 
-## 4.Test Schedules/Estimations
+## 5.Test Schedules/Estimations
 
 | Task | Start Date | End Date | Duration |
 | ---- | ---------- | -------- | -------- |
@@ -123,7 +125,7 @@ This criteria ensures that the app meets the required quality standards before r
 | 02 | 07/06/2024 | 07/06/2024 | 3h30m |
 | 03 | 10/06/2024 | 10/06/2024 | 3h30m |
 
-## 5. Glossary
+## 6. Glossary
 
 | Term | Definition | Source |
 | ---- | ---------- | ------ |
@@ -136,4 +138,4 @@ This criteria ensures that the app meets the required quality standards before r
 
 | Created on | Last Update | 
 | ---------- | ---------- |
-| 05/17/2024 | 05/22/2024 |
+| 05/17/2024 | 06/04/2024 |
