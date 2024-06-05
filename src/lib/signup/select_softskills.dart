@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../routes.dart';
 import '../constants.dart';
-import '../database.dart';
 import '../redundancy/round_button.dart';
 
 class SelectSoftSkills extends StatefulWidget {
@@ -15,10 +15,7 @@ class SelectSoftSkills extends StatefulWidget {
 
 class _SelectSoftSkillsState extends State<SelectSoftSkills> {
   final _formKey = GlobalKey<FormState>();
-  final _fullNameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  String? _emailPasswordError;
+  String? _softSkillsNumberError;
 
   final List<String> skills = [
     "Self-Confidence",
@@ -62,11 +59,10 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
     "Risk-taking"
   ];
 
+  List<String> selectedSkills = [];
+
   @override
   void dispose() {
-    _fullNameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
     super.dispose();
   }
 
@@ -85,22 +81,39 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
   }
 
   Widget chip(String label) {
-    return Chip(
-      labelPadding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 1.0),
-      label: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 12,
-        ),
+  bool isSelected = selectedSkills.contains(label);
+  return ChoiceChip(
+    showCheckmark: false,
+    labelPadding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 1.0),
+    label: Text(
+      label,
+      style: TextStyle(
+        color: isSelected ? Colors.black : Colors.grey,
+        fontSize: 12,
       ),
-      backgroundColor: backgroundColor,
-      elevation: 6.0,
-      shadowColor: Colors.grey[60],
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+    ),
+    backgroundColor: isSelected ? Colors.black : backgroundColor,
+    selected: isSelected,
+    onSelected: (selected) {
+      setState(() {
+        if (selected) {
+          if (selectedSkills.length < 15) {
+            selectedSkills.add(label);
+          }
+        } else {
+          selectedSkills.remove(label);
+        }
+      });
+    },
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+        color: isSelected ? Colors.black : Colors.grey,
+        width: 1.0,
       ),
-    );
-  }
+      borderRadius: BorderRadius.circular(20.0),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -132,10 +145,10 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                   children: [
                     SizedBox(
                       width: size.width * 0.7,
-                      child: const Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Soft Skills',
                             style: TextStyle(
                               color: Colors.black,
@@ -146,7 +159,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                           ),
                           Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Soft Skills Selection',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -154,10 +167,10 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                                   fontSize: 12,
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Text(
-                                '(2/15)',
-                                style: TextStyle(
+                                '(${selectedSkills.length}/15)',
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
                                   fontFamily: 'DM Sans',
@@ -181,21 +194,38 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                             right: 0,
                             child: ContinueButton(
                               context: context,
-                              fullNameController: _fullNameController,
-                              emailController: _emailController,
-                              passwordController: _passwordController,
                               formKey: _formKey,
                               onError: (error) {
                                 setState(() {
-                                  _emailPasswordError = error;
+                                  _softSkillsNumberError = error;
                                 });
                               },
                               size: size,
+                              onPressed: () {
+                                if (selectedSkills.length == 15) {
+                                  context.goNamed("sortSoftSkills", pathParameters: {
+                                    'softSkills': selectedSkills.join(','),
+                                  });
+                                } else {
+                                  // Handle the case where not enough skills are selected
+                                  setState(() {
+                                    _softSkillsNumberError = 'Please select 15 soft skills';
+                                  });
+                                }
+                              },
                             ),
                           ),
                         ],
                       ),
                     ),
+                    if (_softSkillsNumberError != null) 
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          _softSkillsNumberError!,
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -207,58 +237,20 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
   }
 }
 
-bool isFullNameValid(String? value) {
-  return value != null && value.isNotEmpty;
-}
-
-bool isEmailValid(String? value) {
-  return value != null && value.isNotEmpty && value.contains('@');
-}
-
-bool isPasswordValid(String? value) {
-  return value != null &&
-      value.length >= 6 &&
-      value.contains(RegExp(r'[0-9]')) &&
-      value.contains(RegExp(r'[a-z]')) &&
-      value.contains(RegExp(r'[A-Z]')) &&
-      value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
-}
-
 class ContinueButton extends RoundButton {
   final BuildContext context;
-  final TextEditingController fullNameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
   final GlobalKey<FormState> formKey;
   final Function(String?) onError;
 
-  ContinueButton({
+  const ContinueButton({
     super.key,
     required super.size,
     required this.context,
-    required this.fullNameController,
-    required this.emailController,
-    required this.passwordController,
     required this.formKey,
     required this.onError,
+    required super.onPressed,
   }) : super(
-          color: purpleColor,
-          text: 'Continue',
-          onPressed: () {
-            if (formKey.currentState?.validate() ?? false) {
-              String fullName = fullNameController.text;
-              String email = emailController.text;
-              String password = passwordController.text;
-
-              if (isFullNameValid(fullName) &&
-                  isEmailValid(email) &&
-                  isPasswordValid(password)) {
-                users.add(User(fullName: fullName, email: email, password: password));
-                GoRouter.of(context).push('/selectSoftskills');
-              } else {
-                onError('Please fill out all fields correctly');
-              }
-            }
-          },
-        );
+    color: purpleColor,
+    text: 'Continue',
+    );
 }
