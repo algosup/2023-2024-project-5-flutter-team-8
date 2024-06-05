@@ -1,62 +1,68 @@
-# Technical Specification
+<br />
+<div align="center">
+  <h1 align="center">Technical Specification</h1>
+  <p align="center">
+    <strong>Adopte 1 Candidat</strong>
+    <br />
+  
+  </p>
+</div>
 
 <details>
 <summary>
 
 ## Table of content </summary>
 
-- [Technical Specification](#technical-specification)
-  - [Table of content ](#table-of-content-)
-  - [I. Introduction](#i-introduction)
-    - [1. Purpose](#1-purpose)
-    - [2. Scope](#2-scope)
-  - [II. Conventions](#ii-conventions)
-    - [1. Coding Standards](#1-coding-standards)
-    - [2. Naming Conventions](#2-naming-conventions)
-    - [3. Commenting and Documentation](#3-commenting-and-documentation)
-  - [III. System Overview](#iii-system-overview)
-    - [1. System Architecture](#1-system-architecture)
-    - [2. Technology Stack](#2-technology-stack)
-  - [IV. Application Architecture](#iv-application-architecture)
-    - [1. Design Patterns](#1-design-patterns)
-    - [2. State Management](#2-state-management)
-    - [3. Navigation](#3-navigation)
-  - [V. Data Management](#v-data-management)
-    - [1. Data Models](#1-data-models)
-    - [2. Local Storage](#2-local-storage)
-  - [VI. Functional Requirements](#vi-functional-requirements)
-    - [1. User Authentication](#1-user-authentication)
-    - [2. User Profile Management](#2-user-profile-management)
-      - [2.1. Personal Information](#21-personal-information)
-      - [2.2. Skills](#22-skills)
-      - [2.3. Certifications](#23-certifications)
-      - [2.4. Notifications](#24-notifications)
-      - [2.5. Jobs Liked](#25-jobs-liked)
-      - [2.6. Logout](#26-logout)
-    - [3. Job Offer Matching](#3-job-offer-matching)
-    - [4. Swiping Interface](#4-swiping-interface)
-    - [5. Notifications](#5-notifications)
-  - [VII. User Interface Design](#vii-user-interface-design)
-    - [1. UI Components](#1-ui-components)
-    - [2. Themes and Styles](#2-themes-and-styles)
-  - [VIII. Integration and Deployment](#viii-integration-and-deployment)
-    - [1. Continuous Integration](#1-continuous-integration)
-    - [2. Deployment Strategy](#2-deployment-strategy)
-      - [2.1. App Store](#21-app-store)
-      - [2.2. Google Play Store](#22-google-play-store)
-    - [3. Environment Configuration](#3-environment-configuration)
-      - [3.1. VSCode Installation](#31-vscode-installation)
-      - [3.2. Flutter Installation](#32-flutter-installation)
-      - [3.3. Riverpod Installation](#33-riverpod-installation)
-      - [3.4. Freezed Installation](#34-freezed-installation)
-      - [3.5. Go\_router Installation](#35-go_router-installation)
-  - [IX. Maintenance and Support](#ix-maintenance-and-support)
-    - [1. Logging and Monitoring](#1-logging-and-monitoring)
-    - [2. Bug Reporting and Tracking](#2-bug-reporting-and-tracking)
-    - [3. Updates and Upgrades](#3-updates-and-upgrades)
-  - [X.  Appendices](#x--appendices)
-    - [1. Glossary](#1-glossary)
-    - [2. References](#2-references)
+- [Table of content ](#table-of-content-)
+- [I. Introduction](#i-introduction)
+  - [1. Purpose](#1-purpose)
+  - [2. Scope](#2-scope)
+- [II. Conventions](#ii-conventions)
+  - [1. Coding Standards](#1-coding-standards)
+  - [2. Naming Conventions](#2-naming-conventions)
+  - [3. Commenting and Documentation](#3-commenting-and-documentation)
+- [III. System Overview](#iii-system-overview)
+  - [1. System Architecture](#1-system-architecture)
+  - [2. Technology Stack](#2-technology-stack)
+- [IV. Application Architecture](#iv-application-architecture)
+  - [1. State Management](#1-state-management)
+  - [2. Navigation](#2-navigation)
+- [V. Data Management](#v-data-management)
+  - [1. Data Models](#1-data-models)
+  - [2. Local Storage](#2-local-storage)
+- [VI. Functional Requirements](#vi-functional-requirements)
+  - [1. User Authentication](#1-user-authentication)
+  - [2. User Profile Management](#2-user-profile-management)
+    - [2.1. Personal Information](#21-personal-information)
+    - [2.2. Skills](#22-skills)
+    - [2.3. Certifications](#23-certifications)
+    - [2.4. Notifications](#24-notifications)
+    - [2.5. Jobs Liked](#25-jobs-liked)
+    - [2.6. Logout](#26-logout)
+  - [3. Job Offer Matching](#3-job-offer-matching)
+  - [4. Swiping Interface](#4-swiping-interface)
+  - [5. Notifications](#5-notifications)
+- [VII. User Interface Design](#vii-user-interface-design)
+  - [1. UI Components](#1-ui-components)
+  - [2. Themes and Styles](#2-themes-and-styles)
+- [VIII. Integration and Deployment](#viii-integration-and-deployment)
+  - [1. Continuous Integration](#1-continuous-integration)
+  - [2. Deployment Strategy](#2-deployment-strategy)
+    - [2.1. App Store](#21-app-store)
+    - [2.2. Google Play Store](#22-google-play-store)
+  - [3. Environment Configuration](#3-environment-configuration)
+    - [3.1. VSCode Installation](#31-vscode-installation)
+    - [3.2. Flutter Installation](#32-flutter-installation)
+    - [3.3. Riverpod Installation](#33-riverpod-installation)
+    - [3.4. Freezed Installation](#34-freezed-installation)
+    - [3.5. Go\_router Installation](#35-go_router-installation)
+- [IX. Maintenance and Support](#ix-maintenance-and-support)
+  - [1. Logging and Monitoring](#1-logging-and-monitoring)
+  - [2. Bug Reporting and Tracking](#2-bug-reporting-and-tracking)
+  - [3. Updates and Upgrades](#3-updates-and-upgrades)
+- [X.  Appendices](#x--appendices)
+  - [1. Glossary](#1-glossary)
+  - [2. References](#2-references)
 
 </details>
 
@@ -311,22 +317,7 @@ To simulate the back-end, it is recommended to use [PocketBase](https://pocketba
 
 ## IV. Application Architecture
 
-### 1. Design Patterns
-
-<!-- Discuss the design patterns employed in the application (e.g., MVVM, BLoC). -->
-**The Model:**
-
-<!-- Contains the data structure, business rules, and data access layer. For example, a Customer class with properties like Name, Address, and methods to save or retrieve data from a database. -->
-
-**The View:**
-
-<!-- A user interface that displays the Customer information and allows user interaction. In WPF, this could be an XAML file defining a form with text boxes and buttons. -->
-
-**The ViewModel:**
-
-<!-- Exposes properties and commands that the View binds to. For example, a CustomerViewModel class with properties CustomerName, CustomerAddress, and a command SaveCustomerCommand to handle saving the customer. -->
-
-### 2. State Management
+### 1. State Management
 
 <!-- Describe the state management approach used (e.g., Provider, Riverpod, BLoC). -->
 To manage the state of the application, Riverpod will be used. It is a dependency allowing the development team to manage the state way more easily. The development team will principally use the ``Notifier`` and ``Provider`` to change the state of the application easily.
@@ -346,7 +337,7 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
 );
 ```
 
-### 3. Navigation
+### 2. Navigation
 
 <!-- Detail the navigation strategy (e.g., Navigator 2.0, named routes). -->
 For the navigation between the different pages, go_routeur will be used. It is a simpler way to navigate between the pages than the one provided by default.
