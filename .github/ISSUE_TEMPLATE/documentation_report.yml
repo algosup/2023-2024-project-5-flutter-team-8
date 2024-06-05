@@ -7,8 +7,7 @@ body:
     id: description
     attributes:
       label: "Description"
-      description: "Please describe the documentation issue in detail.(Attach screenshots or relevant snippets if available to help identify the issue.)"
-)"
+      description: "Please describe the documentation issue in detail. (Attach screenshots or relevant snippets if available to help identify the issue.)"
       placeholder: "Short and explicit description of the problem..."
     validations:
       required: true
