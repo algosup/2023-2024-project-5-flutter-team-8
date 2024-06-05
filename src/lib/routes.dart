@@ -1,4 +1,3 @@
-import 'package:adopte_1_candidat/signup/tags.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -6,10 +5,11 @@ import 'package:adopte_1_candidat/splash_screen.dart';
 import 'package:adopte_1_candidat/login/login.dart';
 import 'package:adopte_1_candidat/signup/signup.dart';
 import 'package:adopte_1_candidat/signup/select_softskills.dart';
+import 'package:adopte_1_candidat/home/home.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/selectSoftSkills',
+    initialLocation: '/home',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
@@ -29,18 +29,18 @@ GoRouter goRouter() {
       GoRoute(
         path: '/signup',
         name: 'signup',
-        builder: (context, state) => const Signup(),
+        builder: (context, state) =>  const Signup(),
+      ),
+      GoRoute(
+        path: '/home',
+        name: 'home',
+        builder: (context, state) =>  HomePage(),
       ),
       GoRoute(
         path: '/selectSoftSkills',
         name: 'selectSoftSkills',
-        builder: (context, state) => const SelectSoftSkills(),
+        builder: (context, state) =>  const SelectSoftSkills(),
       ),
-      GoRoute(
-        path: '/tags',
-        name: 'tags',
-        builder: (context, state) => WrapWidgetDemo(),
-      )
     ],
   );
 }
