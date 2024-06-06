@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'dart:developer' as developer;
 
-import '../routes.dart';
 import '../constants.dart';
 import '../redundancy/round_button.dart';
-
+import '../signup/chips.dart';
 class SelectSoftSkills extends StatefulWidget {
   const SelectSoftSkills({super.key});
 
@@ -66,54 +69,11 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
     super.dispose();
   }
 
-  Widget chips() {
-    return SingleChildScrollView(
-      child: Wrap(
-        spacing: 2.0,
-        children: skills.map((skill) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: chip(skill),
-          );
-        }).toList(),
-      ),
-    );
+  void onSelectionChanged(List<String> newSelectedSkills) {
+    setState(() {
+      selectedSkills = newSelectedSkills;
+    });
   }
-
-  Widget chip(String label) {
-  bool isSelected = selectedSkills.contains(label);
-  return ChoiceChip(
-    showCheckmark: false,
-    labelPadding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 1.0),
-    label: Text(
-      label,
-      style: TextStyle(
-        color: isSelected ? Colors.black : Colors.grey,
-        fontSize: 12,
-      ),
-    ),
-    backgroundColor: isSelected ? Colors.black : backgroundColor,
-    selected: isSelected,
-    onSelected: (selected) {
-      setState(() {
-        if (selected) {
-          if (selectedSkills.length < 15) {
-            selectedSkills.add(label);
-          }
-        } else {
-          selectedSkills.remove(label);
-        }
-      });
-    },
-    shape: RoundedRectangleBorder(
-      side: BorderSide(
-        color: isSelected ? Colors.black : Colors.grey,
-        width: 1.0,
-      ),
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-  );
-}
 
   @override
   Widget build(BuildContext context) {
@@ -187,7 +147,11 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                       height: size.height * 0.65,
                       child: Stack(
                         children: [
-                          chips(),
+                          ChipsWidget(
+                            skills: skills,
+                            selectedSkills: selectedSkills,
+                            onSelectionChanged: onSelectionChanged,
+                          ),
                           Positioned(
                             bottom: 0,
                             left: 0,
@@ -201,11 +165,20 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                                 });
                               },
                               size: size,
-                              onPressed: () {
+                              onPressed: () async {
                                 if (selectedSkills.length == 15) {
-                                  context.goNamed("sortSoftSkills", pathParameters: {
-                                    'softSkills': selectedSkills.join(','),
-                                  });
+                                  try {
+                                    final directory = await getApplicationDocumentsDirectory();
+                                    final filePath = '${directory.path}/data.json';
+                                    final file = File(filePath);
+                                    final data = jsonEncode(selectedSkills);
+                                    await file.writeAsString(data);
+                                    developer.log('File written to: $filePath', name: 'SelectSoftSkills');
+                                    GoRouter.of(context).push('/sortSoftSkills');
+                                  } catch (e) {
+                                    // Handle any errors that occur during file write
+                                    developer.log('Error writing file', error: e, name: 'SelectSoftSkills');
+                                  }
                                 } else {
                                   // Handle the case where not enough skills are selected
                                   setState(() {
@@ -218,7 +191,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                         ],
                       ),
                     ),
-                    if (_softSkillsNumberError != null) 
+                    if (_softSkillsNumberError != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
@@ -252,5 +225,5 @@ class ContinueButton extends RoundButton {
   }) : super(
     color: purpleColor,
     text: 'Continue',
-    );
+  );
 }

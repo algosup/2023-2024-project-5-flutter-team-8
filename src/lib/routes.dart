@@ -43,9 +43,9 @@ GoRouter goRouter() {
         builder: (context, state) => const SelectSoftSkills(),
       ),
       GoRoute(
-        path: '/sortSoftSkills/:softSkills',
+        path: '/sortSoftSkills',
         name: 'sortSoftSkills',
-        builder: (context, state) => SortSoftSkillsPage(softSkills: state.pathParameters['softSkills']!.split(',')),
+        builder: (context, state) => const SortSoftSkills(),
       ),
     ],
   );
