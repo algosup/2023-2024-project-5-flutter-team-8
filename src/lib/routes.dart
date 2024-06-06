@@ -10,7 +10,7 @@ import 'package:adopte_1_candidat/home/home.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/selectSoftSkills',
+    initialLocation: '/home',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
