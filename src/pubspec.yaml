@@ -44,7 +44,17 @@ flutter:
     - assets/iconProfile/panda.svg
     - assets/iconProfile/tiger.svg
     - assets/iconProfile/wolf.svg
-
+    - assets/icons/certifications.svg
+    - assets/icons/home.svg
+    - assets/icons/matches.svg
+    - assets/icons/user.svg
+    - assets/icons/agile_logo.svg
+    - assets/icons/efficiency_logo.svg
+    - assets/icons/leadership_logo.svg
+    - assets/icons/social_logo.svg
+    - assets/icons/company_icon.svg
+    - assets/icons/company_icon2.svg
+    - assets/icons/company_icon3.svg
   fonts:
     - family: Didot
       fonts:
