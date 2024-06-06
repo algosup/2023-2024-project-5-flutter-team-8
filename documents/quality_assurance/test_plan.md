@@ -66,11 +66,34 @@ The first step is to identify the impact and risk of the latest code change.That
 
 ### 2.3 Testing Sessions 
 
-Testing sessions will include unit testing to verify the behaviors of certain key functions, methods or classes. 
+Testing sessions will include widget testing. Widget testing in Flutter allows you to verify the behavior and appearance of individual widgets in isolation, ensuring that they render correctly and respond to user interactions as expected. This type of testing can be more specific than unit testing and less broad than integration testing.
+
 
 ### 2.4 Automation testing 
 
 Automation testing is a type of testing which uses specialized tools and software to execute predefined test cases automatically.This will be key to our testing proccess considering the time constraint and the fact that manual testing takes a long time and is less effective due to human error. However manual testing will be implemented if neccessary.
+
+### 2.5 Monitoring and tools
+
+#### 2.5.1 Github
+
+GitHub serves as our central platform for version control, collaboration, and issue tracking, fortunately GitHub also provides a CI/CD tool(Continuous Integration/Continuous Deployment) called GitHub Actions, this tool allows us to run tests automatically after various actions on the repository and avoid errors on the dev or main branch on each push.
+
+We will also use GitHub Issues to report bugs and errors, it will allow us to make available to the development team a list of bugs and errors to be corrected, and to have a better overview of the progress of the project.
+
+### Bug data report spreadsheet
+
+##### 2.5.1.1 Spreadsheet Structure
+Test Case Pattern:
+ID: Unique identifier for each test case.
+Name: The function or feature being tested.
+Priority: The priority level of the test case (High 🟥, Medium 🟧, Low 🟨).
+Test Description: A concise description of the test case.
+Steps: Input values or conditions applied during testing.
+Expected Result: The expected outcome or behavior.
+Status: The current status of the test case (Passed, Failed, In Progress, Not Implemented).
+
+![alt text](https://imgur.com/O5tTZJK)
 
 ## 3. Test Criteria
 
