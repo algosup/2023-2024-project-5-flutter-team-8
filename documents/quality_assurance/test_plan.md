@@ -93,7 +93,7 @@ Steps: Input values or conditions applied during testing.
 Expected Result: The expected outcome or behavior.
 Status: The current status of the test case (Passed, Failed, In Progress, Not Implemented).
 
-![alt text](https://imgur.com/O5tTZJK)
+![alt text](image-1.png)
 
 ## 3. Test Criteria
 
