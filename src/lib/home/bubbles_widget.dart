@@ -1,4 +1,3 @@
-// bubbles_widget.dart
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -21,8 +20,15 @@ class BubblePainter extends CustomPainter {
 class BouncingBubble extends StatefulWidget {
   final List<BubbleData> allBubbles;
   final BubbleData bubbleData;
+  final double containerWidth;
+  final double containerHeight;
 
-  BouncingBubble({required this.allBubbles, required this.bubbleData});
+  BouncingBubble({
+    required this.allBubbles,
+    required this.bubbleData,
+    required this.containerWidth,
+    required this.containerHeight,
+  });
 
   @override
   _BouncingBubbleState createState() => _BouncingBubbleState();
@@ -51,13 +57,13 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
         widget.bubbleData.left += widget.bubbleData.dx;
 
         // Check for boundaries and reverse direction if necessary
-        if (widget.bubbleData.top <= 0 || widget.bubbleData.top >= MediaQuery.of(context).size.height - bubbleRadius * 2) {
+        if (widget.bubbleData.top <= 0 || widget.bubbleData.top >= widget.containerHeight - bubbleRadius * 2) {
           widget.bubbleData.dy = -widget.bubbleData.dy;
-          widget.bubbleData.top = widget.bubbleData.top.clamp(0, MediaQuery.of(context).size.height - bubbleRadius * 2);
+          widget.bubbleData.top = widget.bubbleData.top.clamp(0, widget.containerHeight - bubbleRadius * 2);
         }
-        if (widget.bubbleData.left <= 0 || widget.bubbleData.left >= MediaQuery.of(context).size.width - bubbleRadius * 2) {
+        if (widget.bubbleData.left <= 0 || widget.bubbleData.left >= widget.containerWidth - bubbleRadius * 2) {
           widget.bubbleData.dx = -widget.bubbleData.dx;
-          widget.bubbleData.left = widget.bubbleData.left.clamp(0, MediaQuery.of(context).size.width - bubbleRadius * 2);
+          widget.bubbleData.left = widget.bubbleData.left.clamp(0, widget.containerWidth - bubbleRadius * 2);
         }
 
         // Check for collisions with other bubbles
@@ -107,6 +113,8 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
   }
 }
 
+
+
 class BubblesWidget extends StatefulWidget {
   final int bubbleCount;
 
@@ -119,6 +127,8 @@ class BubblesWidget extends StatefulWidget {
 class _BubblesWidgetState extends State<BubblesWidget> {
   final double bubbleRadius = 40;
   final List<BubbleData> allBubbles = [];
+  late double containerWidth;
+  late double containerHeight;
 
   @override
   void didChangeDependencies() {
@@ -126,15 +136,18 @@ class _BubblesWidgetState extends State<BubblesWidget> {
     // Create bubbles and store their data
     if (allBubbles.isEmpty) {
       final screenSize = MediaQuery.of(context).size;
+      containerWidth = screenSize.width;
+      containerHeight = screenSize.height;
+
       for (int i = 0; i < widget.bubbleCount; i++) {
         BubbleData newBubble;
         bool isOverlapping;
         do {
           isOverlapping = false;
-          double top = Random().nextDouble() * (screenSize.height - bubbleRadius * 2);
-          double left = Random().nextDouble() * (screenSize.width - bubbleRadius * 2);
-          double dx = 0.3 * (Random().nextBool() ? 1 : -1);
-          double dy = 0.3 * (Random().nextBool() ? 1 : -1);
+          double top = Random().nextDouble() * (containerHeight - bubbleRadius * 2);
+          double left = Random().nextDouble() * (containerWidth - bubbleRadius * 2);
+          double dx = 0.2 * (Random().nextBool() ? 1 : -1);
+          double dy = 0.2 * (Random().nextBool() ? 1 : -1);
 
           newBubble = BubbleData(top: top, left: left, dx: dx, dy: dy);
 
@@ -156,13 +169,22 @@ class _BubblesWidgetState extends State<BubblesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: allBubbles.map((bubbleData) {
-        return BouncingBubble(
-          allBubbles: allBubbles,
-          bubbleData: bubbleData,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        containerWidth = constraints.maxWidth;
+        containerHeight = constraints.maxHeight;
+        
+        return Stack(
+          children: allBubbles.map((bubbleData) {
+            return BouncingBubble(
+              allBubbles: allBubbles,
+              bubbleData: bubbleData,
+              containerWidth: containerWidth,
+              containerHeight: containerHeight,
+            );
+          }).toList(),
         );
-      }).toList(),
+      },
     );
   }
 }

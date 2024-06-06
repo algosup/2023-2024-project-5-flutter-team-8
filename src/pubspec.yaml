@@ -13,6 +13,8 @@ dependencies:
   flutter_svg: ^1.0.0
   percent_indicator: ^4.2.2
   flutter_tags: ^1.0.0-nullsafety.1
+  path_provider: ^2.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +28,23 @@ flutter:
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
     - assets/img/bubbles.svg
+    - assets/icons/home.svg
+    - assets/icons/matches.svg
+    - assets/icons/certifications.svg
+    - assets/icons/user.svg
+    - assets/iconProfile/bear.svg
+    - assets/iconProfile/cat.svg
+    - assets/iconProfile/deer.svg
+    - assets/iconProfile/dog.svg
+    - assets/iconProfile/fox.svg
+    - assets/iconProfile/frog.svg
+    - assets/iconProfile/lion.svg
+    - assets/iconProfile/monkey.svg
+    - assets/iconProfile/owl.svg
+    - assets/iconProfile/panda.svg
+    - assets/iconProfile/tiger.svg
+    - assets/iconProfile/wolf.svg
+
   fonts:
     - family: Didot
       fonts:

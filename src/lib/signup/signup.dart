@@ -260,7 +260,6 @@ class ContinueButton extends RoundButton {
 
             if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
               users.add(User(fullName: fullName, email: email, password: password));
-              // TODO: Fill with an address
               GoRouter.of(context).push('/selectSoftskills');
             } else {
               onError('Please fill out all fields correctly');

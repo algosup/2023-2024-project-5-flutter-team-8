@@ -12,12 +12,33 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        centerTitle: false,
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Hello,\nJohn Doe!',
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'DM Sans',
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              width: 80,
+              height: 80,
+              child: SvgPicture.asset('assets/iconProfile/lion.svg'),
+            ),
+          ),
+        ],
       ),
        body: Stack(
         children: [
           BubblesWidget(bubbleCount: 6),
-          // Add other widgets for your home page here
         ],
       ),
       bottomNavigationBar: BottomNavBar(selectedIndex: 0),

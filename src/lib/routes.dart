@@ -10,6 +10,7 @@ import 'package:adopte_1_candidat/splash_screen.dart';
 import 'package:adopte_1_candidat/login/login.dart';
 import 'package:adopte_1_candidat/signup/signup.dart';
 import 'package:adopte_1_candidat/signup/select_softskills.dart';
+import 'package:adopte_1_candidat/signup/sort_softskills.dart'; 
 import 'package:adopte_1_candidat/home/home.dart';
 
 GoRouter goRouter() {
@@ -34,7 +35,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/signup',
         name: 'signup',
-        builder: (context, state) =>  const Signup(),
+        builder: (context, state) => const Signup(),
       ),
       GoRoute(
         path: '/home',
@@ -44,7 +45,12 @@ GoRouter goRouter() {
       GoRoute(
         path: '/selectSoftSkills',
         name: 'selectSoftSkills',
-        builder: (context, state) =>  const SelectSoftSkills(),
+        builder: (context, state) => const SelectSoftSkills(),
+      ),
+      GoRoute(
+        path: '/sortSoftSkills',
+        name: 'sortSoftSkills',
+        builder: (context, state) => const SortSoftSkills(),
       ),
       GoRoute(
         path: '/certifications',
