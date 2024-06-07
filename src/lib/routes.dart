@@ -12,7 +12,7 @@ import 'package:adopte_1_candidat/emails/success.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/verificationSuccessful',
+    initialLocation: '/home',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
