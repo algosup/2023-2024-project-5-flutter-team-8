@@ -1,3 +1,8 @@
+import 'package:adopte_1_candidat/certification/agile_page.dart';
+import 'package:adopte_1_candidat/certification/certification_page.dart';
+import 'package:adopte_1_candidat/certification/efficiency_page.dart';
+import 'package:adopte_1_candidat/certification/leadership_page.dart';
+import 'package:adopte_1_candidat/certification/social_page.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -46,6 +51,31 @@ GoRouter goRouter() {
         path: '/sortSoftSkills',
         name: 'sortSoftSkills',
         builder: (context, state) => SortSoftSkills(),
+      ),
+      GoRoute(
+        path: '/certifications',
+        name: 'certifications',
+        builder: (context, state) =>  const CertificationPage(),
+      ),
+      GoRoute(
+        path: '/efficiency-page',
+        name: 'efficiency-page',
+        builder: (context, state) =>  const EfficiencyPage(),
+      ),
+      GoRoute(
+        path: '/leadership-page',
+        name: 'leadership-page',
+        builder: (context, state) =>  const LeadershipPage(),
+      ),
+      GoRoute(
+        path: '/social-page',
+        name: 'social-page',
+        builder: (context, state) =>  const SocialPage(),
+      ),
+      GoRoute(
+        path: '/agile-page',
+        name: 'agile-page',
+        builder: (context, state) =>  const AgilePage(),
       ),
     ],
   );
