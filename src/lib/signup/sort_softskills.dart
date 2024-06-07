@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:adopte_1_candidat/signup/chips.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:adopte_1_candidat/constants.dart';
+import 'package:adopte_1_candidat/signup/chips.dart';
 
 class SortSoftSkills extends StatefulWidget {
   const SortSoftSkills({super.key});
@@ -18,6 +18,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
   List<String> selectedSkills = List.filled(15, '');
+  List<String> availableSkills = [];
 
   @override
   void initState() {
@@ -32,6 +33,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final data = await file.readAsString();
     setState(() {
       skills = List<String>.from(jsonDecode(data));
+      availableSkills.addAll(skills);
     });
   }
 
@@ -107,7 +109,15 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                             },
                           ),
                         ),
-                        selectedSkillsColumn(),
+                        TargetChipsWidget(
+                          selectedSkills: selectedSkills,
+                          availableSkills: availableSkills,
+                          onSelectionChanged: (value) {
+                            setState(() {
+                              selectedSkills = value;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ],
@@ -134,46 +144,6 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
             fontWeight: FontWeight.bold,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget selectedSkillsColumn() {
-    return Column(
-      children: List.generate(
-        15,
-        (index) {
-          return DragTarget<String>(
-            onWillAccept: (data) => true,
-            onAccept: (receivedItem) {
-              setState(() {
-                selectedSkills[index] = receivedItem;
-              });
-            },
-            builder: (context, candidateData, rejectedData) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Chip(
-                  backgroundColor: Colors.white,
-                  label: Text(
-                    selectedSkills[index],
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
-              );
-            },
-          );
-        },
       ),
     );
   }
