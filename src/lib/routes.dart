@@ -10,7 +10,7 @@ import 'package:adopte_1_candidat/home/home.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/selectSoftSkills',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
@@ -45,7 +45,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/sortSoftSkills',
         name: 'sortSoftSkills',
-        builder: (context, state) => const SortSoftSkills(),
+        builder: (context, state) => SortSoftSkills(),
       ),
     ],
   );
