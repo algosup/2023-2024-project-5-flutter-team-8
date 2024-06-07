@@ -47,7 +47,7 @@ class ProfilePage extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             padding: const EdgeInsets.only(left: 16.0),
                             child: const Text(
-                              'Orlando Diggs',
+                              'John Doe',
                               style: TextStyle(
                                   color: backgroundColor, fontSize: 24),
                             )),
@@ -82,42 +82,29 @@ class ProfilePage extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              padding: const EdgeInsetsDirectional.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  profileButton(
-                      context,
-                      'Personal Information',
-                      'assets/icons/personal_information_logo.svg',
-                      '/personal-information-page'),
-                  profileButton(
-                      context,
-                      'Skills',
-                      'assets/icons/skills_logo.svg',
-                      '/update-skills-page'),
-                  profileButton(
-                      context,
-                      'Certifications',
-                      'assets/icons/certifications.svg',
-                      '/-page'),
-                  profileButton(
-                      context,
-                      'Notifications',
-                      'assets/icons/notification_logo.svg',
-                      '/-page'),
-                  profileButton(
-                      context,
-                      'Jobs Liked',
-                      'assets/icons/likes_logo.svg',
-                      '/-page'),
-                  profileButton(
-                      context,
-                      'Logout',
-                      'assets/icons/logout_logo.svg',
-                      '/-page'),
-                ],
+            Expanded(
+              child: Container(
+                padding: const EdgeInsetsDirectional.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    profileButton(
+                        context,
+                        'Personal Information',
+                        'assets/icons/personal_information_logo.svg',
+                        '/personal-information-page'),
+                    profileButton(context, 'Skills',
+                        'assets/icons/skills_logo.svg', '/update-skills-page'),
+                    profileButton(context, 'Certifications',
+                        'assets/icons/certifications.svg', '/-page'),
+                    profileButton(context, 'Notifications',
+                        'assets/icons/notification_logo.svg', '/notification-page'),
+                    profileButton(context, 'Jobs Liked',
+                        'assets/icons/likes_logo.svg', '/-page'),
+                    profileButton(context, 'Logout',
+                        'assets/icons/logout_logo.svg', '/logout-page'),
+                  ],
+                ),
               ),
             ),
           ],
@@ -132,33 +119,44 @@ Widget profileButton(
     BuildContext context, String name, String logo, String path) {
   final size = MediaQuery.of(context).size;
 
-  return Container(
-    width: size.width,
-    height: size.height / 10,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: purpleColor,
-    ),
-    child: Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(16.0),
-          width: 60,
-          height: 60,
-          child: SvgPicture.asset(
-            logo,
-            color: purpleColor,
-            fit: BoxFit.fill,
+  return GestureDetector(
+    onTap: () => GoRouter.of(context).push(path),
+    child: Container(
+      width: size.width,
+      height: size.height / 11,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: backgroundColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3), // changes position of shadow
           ),
-        ),
-        SizedBox(
-          width: size.width / 4 * 3 - 24,
-          child: Text(
-            name,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            width: 60,
+            height: 60,
+            child: SvgPicture.asset(
+              logo,
+              color: purpleColor,
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-      ],
+          SizedBox(
+            width: size.width / 4 * 3 - 24,
+            child: Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

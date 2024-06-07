@@ -64,6 +64,13 @@ flutter:
     - assets/icons/company_icon.svg
     - assets/icons/company_icon2.svg
     - assets/icons/company_icon3.svg
+    - assets/img/background.svg
+    - assets/icons/skills_logo.svg
+    - assets/icons/personal_information_logo.svg
+    - assets/icons/notification_logo.svg
+    - assets/icons/logout_logo.svg
+    - assets/icons/likes_logo.svg
+  
   fonts:
     - family: Didot
       fonts:

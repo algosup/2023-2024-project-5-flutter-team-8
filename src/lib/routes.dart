@@ -3,6 +3,7 @@ import 'package:adopte_1_candidat/certification/certification_page.dart';
 import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
+import 'package:adopte_1_candidat/profile.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -88,7 +89,12 @@ GoRouter goRouter() {
         path: '/verificationSuccessful',
         name: 'verificationSuccessful',
         builder: (context, state) => const SuccessEmailUpdate(),
-      )
+      ),
+      GoRoute(
+        path: '/profile',
+        name: 'profile',
+        builder: (context, state) =>  const ProfilePage(),
+      ),
     ],
   );
 }
