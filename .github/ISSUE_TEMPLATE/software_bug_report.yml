@@ -7,7 +7,7 @@ assignees:
 body:
   - type: markdown
     attributes:
-        value: "Thank you for filling an issue!
+        value: "Thank you for filling an issue!"
   - type: textarea
     id: description
     attributes:
@@ -71,4 +71,4 @@ body:
     attributes:
       label: This issue was tested on a development release
       placeholder: 
-      description: "The issue might already be fixed in a development release or main. This is not required
+      description: "The issue might already be fixed in a development release or main. This is not required"

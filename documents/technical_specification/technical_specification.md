@@ -1,62 +1,68 @@
-# Technical Specification
+<br />
+<div align="center">
+  <h1 align="center">Technical Specification</h1>
+  <p align="center">
+    <strong>Adopte 1 Candidat</strong>
+    <br />
+  
+  </p>
+</div>
 
 <details>
 <summary>
 
 ## Table of content </summary>
 
-- [Technical Specification](#technical-specification)
-  - [Table of content ](#table-of-content-)
-  - [I. Introduction](#i-introduction)
-    - [1. Purpose](#1-purpose)
-    - [2. Scope](#2-scope)
-  - [II. Conventions](#ii-conventions)
-    - [1. Coding Standards](#1-coding-standards)
-    - [2. Naming Conventions](#2-naming-conventions)
-    - [3. Commenting and Documentation](#3-commenting-and-documentation)
-  - [III. System Overview](#iii-system-overview)
-    - [1. System Architecture](#1-system-architecture)
-    - [2. Technology Stack](#2-technology-stack)
-  - [IV. Application Architecture](#iv-application-architecture)
-    - [1. Design Patterns](#1-design-patterns)
-    - [2. State Management](#2-state-management)
-    - [3. Navigation](#3-navigation)
-  - [V. Data Management](#v-data-management)
-    - [1. Data Models](#1-data-models)
-    - [2. Local Storage](#2-local-storage)
-  - [VI. Functional Requirements](#vi-functional-requirements)
-    - [1. User Authentication](#1-user-authentication)
-    - [2. User Profile Management](#2-user-profile-management)
-      - [2.1. Personal Information](#21-personal-information)
-      - [2.2. Skills](#22-skills)
-      - [2.3. Certifications](#23-certifications)
-      - [2.4. Notifications](#24-notifications)
-      - [2.5. Jobs Liked](#25-jobs-liked)
-      - [2.6. Logout](#26-logout)
-    - [3. Job Offer Matching](#3-job-offer-matching)
-    - [4. Swiping Interface](#4-swiping-interface)
-    - [5. Notifications](#5-notifications)
-  - [VII. User Interface Design](#vii-user-interface-design)
-    - [1. UI Components](#1-ui-components)
-    - [2. Themes and Styles](#2-themes-and-styles)
-  - [VIII. Integration and Deployment](#viii-integration-and-deployment)
-    - [1. Continuous Integration](#1-continuous-integration)
-    - [2. Deployment Strategy](#2-deployment-strategy)
-      - [2.1. App Store](#21-app-store)
-      - [2.2. Google Play Store](#22-google-play-store)
-    - [3. Environment Configuration](#3-environment-configuration)
-      - [3.1. VSCode Installation](#31-vscode-installation)
-      - [3.2. Flutter Installation](#32-flutter-installation)
-      - [3.3. Riverpod Installation](#33-riverpod-installation)
-      - [3.4. Freezed Installation](#34-freezed-installation)
-      - [3.5. Go\_router Installation](#35-go_router-installation)
-  - [IX. Maintenance and Support](#ix-maintenance-and-support)
-    - [1. Logging and Monitoring](#1-logging-and-monitoring)
-    - [2. Bug Reporting and Tracking](#2-bug-reporting-and-tracking)
-    - [3. Updates and Upgrades](#3-updates-and-upgrades)
-  - [X.  Appendices](#x--appendices)
-    - [1. Glossary](#1-glossary)
-    - [2. References](#2-references)
+- [Table of content ](#table-of-content-)
+- [I. Introduction](#i-introduction)
+  - [1. Purpose](#1-purpose)
+  - [2. Scope](#2-scope)
+- [II. Conventions](#ii-conventions)
+  - [1. Coding Standards](#1-coding-standards)
+  - [2. Naming Conventions](#2-naming-conventions)
+  - [3. Commenting and Documentation](#3-commenting-and-documentation)
+- [III. System Overview](#iii-system-overview)
+  - [1. System Architecture](#1-system-architecture)
+  - [2. Technology Stack](#2-technology-stack)
+- [IV. Application Architecture](#iv-application-architecture)
+  - [1. State Management](#1-state-management)
+  - [2. Navigation](#2-navigation)
+- [V. Data Management](#v-data-management)
+  - [1. Data Models](#1-data-models)
+  - [2. Local Storage](#2-local-storage)
+- [VI. Functional Requirements](#vi-functional-requirements)
+  - [1. User Authentication](#1-user-authentication)
+  - [2. User Profile Management](#2-user-profile-management)
+    - [2.1. Personal Information](#21-personal-information)
+    - [2.2. Skills](#22-skills)
+    - [2.3. Certifications](#23-certifications)
+    - [2.4. Notifications](#24-notifications)
+    - [2.5. Jobs Liked](#25-jobs-liked)
+    - [2.6. Logout](#26-logout)
+  - [3. Job Offer Matching](#3-job-offer-matching)
+  - [4. Swiping Interface](#4-swiping-interface)
+  - [5. Notifications](#5-notifications)
+- [VII. User Interface Design](#vii-user-interface-design)
+  - [1. UI Components](#1-ui-components)
+  - [2. Themes and Styles](#2-themes-and-styles)
+- [VIII. Integration and Deployment](#viii-integration-and-deployment)
+  - [1. Continuous Integration](#1-continuous-integration)
+  - [2. Deployment Strategy](#2-deployment-strategy)
+    - [2.1. App Store](#21-app-store)
+    - [2.2. Google Play Store](#22-google-play-store)
+  - [3. Environment Configuration](#3-environment-configuration)
+    - [3.1. VSCode Installation](#31-vscode-installation)
+    - [3.2. Flutter Installation](#32-flutter-installation)
+    - [3.3. Riverpod Installation](#33-riverpod-installation)
+    - [3.4. Freezed Installation](#34-freezed-installation)
+    - [3.5. Go\_router Installation](#35-go_router-installation)
+- [IX. Maintenance and Support](#ix-maintenance-and-support)
+  - [1. Logging and Monitoring](#1-logging-and-monitoring)
+  - [2. Bug Reporting and Tracking](#2-bug-reporting-and-tracking)
+  - [3. Updates and Upgrades](#3-updates-and-upgrades)
+- [X.  Appendices](#x--appendices)
+  - [1. Glossary](#1-glossary)
+  - [2. References](#2-references)
 
 </details>
 
@@ -64,13 +70,13 @@
 
 ### 1. Purpose
 
-<!-- Outline the purpose of the document and the application. -->
+
 This document is meant to explain how to create the application by implementing the features detailed in the [functional specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md).
 The purpose of the application is to create a new way of recruiting people based on their soft skills and not their technical skills. It is also totally anonymized for better equality between the potential candidates.
 
 ### 2. Scope
 
-<!-- Define the scope of the front-end project and what the document will cover. -->
+
 This project should be done using Flutter and be compatible with all types of devices.
 
 This implementation should be only targeting the front-end at first and should offer an interface to candidates, and companies but also "We are evolution." as an administrator.
@@ -79,7 +85,7 @@ This implementation should be only targeting the front-end at first and should o
 
 ### 1. Coding Standards
 
-<!-- Describe the coding standards and style guidelines to be followed (e.g., Dart/Flutter coding conventions). -->
+
 This project is entirely made in the Flutter dart language, that's why it is logical and easy to keep the same coding convention as the Flutter.
 
 Classes, enum types, typedefs, and type parameters should be in PascalCase:
@@ -158,7 +164,7 @@ Avoid using block comments for documentation.
 
 ### 2. Naming Conventions
 
-<!-- Define naming conventions for variables, classes, methods, and other identifiers. -->
+
 This project has two main naming conventions, which are the repository naming convention and the coding naming convention.
 
 Some of the coding naming conventions were defined above in the previous section. Here are the missing ones:
@@ -194,7 +200,7 @@ main
 
 ### 3. Commenting and Documentation
 
-<!-- Outline how code should be commented and documented, including requirements for inline comments and documentation comments. -->
+
 As said in section [1. Coding Standards](#1-coding-standards), the code should be commented on with single-line commentary and with clear sentences. \
 It is recommended to be explicit and to use the most possible commentaries to inform potential software engineers of the use of each function.
 
@@ -202,7 +208,7 @@ It is recommended to be explicit and to use the most possible commentaries to in
 
 ### 1. System Architecture
 
-<!-- Provide an overview of the front-end architecture, including diagrams (e.g., component diagrams). -->
+
 Our GitHub repository will be created following the architecture hereunder:
 
 ```
@@ -300,7 +306,7 @@ The architecture of the application will be in the src/lib folder, containing al
 
 ### 2. Technology Stack
 
-<!-- List and describe the technologies and frameworks used (e.g., Flutter, Dart). -->
+
 For this project, it has been decided to use the Flutter/Dart language as well as some famous extensions of it, which are:
 - [riverpod](https://riverpod.dev/): which is a reactive caching framework for Flutter/Dart. Using declarative and reactive programming, Riverpod takes care of a large part of your application's logic for you.
 - [freezed](https://pub.dev/packages/freezed): a code generator for data-classes/unions/pattern-matching/cloning.
@@ -311,24 +317,9 @@ To simulate the back-end, it is recommended to use [PocketBase](https://pocketba
 
 ## IV. Application Architecture
 
-### 1. Design Patterns
+### 1. State Management
 
-<!-- Discuss the design patterns employed in the application (e.g., MVVM, BLoC). -->
-**The Model:**
 
-<!-- Contains the data structure, business rules, and data access layer. For example, a Customer class with properties like Name, Address, and methods to save or retrieve data from a database. -->
-
-**The View:**
-
-<!-- A user interface that displays the Customer information and allows user interaction. In WPF, this could be an XAML file defining a form with text boxes and buttons. -->
-
-**The ViewModel:**
-
-<!-- Exposes properties and commands that the View binds to. For example, a CustomerViewModel class with properties CustomerName, CustomerAddress, and a command SaveCustomerCommand to handle saving the customer. -->
-
-### 2. State Management
-
-<!-- Describe the state management approach used (e.g., Provider, Riverpod, BLoC). -->
 To manage the state of the application, Riverpod will be used. It is a dependency allowing the development team to manage the state way more easily. The development team will principally use the ``Notifier`` and ``Provider`` to change the state of the application easily.
 To help the development team, it is recommended to install the VSCode extension named ``Flutter Riverpod Snippets`` to get snippets.
 Example of Provider and Notifier:
@@ -346,9 +337,9 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
 );
 ```
 
-### 3. Navigation
+### 2. Navigation
 
-<!-- Detail the navigation strategy (e.g., Navigator 2.0, named routes). -->
+
 For the navigation between the different pages, go_routeur will be used. It is a simpler way to navigate between the pages than the one provided by default.
 Here is what it would look like:
 ```Dart
@@ -419,7 +410,7 @@ This is only a simple preview for the first two pages, all the pages would be de
 
 ### 1. Data Models
 
-<!-- Define the data models used in the application (e.g., JobOffer, User, SoftSkill). -->
+
 This application will need data management when it would be released, to help this management and the development team, these data would be stored in classes as templates.
 The job offer class would look like this:
 ```Dart
@@ -474,7 +465,7 @@ class SoftSkills {
 
 ### 2. Local Storage
 
-<!-- Describe any local storage mechanisms used (e.g., shared_preferences, SQLite). -->
+
 The local storage would be done on the device memory since there is no real backend asked for the project. However, it could be simulated with an open-source backend consisting of embedded database named pocketbase. \
 This Storage would allow the development team to simulate a User on both the candidate and company sides. It would also help the Quality Assurance team to do tests, such as the account creation.
 
@@ -482,7 +473,7 @@ This Storage would allow the development team to simulate a User on both the can
 
 ### 1. User Authentication
 
-<!-- Describe the user authentication process and integration with back-end services. -->
+
 For the user authentication, only the front end is asked. Two profiles would then be set beforehand, one for the company and one for the user. \
 To see if the authentication is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
 For this, a ``Textfield`` and a controller would be used for simpler usage. \
@@ -529,7 +520,7 @@ TextField(
 
 ### 2. User Profile Management
 
-<!-- Detail how users can manage their profiles (e.g., update soft skills, personal info). -->
+
 To access the User Profile you should click on the bottom right icon in the ``bottomBar`` provided by Flutter.
 When on the User Profile Page the icon changes to a black version of the same icon, implying you are on the right page.
 
@@ -769,7 +760,7 @@ Once the application is not needed anymore, or to close the account, a logout bu
 
 ### 3. Job Offer Matching
 
-<!-- Explain the logic for displaying job offers based on soft skills. -->
+
 To have a job offer on the home page screen, it should have a match of over 50% of the soft skills selected by the company and by the user.
 To make things easier to understand. 
 Companies would have to choose which of the four categories they judge useful for the job offer.
@@ -781,7 +772,7 @@ Here is a diagram for better comprehension:
 
 ### 4. Swiping Interface
 
-<!-- Describe the Tinder-like swiping interface for browsing job offers. -->
+
 Once on the Home screen, the job offer matching is done. It should appear some bubbles on the screen, depending on the job offers you might apply. The bubbles are designed with a circle around the company's logo.
 When a bubble is clicked. A pop-up appears on the screen, containing the logo, description of the job, and date for the upper part, whereas, in the bottom part, two buttons would be displayed, one to deny the match, and another to accept it.
 Here are the visuals:
@@ -822,7 +813,7 @@ Finally, for every three new job offers, a certification would be sent to the us
 
 ### 1. UI Components
 
-<!-- Detail the UI components used and their purposes. -->
+
 The UI components are used to simplify the development team's work by reducing the time of the design creation and focusing more on the algorithm part of the application. To do so, a lot of the icons predefined in the mock-up will be used as images and not created by hand by the development team.
 Moreover, the mock-up is the first version of the application and the ideal view we want it to be, it could, however, be changed during the creation phase, since the time to do the mock-up was short and if new ideas come to mind afterward, they could be added to the last version of the application.
 To see the mock-up or a better definition of the UI designed by the program manager, here are the links for:
@@ -831,7 +822,7 @@ To see the mock-up or a better definition of the UI designed by the program mana
 
 ### 2. Themes and Styles
 
-<!-- Explain the theming and styling approach (e.g., light/dark mode). -->
+
 The application would only have the light mode at the launch. It was set as not a primordial feature for the good functioning of the application. It is then not needed to add lines for the light mode or to change modes between dark and light.
 However, when the dark mode would be implemented in a near future, these lines in the Flutter files would be needed:
 ```Dart
@@ -848,14 +839,14 @@ To change the theme, a ``switch`` in the profile account would be implemented.
 
 ### 1. Continuous Integration
 
-<!-- Describe the CI pipeline for the front-end (e.g., GitHub Actions, Bitrise). -->
+
 The continuous integration will mainly be held by GitHub and the repository, allowing all the team members to create branches and work simultaneously on different parts of the code. 
 
 The merge and pull request would be done regularly with a check by the quality assurance before any of the pull requests to the dev and main branches. It would avoid stress by pushing a wrong version in the main branch but would also highly enhance the code quality.
 
 ### 2. Deployment Strategy
 
-<!-- Detail the deployment process for the front-end application (e.g., to App Store, Google Play Store). -->
+
 To deploy this strategy it has been set to target the two main stores which are the App Store and the Google Play Store. They both have their own prerequisites to deploy an application.
 Nevertheless, the project is to create a front-end application, without any back-end it would be unuseful to publish it and non-lucrative.
 However, here are the different ways to publish the application on both of them.
@@ -890,7 +881,7 @@ There are a bit more steps than the App Store but the price is lower (25$ for th
 
 ### 3. Environment Configuration
 
-<!-- Explain environment configurations for the front-end (e.g., development, staging, production). -->
+
 To achieve this project you would need:
 - VSCode 1.77 or later
 - Flutter
@@ -947,7 +938,7 @@ flutter pub outdated
 If there actually are new versions available, the dependencies can be upgraded with:
 ```terminal
 flutter pub upgrade
-// or
+
 flutter pub upgrade --major-versions
 ```
 Finally, to get them, write this command line:
@@ -988,7 +979,7 @@ If you want a more complete page dedicated to Go_router's installation, [here](h
 
 ### 1. Logging and Monitoring
 
-<!-- Outline logging and monitoring practices for the front-end (e.g., Firebase Crashlytics). -->
+
 To log in and monitor this project, it has been set to use Pocketbase.
 For this, the development team will need to install a new dependency called pocketbase by using the command line:
 ```terminal
@@ -1046,7 +1037,7 @@ Future<void> signUp() async {
 
 ### 2. Bug Reporting and Tracking
 
-<!-- Explain the process for reporting and tracking bugs (e.g., Jira, GitHub Issues). -->
+
 To handle the errors, some unit tests would be needed in the file.
 In this optic, the development team would need to create a new folder, with a test file for each file in the lib folder.
 The test files would be named the same as the file corresponding in the lib folder but with ``test`` at the end of the name.
@@ -1098,7 +1089,7 @@ void main() {
 
 ### 3. Updates and Upgrades
 
-<!-- Describe the strategy for front-end application updates and upgrades. -->
+
 As this project only has six weeks in length, the development team would do its best to create the application in the most complete way possible.
 All the things that wouldn't be able to be implemented to the release date would be considered as an update for the future.
 Moreover, the most important upgrade would be the backend, which will be added by [We are Evolution.](https://www.we-are-evolution.com/), the company hiring our team.
@@ -1107,7 +1098,7 @@ Moreover, the most important upgrade would be the backend, which will be added b
 
 ### 1. Glossary
 
-<!-- Provide a glossary of terms used in the document. -->
+
 |Terms|Definitions|Links|
 |-----|-----------|-----|
 |back-end|The part of a computer system, piece of software, etc., where data is stored or processed rather than the parts that are seen and directly used by the user.|[Cambridge](https://dictionary.cambridge.org/fr/dictionnaire/anglais/back-end)|
@@ -1123,7 +1114,7 @@ Moreover, the most important upgrade would be the backend, which will be added b
 
 ### 2. References
 
-<!-- List references and resources used in the preparation of the document. -->
+
 **Flutter Courses**: https://github.com/sgruhier
 
 **Flutter Documentation**: https://docs.flutter.dev/
