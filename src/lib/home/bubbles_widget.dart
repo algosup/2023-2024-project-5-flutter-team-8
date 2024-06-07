@@ -1,20 +1,23 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'bubbles_painter.dart';
+import 'bubbles_popup.dart';
 
-class BubblePainter extends CustomPainter {
-  final Color bubbleColor;
-  final double bubbleRadius;
 
-  BubblePainter({required this.bubbleColor, required this.bubbleRadius});
+class BubbleData {
+  double top;
+  double left;
+  double dx;
+  double dy;
+  final String logoPath;
 
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = bubbleColor;
-    canvas.drawCircle(Offset(bubbleRadius, bubbleRadius), bubbleRadius, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  BubbleData({
+    required this.top,
+    required this.left,
+    required this.dx,
+    required this.dy,
+    required this.logoPath,
+  });
 }
 
 class BouncingBubble extends StatefulWidget {
@@ -32,15 +35,6 @@ class BouncingBubble extends StatefulWidget {
 
   @override
   _BouncingBubbleState createState() => _BouncingBubbleState();
-}
-
-class BubbleData {
-  double top;
-  double left;
-  double dx;
-  double dy;
-
-  BubbleData({required this.top, required this.left, required this.dx, required this.dy});
 }
 
 class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProviderStateMixin {
@@ -83,11 +77,11 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
               bubble.left += adjustX;
               bubble.top += adjustY;
 
-              // Reverse direction on collision and add slight randomness to avoid repetitive collisions
-              widget.bubbleData.dx = -widget.bubbleData.dx + (Random().nextDouble() - 0.5) * 0.1;
-              widget.bubbleData.dy = -widget.bubbleData.dy + (Random().nextDouble() - 0.5) * 0.1;
-              bubble.dx = -bubble.dx + (Random().nextDouble() - 0.5) * 0.1;
-              bubble.dy = -bubble.dy + (Random().nextDouble() - 0.5) * 0.1;
+              // Reverse direction on collision
+              widget.bubbleData.dx = -widget.bubbleData.dx;
+              widget.bubbleData.dy = -widget.bubbleData.dy;
+              bubble.dx = -bubble.dx;
+              bubble.dy = -bubble.dy;
             }
           }
         }
@@ -95,13 +89,32 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
     });
   }
 
+  void _showPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return BubblePopup(logoPath: widget.bubbleData.logoPath);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
       top: widget.bubbleData.top,
       left: widget.bubbleData.left,
-      child: CustomPaint(
-        painter: BubblePainter(bubbleColor: Colors.red.withOpacity(0.5), bubbleRadius: bubbleRadius),
+      child: GestureDetector(
+        onTap: () => _showPopup(context),
+        child: CustomPaint(
+          painter: BubblePainter(bubbleRadius: bubbleRadius),
+          child: Container(
+            width: bubbleRadius * 2,
+            height: bubbleRadius * 2,
+            child: Center(
+              child: Image.asset(widget.bubbleData.logoPath, width: bubbleRadius, height: bubbleRadius),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -114,11 +127,11 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
 }
 
 
-
 class BubblesWidget extends StatefulWidget {
   final int bubbleCount;
+  final List<String> logos;
 
-  BubblesWidget({required this.bubbleCount});
+  BubblesWidget({required this.bubbleCount, required this.logos});
 
   @override
   _BubblesWidgetState createState() => _BubblesWidgetState();
@@ -149,7 +162,7 @@ class _BubblesWidgetState extends State<BubblesWidget> {
           double dx = 0.2 * (Random().nextBool() ? 1 : -1);
           double dy = 0.2 * (Random().nextBool() ? 1 : -1);
 
-          newBubble = BubbleData(top: top, left: left, dx: dx, dy: dy);
+          newBubble = BubbleData(top: top, left: left, dx: dx, dy: dy, logoPath: widget.logos[i % widget.logos.length]);
 
           for (var bubble in allBubbles) {
             double dx2 = bubble.left - newBubble.left;
@@ -173,7 +186,7 @@ class _BubblesWidgetState extends State<BubblesWidget> {
       builder: (context, constraints) {
         containerWidth = constraints.maxWidth;
         containerHeight = constraints.maxHeight;
-        
+
         return Stack(
           children: allBubbles.map((bubbleData) {
             return BouncingBubble(

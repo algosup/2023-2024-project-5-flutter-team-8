@@ -9,7 +9,7 @@ Widget certificationCategorie(BuildContext context, String path, String logoPath
     child: GestureDetector(
       onTap: () => GoRouter.of(context).push(path),
       child: Container(
-        height: 226.1,
+        height: 206.1,
         margin: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(35),

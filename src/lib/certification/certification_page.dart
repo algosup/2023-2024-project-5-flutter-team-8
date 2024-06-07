@@ -4,8 +4,6 @@ import '../redundancy/certification_categorie.dart';
 import '../constants.dart';
 import 'package:flutter/material.dart';
 
-
-
 class CertificationPage extends StatelessWidget {
   const CertificationPage({super.key});
 
@@ -27,21 +25,36 @@ class CertificationPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
                   width: size.width - 80,
                   child: TextField(
                     controller: controller,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: backgroundColor,
                       hintText: 'Search',
                       prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                      )
-                    ),              
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    
+                    // Action for the settings icon
                   },
                   child: Container(
                     width: 56,

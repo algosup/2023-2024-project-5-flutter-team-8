@@ -10,8 +10,10 @@ import 'package:adopte_1_candidat/splash_screen.dart';
 import 'package:adopte_1_candidat/login/login.dart';
 import 'package:adopte_1_candidat/signup/signup.dart';
 import 'package:adopte_1_candidat/signup/select_softskills.dart';
-import 'package:adopte_1_candidat/signup/sort_softskills.dart'; 
+import 'package:adopte_1_candidat/signup/sort_softskills.dart';
 import 'package:adopte_1_candidat/home/home.dart';
+import 'package:adopte_1_candidat/emails/verify_email.dart';
+import 'package:adopte_1_candidat/emails/success.dart';
 
 GoRouter goRouter() {
   return GoRouter(
@@ -40,7 +42,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (context, state) =>  HomePage(),
+        builder: (context, state) => HomePage(),
       ),
       GoRoute(
         path: '/selectSoftSkills',
@@ -77,6 +79,16 @@ GoRouter goRouter() {
         name: 'agile-page',
         builder: (context, state) =>  const AgilePage(),
       ),
+      GoRoute(
+        path: '/verifyEmail',
+        name: 'verifyEmail',
+        builder: (context, state) => const VerifyEmail(),
+      ),
+      GoRoute(
+        path: '/verificationSuccessful',
+        name: 'verificationSuccessful',
+        builder: (context, state) => const SuccessEmailUpdate(),
+      )
     ],
   );
 }
