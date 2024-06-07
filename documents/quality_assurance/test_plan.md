@@ -7,12 +7,22 @@
     - [Product Analysis](#1-product-analysis)
         - [Overview](#12-overview)
     - [Strategy](#2-strategy)
-        - [First Steps](#21-first-steps)
-        - [Automation testing](#22-automation-testing)
+        - [Scope of testing](#21-scope-of-testing)
+            - [In-scope testing](#211-in-scope-testing)
+            - [Out of scope testing](#212-out-of-scope-testing)
+        - [First steps](#22-first-steps)
+        - [Testing sessions](#23-testing-sessions)
+        - [Automation testing](#24-automation-testing)
+        - [Monitoring and tools](#25-monitoring-and-tools)
+            - [Github](#251-github)
+            - [Github issues](#252-github-issues)
+                - [Spreadsheet structure](#2521-spreadsheet-structure)
+                - [Use of templates](#2522-use-of-templates)
     - [Test Criteria](#3-test-criteria)
         - [App Evaluation](#31-app-evaluation)
         - [Suspension Criteria](#32-suspension-criteria)
         - [Exit Criteria](#33-exit-criteria)
+        - [Test cases](#34-test-cases)
     - [Test Schedules/Estimations](#4test-schedulestimations)
     - [Glossary](#5-glossary)
 
@@ -81,25 +91,68 @@ GitHub serves as our central platform for version control, collaboration, and is
 
 We will also use GitHub Issues to report bugs and errors, it will allow us to make available to the development team a list of bugs and errors to be corrected, and to have a better overview of the progress of the project.
 
-### Bug data report spreadsheet
 
-##### 2.5.1.1 Spreadsheet Structure
-Test Case Pattern:
-ID: Unique identifier for each test case.
-Name: The function or feature being tested.
-Priority: The priority level of the test case (High 🟥, Medium 🟧, Low 🟨).
-Test Description: A concise description of the test case.
-Steps: Input values or conditions applied during testing.
-Expected Result: The expected outcome or behavior.
-Status: The current status of the test case (Passed, Failed, In Progress, Not Implemented).
+#### 2.5.2. GitHub Issues
+GitHub Issues is a built-in issue-tracking tool that allows us to create and manage issues and assign them to team members.
 
-![alt text](image-1.png)
+We define:
+
+ - Bugs: Unexpected problems or code errors.
+ - Errors: Includes all errors that do not originate in the code.
+ - Deadlines: Specific deadlines for project stages to ensure timely delivery.
+ - Documentation: Request for documentation on a specific function or group of functions in the code.
+ -Task allocation: Assignment and tracking of specific responsibilities.
+
+GitHub Issues Strategy:
+
+We are implementing a strategy for managing GitHub issues. Here are the key components of our strategy:
+
+ 1. Detailed Issue Descriptions:
+
+    - Issues should have clear and detailed descriptions to provide context and understanding.
+    - Include steps to reproduce bugs or details about the feature request.
+    - Specify the expected and actual behavior.
+ 2. Assignees and Responsibility:
+
+    - Assign issues to the appropriate team member or individuals responsible for addressing the problem.
+    - Assignees take ownership of the task, improving accountability.
+  3. Use of Templates:
+
+##### 2.5.2.1 Spreadsheet Structure
+1. Test Case Pattern:
+- ID: Unique identifier for each test case.  
+- Name: The function or feature being tested.
+- Priority: The priority level of the test case (High 🟥, Medium 🟧, Low 🟨).
+- Test Description: A concise description of the test case.
+- Steps: Input values or conditions applied during testing.
+- Expected Result: The expected outcome or behavior.
+- Status: The current status of the test case (Passed, Failed, In - Progress, Not Implemented).
+
+![alt text](test-cases.png)
+
+2. Test reports
+
+- For each test case, there is a dedicated section to record results obtained during testing sessions.
+- Testers can input whether the test passed, failed, is in progress, or not implemented during a specific testing session.
+- The date of the testing session is also recorded.
+
+![alt text](test-reports.png)
+
+##### 2.5.2.2 Use of Templates
+
+We have introduced issue templates to standardize the information provided for different types of issues.
+- The "software_bug_report" template, streamlines the bug reporting process with predefined sections.The template includes sections for steps to reproduce, expected and actual behavior, environment details, and more.
+Using this template ensures that crucial information is consistently captured for debugging and resolution.
+- The "feature_request" template, gives a platform to express any creative ideas someone might have come up with, that they want to bring to the team.
+- The "documentation_report" template is used if any errors are discovered in any of our documentations throughout our work proccess or if there are missing documentations that should be implemented in the future. 
+- The "pull_request_template" is created to ensure that changes that are created to written code or documents, is properly documented and approved by other team members. 
+
 
 ## 3. Test Criteria
 
 Establishing test criteria is crucial to guarantee the quality of our program before it is released. This represents some standards to which our application must conform to before being sent to customers.
 
-### 3.3 App evaluation
+### 3.1 App evaluation
 
 Here will be presented the most important assessments on how to evaluate the app:
 
@@ -111,7 +164,7 @@ Here will be presented the most important assessments on how to evaluate the app
 
 4. App relevance to company needs - The app will be constructed as per it has been described by the company We Are Evolution.
 
-### 3.4 Suspension Criteria
+### 3.2 Suspension Criteria
 
 Suspencion criteria are established to define conditions under which testing activities are temporarily halted.Such conditions are:
 
@@ -121,7 +174,7 @@ Suspencion criteria are established to define conditions under which testing act
 2. Recource/Environment issues - If for whatever reason there is an issue with the software or environment 
 that is to be utilized, the testing will be suspended until the issues have been resolved.
 
-### 3.5 Exit Criteria 
+### 3.3 Exit Criteria 
 
 Before the app can be considered finished, certain milestones need to have been met by the team.
 This criteria ensures that the app meets the required quality standards before reaching the consumer.
@@ -132,15 +185,11 @@ This criteria ensures that the app meets the required quality standards before r
 
 3. Documentation Completeness - Comprehensive documentation, including test plans, test cases, test results, functional specifications, and technical specifications, must be finalized and reviewed for completeness. Documentation should be easily understandable and accessible to all team members, ensuring a clear understanding of the testing process and results.
 
-### 3.6 Test cases
+### 3.4 Test cases
 
 The test cases is a list that catalogs of tests that will be performed by priority. You can find them in the "quality_assurance" document on github or by simply clicking [here](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/quality_assurance/test_cases.md).
 
-## 4. Resources
-
------
-
-## 5.Test Schedules/Estimations
+## 4.Test Schedules/Estimations
 
 | Task | Start Date | End Date | Duration |
 | ---- | ---------- | -------- | -------- |
@@ -148,7 +197,7 @@ The test cases is a list that catalogs of tests that will be performed by priori
 | 02 | 07/06/2024 | 07/06/2024 | 3h30m |
 | 03 | 10/06/2024 | 10/06/2024 | 3h30m |
 
-## 6. Glossary
+## 5. Glossary
 
 | Term | Definition | Source |
 | ---- | ---------- | ------ |
@@ -157,8 +206,9 @@ The test cases is a list that catalogs of tests that will be performed by priori
 | **Flutter Software**| Flutter is an open-source UI software development kit created by Google. It can be used to develop cross platform applications from a single codebase for the web, Fuchsia, Android, iOS, Linux, macOS, and Windows. | [Wikipedia](https://en.wikipedia.org/wiki/Flutter_(software))
 | **Git** | Git is a distributed version control system that tracks versions of files. It is often used to control source code by programmers collaboratively developing software. | [Wikipedia](https://en.wikipedia.org/wiki/Git)
 | **Regression Testing** | Regression testing is re-running functional and non-functional tests to ensure that previously developed and tested software still performs as expected after a change.   | [Wikipedia](https://en.wikipedia.org/wiki/Regression_testing)    
+|**Visual Studio Code** | Visual Studio Code is an extensible code editor developed by Microsoft for Windows , Linux and macOS. | [Wikipedia](https://fr.wikipedia.org/wiki/Visual_Studio_Code)
 
 
 | Created on | Last Update | 
 | ---------- | ---------- |
-| 05/17/2024 | 06/04/2024 |
+| 05/17/2024 | 06/07/2024 |

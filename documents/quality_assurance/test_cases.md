@@ -252,5 +252,8 @@ Test priorities are indicated following the color-code below:
 | Test Description | Verify that the company can effectively add a new job offer with all their available information                                                                                |
 | Step(s)          | **1.** Add a job title  .<br>**2.** Add the company name <br>**3** Add the start date and end date, <br>**4.** Add the type of contract, <br>**5.** Add the location, <br>**2.** Add a description of the job offer, <br>**6.** Add images, <br>**7.** Add the soft skills required for the job |
 | Expected Result  | The company is able to create a job offer according to the soft skills that they need, with all the information of the job offer required.                       |
-| Priority         | 🟥                                                                                
+| Priority         | 🟥   
 
+
+
+Here you can find the [spreadsheet](https://docs.google.com/spreadsheets/d/1jggZ1MM17cirvH-KzJUpDIp5knKfm5Y54keJeAQ5Rl4/edit#gid=0) of these test cases and the reports.
