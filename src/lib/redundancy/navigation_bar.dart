@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:adopte_1_candidat/constants.dart';
-import 'package:adopte_1_candidat/routes.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int selectedIndex;
 
-  BottomNavBar({ Key? key, this.selectedIndex = 0}) : super(key: key);
+  const BottomNavBar({ super.key, this.selectedIndex = 0});
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();

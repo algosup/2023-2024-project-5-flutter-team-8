@@ -28,7 +28,15 @@ flutter:
     - assets/img/official_logo.png
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
+    - assets/img/check_email.svg
+    - assets/img/email_success.svg
     - assets/img/bubbles.svg
+    - assets/img/mcdo.png
+    - assets/img/fg_entreprise.png
+    - assets/img/multis.png
+    - assets/img/centre_val_de_loire.png
+    - assets/img/re.png
+    - assets/img/we_are_evolution.png
     - assets/icons/home.svg
     - assets/icons/matches.svg
     - assets/icons/certifications.svg
