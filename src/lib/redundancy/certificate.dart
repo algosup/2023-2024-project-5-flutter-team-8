@@ -1,4 +1,3 @@
-import 'package:adopte_1_candidat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -6,13 +5,12 @@ Widget certificate(BuildContext context, String name, String path){
   final size = MediaQuery.of(context).size;
   return Container(
     width: size.width,
-    height: size.height / 10,
+    height: size.height / 11,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(100),
-      color: backgroundColor,
+      color: Colors.white,
     ),
     child: Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           padding: const EdgeInsets.all(16.0),

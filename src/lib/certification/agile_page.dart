@@ -1,6 +1,7 @@
 import 'package:adopte_1_candidat/redundancy/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../redundancy/certificate.dart';
 
 class AgilePage extends StatelessWidget {
@@ -16,21 +17,37 @@ class AgilePage extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Center(
-              child: SizedBox(
-                width: size.width - 80,
-                child: TextField(
-                  controller: controllerAgile,
-                  decoration: InputDecoration(
-                  hintText: 'Search',
-                  prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)
+              child: Container(
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  width: size.width - 80,
+                  child: TextField(
+                    controller: controllerAgile,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: backgroundColor,
+                      hintText: 'Search',
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
-                  ),    
+                  ),
                 ),
-              )
             ),
             SizedBox(
               width: size.width,
