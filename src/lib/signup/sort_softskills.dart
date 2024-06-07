@@ -4,11 +4,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:adopte_1_candidat/constants.dart';
-import 'package:adopte_1_candidat/signup/chips.dart';
+import 'chips.dart';
+import '../constants.dart';
 
 class SortSoftSkills extends StatefulWidget {
-  const SortSoftSkills({super.key});
+  const SortSoftSkills({Key? key}) : super(key: key);
 
   @override
   _SortSoftSkillsState createState() => _SortSoftSkillsState();
@@ -30,11 +30,13 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/data.json';
     final file = File(filePath);
-    final data = await file.readAsString();
-    setState(() {
-      skills = List<String>.from(jsonDecode(data));
-      availableSkills.addAll(skills);
-    });
+    if (await file.exists()) {
+      final data = await file.readAsString();
+      setState(() {
+        skills = List<String>.from(jsonDecode(data));
+        availableSkills = List.from(skills);
+      });
+    }
   }
 
   @override
@@ -42,106 +44,119 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            LinearPercentIndicator(
-              width: size.width,
-              percent: 0.6,
-              animation: true,
-              backgroundColor: Colors.black,
-              progressColor: purpleColor,
-            ),
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: size.width * 0.7,
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Ranking',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 40,
-                              fontFamily: 'DM Sans',
-                              fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height * 0.1,
+              ),
+              LinearPercentIndicator(
+                width: size.width,
+                percent: 0.6,
+                animation: true,
+                backgroundColor: Colors.black,
+                progressColor: purpleColor,
+              ),
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: size.width * 0.7,
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Ranking',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 40,
+                                fontFamily: 'DM Sans',
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Row(
+                            Row(
+                              children: [
+                                Text(
+                                  'Prioritize Your Soft Skills: \nFrom Mastery to Proficiency',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: size.height * 0.05),
+                      Column(
+                        children: List.generate(
+                          15,
+                          (index) => Row(
                             children: [
                               Text(
-                                'Prioritize Your Soft Skills: \nFrom Mastery to Proficiency',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
+                                '.${index + 1}',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontFamily: 'DM Sans',
+                                  fontWeight: FontWeight.bold,
                                 ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: TargetChipsWidget(
+                                  index: index,
+                                  selectedSkills: selectedSkills,
+                                  availableSkills: availableSkills,
+                                  onSelectionChanged: (value) {
+                                    setState(() {
+                                      selectedSkills = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              DraggableChipsWidget(
+                                skill: availableSkills.isNotEmpty ? availableSkills[index] : '',
+                                onDragCompleted: (value) {
+                                  setState(() {
+                                    if (index < selectedSkills.length) {
+                                      selectedSkills[index] = value;
+                                      availableSkills.remove(value);
+                                    }
+                                  });
+                                },
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: size.height * 0.05),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        numberColumn(),
-                        Expanded(
-                          child: DraggableChipsWidget(
-                            skills: skills,
-                            selectedSkills: selectedSkills,
-                            onSelectionChanged: (value) {
-                              setState(() {
-                                selectedSkills = value;
-                              });
-                            },
-                          ),
+                      SizedBox(height: size.height * 0.05),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Handle the continue button press
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: purpleColor,
+                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                          textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        TargetChipsWidget(
-                          selectedSkills: selectedSkills,
-                          availableSkills: availableSkills,
-                          onSelectionChanged: (value) {
-                            setState(() {
-                              selectedSkills = value;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                        child: Text('CONTINUE'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget numberColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-        15,
-        (index) => Text(
-          '.${index + 1}',
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontFamily: 'DM Sans',
-            fontWeight: FontWeight.bold,
+            ],
           ),
         ),
       ),

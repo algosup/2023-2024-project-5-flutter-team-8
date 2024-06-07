@@ -17,7 +17,7 @@ import 'package:adopte_1_candidat/emails/success.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/sortSoftSkills',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
