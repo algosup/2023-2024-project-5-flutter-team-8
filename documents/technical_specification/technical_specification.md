@@ -86,7 +86,7 @@ This implementation should be only targeting the front-end at first and should o
 ### 1. Coding Standards
 
 <!-- Describe the coding standards and style guidelines to be followed (e.g., Dart/Flutter coding conventions). -->
-This project is entirely made in the Flutter dart language, that's why it is logical and easy to keep the same coding convention as the Flutter.
+This project is entirely made in the Flutter dart language, which is why it is logical and easy to keep the same coding convention as Flutter.
 
 Classes, enum types, typedefs, and type parameters should be in PascalCase:
 ```Dart
@@ -312,7 +312,7 @@ For this project, it has been decided to use the Flutter/Dart language as well a
 - [freezed](https://pub.dev/packages/freezed): a code generator for data-classes/unions/pattern-matching/cloning.
 - [go_router](https://pub.dev/packages/go_router): a declarative routing package for Flutter that uses the Router API to provide a convenient, url-based API for navigating between different screens. You can define URL patterns, navigate using a URL, handle deep links, and a number of other navigation-related scenarios.
 
-The Project would be held on GitHub for better development and sharing in the project team. \The IDE IDE used for this project would be VSCode.
+The Project would be held on GitHub for better development and sharing in the project team. The IDE used for this project would be VSCode.
 To simulate the back-end, it is recommended to use [PocketBase](https://pocketbase.io/).
 
 ## IV. Application Architecture
@@ -340,7 +340,7 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
 ### 2. Navigation
 
 <!-- Detail the navigation strategy (e.g., Navigator 2.0, named routes). -->
-For the navigation between the different pages, go_routeur will be used. It is a simpler way to navigate between the pages than the one provided by default.
+For the navigation between the different pages, go_router will be used. It is a simpler way to navigate between the pages than the one provided by default.
 Here is what it would look like:
 ```Dart
 GoRouter goRouter() {
@@ -368,9 +368,9 @@ This is only a simple preview for the first two pages, all the pages would be de
 | 'splashScreen' | '/splashScreen' | Description of the application|
 | 'login' | '/login' | login with a password and a mail account|
 | 'forgetPassword' | '/forgetPassword' |ask for a new password via the mail|
-| 'typeUserChoice' | '/typeUserChoice' |chose if you are a company or a candidate|
+| 'typeUserChoice' | '/typeUserChoice' |choose if you are a company or a candidate|
 | 'signUpUser' | '/signUpUser' | ask for the full name, the mail and the password of the user |
-| 'softSkillsChoices' | '/softSkillsChoices' | a page with 40 skills predifined |
+| 'softSkillsChoices' | '/softSkillsChoices' | a page with 40 skills predefined |
 | 'softSkillsRank' | '/softSkillsRank' | page to rank the previously selected skills |
 | 'location' | '/location' | page to put the address and the range around it |
 | 'profilePicture' | '/profilePicture' | page to define user's profile picture|
@@ -379,17 +379,17 @@ This is only a simple preview for the first two pages, all the pages would be de
 | 'homeScreen' | '/homeScreen' |main page with the job offer on bubble form |
 | 'jobInfo' | '/jobInfo' | page when a bubble is clicked to have more information about the job|
 | 'skillsCategories' | '/skillsCategories' | page where all the big certification categories are displayed |
-| 'skillsSelection' | '/skillsSelection' | page where the certification are shown |
+| 'skillsSelection' | '/skillsSelection' | page where the certifications are shown |
 | 'message' | '/message' | page where all the chats are listed |
 | 'chat' | '/chat' | specific chat with one company|
 | 'noMessage' | '/noMessage' | page displayed when no messages|
 | 'profile' | '/profile' | page to acces to the diverse settings |
 | 'personalInformation' | '/personalInformation' | page displaying user's full name, mail, password and location |
 | 'updatePassword' | '/updatePassword' |page to change the password |
-| 'updateProfilePicture' | '/updateProfilePicture' | page tochange of profle picture|
+| 'updateProfilePicture' | '/updateProfilePicture' | page to change the profle picture|
 | 'settings' | '/settings' | containing all the different kinds of notifications |
 | 'jobs-liked' | '/jobs-liked' | containing a list of the jobs liked |
-| 'profile-certification' | '/profile-certification' | the page to see the list of certification got |
+| 'profile-certification' | '/profile-certification' | the page to see the list of certification listed |
 | 'profile-skills' | '/profile-skills' | skills selected when registered |
 | 'profile-add-skills' | '/profile-add-skills' | to add more or change the skills selected |
 | 'profile-rank-skills' | '/profile-rank-skills' |to rank the skills selected |
@@ -403,7 +403,7 @@ This is only a simple preview for the first two pages, all the pages would be de
 | 'skills-categories-company' | '/skills-categories-company' | big categorie for the certifications |
 | 'skills-selection-company' | '/skills-selection-company' | list of the different certification created by the company on a specific category |
 | 'message-qualified-company' | '/message-qualified-company' | chat list where the candidate met the prerequisites |
-| 'message-unqualified-company' | '/message-unqualified-company' | chat list where the candidate don't met the prerequisites |
+| 'message-unqualified-company' | '/message-unqualified-company' | chat list where the candidate didn't meet the prerequisites |
 | 'profile-company' | '/profile-company' | where the profile is displayed |
 
 ## V. Data Management
@@ -411,7 +411,7 @@ This is only a simple preview for the first two pages, all the pages would be de
 ### 1. Data Models
 
 <!-- Define the data models used in the application (e.g., JobOffer, User, SoftSkill). -->
-This application will need data management when it would be released, to help this management and the development team, these data would be stored in classes as templates.
+This application will need data management when it will be released, to help this management and the development team, these datas would be stored in classes as templates.
 The job offer class would look like this:
 ```Dart
 class JobOffer {
@@ -427,7 +427,7 @@ class JobOffer {
   JobOffer({required this.logo, required this.companyName, required this.nameOfTheJob, required this.startDate, required this.endDate, required this.contractType, required this.location, required this.jobDescription});
 }
 ```
-The User class like that:
+The User class like this:
 ```Dart
 class User {
   String fullName;
@@ -452,7 +452,7 @@ class Company {
   User({required this.companyName, required this.companyRegistrationNumber, required this.email, required this.password, required this.logo});
 }
 ```
-And finally, the soft skills class should look this way:
+And finally, the soft skills class should look like this:
 ```Dart
 class SoftSkills {
   String name;
@@ -466,7 +466,7 @@ class SoftSkills {
 ### 2. Local Storage
 
 <!-- Describe any local storage mechanisms used (e.g., shared_preferences, SQLite). -->
-The local storage would be done on the device memory since there is no real backend asked for the project. However, it could be simulated with an open-source backend consisting of embedded database named pocketbase. \
+The local storage would be done on the devices memory since there is no real backend asked for the project. However, it could be simulated with an open-source backend consisting of embedded database named pocketbase. \
 This Storage would allow the development team to simulate a User on both the candidate and company sides. It would also help the Quality Assurance team to do tests, such as the account creation.
 
 ## VI. Functional Requirements
@@ -475,10 +475,10 @@ This Storage would allow the development team to simulate a User on both the can
 
 <!-- Describe the user authentication process and integration with back-end services. -->
 For the user authentication, only the front end is asked. Two profiles would then be set beforehand, one for the company and one for the user. \
-To see if the authentication is done the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
+To see if the authentication is done, the text put in the box should be the same as the predefined earlier in both the mailbox and the passwordbox. \
 For this, a ``Textfield`` and a controller would be used for simpler usage. \
 The mail ``Textfield`` will be checked first to know which password is the right one, if the authentification is passed the password ``Textfield`` is checked, if the password is correct it will change the page to the main page of the company or the user according to the one who registered. \
-There is a diagram to understand it better:
+Here is a diagram to understand it better:
 
 ![authentication_diagram](img/authentification_check.png)
 
@@ -566,7 +566,7 @@ To get back to the Profile Page, the left arrow on the AppBar should be clicked.
 
 #### 2.1. Personal Information
 
-This page would be composed of many ``TextField`` Boxes containing the Full name, the password, the e-mail and the Location.
+This page would be composed of many ``TextField`` Boxes containing the Full name, the password, the e-mail and the location.
 Under them should be displayed a sliding range bar to express the radius around the location to find a job.
 
 In the password's ``TextField`` there should be a right arrow in the right of the box.
@@ -697,7 +697,7 @@ Else if the ``DragTarget`` is not empty, an error message should be sent in the 
 
 #### 2.3. Certifications
 
-The certification page would contain The big categories of certification which would be:
+The certification page would contain the big categories of certification which would be:
 - Leadership
 - Efficiency
 - Social competences
@@ -721,7 +721,7 @@ There, all the certifications would be clickable to see a better definition, pas
 #### 2.4. Notifications
 
 The notification page would be a list of six ``sizedBox``s with ``BorderRadius``. They would contain each, the name of the notification (see [Functional Specification](https://github.com/algosup/2023-2024-project-5-flutter-team-8/blob/main/documents/functional_specification/functional_specification.md)) and a switch to disable them if wanted (All the notifications would be set as true at the beginning).
-The only one that would differ would be the first one, it would contain a leading bell icon, the name would be Notifications, and also a switch. This one particularly would disable all of the Notifications in one click.
+The only one that would differ would be the first one, it would contain a leading bell icon, the name would be Notifications, and also a switch. This one particularly would disable all of the notifications in one click.
 Here is an example of a switch:
 ```Dart
 Switch(
@@ -736,7 +736,7 @@ Switch(
   },
 );
 ```
-At the bottom of the page would be an ``ElevatedButton`` to save the changes made during the time the page is open. However, if the page is closed or returned to a previous one whereas the button is not clicked, the changes would not be taken into account and the previous settings would be set as the previous one.
+At the bottom of the page would be an ``ElevatedButton`` to save the changes made during the time the page is open. However, if the page is closed or returned to a previous one to where the button is not clicked, the changes would not be taken into account and the previous settings would be set as the previous one.
 
 #### 2.5. Jobs Liked
 
@@ -781,10 +781,10 @@ Here are the visuals:
 |Deny |![denied_logo](../functional_specification/img/app_img/denied_logo.png)|
 |Apply|![apply_logo](../functional_specification/img/app_img/apply_logo.png)|
 
-For this pattern, the Widget use would be ``Dialog``.
-Moreover, when the user has the pop-up, the possibility to swipe to complementary options is available. By swiping he could see more images from his potential workplace.
+For this pattern, the Widget used would be ``Dialog``.
+Moreover, when the user has the pop-up, the possibility to swipe to complementary options is available. By swiping he   could see more images from his potential workplace.
 To swipe, the Widget used would be ``Draggable``.
-Finally, if the user denies the job offer, the bubble would just disappear, in the other case, the match would be sent to the [jobs liked section](#25-jobs-liked) on the profile page.
+Finally, if the user denies the job offer, the bubble would just disappear, on the other hand, the match would be sent to the [jobs liked section](#25-jobs-liked) on the profile page.
 
 ### 5. Notifications
 
@@ -802,7 +802,7 @@ If you want a more complete page dedicated to Go_router's installation, [here](h
 
 The notification settings could be modified in the Profil Parameter, which refers to [2.4 Notifications](#24-notifications) for more information.
 
-If a company sends a positive answer to a job application, the user should get a notification to inform it of the advancement of his proposition. To keep a hand on the advancement, a notification would also be sent every time a new message is received, except if the user is already on the chat page, in that case, only the message would darken, to inform the user a new message isn't read.
+If a company sends a positive answer to a job application, the user should get a notification to inform tjem of the advancement of his proposition. To keep a hand on the advancement, a notification would also be sent every time a new message is received, except if the user is already on the chat page, in that case, only the message would darken, to inform the user a new message isn't read.
 The two last notifications a user could receive are the certification and job offer ones.
 For the certification, the user would receive a notification in case the certification is needed for his skills. For example, if a new certification is available for a soft skill not selected by the user, he would not be informed. However, if the certification is about one of their soft skills, a notification would be sent as a pop-up bar.
 Finally, for every three new job offers, a certification would be sent to the user. Like this, they could be informed without being harrassed by notifications.
@@ -823,7 +823,7 @@ To see the mock-up or a better definition of the UI designed by the program mana
 ### 2. Themes and Styles
 
 <!-- Explain the theming and styling approach (e.g., light/dark mode). -->
-The application would only have the light mode at the launch. It was set as not a primordial feature for the good functioning of the application. It is then not needed to add lines for the light mode or to change modes between dark and light.
+The application would only have the light mode at launch. It was set as not a primordial feature for the good functioning of the application. It is then not needed to add lines for the light mode or to change modes between dark and light.
 However, when the dark mode would be implemented in a near future, these lines in the Flutter files would be needed:
 ```Dart
 theme: ThemeData(
@@ -848,7 +848,7 @@ The merge and pull request would be done regularly with a check by the quality a
 
 <!-- Detail the deployment process for the front-end application (e.g., to App Store, Google Play Store). -->
 To deploy this strategy it has been set to target the two main stores which are the App Store and the Google Play Store. They both have their own prerequisites to deploy an application.
-Nevertheless, the project is to create a front-end application, without any back-end it would be unuseful to publish it and non-lucrative.
+Nevertheless, the project is to create a front-end application, without any back-end it would be useless to publish it and non-lucrative.
 However, here are the different ways to publish the application on both of them.
 
 #### 2.1. App Store
