@@ -1,8 +1,10 @@
+import 'package:adopte_1_candidat/constants.dart';
 import 'package:flutter/material.dart';
 
 class RectangleButton extends StatelessWidget {
   final Size size;
   final Color color;
+  final Color textColor;
   final String text;
   final VoidCallback onPressed;
 
@@ -10,6 +12,7 @@ class RectangleButton extends StatelessWidget {
     super.key,
     required this.size,
     required this.color,
+    required this.textColor,
     required this.text,
     required this.onPressed,
   });
@@ -29,8 +32,8 @@ class RectangleButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text.toUpperCase(),
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: textColor,
             fontSize: 16,
           ),
         ),
@@ -41,30 +44,24 @@ class RectangleButton extends StatelessWidget {
 
 class BlackRectangleButton extends RectangleButton {
   const BlackRectangleButton({
-    Key? key,
-    required Size size,
-    required String text,
-    required VoidCallback onPressed,
+    super.key,
+    required super.size,
+    required super.text,
+    required super.onPressed,
   }) : super(
-          key: key,
-          size: size,
           color: Colors.black,
-          text: text,
-          onPressed: onPressed,
+          textColor: Colors.white,
         );
 }
 
 class PurpleRectangleButton extends RectangleButton {
   const PurpleRectangleButton({
-    Key? key,
-    required Size size,
-    required String text,
-    required VoidCallback onPressed,
+    super.key,
+    required super.size,
+    required super.text,
+    required super.onPressed,
   }) : super(
-          key: key,
-          size: size,
-          color: Colors.purple,
-          text: text,
-          onPressed: onPressed,
+          color: purpleColor,
+          textColor: Colors.black,
         );
 }

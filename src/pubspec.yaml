@@ -27,6 +27,8 @@ flutter:
     - assets/img/official_logo.png
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
+    - assets/img/check_email.svg
+    - assets/img/email_success.svg
     - assets/img/bubbles.svg
     - assets/icons/home.svg
     - assets/icons/matches.svg
