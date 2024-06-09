@@ -153,25 +153,30 @@ class _TargetChipsWidgetState extends State<TargetChipsWidget> {
         });
       },
       builder: (context, candidateData, rejectedData) {
-        return Chip(
-          backgroundColor: Colors.white,
-          label: Text(
-            label.isEmpty ? 'Drag here' : label,
-            style: TextStyle(
-              color: label.isEmpty ? purpleColor : Colors.grey,
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+        return SizedBox(
+          width: 100, // Set width to the desired size
+          height: 40, // Set height to the desired size
+          child: Chip(
+            backgroundColor: Colors.white,
+            label: Text(
+              label.isEmpty ? 'Drag here' : label,
+              style: TextStyle(
+                color: label.isEmpty ? purpleColor : Colors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: label.isEmpty ? purpleColor : Colors.grey,
-              width: label.isEmpty ? 2.0 : 1.0,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: label.isEmpty ? purpleColor : Colors.grey,
+                width: label.isEmpty ? 2.0 : 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
             ),
-            borderRadius: BorderRadius.circular(20.0),
           ),
         );
       },
     );
   }
 }
+
