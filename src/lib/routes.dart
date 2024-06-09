@@ -3,7 +3,9 @@ import 'package:adopte_1_candidat/certification/certification_page.dart';
 import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
-import 'package:adopte_1_candidat/profile.dart';
+import 'package:adopte_1_candidat/profile/notification_page.dart';
+import 'package:adopte_1_candidat/profile/profile.dart';
+import 'package:adopte_1_candidat/profile/update_profile_picture.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -94,6 +96,16 @@ GoRouter goRouter() {
         path: '/profile',
         name: 'profile',
         builder: (context, state) =>  const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/notification-page',
+        name: 'notification-page',
+        builder: (context, state) =>  const NotificationPage(),
+      ),
+      GoRoute(
+        path: '/update-profile-picture',
+        name: 'update-profile-picture',
+        builder: (context, state) =>  const UpdateProfilePicture(),
       ),
     ],
   );
