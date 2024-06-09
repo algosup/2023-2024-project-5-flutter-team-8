@@ -125,17 +125,18 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                                 ),
                               ),
                               SizedBox(width: 10),
-                              DraggableChipsWidget(
-                                skill: availableSkills.isNotEmpty ? availableSkills[index] : '',
-                                onDragCompleted: (value) {
-                                  setState(() {
-                                    if (index < selectedSkills.length) {
-                                      selectedSkills[index] = value;
-                                      availableSkills.remove(value);
-                                    }
-                                  });
-                                },
-                              ),
+                              if (index < availableSkills.length) 
+                                DraggableChipsWidget(
+                                  skill: availableSkills[index],
+                                  onDragCompleted: (value) {
+                                    setState(() {
+                                      if (index < selectedSkills.length) {
+                                        selectedSkills[index] = value;
+                                        availableSkills.remove(value);
+                                      }
+                                    });
+                                  },
+                                ),
                             ],
                           ),
                         ),
