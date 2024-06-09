@@ -83,15 +83,19 @@ class DraggableChipsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: skill,
-      feedback: Material(
-        color: Colors.transparent,
-        child: chip(skill, isDragging: true),
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height * 0.05,
+      child: Draggable<String>(
+        data: skill,
+        feedback: Material(
+          color: Colors.transparent,
+          child: chip(skill, isDragging: true),
+        ),
+        childWhenDragging: Container(),
+        onDragCompleted: () => onDragCompleted(skill),
+        child: chip(skill),
       ),
-      childWhenDragging: Container(),
-      onDragCompleted: () => onDragCompleted(skill),
-      child: chip(skill),
     );
   }
 
@@ -138,6 +142,7 @@ class TargetChipsWidget extends StatefulWidget {
 class _TargetChipsWidgetState extends State<TargetChipsWidget> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     String label = widget.selectedSkills[widget.index];
 
     return DragTarget<String>(
@@ -154,8 +159,8 @@ class _TargetChipsWidgetState extends State<TargetChipsWidget> {
       },
       builder: (context, candidateData, rejectedData) {
         return SizedBox(
-          width: 100, // Set width to the desired size
-          height: 40, // Set height to the desired size
+          width: size.width * 0.25,
+          height: size.height * 0.05,
           child: Chip(
             backgroundColor: Colors.white,
             label: Text(
