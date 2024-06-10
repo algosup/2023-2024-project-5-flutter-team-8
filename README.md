@@ -4,9 +4,9 @@
 
 ## Project Overview
 
-Adopte un Candidat is a recruitment app available on mobile and desktop platforms. Its aim is to change the way of how people are recruited, basing the criteria on soft skills rather than hard skills and diplomas. It has been requested by the company "We Are Evolution.", wanting to renew the process of recuiting people.
+Adopte un Candidat is a recruitment app available on mobile and desktop platforms. Its aim is to change the way how people are recruited, basing the criteria on soft skills rather than hard skills and diplomas. It has been requested by the company "We Are Evolution.", wants to renew the process of recruiting people.
 
-Consequently, in this project, we are going to use Flutter, a language standardizing development among all the platforms targetted by the product.
+Consequently, in this project, we are going to use Flutter, a language standardizing development among all the platforms targeted by the product.
 
 ## Who worked on this project?
 
@@ -25,4 +25,22 @@ The final product isn't ready yet to be installed on your device. This section w
 
 ## Installation
 
-The final product isn't ready yet to be installed on your device. This section will be updated as soon as the product can be installed on your side.
+Follow these steps to set up the project locally
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/algosup/2023-2024-project-5-flutter-team-8.git
+```
+
+2. Navigate to the project directory:
+
+```sh
+cd 2023-2024-project-5-flutter-team-8
+```
+
+3. Install dependencies:
+
+```sh
+flutter pub get
+```
