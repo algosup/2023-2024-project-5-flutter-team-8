@@ -68,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           child: TextButton(
                             onPressed: () => GoRouter.of(context)
-                                .push('/update-profile-picture'),
+                                .push('/updateProfilePicture'),
                             child: const Center(
                               child: Text(
                                 'Change Image',
@@ -93,18 +93,18 @@ class ProfilePage extends StatelessWidget {
                         context,
                         'Personal Information',
                         'assets/icons/personal_information_logo.svg',
-                        '/personal-information-page'),
+                        '/personalInformationPage'),
                     profileButton(context, 'Skills',
                         'assets/icons/skills_logo.svg', '/update-skills-page'),
                     profileButton(context, 'Certifications',
-                        'assets/icons/certifications.svg', '/-page'),
+                        'assets/icons/certifications.svg', '/page'),
                     profileButton(
                         context,
                         'Notifications',
                         'assets/icons/notification_logo.svg',
-                        '/notification-page'),
+                        '/notificationPage'),
                     profileButton(context, 'Jobs Liked',
-                        'assets/icons/likes_logo.svg', '/-page'),
+                        'assets/icons/likes_logo.svg', '/page'),
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet<void>(

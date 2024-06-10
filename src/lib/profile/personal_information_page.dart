@@ -104,7 +104,7 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                         ),
                         GestureDetector(
                           onTap: () => GoRouter.of(context)
-                              .push('/update-password-page'),
+                              .push('/updatePasswordPage'),
                           child: const Icon(Icons.keyboard_arrow_right),
                         )
                       ],
