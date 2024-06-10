@@ -161,18 +161,18 @@ class _TargetChipsWidgetState extends State<TargetChipsWidget> {
           width: size.width * 0.25,
           height: size.height * 0.05,
           child: Chip(
-            backgroundColor: Colors.white,
+            backgroundColor: label.isEmpty ? Colors.white : purpleColor,
             label: Text(
               label.isEmpty ? 'Drag here' : label,
               style: TextStyle(
-                color: label.isEmpty ? purpleColor : Colors.grey,
+                color: label.isEmpty ? purpleColor : Colors.black,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: label.isEmpty ? purpleColor : Colors.grey,
+                color: label.isEmpty ? purpleColor : Colors.black,
                 width: label.isEmpty ? 2.0 : 1.0,
               ),
               borderRadius: BorderRadius.circular(20.0),

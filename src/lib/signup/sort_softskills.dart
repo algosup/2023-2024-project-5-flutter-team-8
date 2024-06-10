@@ -40,6 +40,14 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     }
   }
 
+  Future<void> _saveSkills() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+    final data = jsonEncode(selectedSkills);
+    await file.writeAsString(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -152,9 +160,10 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       SizedBox(height: size.height * 0.05),
                       ContinueButton(
                         selectedSkills: selectedSkills,
-                        onPressed: () {
+                        onPressed: () async {
                           bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
                           if (allFilled) {
+                            await _saveSkills();
                             GoRouter.of(context).go('/certifications');
                           } else {
                             setState(() {
