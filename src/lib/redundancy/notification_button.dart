@@ -1,37 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../profile/notification_provider.dart';
 
-Widget notificationButton(BuildContext context, String name, bool isNotification) {
+Widget notificationButton(BuildContext context, String name, NotificationState state) {
   return NotificationButton(
     name: name,
-    isNotification: isNotification
+    isNotification: state.individualNotifications[name]!,
+    isGlobalNotification: state.isGlobalNotification,
   );
 }
 
-class NotificationButton extends StatefulWidget {
+class NotificationButton extends ConsumerWidget {
   final String name;
   final bool isNotification;
+  final bool isGlobalNotification;
 
   const NotificationButton({
     super.key,
     required this.name,
-    required this.isNotification
+    required this.isNotification,
+    required this.isGlobalNotification,
   });
 
   @override
-  State<NotificationButton> createState() => _NotificationButtonState();
-}
-
-class _NotificationButtonState extends State<NotificationButton> {
-  bool isChanged = true;
-
-  void _handleChange(bool value) {
-    setState(() {
-      isChanged = value;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
 
     return Container(
@@ -54,7 +46,7 @@ class _NotificationButtonState extends State<NotificationButton> {
           Container(
             padding: const EdgeInsets.only(left: 16.0),
             child: Text(
-              widget.name,
+              name,
             ),
           ),
           Expanded(
@@ -65,8 +57,10 @@ class _NotificationButtonState extends State<NotificationButton> {
                 child: Switch(
                   focusColor: Colors.white,
                   activeColor: Colors.green,
-                  value: isChanged,
-                  onChanged: widget.isNotification ? _handleChange : null,
+                  value: isNotification,
+                  onChanged: isGlobalNotification ? (bool value) {
+                    ref.read(notificationProvider.notifier).toggleIndividualNotification(name, value);
+                  } : null,
                 ),
               ),
             ),

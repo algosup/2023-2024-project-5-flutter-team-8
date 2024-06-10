@@ -1,22 +1,18 @@
 import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../redundancy/notification_button.dart';
+import 'notification_provider.dart';
 
-class NotificationPage extends StatefulWidget {
+class NotificationPage extends ConsumerWidget {
   const NotificationPage({super.key});
 
   @override
-  State<NotificationPage> createState() => _NotificationPageState();
-}
-
-class _NotificationPageState extends State<NotificationPage> {
-  bool isNotification = true;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
+    final notificationState = ref.watch(notificationProvider);
 
     return Scaffold(
       appBar: AppBar(),
@@ -65,9 +61,11 @@ class _NotificationPageState extends State<NotificationPage> {
                       children: [
                         Container(
                           padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                            child: const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Icon(Icons.notifications_none),),),
+                          child: const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Icon(Icons.notifications_none),
+                          ),
+                        ),
                         const SizedBox(
                           child: Text(
                             'Notifications',
@@ -81,11 +79,9 @@ class _NotificationPageState extends State<NotificationPage> {
                               child: Switch(
                                 focusColor: Colors.white,
                                 activeColor: Colors.green,
-                                value: isNotification,
+                                value: notificationState.isGlobalNotification,
                                 onChanged: (bool value) {
-                                  setState(() {
-                                    isNotification = value;
-                                  });
+                                  ref.read(notificationProvider.notifier).toggleGlobalNotification(value);
                                 },
                               ),
                             ),
@@ -94,11 +90,11 @@ class _NotificationPageState extends State<NotificationPage> {
                       ],
                     ),
                   ),
-                  notificationButton(context, 'New Job Alert', isNotification),
-                  notificationButton(context, 'Message from Company', isNotification),
-                  notificationButton(context, 'New Matches', isNotification),
-                  notificationButton(context, 'Application Rejection', isNotification),
-                  notificationButton(context, 'New Certificate Available', isNotification),
+                  notificationButton(context, 'New Job Alert', notificationState),
+                  notificationButton(context, 'Message from Company', notificationState),
+                  notificationButton(context, 'New Matches', notificationState),
+                  notificationButton(context, 'Application Rejection', notificationState),
+                  notificationButton(context, 'New Certificate Available', notificationState),
                 ],
               ),
             ),

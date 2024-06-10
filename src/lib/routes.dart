@@ -4,8 +4,10 @@ import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
 import 'package:adopte_1_candidat/profile/notification_page.dart';
+import 'package:adopte_1_candidat/profile/personal_information_page.dart';
 import 'package:adopte_1_candidat/profile/profile.dart';
 import 'package:adopte_1_candidat/profile/update_profile_picture.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -18,10 +20,10 @@ import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
 
-GoRouter goRouter() {
-  return GoRouter(
+final routeProvider = Provider<GoRouter>((ref) {
+  final router = GoRouter(
     initialLocation: '/home',
-    routes: <RouteBase>[
+    routes: [
       GoRoute(
         path: '/loading',
         name: 'loading',
@@ -45,7 +47,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: '/selectSoftSkills',
@@ -107,6 +109,12 @@ GoRouter goRouter() {
         name: 'update-profile-picture',
         builder: (context, state) =>  const UpdateProfilePicture(),
       ),
+      GoRoute(
+        path: '/personal-information-page',
+        name: 'personal-information-page',
+        builder: (context, state) =>  const PersonalInformationPage(),
+      ),
     ],
   );
-}
+  return router;
+});

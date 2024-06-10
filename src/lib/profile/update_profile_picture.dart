@@ -1,7 +1,8 @@
-import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+
+import '../redundancy/rectangle_button.dart';
 
 class UpdateProfilePicture extends StatelessWidget {
   const UpdateProfilePicture({super.key});
