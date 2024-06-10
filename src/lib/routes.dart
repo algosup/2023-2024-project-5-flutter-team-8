@@ -14,10 +14,11 @@ import 'package:adopte_1_candidat/signup/sort_softskills.dart';
 import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
+import 'package:adopte_1_candidat/chat/chat.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/sortSoftSkills',
+    initialLocation: '/chat',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
@@ -42,7 +43,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: '/selectSoftSkills',
@@ -57,27 +58,27 @@ GoRouter goRouter() {
       GoRoute(
         path: '/certifications',
         name: 'certifications',
-        builder: (context, state) =>  const CertificationPage(),
+        builder: (context, state) => const CertificationPage(),
       ),
       GoRoute(
         path: '/efficiency-page',
         name: 'efficiency-page',
-        builder: (context, state) =>  const EfficiencyPage(),
+        builder: (context, state) => const EfficiencyPage(),
       ),
       GoRoute(
         path: '/leadership-page',
         name: 'leadership-page',
-        builder: (context, state) =>  const LeadershipPage(),
+        builder: (context, state) => const LeadershipPage(),
       ),
       GoRoute(
         path: '/social-page',
         name: 'social-page',
-        builder: (context, state) =>  const SocialPage(),
+        builder: (context, state) => const SocialPage(),
       ),
       GoRoute(
         path: '/agile-page',
         name: 'agile-page',
-        builder: (context, state) =>  const AgilePage(),
+        builder: (context, state) => const AgilePage(),
       ),
       GoRoute(
         path: '/verifyEmail',
@@ -88,7 +89,12 @@ GoRouter goRouter() {
         path: '/verificationSuccessful',
         name: 'verificationSuccessful',
         builder: (context, state) => const SuccessEmailUpdate(),
-      )
+      ),
+      GoRoute(
+        path: '/chat',
+        name: 'chat',
+        builder: (context, state) => const Chat(),
+      ),
     ],
   );
 }

@@ -15,6 +15,7 @@ dependencies:
   flutter_tags: ^1.0.0-nullsafety.1
   path_provider: ^2.0.2
   dotted_border: ^2.0.0
+  chat_bubbles: ^1.6.0
 
   
 dev_dependencies:
@@ -30,6 +31,8 @@ flutter:
     - assets/img/splash_screen.svg
     - assets/img/check_email.svg
     - assets/img/email_success.svg
+    - assets/img/pdf_icon.svg
+    - assets/img/attachment.svg
     - assets/img/bubbles.svg
     - assets/img/mcdo.png
     - assets/img/fg_entreprise.png
