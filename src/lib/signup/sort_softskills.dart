@@ -15,6 +15,7 @@ class SortSoftSkills extends StatefulWidget {
 }
 
 class _SortSoftSkillsState extends State<SortSoftSkills> {
+  String? _softSkillsNumberError;
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
   List<String> selectedSkills = List.filled(15, '');
@@ -135,8 +136,8 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                                       skill: availableSkills[index],
                                       onDragCompleted: (value) {
                                         setState(() {
-                                          if (index < selectedSkills.length) {
-                                            selectedSkills[index] = value;
+                                          // Ensure that the dragged skill is removed only once
+                                          if (availableSkills.contains(value)) {
                                             availableSkills.remove(value);
                                           }
                                         });
@@ -156,12 +157,22 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                           if (allFilled) {
                             GoRouter.of(context).go('/certifications');
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please fill all soft skills')),
-                            );
+                            setState(() {
+                              _softSkillsNumberError = 'Please fill all soft skills';
+                            });
                           }
                         },
                       ),
+                      SizedBox(
+                        height: size.height * 0.05,
+                        child: Center(
+                          child: Text(
+                            _softSkillsNumberError ?? '',
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: size.height * 0.02),
                     ],
                   ),
                 ),
@@ -179,7 +190,7 @@ class ContinueButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const ContinueButton({
-    super.key, 
+    super.key,
     required this.selectedSkills,
     required this.onPressed,
   });

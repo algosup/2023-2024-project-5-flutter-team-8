@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class ChipsWidget extends StatefulWidget {
@@ -184,4 +183,3 @@ class _TargetChipsWidgetState extends State<TargetChipsWidget> {
     );
   }
 }
-
