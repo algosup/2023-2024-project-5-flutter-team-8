@@ -15,12 +15,18 @@ dependencies:
   flutter_tags: ^1.0.0-nullsafety.1
   path_provider: ^2.0.2
   dotted_border: ^2.0.0
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
 
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  riverpod_generator: ^2.4.0
+  build_runner: ^2.4.11
+  custom_lint: ^0.6.4
+  riverpod_lint: ^2.3.10
 
 flutter:
   uses-material-design: true
@@ -64,6 +70,13 @@ flutter:
     - assets/icons/company_icon.svg
     - assets/icons/company_icon2.svg
     - assets/icons/company_icon3.svg
+    - assets/img/background.svg
+    - assets/icons/skills_logo.svg
+    - assets/icons/personal_information_logo.svg
+    - assets/icons/notification_logo.svg
+    - assets/icons/logout_logo.svg
+    - assets/icons/likes_logo.svg
+  
   fonts:
     - family: Didot
       fonts:

@@ -3,6 +3,11 @@ import 'package:adopte_1_candidat/certification/certification_page.dart';
 import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
+import 'package:adopte_1_candidat/profile/notification_page.dart';
+import 'package:adopte_1_candidat/profile/personal_information_page.dart';
+import 'package:adopte_1_candidat/profile/profile.dart';
+import 'package:adopte_1_candidat/profile/update_profile_picture.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -15,10 +20,10 @@ import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
 
-GoRouter goRouter() {
-  return GoRouter(
-    initialLocation: '/sortSoftSkills',
-    routes: <RouteBase>[
+final routeProvider = Provider<GoRouter>((ref) {
+  final router = GoRouter(
+    initialLocation: '/home',
+    routes: [
       GoRoute(
         path: '/loading',
         name: 'loading',
@@ -42,7 +47,7 @@ GoRouter goRouter() {
       GoRoute(
         path: '/home',
         name: 'home',
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: '/selectSoftSkills',
@@ -60,23 +65,23 @@ GoRouter goRouter() {
         builder: (context, state) =>  const CertificationPage(),
       ),
       GoRoute(
-        path: '/efficiency-page',
-        name: 'efficiency-page',
+        path: '/efficiencyPage',
+        name: 'efficiencyPage',
         builder: (context, state) =>  const EfficiencyPage(),
       ),
       GoRoute(
-        path: '/leadership-page',
-        name: 'leadership-page',
+        path: '/leadershipPage',
+        name: 'leadershipPage',
         builder: (context, state) =>  const LeadershipPage(),
       ),
       GoRoute(
-        path: '/social-page',
-        name: 'social-page',
+        path: '/socialPage',
+        name: 'socialPage',
         builder: (context, state) =>  const SocialPage(),
       ),
       GoRoute(
-        path: '/agile-page',
-        name: 'agile-page',
+        path: '/agilePage',
+        name: 'agilePage',
         builder: (context, state) =>  const AgilePage(),
       ),
       GoRoute(
@@ -88,7 +93,28 @@ GoRouter goRouter() {
         path: '/verificationSuccessful',
         name: 'verificationSuccessful',
         builder: (context, state) => const SuccessEmailUpdate(),
-      )
+      ),
+      GoRoute(
+        path: '/profile',
+        name: 'profile',
+        builder: (context, state) =>  const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/notificationPage',
+        name: 'notificationPage',
+        builder: (context, state) =>  const NotificationPage(),
+      ),
+      GoRoute(
+        path: '/updateProfilePicture',
+        name: 'updateProfilePicture',
+        builder: (context, state) =>  const UpdateProfilePicture(),
+      ),
+      GoRoute(
+        path: '/personalInformationPage',
+        name: 'personalInformationPage',
+        builder: (context, state) =>  const PersonalInformationPage(),
+      ),
     ],
   );
-}
+  return router;
+});
