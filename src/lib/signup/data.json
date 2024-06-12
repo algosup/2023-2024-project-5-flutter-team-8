@@ -1,0 +1,10 @@
+{
+    "fullName" : "Morgan White",
+    "description" : "Compliance officer.",
+    "localAuthentication" : true,
+    "forcePasswordChange" : false,
+    "enabled" : true,
+    "roles" : {
+        "role" : [ "COMPLIANCE", "MONITOR" ]
+    }
+}
