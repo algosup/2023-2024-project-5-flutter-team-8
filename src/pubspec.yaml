@@ -63,6 +63,18 @@ flutter:
     - assets/icons/company_icon.svg
     - assets/icons/company_icon2.svg
     - assets/icons/company_icon3.svg
+    - assets/companyImage/centre_val_de_loire1.webp 
+    - assets/companyImage/centre_val_de_loire2.jpeg 
+    - assets/companyImage/fg_entreprise1.jpeg 
+    - assets/companyImage/fg_entreprise2.jpeg 
+    - assets/companyImage/mcdo1.jpeg 
+    - assets/companyImage/mcdo2.jpeg 
+    - assets/companyImage/multis1.jpeg 
+    - assets/companyImage/multis2.jpeg 
+    - assets/companyImage/p_i_e1.jpeg 
+    - assets/companyImage/p_i_e2.jpeg 
+    - assets/companyImage/we_are_evolution1.png 
+    - assets/companyImage/we_are_evolution2.png
   fonts:
     - family: Didot
       fonts:

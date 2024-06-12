@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'bubbles_painter.dart';
 import 'bubbles_popup.dart';
 
-
 class BubbleData {
   double top;
   double left;
@@ -125,7 +124,6 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
     super.dispose();
   }
 }
-
 
 class BubblesWidget extends StatefulWidget {
   final int bubbleCount;

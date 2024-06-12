@@ -4,6 +4,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'bubbles_footer.dart';
+import 'package:adopte_1_candidat/job_offer_database/job_offer.dart';
+import 'package:adopte_1_candidat/job_offer_database/job_offer_data.dart';
 import 'success_popup.dart';
 import 'denied_popup.dart';
 
@@ -17,21 +19,28 @@ class BubblePopup extends StatefulWidget {
 }
 
 class _BubblePopupState extends State<BubblePopup> {
-  int activeIndex = 0;
-  Timer? _inactivityTimer;
-  bool _isBlurred = false;
+  int activeIndex = 0; // To track the active index of the carousel
+  Timer? _inactivityTimer; // Timer to track user inactivity
+  bool _isBlurred = false; // Flag to determine if the screen is blurred
   bool _hasShownBlur = false; // Flag to track if blur has been shown
+  late JobOffer currentJobOffer; // To hold the current job offer details
 
   @override
   void initState() {
     super.initState();
     _startInactivityTimer();
+    currentJobOffer = _getJobOffer(widget.logoPath);
   }
 
   @override
   void dispose() {
     _inactivityTimer?.cancel();
     super.dispose();
+  }
+
+    // Fetch the job offer based on logoPath
+  JobOffer _getJobOffer(String logoPath) {
+    return jobOffers.firstWhere((job) => job.logoPath == logoPath);
   }
 
   void _startInactivityTimer() {
@@ -72,28 +81,23 @@ class _BubblePopupState extends State<BubblePopup> {
     );
   }
 
+   // Show confirmation popup after denying the job
   void _showConfirmationPopup(BuildContext context) {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(); // Close the current popup
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return ConfirmationPopup(
+          icon: Icon(Icons.cancel, color: Colors.red), // Use the same icon as the footer
           onConfirm: () {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (BuildContext context) {
-                return SuccessPopup(
-                  message: 'You have denied the job offer.',
-                );
-              },
-            );
+            // No need to handle anything here as it is taken care of within ConfirmationPopup
           },
         );
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +145,7 @@ class _BubblePopupState extends State<BubblePopup> {
                                           children: [
                                             Image.asset(widget.logoPath, width: 50, height: 50),
                                             Text(
-                                              'Company Name',
+                                              currentJobOffer.companyName,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
@@ -149,7 +153,7 @@ class _BubblePopupState extends State<BubblePopup> {
                                               ),
                                             ),
                                             Text(
-                                              'Job Name',
+                                              currentJobOffer.jobName,
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.black,
@@ -164,7 +168,7 @@ class _BubblePopupState extends State<BubblePopup> {
                                               Icon(Icons.location_on, size: 14),
                                               SizedBox(width: 5),
                                               Text(
-                                                'Location',
+                                                currentJobOffer.location,
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                   color: Colors.black,
@@ -181,9 +185,9 @@ class _BubblePopupState extends State<BubblePopup> {
                                         Icon(Icons.calendar_today, size: 14),
                                         SizedBox(width: 5),
                                         Text(
-                                          'Starts Jul 30, 2024',
+                                          currentJobOffer.startDate,
                                           style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: 17,
                                             color: Colors.black,
                                           ),
                                         ),
@@ -193,9 +197,9 @@ class _BubblePopupState extends State<BubblePopup> {
                                     Padding(
                                       padding: EdgeInsets.only(right: 20),
                                       child: Text(
-                                        'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+                                        currentJobOffer.description,
                                         style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 15,
                                           color: Colors.black,
                                         ),
                                       ),
@@ -206,12 +210,12 @@ class _BubblePopupState extends State<BubblePopup> {
                               // Second page
                               Container(
                                 color: backgroundColor,
-                                child: Image.asset(widget.logoPath, fit: BoxFit.cover),
+                                child: Image.asset(currentJobOffer.image1, fit: BoxFit.cover),
                               ),
                               // Third page
                               Container(
                                 color: backgroundColor,
-                                child: Image.asset(widget.logoPath, fit: BoxFit.cover),
+                                child: Image.asset(currentJobOffer.image2, fit: BoxFit.cover),
                               ),
                             ],
                             options: CarouselOptions(
