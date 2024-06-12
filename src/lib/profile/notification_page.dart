@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../redundancy/notification_button.dart';
-import 'notification_provider.dart';
+import '../provider/notification_provider.dart';
 
 class NotificationPage extends ConsumerWidget {
   const NotificationPage({super.key});

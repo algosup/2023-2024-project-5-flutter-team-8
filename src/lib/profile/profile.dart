@@ -95,16 +95,16 @@ class ProfilePage extends StatelessWidget {
                         'assets/icons/personal_information_logo.svg',
                         '/personalInformationPage'),
                     profileButton(context, 'Skills',
-                        'assets/icons/skills_logo.svg', '/update-skills-page'),
+                        'assets/icons/skills_logo.svg', '/currentSkillsPage'),
                     profileButton(context, 'Certifications',
-                        'assets/icons/certifications.svg', '/page'),
+                        'assets/icons/certifications.svg', '/certificationProfilePage'),
                     profileButton(
                         context,
                         'Notifications',
                         'assets/icons/notification_logo.svg',
                         '/notificationPage'),
                     profileButton(context, 'Jobs Liked',
-                        'assets/icons/likes_logo.svg', '/page'),
+                        'assets/icons/likes_logo.svg', '/jobsLikedPage'),
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet<void>(

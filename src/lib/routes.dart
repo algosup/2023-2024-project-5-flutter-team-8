@@ -3,10 +3,16 @@ import 'package:adopte_1_candidat/certification/certification_page.dart';
 import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
+import 'package:adopte_1_candidat/profile/certification_profile.dart';
+import 'package:adopte_1_candidat/profile/current_skills.dart';
+import 'package:adopte_1_candidat/profile/jobs_liked.dart';
+import 'package:adopte_1_candidat/profile/new_ranking_skills.dart';
 import 'package:adopte_1_candidat/profile/notification_page.dart';
 import 'package:adopte_1_candidat/profile/personal_information_page.dart';
 import 'package:adopte_1_candidat/profile/profile.dart';
+import 'package:adopte_1_candidat/profile/update_password_page.dart';
 import 'package:adopte_1_candidat/profile/update_profile_picture.dart';
+import 'package:adopte_1_candidat/profile/update_skills.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -113,6 +119,36 @@ final routeProvider = Provider<GoRouter>((ref) {
         path: '/personalInformationPage',
         name: 'personalInformationPage',
         builder: (context, state) =>  const PersonalInformationPage(),
+      ),
+      GoRoute(
+        path: '/updatePasswordPage',
+        name: 'updatePasswordPage',
+        builder: (context, state) =>  const UpdatePasswordPage(),
+      ),
+      GoRoute(
+        path: '/currentSkillsPage',
+        name: 'currentSkillsPage',
+        builder: (context, state) =>  const CurrentSkillsPage(),
+      ),
+      GoRoute(
+        path: '/updateSkills',
+        name: 'updateSkills',
+        builder: (context, state) =>  const UpdateSkillsPage(),
+      ),
+      GoRoute(
+        path: '/newRankingSkills',
+        name: 'newRankingSkills',
+        builder: (context, state) =>  const NewRankingSkillsPage(),
+      ),
+      GoRoute(
+        path: '/certificationProfilePage',
+        name: 'certificationProfilePage',
+        builder: (context, state) =>  const CertificationProfilePage(),
+      ),
+      GoRoute(
+        path: '/jobsLikedPage',
+        name: 'jobsLikedPage',
+        builder: (context, state) =>  const JobsLikedPage(),
       ),
     ],
   );

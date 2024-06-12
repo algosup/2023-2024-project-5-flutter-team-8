@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../profile/notification_provider.dart';
+import '../provider/notification_provider.dart';
 
 Widget notificationButton(BuildContext context, String name, NotificationState state) {
   return NotificationButton(
