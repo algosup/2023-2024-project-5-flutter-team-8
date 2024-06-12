@@ -116,6 +116,18 @@ class _MatchesState extends State<Matches> {
           SvgPicture.asset(
             'assets/icons/edit_square.svg',
             fit: BoxFit.contain,
+            height: 30,
+          ),
+          SizedBox(
+            width: size.width / 32,
+          ),
+          const Icon(
+            Icons.more_vert_outlined,
+            color: Colors.black,
+            size: 30,
+          ),
+          SizedBox(
+            width: size.width / 64,
           ),
         ],
       ),
