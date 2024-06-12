@@ -3,6 +3,7 @@ import 'package:adopte_1_candidat/certification/certification_page.dart';
 import 'package:adopte_1_candidat/certification/efficiency_page.dart';
 import 'package:adopte_1_candidat/certification/leadership_page.dart';
 import 'package:adopte_1_candidat/certification/social_page.dart';
+import 'package:adopte_1_candidat/chat/matches.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -18,7 +19,7 @@ import 'package:adopte_1_candidat/chat/chat.dart';
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: '/chat',
+    initialLocation: '/home',
     routes: <RouteBase>[
       GoRoute(
         path: '/loading',
@@ -94,6 +95,11 @@ GoRouter goRouter() {
         path: '/chat',
         name: 'chat',
         builder: (context, state) => const Chat(),
+      ),
+      GoRoute(
+        path: '/matches',
+        name: 'matches',
+        builder: (context, state) => const Matches(),
       ),
     ],
   );

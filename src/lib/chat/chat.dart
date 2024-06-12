@@ -449,7 +449,7 @@ class _ChatState extends State<Chat> {
                 actions: [
                   InkWell(
                     child: SvgPicture.asset(
-                      'assets/img/attachment.svg',
+                      'assets/icons/attachment.svg',
                       fit: BoxFit.contain,
                       height: 24,
                       width: 24,
