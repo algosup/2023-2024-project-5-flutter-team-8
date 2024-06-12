@@ -7,33 +7,33 @@ This week marked the concrete beginning of the project's technical side, greatly
 ## Accomplishments
 
 1. **Functional Specifications Finalization**
-   - Completed and submitted the functional specifications document to the client, who approved its content.
+   - Completed and submitted the functional specifications document to the client, who approved its content.
 2. **Completion of Mock-ups**
-   - Sent the app mock-ups to the client for feedback.
+   - Sent the app mock-ups to the client for feedback.
 3. **Landing & Login Pages Development**
-   - Successfully developed most of the logged-out interfaces of the app. However, we are currently facing an estimated 20-hour delay due to the focus on finalizing the functional and continuing technical specifications.
+    - Successfully developed most of the logged-out interfaces of the app. However, we are currently facing an estimated 20-hour delay due to the focus on finalizing the functional and continuing technical specifications.
 4. **Risk Evaluation**
-   - Conducted a risk evaluation and created a mitigation plan to prevent major issues that might hinder project completion.
+    - Conducted a risk evaluation and created a mitigation plan to prevent major issues that might hinder project completion.
 
 ## Challenges
 
 1. **Focus on User Experience**
-   - Concentrating on the User Experience was more challenging and time-consuming than anticipated, leading to significant delays.
+    - Concentrating on the User Experience was more challenging and time-consuming than anticipated, leading to significant delays.
 2. **Development Pace Hindrance**
-   - Our developer faced difficulties with displaying SVGs correctly. This issue was due to the incorrect use of an attribute in the SVG display class, causing overtime and delays in page delivery.
+    - Our developer faced difficulties with displaying SVGs correctly. This issue was due to the incorrect use of an attribute in the SVG display class, causing overtime and delays in page delivery.
 3. **User Manual Creation**
-   - Due to the previously mentioned delays and the technical writer's involvement in short-term tasks, the User Manual has not yet been started.
+    - Due to the previously mentioned delays and the technical writer's involvement in short-term tasks, the User Manual has not yet been started.
 
 ## Plan for Next Week
 
 1. **Catch Up on Development Delays**
-   - Address the delays in page development to align with the Gantt Chart and ensure timely project delivery.
+    - Address the delays in page development to align with the Gantt Chart and ensure timely project delivery.
 2. **Work on Technical Specifications**
-   - Continue drafting the technical specifications, which are currently 30% complete, to facilitate a smooth development phase.
+    - Continue drafting the technical specifications, which are currently 30% complete, to facilitate a smooth development phase.
 3. **Start User Manual Creation**
-   - Begin creating a comprehensive user manual, detailing the app's intended usage for all user types.
+    - Begin creating a comprehensive user manual, detailing the app's intended usage for all user types.
 4. **Continue Testing Phase Planning**
-   - Plan the testing phase to ensure the product is bug-free and meets the client's requirements, focusing on defining test cases for the application.
+    - Plan the testing phase to ensure the product is bug-free and meets the client's requirements, focusing on defining test cases for the application.
 
 ## Conclusion
 

@@ -61,36 +61,108 @@ This week marked the concrete beginning of the project's technical side, greatly
 ### Accomplishments
 
 1. **Functional Specifications Finalization**
-   - Completed and submitted the functional specifications document to the client, who approved its content.
+   - Completed and submitted the functional specifications document to the client, who approved its content.
 2. **Completion of Mock-ups**
-   - Sent the app mock-ups to the client for feedback.
+   - Sent the app mock-ups to the client for feedback.
 3. **Landing & Login Pages Development**
-   - Successfully developed most of the logged-out interfaces of the app. However, we are currently facing an estimated 20-hour delay due to the focus on finalizing the functional and continuing technical specifications.
+    - Successfully developed most of the logged-out interfaces of the app. However, we are currently facing an estimated 20-hour delay due to the focus on finalizing the functional and continuing technical specifications.
 4. **Risk Evaluation**
-   - Conducted a risk evaluation and created a mitigation plan to prevent major issues that might hinder project completion.
+    - Conducted a risk evaluation and created a mitigation plan to prevent major issues that might hinder project completion.
 
 ### Challenges
 
 1. **Focus on User Experience**
-   - Concentrating on the User Experience was more challenging and time-consuming than anticipated, leading to significant delays.
+    - Concentrating on the User Experience was more challenging and time-consuming than anticipated, leading to significant delays.
 2. **Development Pace Hindrance**
-   - Our developer faced difficulties with displaying SVGs correctly. This issue was due to the incorrect use of an attribute in the SVG display class, causing overtime and delays in page delivery.
+    - Our developer faced difficulties with displaying SVGs correctly. This issue was due to the incorrect use of an attribute in the SVG display class, causing overtime and delays in page delivery.
 3. **User Manual Creation**
-   - Due to the previously mentioned delays and the technical writer's involvement in short-term tasks, the User Manual has not yet been started.
+    - Due to the previously mentioned delays and the technical writer's involvement in short-term tasks, the User Manual has not yet been started.
 
 ### Plan for Next Week
 
 1. **Catch Up on Development Delays**
-   - Address the delays in page development to align with the Gantt Chart and ensure timely project delivery.
+    - Address the delays in page development to align with the Gantt Chart and ensure timely project delivery.
 2. **Work on Technical Specifications**
-   - Continue drafting the technical specifications, which are currently 30% complete, to facilitate a smooth development phase.
+    - Continue drafting the technical specifications, which are currently 30% complete, to facilitate a smooth development phase.
 3. **Start User Manual Creation**
-   - Begin creating a comprehensive user manual, detailing the app's intended usage for all user types.
+    - Begin creating a comprehensive user manual, detailing the app's intended usage for all user types.
 4. **Continue Testing Phase Planning**
-   - Plan the testing phase to ensure the product is bug-free and meets the client's requirements, focusing on defining test cases for the application.
+    - Plan the testing phase to ensure the product is bug-free and meets the client's requirements, focusing on defining test cases for the application.
 
 ### Conclusion
 
 Despite the challenges faced this week, our team is persevering thanks to strong team spirit and effective communication. We are optimistic about catching up on delays and are eager to dive deeper into the app development phase next week, exclusively doing overtime to counter the absence of any project time.
+
+---
+
+## Weekly Report - Week 3
+
+### Overview
+
+This week brought significant changes in our motivation and the project’s progress. Despite some setbacks, the team remained focused on the project objectives. However, the average pace and time for task completion were lower than expected, even with several team members working overtime.
+
+### Accomplishments
+
+1. **Technical Specifications Progress**
+   - We made substantial progress on the technical specifications, completing about 80% of the document.
+2. **Advancements in Testing**
+   - Significant steps were taken in defining our testing strategy, including the development of most test cases.
+
+### Challenges
+
+1. **Lack of Dedicated Project Time**
+   - No scheduled project time this week meant we had to coordinate via Slack rather than working together in person.
+2. **Decreased Motivation**
+   - Many team members reported a drop in motivation, largely due to the absence of dedicated project time.
+
+### Plan for Next Week
+
+1. **Complete Technical Specifications**
+   - Finalize and refine the technical specifications to ensure the development phase adheres to all conventions and constraints defined by the tech lead.
+2. **Develop User Manual**
+   - Create a comprehensive user manual with instructions and resources for both users and the client on how to use the solution.
+3. **Finalize Test Plan**
+   - Complete the test plan by focusing on critical features and delivering a thorough overview of our testing strategy and action plan to the client.
+
+### Conclusion
+
+This week was challenging, primarily due to the lack of dedicated project time, which disrupted the team dynamic established in previous weeks. The potential delays and setbacks from this week will need to be addressed in the upcoming week to ensure timely project delivery.
+
+---
+
+## Weekly Report - Week 4
+
+### Overview
+
+This week marked a turnaround in our team's motivation following a previous week with no dedicated project time. We successfully revitalized team spirit and motivation, as well as achieving significant milestones, bringing the project a step forward in a short period of time.
+
+### Accomplishments
+
+1. **Completion of Technical Specifications**
+    - We finalized the technical specifications, detailing all technical aspects and guidelines for the app development phase.
+2. **Completed Testing Planning**
+    - We refined our test strategy, adding new test cases and completing the test plan document.
+3. **Major Advancements in User Manual**
+    - Our technical writer made significant progress on the user manual, creating concise yet comprehensive descriptions of the app's expected usage.
+4. **Development of Numerous Interfaces**
+    - We focused our efforts on app development, aiding the software engineer in meeting objectives. These interfaces were tested to ensure alignment with specifications, client needs, and final design.
+
+### Challenges
+
+1. **Coordination of Development Efforts**
+    - Coordinating all team members assigned to development tasks was challenging. It required briefing on coding conventions and organizing the app's structure, which took a lot of time and efforts for the people who were already coding.
+
+### Plan for Next Week
+
+1. **Complete Application Development**
+    - We aim to deliver a working prototype of "Adopte Un Candidat" by next Friday. Our primary focus will be on ensuring the prototype meets all requirements.
+2. **Finalize User Manual**
+    - The user manual will be completed and reviewed, providing a thorough guide for both reviewers and the client alongside the app prototype.
+3. **Continue Testing Phase**
+    - We will continue testing both existing and new interfaces to ensure a bug-free solution.
+
+### Conclusion
+
+This week, we caught up with project deadlines thanks to the team's overtime efforts and the collaboration on common tasks. The team is pleased with our progress and current pace, and we are pleased to be on the right way to meet the deadlines.
 
 ---
