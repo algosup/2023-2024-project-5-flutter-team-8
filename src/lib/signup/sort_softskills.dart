@@ -66,7 +66,8 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
 
     await file.writeAsString(jsonEncode(data));
-    developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
+    developer.log('data.json content: ${await file.readAsString()}',
+        name: 'SaveUser');
   }
 
   @override
@@ -75,7 +76,6 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -183,13 +183,15 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       ContinueButton(
                         selectedSkills: selectedSkills,
                         onPressed: () async {
-                          bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
+                          bool allFilled =
+                              selectedSkills.every((skill) => skill.isNotEmpty);
                           if (allFilled) {
                             await _saveSkills();
-                            GoRouter.of(context).go('/setProfilePicture');
+                            GoRouter.of(context).go('/locationPage');
                           } else {
                             setState(() {
-                              _softSkillsNumberError = 'Please fill all soft skills';
+                              _softSkillsNumberError =
+                                  'Please fill all soft skills';
                             });
                           }
                         },

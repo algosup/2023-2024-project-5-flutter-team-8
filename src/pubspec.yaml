@@ -14,6 +14,8 @@ dependencies:
   percent_indicator: ^4.2.2
   flutter_tags: ^1.0.0-nullsafety.1
   path_provider: ^2.0.2
+  dotted_border: ^2.0.0
+  chat_bubbles: ^1.6.0
   carousel_slider: ^4.0.0
   smooth_page_indicator: ^1.1.0
   lottie: ^2.0.0
@@ -32,11 +34,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/icons/edit_square.svg
     - assets/img/official_logo.png
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
     - assets/img/check_email.svg
     - assets/img/email_success.svg
+    - assets/img/pdf_icon.svg
+    - assets/icons/attachment.svg
     - assets/img/bubbles.svg
     - assets/img/mcdo.png
     - assets/img/fg_entreprise.png
