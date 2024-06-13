@@ -75,7 +75,6 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -186,7 +185,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                           bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
                           if (allFilled) {
                             await _saveSkills();
-                            GoRouter.of(context).go('/setProfilePicture');
+                            GoRouter.of(context).push('/setProfilePicture');
                           } else {
                             setState(() {
                               _softSkillsNumberError = 'Please fill all soft skills';

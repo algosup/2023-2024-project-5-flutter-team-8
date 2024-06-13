@@ -79,6 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.only(left: 16.0),
                               child: Text(
                                 user.fullName,
+                                overflow: TextOverflow.ellipsis,
                                 style:
                                     const TextStyle(color: backgroundColor, fontSize: 20),
                               ),
