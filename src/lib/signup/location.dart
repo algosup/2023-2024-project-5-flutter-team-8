@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:developer' as developer;
 
+import 'package:adopte_1_candidat/redundancy/arrow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
@@ -74,136 +75,134 @@ class _SetLocationState extends State<SetLocation> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: size.height * 0.1,
-              ),
-              LinearPercentIndicator(
-                width: size.width,
-                percent: 0.8,
-                animation: true,
-                backgroundColor: Colors.black,
-                progressColor: purpleColor,
-              ),
-              SizedBox(
-                height: size.height * 0.05,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: size.width * 0.72,
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Location',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 40,
-                                fontFamily: 'DM Sans',
-                                fontWeight: FontWeight.bold,
-                              ),
+      backgroundColor: backgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.1,
+            ),
+            LinearPercentIndicator(
+              width: size.width,
+              percent: 0.6,
+              animation: true,
+              backgroundColor: Colors.black,
+              progressColor: purpleColor,
+            ),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: ArrowButton()
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: size.width * 0.72,
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Location',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 40,
+                              fontFamily: 'DM Sans',
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text(
-                              'Select Your Job Location Preferences',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 12,
-                              ),
+                          ),
+                          Text(
+                            'Select Your Job Location Preferences',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: size.height / 20,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: size.height / 6,
+                ),
+                Container(
+                  padding:
+                      const EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Text('0km'), Text('200km')],
                   ),
-                  Container(
-                    padding:
-                        const EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text('0km'), Text('200km')],
-                    ),
-                  ),
-                  Slider(
-                    activeColor: purpleColor,
-                    value: currentSliderValue,
-                    max: 200,
-                    divisions: 200,
-                    label: currentSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        currentSliderValue = value;
-                        selectedDistance = '${value.round()}km';
-                      });
-                    },
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: CustomTextField(
-                      controller: locationController,
-                      hintText: 'City, Country',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return '';
-                        }
-                        return null;
-                      },
-                      prefixIcon: const Icon(
-                        Icons.location_on,
-                        color: purpleColor,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height / 5,
-                  ),
-                  ContinueButton(
-                    onPressed: () async {
-                      if (_formKey.currentState?.validate() ?? false) {
-                        String location = locationController.text;
-                        if (isLocationValid(location)) {
-                          await _saveSelectedLocation();
-                          GoRouter.of(context).go('/setProfilePicture');
-                        } else {
-                          setState(() {
-                            _locationSelectionError =
-                                "Please fill in a location";
-                          });
-                        }
+                ),
+                Slider(
+                  activeColor: purpleColor,
+                  value: currentSliderValue,
+                  max: 200,
+                  divisions: 200,
+                  label: currentSliderValue.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      currentSliderValue = value;
+                      selectedDistance = '${value.round()}km';
+                    });
+                  },
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: CustomTextField(
+                    controller: locationController,
+                    hintText: 'City, Country',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return '';
                       }
+                      return null;
                     },
+                    prefixIcon: const Icon(
+                      Icons.location_on,
+                      color: purpleColor,
+                    ),
                   ),
-                  if (_locationSelectionError != null)
-                    SizedBox(
-                      height: size.height * 0.05,
-                      child: Center(
-                        child: Text(
-                          _locationSelectionError!,
-                          style: const TextStyle(color: Colors.red),
-                        ),
+                ),
+                SizedBox(
+                  height: size.height / 5,
+                ),
+                ContinueButton(
+                  onPressed: () async {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      String location = locationController.text;
+                      if (isLocationValid(location)) {
+                        await _saveSelectedLocation();
+                        GoRouter.of(context).go('/setProfilePicture');
+                      } else {
+                        setState(() {
+                          _locationSelectionError =
+                              "Please fill in a location";
+                        });
+                      }
+                    }
+                  },
+                ),
+                if (_locationSelectionError != null)
+                  SizedBox(
+                    height: size.height * 0.05,
+                    child: Center(
+                      child: Text(
+                        _locationSelectionError!,
+                        style: const TextStyle(color: Colors.red),
                       ),
                     ),
-                ],
-              ),
-            ],
-          ),
+                  ),
+              ],
+            ),
+          ],
         ),
       ),
     );

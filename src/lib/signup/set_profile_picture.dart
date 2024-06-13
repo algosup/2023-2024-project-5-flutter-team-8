@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:io';
+import 'package:adopte_1_candidat/redundancy/arrow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -64,7 +65,6 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -79,8 +79,9 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
                 backgroundColor: Colors.black,
                 progressColor: purpleColor,
               ),
-              SizedBox(
-                height: size.height * 0.05,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: ArrowButton()
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -143,7 +144,7 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
                     'assets/iconProfile/panda.svg',
                   ], size),
                   SizedBox(
-                    height: size.height / 15,
+                    height: size.height / 20,
                   ),
                   ContinueButton(
                     onPressed: () async {

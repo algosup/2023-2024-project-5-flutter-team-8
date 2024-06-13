@@ -8,6 +8,8 @@ class User {
   final String email;
   final String password;
   final List<String> softSkills;
+  final String location;
+  final String distance;
   final String avatar;
 
   User({
@@ -15,6 +17,8 @@ class User {
     required this.email,
     required this.password,
     required this.softSkills,
+    required this.location,
+    required this.distance,
     required this.avatar,
   });
 
@@ -24,6 +28,8 @@ class User {
       email: json['email'] as String,
       password: json['password'] as String,
       softSkills: List<String>.from(json['softSkills']),
+      location: json['location'] as String,
+      distance: json['distance'] as String,
       avatar: json['avatar'] as String,
     );
   }
@@ -34,6 +40,8 @@ class User {
       'email': email,
       'password': password,
       'softSkills': softSkills,
+      'location': location,
+      'distance': distance,
       'avatar': avatar,
     };
   }
@@ -61,6 +69,8 @@ List<User> users = [
       'Pressure handling',
       'Process optimization'
     ],
+    location: 'Paris',
+    distance: '10 km',
     avatar: 'assets/iconProfile/cat.svg',
   ),
 ];

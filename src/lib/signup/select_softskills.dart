@@ -96,9 +96,9 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
               backgroundColor: Colors.black,
               progressColor: purpleColor,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
-              child: const ArrowButton()
+              child: ArrowButton()
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -150,16 +150,10 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                       height: size.height * 0.65,
                       child: Stack(
                         children: [
-                          Column(
-                            children: [
-                              ChipsWidget(
-                                skills: skills,
-                                selectedSkills: selectedSkills,
-                                onSelectionChanged: onSelectionChanged,
-                              ),
-                              SizedBox(
-                                height: size.height * 0.05,)
-                            ],
+                          ChipsWidget(
+                            skills: skills,
+                            selectedSkills: selectedSkills,
+                            onSelectionChanged: onSelectionChanged,
                           ),
                           Positioned(
                             bottom: 0,
