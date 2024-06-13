@@ -85,14 +85,14 @@ class CertificationPage extends StatelessWidget {
               ),
             Row(
               children: [
-                certificationCategorie(context, '/leadership-page', 'assets/icons/leadership_logo.svg', 'Leadership', 30),
-                certificationCategorie(context, '/efficiency-page', 'assets/icons/efficiency_logo.svg', 'Efficiency', 30),
+                certificationCategorie(context, '/leadershipPage', 'assets/icons/leadership_logo.svg', 'Leadership', 30),
+                certificationCategorie(context, '/efficiencyPage', 'assets/icons/efficiency_logo.svg', 'Efficiency', 30),
               ],
             ),
             Row(
               children: [
-                certificationCategorie(context, '/social-page', 'assets/icons/social_logo.svg', 'Social', 30),
-                certificationCategorie(context, '/agile-page', 'assets/icons/agile_logo.svg', 'Agile', 30),
+                certificationCategorie(context, '/socialPage', 'assets/icons/social_logo.svg', 'Social', 30),
+                certificationCategorie(context, '/agilePage', 'assets/icons/agile_logo.svg', 'Agile', 30),
               ],
             ),
           ],

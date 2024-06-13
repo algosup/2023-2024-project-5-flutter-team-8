@@ -17,12 +17,17 @@ dependencies:
   carousel_slider: ^4.0.0
   smooth_page_indicator: ^1.1.0
   lottie: ^2.0.0
-
-
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  riverpod_generator: ^2.4.0
+  build_runner: ^2.4.11
+  custom_lint: ^0.6.4
+  riverpod_lint: ^2.3.10
 
 flutter:
   uses-material-design: true
@@ -30,6 +35,8 @@ flutter:
     - assets/img/official_logo.png
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
+    - assets/img/check_email.svg
+    - assets/img/email_success.svg
     - assets/img/bubbles.svg
     - assets/img/mcdo.png
     - assets/img/fg_entreprise.png
@@ -78,6 +85,13 @@ flutter:
     - assets/companyImage/we_are_evolution1.png 
     - assets/companyImage/we_are_evolution2.png
     - assets/animation/bubble_popup.json
+    - assets/img/background.svg
+    - assets/icons/skills_logo.svg
+    - assets/icons/personal_information_logo.svg
+    - assets/icons/notification_logo.svg
+    - assets/icons/logout_logo.svg
+    - assets/icons/likes_logo.svg
+  
   fonts:
     - family: Didot
       fonts:
