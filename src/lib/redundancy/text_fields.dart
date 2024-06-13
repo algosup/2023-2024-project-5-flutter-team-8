@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -104,8 +105,9 @@ class EmailField extends CustomTextField {
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
   final String? errorText;
+  final Widget? suffixIcon;
 
-  const PasswordField({Key? key, required this.controller, this.errorText}) : super(key: key);
+  const PasswordField({Key? key, required this.controller, this.errorText, this.suffixIcon}) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -127,7 +129,7 @@ class _PasswordFieldState extends State<PasswordField> {
         }
         return null;
       },
-      suffixIcon: GestureDetector(
+      suffixIcon: widget.suffixIcon ?? GestureDetector(
         onTap: () {
           setState(() {
             _obscureText = !_obscureText;
@@ -142,3 +144,20 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 }
 
+class PasswordFieldProfile extends PasswordField {
+  PasswordFieldProfile({
+    Key? key,
+    required TextEditingController controller,
+    String? errorText,
+    Widget? suffixIcon,
+    required BuildContext context
+  }) : super(
+    key: key,
+    controller: controller,
+    errorText: errorText,
+    suffixIcon: suffixIcon ?? GestureDetector(
+      onTap: () => GoRouter.of(context).push('/updatePasswordPage'),
+      child: const Icon(Icons.arrow_forward_ios),
+    ),
+  );
+}

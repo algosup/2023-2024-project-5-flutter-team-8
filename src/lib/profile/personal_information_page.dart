@@ -1,3 +1,4 @@
+import 'package:adopte_1_candidat/redundancy/text_fields.dart';
 import 'package:adopte_1_candidat/user.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -52,30 +53,31 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
             emailController.text = _user.email;
             passwordController.text = _user.password;
 
-            return Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: size.width,
-                    height: size.height / 30,
-                  ),
-                  const Row(
-                    children: [
-                      SizedBox(
-                        child: Text(
-                          'Personal Information',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            return SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: size.width,
+                      height: size.height / 30,
+                    ),
+                    const Row(
+                      children: [
+                        SizedBox(
+                          child: Text(
+                            'Personal Information',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: size.width,
-                    height: size.height / 20,
-                  ),
-                  Expanded(
-                    child: Column(
+                      ],
+                    ),
+                    SizedBox(
+                      width: size.width,
+                      height: size.height / 20,
+                    ),
+                    Column(
                       children: [
                         Align(
                           alignment: Alignment.centerLeft,
@@ -87,11 +89,18 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                             ),
                           ),
                         ),
-                        personalInfo(context, fullNameController),
+                        Container(
+                            decoration: BoxDecoration(
+                              color: backgroundColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: size.width,
+                            child: FullName(controller: fullNameController)),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                            padding: const EdgeInsets.only(top: 24.0, bottom: 16.0),
+                            padding:
+                                const EdgeInsets.only(top: 24.0, bottom: 16.0),
                             child: const Text(
                               'Password',
                               style: TextStyle(fontSize: 12),
@@ -102,37 +111,9 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                           decoration: BoxDecoration(
                             color: backgroundColor,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
                           ),
                           width: size.width,
-                          height: 40,
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: size.width - 60,
-                                child: TextField(
-                                  controller: passwordController,
-                                  obscureText: true,
-                                  decoration: const InputDecoration(
-                                    fillColor: backgroundColor,
-                                    border: InputBorder.none,
-                                    hintText: '',
-                                  ),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => GoRouter.of(context).push('/updatePasswordPage'),
-                                child: const Icon(Icons.keyboard_arrow_right),
-                              )
-                            ],
-                          ),
+                          child: PasswordFieldProfile(controller: passwordController, context: context),
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
@@ -144,26 +125,31 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                             ),
                           ),
                         ),
-                        personalInfo(context, emailController),
+                        Container(
+                            decoration: BoxDecoration(
+                              color: backgroundColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: size.width,
+                            child: EmailField(controller: emailController)),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                            padding: const EdgeInsets.only(top: 24.0, bottom: 16.0),
+                            padding:
+                                const EdgeInsets.only(top: 24.0, bottom: 16.0),
                             child: const Text(
                               'Location',
                               style: TextStyle(fontSize: 12),
                             ),
                           ),
                         ),
-                        personalInfo(context, locationController),
+                        // personalInfo(context, locationController),
                         Container(
-                          padding: const EdgeInsets.only(top: 24.0, left: 8.0, right: 8.0),
+                          padding: const EdgeInsets.only(
+                              top: 24.0, left: 8.0, right: 8.0),
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('0km'),
-                              Text('200km')
-                            ],
+                            children: [Text('0km'), Text('200km')],
                           ),
                         ),
                         Slider(
@@ -180,23 +166,23 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: size.height / 30,
-                  ),
-                  SizedBox(
-                    child: BlackRectangleButton(
-                      size: size,
-                      text: 'SAVE',
-                      onPressed: () {
-                        GoRouter.of(context).push('/profile');
-                      },
+                    SizedBox(
+                      height: size.height / 30,
                     ),
-                  ),
-                  SizedBox(
-                    height: size.height / 20,
-                  ),
-                ],
+                    SizedBox(
+                      child: BlackRectangleButton(
+                        size: size,
+                        text: 'SAVE',
+                        onPressed: () {
+                          GoRouter.of(context).push('/profile');
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height / 20,
+                    ),
+                  ],
+                ),
               ),
             );
           } else {
@@ -206,31 +192,4 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
       ),
     );
   }
-}
-
-Widget personalInfo(BuildContext context, TextEditingController controller) {
-  final size = MediaQuery.of(context).size;
-  return Container(
-    decoration: BoxDecoration(
-      color: backgroundColor,
-      borderRadius: BorderRadius.circular(10),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.1),
-          spreadRadius: 2,
-          blurRadius: 5,
-          offset: const Offset(0, 3),
-        ),
-      ],
-    ),
-    width: size.width,
-    height: 40,
-    child: TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        fillColor: backgroundColor,
-        border: InputBorder.none,
-      ),
-    ),
-  );
 }
