@@ -5,7 +5,7 @@ Widget certificate(BuildContext context, String name, String path) {
   final size = MediaQuery.of(context).size;
   return Container(
     width: size.width,
-    height: size.height / 11,
+    height: 55,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(25),
       color: Colors.white,
@@ -34,7 +34,7 @@ Widget certificate(BuildContext context, String name, String path) {
           child: Center(
             child: Text(
               name,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
             ),
           ),
         ),
