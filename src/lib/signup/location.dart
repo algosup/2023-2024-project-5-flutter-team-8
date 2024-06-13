@@ -21,7 +21,7 @@ class SetLocation extends StatefulWidget {
 class _SetLocationState extends State<SetLocation> {
   final _formKey = GlobalKey<FormState>();
   String? selectedDistance;
-  String? _locationSelectionError;
+  String? _locationSelectionError; // Add this variable
   double currentSliderValue = 156;
   final TextEditingController locationController = TextEditingController();
 
@@ -160,10 +160,9 @@ class _SetLocationState extends State<SetLocation> {
                   CustomTextField(
                     controller: locationController,
                     hintText: 'City, Country',
-                    errorText: _locationSelectionError,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter a location';
+                        return 'Error';
                       }
                       return null;
                     },
@@ -178,21 +177,25 @@ class _SetLocationState extends State<SetLocation> {
                         if (isLocationValid(location)) {
                           await _saveSelectedLocation();
                           GoRouter.of(context).go('/setProfilePicture');
-                        }// else {
-                        //   onError('Please fill out all fields correctly');
-                        // }
+                        } else {
+                          setState(() {
+                            _locationSelectionError =
+                                "Please fill in a location";
+                          });
+                        }
                       }
                     },
                   ),
-                  SizedBox(
-                    height: size.height * 0.05,
-                    child: Center(
-                      child: Text(
-                        _locationSelectionError ?? '',
-                        style: const TextStyle(color: Colors.red),
+                  if (_locationSelectionError != null)
+                    SizedBox(
+                      height: size.height * 0.05,
+                      child: Center(
+                        child: Text(
+                          _locationSelectionError!,
+                          style: const TextStyle(color: Colors.red),
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ],
