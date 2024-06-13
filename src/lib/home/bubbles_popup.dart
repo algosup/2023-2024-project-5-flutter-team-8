@@ -96,40 +96,7 @@ void _showConfirmationPopup(BuildContext context) {
         icon: Icon(Icons.cancel, color: Colors.red),
         onConfirm: () {
           Navigator.of(context).pop(); // Close the confirmation dialog
-          _showAcknowledgmentPopup(context);
         },
-      );
-    },
-  ).then((result) {
-    if (result == true) {
-      _showAcknowledgmentPopup(context);
-    }
-  });
-}
-
-void _showAcknowledgmentPopup(BuildContext context) {
-  showDialog<bool>(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        title: Text('Job Denied', style: TextStyle(color: Colors.red)),
-        content: Text(
-          'You have denied the job offer.',
-          style: TextStyle(fontSize: 16, color: Colors.black),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(true); // Close the acknowledgment dialog
-            },
-            child: Text('OK'),
-          ),
-        ],
       );
     },
   ).then((result) {
@@ -138,6 +105,7 @@ void _showAcknowledgmentPopup(BuildContext context) {
     }
   });
 }
+
 
   @override
   Widget build(BuildContext context) {
