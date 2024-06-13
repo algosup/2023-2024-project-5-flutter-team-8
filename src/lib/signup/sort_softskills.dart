@@ -76,7 +76,6 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

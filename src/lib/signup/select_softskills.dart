@@ -9,6 +9,7 @@ import 'dart:developer' as developer;
 import '../constants.dart';
 import '../redundancy/round_button.dart';
 import '../signup/chips.dart';
+import '../redundancy/arrow_button.dart';  // Import the ArrowButton
 
 class SelectSoftSkills extends StatefulWidget {
   const SelectSoftSkills({super.key});
@@ -82,10 +83,12 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: size.height * 0.1,
+            ),
             LinearPercentIndicator(
               width: size.width,
               percent: 0.4,
@@ -93,8 +96,9 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
               backgroundColor: Colors.black,
               progressColor: purpleColor,
             ),
-            SizedBox(
-              height: size.height * 0.05,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: const ArrowButton()
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -146,10 +150,16 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                       height: size.height * 0.65,
                       child: Stack(
                         children: [
-                          ChipsWidget(
-                            skills: skills,
-                            selectedSkills: selectedSkills,
-                            onSelectionChanged: onSelectionChanged,
+                          Column(
+                            children: [
+                              ChipsWidget(
+                                skills: skills,
+                                selectedSkills: selectedSkills,
+                                onSelectionChanged: onSelectionChanged,
+                              ),
+                              SizedBox(
+                                height: size.height * 0.05,)
+                            ],
                           ),
                           Positioned(
                             bottom: 0,
