@@ -14,6 +14,7 @@ import 'package:adopte_1_candidat/profile/update_password_page.dart';
 import 'package:adopte_1_candidat/profile/update_profile_picture.dart';
 import 'package:adopte_1_candidat/profile/update_skills.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:adopte_1_candidat/chat/matches.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:adopte_1_candidat/loading.dart';
@@ -27,10 +28,11 @@ import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
 import 'package:adopte_1_candidat/signup/location.dart';
+import 'package:adopte_1_candidat/chat/chat.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/signup',
+    initialLocation: '/login',
     routes: [
       GoRoute(
         path: '/loading',
@@ -161,6 +163,16 @@ final routeProvider = Provider<GoRouter>((ref) {
         path: '/locationPage',
         name: 'locationPage',
         builder: (context, state) => const SetLocation(),
+      ),
+      GoRoute(
+        path: '/chat',
+        name: 'chat',
+        builder: (context, state) => const Chat(),
+      ),
+      GoRoute(
+        path: '/matches',
+        name: 'matches',
+        builder: (context, state) => const Matches(),
       ),
     ],
   );

@@ -222,6 +222,7 @@ Future<void> _saveUser(String fullName, String email, String password) async {
         "softSkills": [],
         "distance": "",
         "location": "",
+        "distance": "",
         "avatar": ""
       }
     }
