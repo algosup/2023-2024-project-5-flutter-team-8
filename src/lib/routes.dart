@@ -31,7 +31,7 @@ import 'package:adopte_1_candidat/chat/chat.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/profile',
+    initialLocation: '/login',
     routes: [
       GoRoute(
         path: '/loading',
@@ -81,22 +81,22 @@ final routeProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/efficiencyPage',
         name: 'efficiencyPage',
-        builder: (context, state) =>  const EfficiencyPage(),
+        builder: (context, state) => const EfficiencyPage(),
       ),
       GoRoute(
         path: '/leadershipPage',
         name: 'leadershipPage',
-        builder: (context, state) =>  const LeadershipPage(),
+        builder: (context, state) => const LeadershipPage(),
       ),
       GoRoute(
         path: '/socialPage',
         name: 'socialPage',
-        builder: (context, state) =>  const SocialPage(),
+        builder: (context, state) => const SocialPage(),
       ),
       GoRoute(
         path: '/agilePage',
         name: 'agilePage',
-        builder: (context, state) =>  const AgilePage(),
+        builder: (context, state) => const AgilePage(),
       ),
       GoRoute(
         path: '/verifyEmail',
@@ -111,52 +111,62 @@ final routeProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/profile',
         name: 'profile',
-        builder: (context, state) =>  const ProfilePage(),
+        builder: (context, state) => const ProfilePage(),
       ),
       GoRoute(
         path: '/notificationPage',
         name: 'notificationPage',
-        builder: (context, state) =>  const NotificationPage(),
+        builder: (context, state) => const NotificationPage(),
       ),
       GoRoute(
         path: '/updateProfilePicture',
         name: 'updateProfilePicture',
-        builder: (context, state) =>  const UpdateProfilePicture(),
+        builder: (context, state) => const UpdateProfilePicture(),
       ),
       GoRoute(
         path: '/personalInformationPage',
         name: 'personalInformationPage',
-        builder: (context, state) =>  const PersonalInformationPage(),
+        builder: (context, state) => const PersonalInformationPage(),
       ),
       GoRoute(
         path: '/updatePasswordPage',
         name: 'updatePasswordPage',
-        builder: (context, state) =>  const UpdatePasswordPage(),
+        builder: (context, state) => const UpdatePasswordPage(),
       ),
       GoRoute(
         path: '/currentSkillsPage',
         name: 'currentSkillsPage',
-        builder: (context, state) =>  const CurrentSkillsPage(),
+        builder: (context, state) => const CurrentSkillsPage(),
       ),
       GoRoute(
         path: '/updateSkills',
         name: 'updateSkills',
-        builder: (context, state) =>  const UpdateSkillsPage(),
+        builder: (context, state) => const UpdateSkillsPage(),
       ),
       GoRoute(
         path: '/newRankingSkills',
         name: 'newRankingSkills',
-        builder: (context, state) =>  const NewRankingSkillsPage(),
+        builder: (context, state) => const NewRankingSkillsPage(),
       ),
       GoRoute(
         path: '/certificationProfilePage',
         name: 'certificationProfilePage',
-        builder: (context, state) =>  const CertificationProfilePage(),
+        builder: (context, state) => const CertificationProfilePage(),
       ),
       GoRoute(
         path: '/jobsLikedPage',
         name: 'jobsLikedPage',
-        builder: (context, state) =>  const JobsLikedPage(),
+        builder: (context, state) => const JobsLikedPage(),
+      ),
+      GoRoute(
+        path: '/chat',
+        name: 'chat',
+        builder: (context, state) => const Chat(),
+      ),
+      GoRoute(
+        path: '/matches',
+        name: 'matches',
+        builder: (context, state) => const Matches(),
       ),
     ],
   );
