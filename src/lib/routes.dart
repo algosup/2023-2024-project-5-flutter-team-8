@@ -22,13 +22,14 @@ import 'package:adopte_1_candidat/login/login.dart';
 import 'package:adopte_1_candidat/signup/signup.dart';
 import 'package:adopte_1_candidat/signup/select_softskills.dart';
 import 'package:adopte_1_candidat/signup/sort_softskills.dart';
+import 'package:adopte_1_candidat/signup/set_profile_picture.dart';
 import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/signup',
     routes: [
       GoRoute(
         path: '/loading',
@@ -64,6 +65,11 @@ final routeProvider = Provider<GoRouter>((ref) {
         path: '/sortSoftSkills',
         name: 'sortSoftSkills',
         builder: (context, state) => const SortSoftSkills(),
+      ),
+      GoRoute(
+        path: '/setProfilePicture',
+        name: 'setProfilePicture',
+        builder: (context, state) => const SetProfilePicture(),
       ),
       GoRoute(
         path: '/certifications',

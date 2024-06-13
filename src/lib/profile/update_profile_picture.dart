@@ -12,70 +12,34 @@ class UpdateProfilePicture extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        padding: const EdgeInsets.all(16.0),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.06), // Updated padding
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               height: size.height / 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset(
-                  'assets/iconProfile/cat.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/frog.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/owl.svg',
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset(
-                  'assets/iconProfile/monkey.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/fox.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/lion.svg',
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset(
-                  'assets/iconProfile/wolf.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/dog.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/tiger.svg',
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset(
-                  'assets/iconProfile/deer.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/bear.svg',
-                ),
-                SvgPicture.asset(
-                  'assets/iconProfile/panda.svg',
-                )
-              ],
-            ),
+            _buildIconRow([
+              'assets/iconProfile/cat.svg',
+              'assets/iconProfile/frog.svg',
+              'assets/iconProfile/owl.svg',
+            ], size),
+            _buildIconRow([
+              'assets/iconProfile/monkey.svg',
+              'assets/iconProfile/fox.svg',
+              'assets/iconProfile/lion.svg',
+            ], size),
+            _buildIconRow([
+              'assets/iconProfile/wolf.svg',
+              'assets/iconProfile/dog.svg',
+              'assets/iconProfile/tiger.svg',
+            ], size),
+            _buildIconRow([
+              'assets/iconProfile/deer.svg',
+              'assets/iconProfile/bear.svg',
+              'assets/iconProfile/panda.svg',
+            ], size),
             SizedBox(
               height: size.height / 15,
             ),
@@ -92,6 +56,18 @@ class UpdateProfilePicture extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Row _buildIconRow(List<String> assetPaths, Size size) {
+    double iconSize = size.width / 5; // Adjust the division factor as needed
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: assetPaths.map((path) => SizedBox(
+        width: iconSize,
+        height: iconSize,
+        child: SvgPicture.asset(path),
+      )).toList(),
     );
   }
 }

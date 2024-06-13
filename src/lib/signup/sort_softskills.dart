@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'dart:developer' as developer;
+
 import 'chips.dart';
 import '../constants.dart';
 
@@ -33,8 +35,21 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final file = File(filePath);
     if (await file.exists()) {
       final data = await file.readAsString();
+      final Map<String, dynamic> jsonData = jsonDecode(data);
+
+      List<String> loadedSkills = [];
+      if (jsonData.containsKey('users')) {
+        final users = jsonData['users'] as Map<String, dynamic>;
+        for (var user in users.values) {
+          if (user.containsKey('softSkills')) {
+            final softSkills = List<String>.from(user['softSkills']);
+            loadedSkills.addAll(softSkills);
+          }
+        }
+      }
+
       setState(() {
-        skills = List<String>.from(jsonDecode(data));
+        skills = loadedSkills.toSet().toList(); // Remove duplicates if any
         availableSkills = List.from(skills);
       });
     }
@@ -44,8 +59,14 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/data.json';
     final file = File(filePath);
-    final data = jsonEncode(selectedSkills);
-    await file.writeAsString(data);
+    final data = jsonDecode(await file.readAsString());
+
+    // Ensure only the latest user's soft skills are updated
+    int lastUserId = data["users"].length;
+    data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
+
+    await file.writeAsString(jsonEncode(data));
+    developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
   }
 
   @override
@@ -54,6 +75,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -164,7 +186,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                           bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
                           if (allFilled) {
                             await _saveSkills();
-                            GoRouter.of(context).go('/certifications');
+                            GoRouter.of(context).go('/setProfilePicture');
                           } else {
                             setState(() {
                               _softSkillsNumberError = 'Please fill all soft skills';
