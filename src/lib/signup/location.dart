@@ -23,7 +23,7 @@ class _SetLocationState extends State<SetLocation> {
   final _formKey = GlobalKey<FormState>();
   String? selectedDistance;
   String? _locationSelectionError; // Add this variable
-  double currentSliderValue = 156;
+  double currentSliderValue = 100;
   final TextEditingController locationController = TextEditingController();
 
   @override
@@ -178,14 +178,23 @@ class _SetLocationState extends State<SetLocation> {
                   onPressed: () async {
                     if (_formKey.currentState?.validate() ?? false) {
                       String location = locationController.text;
-                      if (isLocationValid(location)) {
-                        await _saveSelectedLocation();
-                        GoRouter.of(context).go('/setProfilePicture');
-                      } else {
+                      if (!isLocationValid(location) &&
+                          !isDistanceValid(selectedDistance)) {
                         setState(() {
                           _locationSelectionError =
-                              "Please fill in a location";
+                              'Please select a distance and enter a location';
                         });
+                      } else if (!isLocationValid(location)) {
+                        setState(() {
+                          _locationSelectionError = 'Please enter a location';
+                        });
+                      } else if (!isDistanceValid(selectedDistance)) {
+                        setState(() {
+                          _locationSelectionError = 'Please select a distance';
+                        });
+                      } else {
+                        await _saveSelectedLocation();
+                        GoRouter.of(context).push('/setProfilePicture');
                       }
                     }
                   },
@@ -206,6 +215,10 @@ class _SetLocationState extends State<SetLocation> {
         ),
       ),
     );
+  }
+
+  bool isDistanceValid(String? value) {
+    return value != null && value.isNotEmpty;
   }
 
   bool isLocationValid(String? value) {
