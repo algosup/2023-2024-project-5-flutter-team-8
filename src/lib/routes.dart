@@ -28,10 +28,11 @@ import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
 import 'package:adopte_1_candidat/chat/chat.dart';
+import 'package:adopte_1_candidat/login/forgot_password.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/forgotPassword',
     routes: [
       GoRoute(
         path: '/loading',
@@ -167,6 +168,11 @@ final routeProvider = Provider<GoRouter>((ref) {
         path: '/matches',
         name: 'matches',
         builder: (context, state) => const Matches(),
+      ),
+      GoRoute(
+        path: '/forgotPassword',
+        name: 'forgotPassword',
+        builder: (context, state) => const ForgotPassword(),
       ),
     ],
   );

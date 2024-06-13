@@ -85,7 +85,9 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.symmetric(
                             vertical: size.height * 0.01,
                           ),
-                          child: EmailField(controller: _emailController, errorText: _emailPasswordError),
+                          child: EmailField(
+                              controller: _emailController,
+                              errorText: _emailPasswordError),
                         ),
                         const Text(
                           'Password',
@@ -100,7 +102,9 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.symmetric(
                             vertical: size.height * 0.01,
                           ),
-                          child: PasswordField(controller: _passwordController, errorText: _emailPasswordError),
+                          child: PasswordField(
+                              controller: _passwordController,
+                              errorText: _emailPasswordError),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,10 +131,11 @@ class _LoginState extends State<Login> {
                             ),
                             TextButton(
                               onPressed: () {
-                                GoRouter.of(context).go('/forgot-password');
+                                GoRouter.of(context).go('/forgotPassword');
                               },
                               style: ButtonStyle(
-                                overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
+                                overlayColor: WidgetStateProperty.all(
+                                    Colors.transparent), // Remove splash effect
                               ),
                               child: const Text(
                                 'Forgot Password?',
@@ -177,7 +182,8 @@ class _LoginState extends State<Login> {
                             GoRouter.of(context).go('/signup');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
+                            overlayColor: WidgetStateProperty.all(
+                                Colors.transparent), // Remove splash effect
                           ),
                           child: const Text(
                             'Sign Up',

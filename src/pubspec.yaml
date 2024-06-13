@@ -35,6 +35,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/edit_square.svg
+    - assets/icons/forgot_password.svg
     - assets/img/official_logo.png
     - assets/img/unofficial_logo.png
     - assets/img/splash_screen.svg
