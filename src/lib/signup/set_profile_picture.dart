@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer' as developer;
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,8 +29,27 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/data.json';
     final file = File(filePath);
-    final data = jsonEncode({'selectedAvatar': selectedAvatar});
-    await file.writeAsString(data);
+
+    if (await file.exists()) {
+      final data = await file.readAsString();
+
+      final dynamic parsedData = jsonDecode(data);
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        // Assuming we update the avatar for user with ID '1'
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          int lastUserId = users.length;
+          users['$lastUserId']['avatar'] = selectedAvatar;
+        }
+
+        await file.writeAsString(jsonEncode(jsonData));
+        developer.log('data.json content: $data', name: 'SaveSelectedAvatar');
+      } else {
+        developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedAvatar');
+      }
+    }
   }
 
   @override
@@ -38,6 +58,7 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -47,7 +68,7 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
               ),
               LinearPercentIndicator(
                 width: size.width,
-                percent: 0.6,
+                percent: 0.8,
                 animation: true,
                 backgroundColor: Colors.black,
                 progressColor: purpleColor,

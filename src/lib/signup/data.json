@@ -1,10 +1,8 @@
 {
-    "fullName" : "Morgan White",
-    "description" : "Compliance officer.",
-    "localAuthentication" : true,
-    "forcePasswordChange" : false,
-    "enabled" : true,
-    "roles" : {
-        "role" : [ "COMPLIANCE", "MONITOR" ]
-    }
+    "fullName": "",
+    "email": "",
+    "password": "",
+    "softSkills": [],
+    "location": "",
+    "avatar": ""
 }
