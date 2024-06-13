@@ -149,7 +149,7 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
                     onPressed: () async {
                       if (selectedAvatar != null) {
                         await _saveSelectedAvatar();
-                        GoRouter.of(context).go('/home');
+                        GoRouter.of(context).go('/verifyEmail');
                       } else {
                         setState(() {
                           _avatarSelectionError = 'Please select an avatar';

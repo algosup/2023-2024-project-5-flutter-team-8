@@ -7,5 +7,5 @@ class User {
 }
 
 List<User> users = [
-  User(fullName: 'Quentin Clément', email: 'quentin.clement@algosup.com', password: '12345'),
+  User(fullName: 'Quentin Clément', email: 'quentin.clement@algosup.com', password: 'AAzz11!!'),
 ];
