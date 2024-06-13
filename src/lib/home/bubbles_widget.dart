@@ -38,53 +38,66 @@ class BouncingBubble extends StatefulWidget {
 
 class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-  final double bubbleRadius = 40;
+  final double bubbleRadius = 50;
+  final double bubbleRadiusWithBorder = 52 ;
 
   @override
   void initState() {
     super.initState();
     animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 16))..repeat();
-    animationController.addListener(() {
-      setState(() {
-        widget.bubbleData.top += widget.bubbleData.dy;
-        widget.bubbleData.left += widget.bubbleData.dx;
+    animationController.addListener(_updateBubblePosition);
+  }
 
-        // Check for boundaries and reverse direction if necessary
-        if (widget.bubbleData.top <= 0 || widget.bubbleData.top >= widget.containerHeight - bubbleRadius * 2) {
-          widget.bubbleData.dy = -widget.bubbleData.dy;
-          widget.bubbleData.top = widget.bubbleData.top.clamp(0, widget.containerHeight - bubbleRadius * 2);
-        }
-        if (widget.bubbleData.left <= 0 || widget.bubbleData.left >= widget.containerWidth - bubbleRadius * 2) {
-          widget.bubbleData.dx = -widget.bubbleData.dx;
-          widget.bubbleData.left = widget.bubbleData.left.clamp(0, widget.containerWidth - bubbleRadius * 2);
-        }
+  void _updateBubblePosition() {
+    setState(() {
+      widget.bubbleData.top += widget.bubbleData.dy;
+      widget.bubbleData.left += widget.bubbleData.dx;
 
-        // Check for collisions with other bubbles
-        for (var bubble in widget.allBubbles) {
-          if (bubble != widget.bubbleData) {
-            double dx2 = bubble.left - widget.bubbleData.left;
-            double dy2 = bubble.top - widget.bubbleData.top;
-            double distance = sqrt(dx2 * dx2 + dy2 * dy2);
-            if (distance < bubbleRadius * 2) {
-              // Move bubbles apart to prevent overlapping
-              double overlap = bubbleRadius * 2 - distance;
-              double adjustX = (dx2 / distance) * overlap / 2;
-              double adjustY = (dy2 / distance) * overlap / 2;
+      // Check for boundaries and reverse direction if necessary
+      if (widget.bubbleData.top <= 0 || widget.bubbleData.top >= widget.containerHeight - bubbleRadiusWithBorder * 2 ) {
+        widget.bubbleData.dy = -widget.bubbleData.dy;
+        widget.bubbleData.top = widget.bubbleData.top.clamp(0, widget.containerHeight - bubbleRadiusWithBorder * 2);
+      }
+      if (widget.bubbleData.left <= 0 || widget.bubbleData.left >= widget.containerWidth - bubbleRadiusWithBorder * 2) {
+        widget.bubbleData.dx = -widget.bubbleData.dx;
+        widget.bubbleData.left = widget.bubbleData.left.clamp(0, widget.containerWidth - bubbleRadiusWithBorder * 2);
+      }
 
-              widget.bubbleData.left -= adjustX;
-              widget.bubbleData.top -= adjustY;
-              bubble.left += adjustX;
-              bubble.top += adjustY;
+      // Check for collisions with other bubbles
+      for (var bubble in widget.allBubbles) {
+        if (bubble != widget.bubbleData) {
+          double dx2 = bubble.left - widget.bubbleData.left;
+          double dy2 = bubble.top - widget.bubbleData.top;
+          double distance = sqrt(dx2 * dx2 + dy2 * dy2);
+          if (distance < bubbleRadiusWithBorder * 2) {
+            // Move bubbles apart to prevent overlapping
+            double overlap = bubbleRadiusWithBorder * 2 - distance;
+            double adjustX = (dx2 / distance) * overlap / 2;
+            double adjustY = (dy2 / distance) * overlap / 2;
 
-              // Reverse direction on collision
-              widget.bubbleData.dx = -widget.bubbleData.dx;
-              widget.bubbleData.dy = -widget.bubbleData.dy;
-              bubble.dx = -bubble.dx;
-              bubble.dy = -bubble.dy;
-            }
+            widget.bubbleData.left -= adjustX;
+            widget.bubbleData.top -= adjustY;
+            bubble.left += adjustX;
+            bubble.top += adjustY;
+
+            // Calculate new velocities based on conservation of momentum
+            double mass = 1; // assuming equal mass for simplicity
+            double normalX = dx2 / distance;
+            double normalY = dy2 / distance;
+
+            double relativeVelocityX = widget.bubbleData.dx - bubble.dx;
+            double relativeVelocityY = widget.bubbleData.dy - bubble.dy;
+            double relativeVelocityNormal = relativeVelocityX * normalX + relativeVelocityY * normalY;
+
+            double impulse = (2 * relativeVelocityNormal) / (mass + mass);
+
+            widget.bubbleData.dx -= impulse * normalX * mass;
+            widget.bubbleData.dy -= impulse * normalY * mass;
+            bubble.dx += impulse * normalX * mass;
+            bubble.dy += impulse * normalY * mass;
           }
         }
-      });
+      }
     });
   }
 
@@ -136,7 +149,8 @@ class BubblesWidget extends StatefulWidget {
 }
 
 class _BubblesWidgetState extends State<BubblesWidget> {
-  final double bubbleRadius = 40;
+  final double bubbleRadius = 50;
+  final double bubbleRadiusWithBorder = 52;
   final List<BubbleData> allBubbles = [];
   late double containerWidth;
   late double containerHeight;
@@ -155,8 +169,8 @@ class _BubblesWidgetState extends State<BubblesWidget> {
         bool isOverlapping;
         do {
           isOverlapping = false;
-          double top = Random().nextDouble() * (containerHeight - bubbleRadius * 2);
-          double left = Random().nextDouble() * (containerWidth - bubbleRadius * 2);
+          double top = Random().nextDouble() * (containerHeight - bubbleRadiusWithBorder * 2);
+          double left = Random().nextDouble() * (containerWidth - bubbleRadiusWithBorder * 2);
           double dx = 0.2 * (Random().nextBool() ? 1 : -1);
           double dy = 0.2 * (Random().nextBool() ? 1 : -1);
 
@@ -166,7 +180,7 @@ class _BubblesWidgetState extends State<BubblesWidget> {
             double dx2 = bubble.left - newBubble.left;
             double dy2 = bubble.top - newBubble.top;
             double distance = sqrt(dx2 * dx2 + dy2 * dy2);
-            if (distance <= bubbleRadius * 2) {
+            if (distance <= bubbleRadiusWithBorder * 2) {
               isOverlapping = true;
               break;
             }
