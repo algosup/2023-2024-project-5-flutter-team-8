@@ -32,20 +32,26 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
 
     if (await file.exists()) {
       final data = await file.readAsString();
-
       final dynamic parsedData = jsonDecode(data);
+
       if (parsedData is Map<String, dynamic>) {
         final Map<String, dynamic> jsonData = parsedData;
 
         // Assuming we update the avatar for user with ID '1'
         if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
           final users = jsonData['users'] as Map<String, dynamic>;
-          int lastUserId = users.length;
-          users['$lastUserId']['avatar'] = selectedAvatar;
-        }
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            user['avatar'] = selectedAvatar;
 
-        await file.writeAsString(jsonEncode(jsonData));
-        developer.log('data.json content: $data', name: 'SaveSelectedAvatar');
+            await file.writeAsString(jsonEncode(jsonData));
+            developer.log('data.json content: $jsonData', name: 'SaveSelectedAvatar');
+          } else {
+            developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveSelectedAvatar');
+          }
+        } else {
+          developer.log('Error: Users data not found or invalid format', name: 'SaveSelectedAvatar');
+        }
       } else {
         developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedAvatar');
       }

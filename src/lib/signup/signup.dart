@@ -213,29 +213,17 @@ Future<void> _saveUser(String fullName, String email, String password) async {
   final filePath = '${directory.path}/data.json';
   final file = File(filePath);
 
-  Map<String, dynamic> data;
-  if (await file.exists()) {
-    final content = await file.readAsString();
-    if (content.isNotEmpty) {
-      data = jsonDecode(content);
-    } else {
-      data = {};
+  Map<String, dynamic> data = {
+    "users": {
+      "1": {
+        "fullName": fullName,
+        "email": email,
+        "password": password,
+        "softSkills": [],
+        "location": "",
+        "avatar": ""
+      }
     }
-  } else {
-    data = {"users": {}};
-  }
-
-  data["users"] ??= {};
-
-  int nextId = data["users"].length + 1;
-
-  data["users"]["$nextId"] = {
-    "fullName": fullName,
-    "email": email,
-    "password": password,
-    "softSkills": [],
-    "location": "",
-    "avatar": ""
   };
 
   await file.writeAsString(jsonEncode(data));
