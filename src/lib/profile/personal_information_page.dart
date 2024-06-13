@@ -143,7 +143,13 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                             ),
                           ),
                         ),
-                        // personalInfo(context, locationController),
+                        Container(
+                            decoration: BoxDecoration(
+                              color: backgroundColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: size.width,
+                            child: Location(controller: locationController)),
                         Container(
                           padding: const EdgeInsets.only(
                               top: 24.0, left: 8.0, right: 8.0),

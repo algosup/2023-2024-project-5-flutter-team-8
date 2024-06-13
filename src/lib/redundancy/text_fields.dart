@@ -161,3 +161,20 @@ class PasswordFieldProfile extends PasswordField {
     ),
   );
 }
+
+class Location extends CustomTextField {
+  Location({Key? key, required TextEditingController controller, String? errorText})
+      : super(
+          key: key,
+          controller: controller,
+          hintText: 'City, Country',
+          errorText: errorText,
+          keyboardType: TextInputType.text,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your location';
+            }
+            return null;
+          },
+        );
+}
