@@ -27,7 +27,7 @@ class _ChatState extends State<Chat> {
 
   void _scrollToBottom() {
     if (_scrollController.hasClients) {
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent - 70);
     }
   }
 
@@ -133,23 +133,23 @@ class _ChatState extends State<Chat> {
                 ],
               ),
             ),
-            SizedBox(height: size.height / 72),
-            const Center(
-              child: Text(
-                'Today',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: chatAnnotationsColor,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-            SizedBox(height: size.height / 36),
             Expanded(
               child: ListView(
                 controller: _scrollController,
                 padding: EdgeInsets.only(bottom: size.height / 12),
                 children: [
+                  SizedBox(height: size.height / 72),
+                  const Center(
+                    child: Text(
+                      'Today',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: chatAnnotationsColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: size.height / 36),
                   const ChatBubble(
                     text: 'Hello Sir, Good Morning',
                     isSender: true,
