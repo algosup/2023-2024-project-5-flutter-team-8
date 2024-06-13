@@ -154,21 +154,25 @@ class _SetLocationState extends State<SetLocation> {
                       });
                     },
                   ),
-                  SizedBox(
-                    height: size.height / 15,
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    child: CustomTextField(
+                      controller: locationController,
+                      hintText: 'City, Country',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '';
+                        }
+                        return null;
+                      },
+                      prefixIcon: const Icon(
+                        Icons.location_on,
+                        color: purpleColor,
+                      ),
+                    ),
                   ),
-                  CustomTextField(
-                    controller: locationController,
-                    hintText: 'City, Country',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Error';
-                      }
-                      return null;
-                    },
-                  ),
                   SizedBox(
-                    height: size.height / 15,
+                    height: size.height / 5,
                   ),
                   ContinueButton(
                     onPressed: () async {
@@ -209,29 +213,3 @@ class _SetLocationState extends State<SetLocation> {
     return value != null && value.isNotEmpty;
   }
 }
-
-// class ContinueButton extends RoundButton {
-//   @override
-//   final VoidCallback onPressed;
-  
-//   final Function(String?) onError;
-
-//   const ContinueButton({
-//     super.key,
-//     required this.onPressed,
-//     required this.onError, required super.size, required super.color, required super.text,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(
-//       onPressed: onPressed,
-//       style: ElevatedButton.styleFrom(
-//         backgroundColor: purpleColor,
-//         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-//         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//       ),
-//       child: const Text('CONTINUE'),
-//     );
-//   }
-// }
