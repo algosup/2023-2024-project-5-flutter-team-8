@@ -151,7 +151,7 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
                         selectedSkills.every((skill) => skill.isNotEmpty);
                     if (allFilled) {
                       await _saveSkills();
-                      GoRouter.of(context).go('/currentSkillsPage');
+                      GoRouter.of(context).go('/profile');
                     } else {
                       setState(() {
                         _softSkillsNumberError = 'Please fill all soft skills';
