@@ -11,9 +11,10 @@ import 'denied_popup.dart';
 
 class BubblePopup extends StatefulWidget {
   final String logoPath;
+  final VoidCallback onRemoveBubble;
 
-  BubblePopup({required this.logoPath});
-
+  BubblePopup({required this.logoPath, required this.onRemoveBubble});
+  
   @override
   _BubblePopupState createState() => _BubblePopupState();
 }
@@ -68,36 +69,75 @@ class _BubblePopupState extends State<BubblePopup> {
     _resetInactivityTimer();
   }
 
-  void _showSuccessPopup(BuildContext context) {
-    Navigator.of(context).pop();
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return SuccessPopup(
-          message: "You've applied for the job. Expect a message from the company in a few days.",
-        );
-      },
-    );
-  }
+void _showSuccessPopup(BuildContext context) {
+  Navigator.of(context).pop();
+  showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return SuccessPopup(
+        message: "You've applied for the job. Expect a message from the company in a few days.",
+      );
+    },
+  ).then((result) {
+    if (result == true) {
+      widget.onRemoveBubble();
+    }
+  });
+}
 
-   // Show confirmation popup after denying the job
-  void _showConfirmationPopup(BuildContext context) {
-    Navigator.of(context).pop(); // Close the current popup
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return ConfirmationPopup(
-          icon: Icon(Icons.cancel, color: Colors.red), // Use the same icon as the footer
-          onConfirm: () {
-            // No need to handle anything here as it is taken care of within ConfirmationPopup
-          },
-        );
-      },
-    );
-  }
+void _showConfirmationPopup(BuildContext context) {
+  Navigator.of(context).pop();
+  showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return ConfirmationPopup(
+        icon: Icon(Icons.cancel, color: Colors.red),
+        onConfirm: () {
+          Navigator.of(context).pop(); // Close the confirmation dialog
+          _showAcknowledgmentPopup(context);
+        },
+      );
+    },
+  ).then((result) {
+    if (result == true) {
+      _showAcknowledgmentPopup(context);
+    }
+  });
+}
 
+void _showAcknowledgmentPopup(BuildContext context) {
+  showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        title: Text('Job Denied', style: TextStyle(color: Colors.red)),
+        content: Text(
+          'You have denied the job offer.',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(true); // Close the acknowledgment dialog
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  ).then((result) {
+    if (result == true) {
+      widget.onRemoveBubble();
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {

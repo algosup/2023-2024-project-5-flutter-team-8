@@ -29,7 +29,7 @@ import 'package:adopte_1_candidat/emails/success.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/signup',
+    initialLocation: '/home',
     routes: [
       GoRoute(
         path: '/loading',
