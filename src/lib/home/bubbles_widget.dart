@@ -12,6 +12,7 @@ class BubbleData {
   double dy;
   final String logoPath;
   bool isRemoved = false;
+  bool isAnimating = false;
 
   BubbleData({
     required this.id,
@@ -40,22 +41,24 @@ class BouncingBubble extends StatefulWidget {
   _BouncingBubbleState createState() => _BouncingBubbleState();
 }
 
-class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
+class _BouncingBubbleState extends State<BouncingBubble> with TickerProviderStateMixin {
+  late AnimationController movementController;
+  late AnimationController lottieController;
   final double bubbleRadius = 50;
   final double bubbleRadiusWithBorder = 52;
 
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 16))..repeat();
-    animationController.addListener(_updateBubblePosition);
+    movementController = AnimationController(vsync: this, duration: Duration(milliseconds: 16))..repeat();
+    lottieController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    movementController.addListener(_updateBubblePosition);
   }
 
   void _updateBubblePosition() {
     setState(() {
-      if (widget.bubbleData.isRemoved) return;
-      
+      if (widget.bubbleData.isRemoved || widget.bubbleData.isAnimating) return;
+
       widget.bubbleData.top += widget.bubbleData.dy;
       widget.bubbleData.left += widget.bubbleData.dx;
 
@@ -112,12 +115,21 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
             logoPath: widget.bubbleData.logoPath,
             onRemoveBubble: () {
               setState(() {
-                widget.bubbleData.isRemoved = true;
+                widget.bubbleData.isAnimating = true;
               });
-              Future.delayed(Duration(milliseconds: 500), () {
-                setState(() {
-                  widget.allBubbles.removeWhere((bubble) => bubble.id == widget.bubbleData.id);
-                });
+
+              // Play the Lottie animation
+              lottieController.forward();
+
+              // Delay the removal of the bubble until after the Lottie animation has finished
+              lottieController.addStatusListener((status) {
+                if (status == AnimationStatus.completed) {
+                  setState(() {
+                    widget.bubbleData.isRemoved = true;
+                    widget.bubbleData.isAnimating = false;
+                    widget.allBubbles.removeWhere((bubble) => bubble.id == widget.bubbleData.id);
+                  });
+                }
               });
             },
           );
@@ -128,37 +140,46 @@ class _BouncingBubbleState extends State<BouncingBubble> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    if (widget.bubbleData.isRemoved) {
-      return Container();
-    }
     return Positioned(
       top: widget.bubbleData.top,
       left: widget.bubbleData.left,
       child: GestureDetector(
         onTap: () => _showPopup(context),
-        child: widget.bubbleData.isRemoved
-            ? Lottie.asset(
-                'assets/animation/bubble_popup.json',
-                width: bubbleRadius * 4,
-                height: bubbleRadius * 4,
-              )
-            : CustomPaint(
-                painter: BubblePainter(bubbleRadius: bubbleRadius),
-                child: Container(
-                  width: bubbleRadius * 2,
-                  height: bubbleRadius * 2,
-                  child: Center(
-                    child: Image.asset(widget.bubbleData.logoPath, width: bubbleRadius, height: bubbleRadius),
-                  ),
+        child: widget.bubbleData.isAnimating
+            ? Transform.translate(
+                offset: Offset(-bubbleRadius, -bubbleRadius),
+                child: Lottie.asset(
+                  'assets/animation/bubble_popup.json',
+                  width: bubbleRadius * 4,
+                  height: bubbleRadius * 4,
+                  controller: lottieController,
+                  onLoaded: (composition) {
+                    lottieController
+                      ..duration = composition.duration
+                      ..forward();
+                  },
                 ),
-              ),
+              )
+            : widget.bubbleData.isRemoved
+                ? Container()
+                : CustomPaint(
+                    painter: BubblePainter(bubbleRadius: bubbleRadius),
+                    child: Container(
+                      width: bubbleRadius * 2,
+                      height: bubbleRadius * 2,
+                      child: Center(
+                        child: Image.asset(widget.bubbleData.logoPath, width: bubbleRadius, height: bubbleRadius),
+                      ),
+                    ),
+                  ),
       ),
     );
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    movementController.dispose();
+    lottieController.dispose();
     super.dispose();
   }
 }
