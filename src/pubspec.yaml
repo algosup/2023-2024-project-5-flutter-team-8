@@ -16,7 +16,6 @@ dependencies:
   path_provider: ^2.0.2
   dotted_border: ^2.0.0
   chat_bubbles: ^1.6.0
-  swipe_to: ^1.0.6
 
   
 dev_dependencies:
