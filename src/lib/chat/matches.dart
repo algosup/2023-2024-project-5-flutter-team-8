@@ -32,7 +32,7 @@ List<Message> sampleMessages = [
     author: 'Sara Connor',
     lastMessageContent: 'I will check your profile.',
     unread: true,
-    numberOfUnreads: 0,
+    numberOfUnreads: 9,
     durationSinceLastMessage: "2h",
   ),
   Message(
@@ -60,7 +60,7 @@ List<Message> sampleMessages = [
     author: 'Alice Brown',
     lastMessageContent: 'Please call me back.',
     unread: true,
-    numberOfUnreads: 0,
+    numberOfUnreads: 1,
     durationSinceLastMessage: "Yesterday",
   ),
   Message(
@@ -80,20 +80,7 @@ class Matches extends StatefulWidget {
 }
 
 class _MatchesState extends State<Matches> {
-  List<bool> isSwipedList =
-      List.generate(sampleMessages.length, (index) => false);
-
-  void handleSwipe(int index) {
-    setState(() {
-      isSwipedList[index] = true;
-    });
-  }
-
-  void resetSwipe(int index) {
-    setState(() {
-      isSwipedList[index] = false;
-    });
-  }
+  List<Message> messages = List.from(sampleMessages);
 
   @override
   Widget build(BuildContext context) {
@@ -134,10 +121,7 @@ class _MatchesState extends State<Matches> {
       backgroundColor: backgroundColor,
       body: GestureDetector(
         onTap: () {
-          setState(() {
-            isSwipedList =
-                List.generate(sampleMessages.length, (index) => false);
-          });
+          FocusScope.of(context).unfocus();
         },
         child: Column(
           children: [
@@ -165,159 +149,136 @@ class _MatchesState extends State<Matches> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: sampleMessages.length,
+                itemCount: messages.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final message = sampleMessages[index];
-                  return GestureDetector(
-                    onTap: () {
-                      GoRouter.of(context).push('/chat');
+                  final message = messages[index];
+                  return Dismissible(
+                    key: Key(message.author),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      setState(() {
+                        messages.removeAt(index);
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content:
+                                Text('Chat with ${message.author} deleted')),
+                      );
                     },
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onHorizontalDragEnd: (details) {
-                            if (details.primaryVelocity! < 0) {
-                              handleSwipe(index);
-                            }
-                          },
-                          child: Stack(
-                            children: [
-                              if (isSwipedList[index])
-                                Positioned(
-                                  right: 0,
-                                  top: 0,
-                                  bottom: 0,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      resetSwipe(index);
-                                    },
-                                    child: Container(
-                                      color: const Color.fromRGBO(
-                                          242, 240, 250, 1),
-                                      width: size.width / 8,
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.delete_outline_rounded,
-                                          color:
-                                              Color.fromRGBO(117, 81, 255, 1),
+                    background: Container(
+                      alignment: Alignment.centerRight,
+                      color: purpleColor,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: const Icon(
+                        Icons.delete_outline_rounded,
+                        color: Color.fromRGBO(117, 81, 255, 1),
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push('/chat');
+                      },
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: size.height / 12.5,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: size.width / 32,
+                                ),
+                                CircleAvatar(
+                                  backgroundImage: const AssetImage(
+                                    'assets/img/we_are_evolution.png',
+                                  ),
+                                  radius: size.height / 32,
+                                ),
+                                SizedBox(
+                                  width: size.width / 32,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: size.height / 64,
+                                    ),
+                                    Text(
+                                      message.author,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16,
+                                          color: Color.fromRGBO(21, 11, 61, 1)),
+                                    ),
+                                    SizedBox(
+                                      height: size.height / 256,
+                                    ),
+                                    Container(
+                                      constraints: BoxConstraints(
+                                        maxWidth: size.width * 0.58,
+                                        maxHeight: 20,
+                                      ),
+                                      child: Text(
+                                        message.lastMessageContent,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: message.unread
+                                              ? chatNotSenderTextColor
+                                              : const Color.fromRGBO(
+                                                  170, 170, 170, 1),
+                                          fontWeight: message.unread
+                                              ? FontWeight.w700
+                                              : FontWeight.w400,
                                         ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              AnimatedContainer(
-                                duration: const Duration(milliseconds: 150),
-                                transform: Matrix4.translationValues(
-                                    isSwipedList[index] ? -size.width / 8 : 0,
-                                    0,
-                                    0),
-                                child: SizedBox(
-                                  height: size.height / 12.5,
-                                  child: Row(
+                                const Spacer(),
+                                if (message.unread)
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: size.width / 32,
+                                        height: size.height / 64,
+                                      ),
+                                      Text(
+                                        message.durationSinceLastMessage,
+                                        style: const TextStyle(
+                                          color: chatAnnotationsColor,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height / 128,
                                       ),
                                       CircleAvatar(
-                                        backgroundImage: const AssetImage(
-                                          'assets/img/we_are_evolution.png',
-                                        ),
-                                        radius: size.height / 32,
-                                      ),
-                                      SizedBox(
-                                        width: size.width / 32,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: size.height / 64,
-                                          ),
-                                          Text(
-                                            message.author,
+                                        backgroundColor: purpleColor,
+                                        radius: 9,
+                                        child: Center(
+                                          child: Text(
+                                            message.numberOfUnreads.toString(),
                                             style: const TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 16,
-                                                color: Color.fromRGBO(
-                                                    21, 11, 61, 1)),
-                                          ),
-                                          SizedBox(
-                                            height: size.height / 256,
-                                          ),
-                                          Container(
-                                            constraints: BoxConstraints(
-                                              maxWidth: size.width * 0.58,
-                                              maxHeight: 20,
-                                            ),
-                                            child: Text(
-                                              message.lastMessageContent,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: message.unread
-                                                    ? chatNotSenderTextColor
-                                                    : const Color.fromRGBO(
-                                                        170, 170, 170, 1),
-                                                fontWeight: message.unread
-                                                    ? FontWeight.w700
-                                                    : FontWeight.w400,
-                                              ),
+                                              color: Colors.white,
+                                              fontSize: 13,
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      const Spacer(),
-                                      if (message.unread)
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: size.height / 64,
-                                            ),
-                                            Text(
-                                              message.durationSinceLastMessage,
-                                              style: const TextStyle(
-                                                color: chatAnnotationsColor,
-                                                fontSize: 15,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: size.height / 128,
-                                            ),
-                                            CircleAvatar(
-                                              backgroundColor: purpleColor,
-                                              radius: 9,
-                                              child: Center(
-                                                child: Text(
-                                                  message.numberOfUnreads
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 13,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
                                         ),
-                                      SizedBox(
-                                        width: size.width / 24,
                                       ),
                                     ],
                                   ),
+                                SizedBox(
+                                  width: size.width / 24,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: size.height / 64,
-                        ),
-                      ],
+                          SizedBox(
+                            height: size.height / 64,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
