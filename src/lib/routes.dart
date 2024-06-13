@@ -27,11 +27,12 @@ import 'package:adopte_1_candidat/signup/set_profile_picture.dart';
 import 'package:adopte_1_candidat/home/home.dart';
 import 'package:adopte_1_candidat/emails/verify_email.dart';
 import 'package:adopte_1_candidat/emails/success.dart';
+import 'package:adopte_1_candidat/signup/location.dart';
 import 'package:adopte_1_candidat/chat/chat.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/selectSoftSkills',
+    initialLocation: '/loading',
     routes: [
       GoRoute(
         path: '/loading',
@@ -157,6 +158,11 @@ final routeProvider = Provider<GoRouter>((ref) {
         path: '/jobsLikedPage',
         name: 'jobsLikedPage',
         builder: (context, state) => const JobsLikedPage(),
+      ),
+      GoRoute(
+        path: '/locationPage',
+        name: 'locationPage',
+        builder: (context, state) => const SetLocation(),
       ),
       GoRoute(
         path: '/chat',

@@ -177,32 +177,42 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               onPressed: () async {
                                 if (selectedSkills.length == 15) {
                                   try {
-                                    final directory = await getApplicationDocumentsDirectory();
-                                    final filePath = '${directory.path}/data.json';
+                                    final directory =
+                                        await getApplicationDocumentsDirectory();
+                                    final filePath =
+                                        '${directory.path}/data.json';
                                     final file = File(filePath);
-                                    
+
                                     if (await file.exists()) {
                                       final content = await file.readAsString();
                                       final data = jsonDecode(content);
-                                      
+
                                       int lastUserId = data["users"].length;
-                                      data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
-                                      
-                                      await file.writeAsString(jsonEncode(data));
-                                      developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
-                                      GoRouter.of(context).push('/sortSoftSkills');
+                                      data["users"]["$lastUserId"]
+                                          ["softSkills"] = selectedSkills;
+
+                                      await file
+                                          .writeAsString(jsonEncode(data));
+                                      developer.log(
+                                          'data.json content: ${await file.readAsString()}',
+                                          name: 'SaveUser');
+                                      GoRouter.of(context)
+                                          .push('/sortSoftSkills');
                                     } else {
                                       // Handle the case where the file does not exist
-                                      developer.log('File does not exist', name: 'SelectSoftSkills');
+                                      developer.log('File does not exist',
+                                          name: 'SelectSoftSkills');
                                     }
                                   } catch (e) {
                                     // Handle any errors that occur during file write
-                                    developer.log('Error writing file', error: e, name: 'SelectSoftSkills');
+                                    developer.log('Error writing file',
+                                        error: e, name: 'SelectSoftSkills');
                                   }
                                 } else {
                                   // Handle the case where not enough skills are selected
                                   setState(() {
-                                    _softSkillsNumberError = 'Please select 15 soft skills';
+                                    _softSkillsNumberError =
+                                        'Please select 15 soft skills';
                                   });
                                 }
                               },
@@ -243,7 +253,7 @@ class ContinueButton extends RoundButton {
     required this.onError,
     required super.onPressed,
   }) : super(
-    color: purpleColor,
-    text: 'Continue',
-  );
+          color: purpleColor,
+          text: 'Continue',
+        );
 }

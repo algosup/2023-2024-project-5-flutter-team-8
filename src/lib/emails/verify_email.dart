@@ -16,15 +16,13 @@ class _VerifyEmailState extends State<VerifyEmail> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    void openMailApp() {}
-
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
           child: Column(
         children: [
           SizedBox(
-            height: size.height * 0.1,
+            height: size.height * 0.04,
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -70,7 +68,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 BlackRectangleButton(
                   size: size,
                   text: 'OPEN YOUR EMAIL',
-                  onPressed: openMailApp,
+                  onPressed: () {
+                    GoRouter.of(context).go('/verificationSuccessful');
+                  },
                 ),
                 SizedBox(
                   height: size.height / 48,
@@ -83,7 +83,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   },
                 ),
                 SizedBox(
-                  height: size.height / 24,
+                  height: size.height / 48,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
