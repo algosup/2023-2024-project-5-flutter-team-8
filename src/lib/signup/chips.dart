@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class ChipsWidget extends StatefulWidget {
@@ -83,15 +82,19 @@ class DraggableChipsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: skill,
-      feedback: Material(
-        color: Colors.transparent,
-        child: chip(skill, isDragging: true),
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height * 0.05,
+      child: Draggable<String>(
+        data: skill,
+        feedback: Material(
+          color: Colors.transparent,
+          child: chip(skill, isDragging: true),
+        ),
+        childWhenDragging: Container(),
+        onDragCompleted: () => onDragCompleted(skill),
+        child: chip(skill),
       ),
-      childWhenDragging: Container(),
-      onDragCompleted: () => onDragCompleted(skill),
-      child: chip(skill),
     );
   }
 
@@ -138,6 +141,7 @@ class TargetChipsWidget extends StatefulWidget {
 class _TargetChipsWidgetState extends State<TargetChipsWidget> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     String label = widget.selectedSkills[widget.index];
 
     return DragTarget<String>(
@@ -153,22 +157,26 @@ class _TargetChipsWidgetState extends State<TargetChipsWidget> {
         });
       },
       builder: (context, candidateData, rejectedData) {
-        return Chip(
-          backgroundColor: Colors.white,
-          label: Text(
-            label.isEmpty ? 'Drag here' : label,
-            style: TextStyle(
-              color: label.isEmpty ? purpleColor : Colors.grey,
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+        return SizedBox(
+          width: size.width * 0.25,
+          height: size.height * 0.05,
+          child: Chip(
+            backgroundColor: label.isEmpty ? Colors.white : purpleColor,
+            label: Text(
+              label.isEmpty ? 'Drag here' : label,
+              style: TextStyle(
+                color: label.isEmpty ? purpleColor : Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: label.isEmpty ? purpleColor : Colors.grey,
-              width: label.isEmpty ? 2.0 : 1.0,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                color: label.isEmpty ? purpleColor : Colors.black,
+                width: label.isEmpty ? 2.0 : 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
             ),
-            borderRadius: BorderRadius.circular(20.0),
           ),
         );
       },

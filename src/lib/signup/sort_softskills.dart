@@ -1,20 +1,23 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'dart:developer' as developer;
+
 import 'chips.dart';
 import '../constants.dart';
 
 class SortSoftSkills extends StatefulWidget {
-  const SortSoftSkills({Key? key}) : super(key: key);
+  const SortSoftSkills({super.key});
 
   @override
   _SortSoftSkillsState createState() => _SortSoftSkillsState();
 }
 
 class _SortSoftSkillsState extends State<SortSoftSkills> {
+  String? _softSkillsNumberError;
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
   List<String> selectedSkills = List.filled(15, '');
@@ -32,11 +35,38 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     final file = File(filePath);
     if (await file.exists()) {
       final data = await file.readAsString();
+      final Map<String, dynamic> jsonData = jsonDecode(data);
+
+      List<String> loadedSkills = [];
+      if (jsonData.containsKey('users')) {
+        final users = jsonData['users'] as Map<String, dynamic>;
+        for (var user in users.values) {
+          if (user.containsKey('softSkills')) {
+            final softSkills = List<String>.from(user['softSkills']);
+            loadedSkills.addAll(softSkills);
+          }
+        }
+      }
+
       setState(() {
-        skills = List<String>.from(jsonDecode(data));
+        skills = loadedSkills.toSet().toList(); // Remove duplicates if any
         availableSkills = List.from(skills);
       });
     }
+  }
+
+  Future<void> _saveSkills() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+    final data = jsonDecode(await file.readAsString());
+
+    // Ensure only the latest user's soft skills are updated
+    int lastUserId = data["users"].length;
+    data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
+
+    await file.writeAsString(jsonEncode(data));
+    developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
   }
 
   @override
@@ -45,6 +75,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -82,16 +113,12 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Prioritize Your Soft Skills: \nFrom Mastery to Proficiency',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Prioritize Your Soft Skills: \nFrom Mastery to Proficiency',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
@@ -100,58 +127,83 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       Column(
                         children: List.generate(
                           15,
-                          (index) => Row(
-                            children: [
-                              Text(
-                                '.${index + 1}',
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontFamily: 'DM Sans',
-                                  fontWeight: FontWeight.bold,
+                          (index) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: size.width * 0.1,
+                                  child: Text(
+                                    '.${index + 1}',
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontFamily: 'DM Sans',
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: TargetChipsWidget(
-                                  index: index,
-                                  selectedSkills: selectedSkills,
-                                  availableSkills: availableSkills,
-                                  onSelectionChanged: (value) {
-                                    setState(() {
-                                      selectedSkills = value;
-                                    });
-                                  },
+                                SizedBox(width: size.width * 0.02),
+                                Flexible(
+                                  flex: 5,
+                                  child: TargetChipsWidget(
+                                    index: index,
+                                    selectedSkills: selectedSkills,
+                                    availableSkills: availableSkills,
+                                    onSelectionChanged: (value) {
+                                      setState(() {
+                                        selectedSkills = value;
+                                      });
+                                    },
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 10),
-                              DraggableChipsWidget(
-                                skill: availableSkills.isNotEmpty ? availableSkills[index] : '',
-                                onDragCompleted: (value) {
-                                  setState(() {
-                                    if (index < selectedSkills.length) {
-                                      selectedSkills[index] = value;
-                                      availableSkills.remove(value);
-                                    }
-                                  });
-                                },
-                              ),
-                            ],
+                                const Spacer(),
+                                if (index < availableSkills.length)
+                                  Flexible(
+                                    flex: 8,
+                                    child: DraggableChipsWidget(
+                                      skill: availableSkills[index],
+                                      onDragCompleted: (value) {
+                                        setState(() {
+                                          // Ensure that the dragged skill is removed only once
+                                          if (availableSkills.contains(value)) {
+                                            availableSkills.remove(value);
+                                          }
+                                        });
+                                      },
+                                    ),
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(height: size.height * 0.05),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Handle the continue button press
+                      ContinueButton(
+                        selectedSkills: selectedSkills,
+                        onPressed: () async {
+                          bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
+                          if (allFilled) {
+                            await _saveSkills();
+                            GoRouter.of(context).go('/setProfilePicture');
+                          } else {
+                            setState(() {
+                              _softSkillsNumberError = 'Please fill all soft skills';
+                            });
+                          }
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: purpleColor,
-                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                          textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        child: Text('CONTINUE'),
                       ),
+                      SizedBox(
+                        height: size.height * 0.05,
+                        child: Center(
+                          child: Text(
+                            _softSkillsNumberError ?? '',
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: size.height * 0.02),
                     ],
                   ),
                 ),
@@ -160,6 +212,30 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ContinueButton extends StatelessWidget {
+  final List<String> selectedSkills;
+  final VoidCallback onPressed;
+
+  const ContinueButton({
+    super.key,
+    required this.selectedSkills,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: purpleColor,
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      child: const Text('CONTINUE'),
     );
   }
 }
