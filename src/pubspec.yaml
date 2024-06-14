@@ -1,5 +1,5 @@
 name: adopte_1_candidat
-description: "A new Flutter project."
+description: "Unleash your soft skills to find a new job!"
 publish_to: 'none'
 version: 0.1.0
 
@@ -21,6 +21,7 @@ dependencies:
   lottie: ^2.0.0
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
+  flutter_launcher_icons: ^0.13.1
   
 dev_dependencies:
   flutter_test:
@@ -34,69 +35,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/animation/
+    - assets/companyImage/
+    - assets/fonts/
+    - assets/iconProfile/
+    - assets/icons/
+    - assets/img/
     - lib/redundancy/data.json
-    - assets/icons/edit_square.svg
-    - assets/img/official_logo.png
-    - assets/img/unofficial_logo.png
-    - assets/img/splash_screen.svg
-    - assets/img/check_email.svg
-    - assets/img/email_success.svg
-    - assets/img/pdf_icon.svg
-    - assets/icons/attachment.svg
-    - assets/img/bubbles.svg
-    - assets/img/mcdo.png
-    - assets/img/fg_entreprise.png
-    - assets/img/multis.png
-    - assets/img/centre_val_de_loire.png
-    - assets/img/re.png
-    - assets/img/we_are_evolution.png
-    - assets/img/top_home.svg
-    - assets/icons/home.svg
-    - assets/icons/matches.svg
-    - assets/icons/certifications.svg
-    - assets/icons/user.svg
-    - assets/iconProfile/bear.svg
-    - assets/iconProfile/cat.svg
-    - assets/iconProfile/deer.svg
-    - assets/iconProfile/dog.svg
-    - assets/iconProfile/fox.svg
-    - assets/iconProfile/frog.svg
-    - assets/iconProfile/lion.svg
-    - assets/iconProfile/monkey.svg
-    - assets/iconProfile/owl.svg
-    - assets/iconProfile/panda.svg
-    - assets/iconProfile/tiger.svg
-    - assets/iconProfile/wolf.svg
-    - assets/icons/certifications.svg
-    - assets/icons/home.svg
-    - assets/icons/matches.svg
-    - assets/icons/user.svg
-    - assets/icons/agile_logo.svg
-    - assets/icons/efficiency_logo.svg
-    - assets/icons/leadership_logo.svg
-    - assets/icons/social_logo.svg
-    - assets/icons/company_icon.svg
-    - assets/icons/company_icon2.svg
-    - assets/icons/company_icon3.svg
-    - assets/companyImage/centre_val_de_loire1.webp 
-    - assets/companyImage/centre_val_de_loire2.jpeg 
-    - assets/companyImage/fg_entreprise1.jpeg 
-    - assets/companyImage/fg_entreprise2.jpeg 
-    - assets/companyImage/mcdo1.jpeg 
-    - assets/companyImage/mcdo2.jpeg 
-    - assets/companyImage/multis1.jpeg 
-    - assets/companyImage/multis2.jpeg 
-    - assets/companyImage/p_i_e1.jpeg 
-    - assets/companyImage/p_i_e2.jpeg 
-    - assets/companyImage/we_are_evolution1.png 
-    - assets/companyImage/we_are_evolution2.png
-    - assets/animation/bubble_popup.json
-    - assets/img/background.svg
-    - assets/icons/skills_logo.svg
-    - assets/icons/personal_information_logo.svg
-    - assets/icons/notification_logo.svg
-    - assets/icons/logout_logo.svg
-    - assets/icons/likes_logo.svg
   
   fonts:
     - family: Didot
@@ -107,3 +52,22 @@ flutter:
         - asset: assets/fonts/DMSans-Regular.ttf
         - asset: assets/fonts/DMSans-Bold.ttf
           weight: 700
+  
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: "AppIcon"
+  image_path: "assets/img/favicon.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/img/favicon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/img/favicon.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/img/favicon.png"

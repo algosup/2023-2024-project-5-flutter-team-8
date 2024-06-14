@@ -16,7 +16,6 @@ class _SuccessEmailUpdateState extends State<SuccessEmailUpdate> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    void openMailApp() {}
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(
