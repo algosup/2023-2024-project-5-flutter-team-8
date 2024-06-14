@@ -19,7 +19,7 @@ class SuccessPopup extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(true),
           child: Text('OK'),
         ),
       ],
