@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:adopte_1_candidat/redundancy/arrow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
@@ -66,7 +67,8 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
     data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
 
     await file.writeAsString(jsonEncode(data));
-    developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
+    developer.log('data.json content: ${await file.readAsString()}',
+        name: 'SaveUser');
   }
 
   @override
@@ -75,7 +77,6 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -90,8 +91,9 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                 backgroundColor: Colors.black,
                 progressColor: purpleColor,
               ),
-              SizedBox(
-                height: size.height * 0.05,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: ArrowButton()
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -183,13 +185,15 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       ContinueButton(
                         selectedSkills: selectedSkills,
                         onPressed: () async {
-                          bool allFilled = selectedSkills.every((skill) => skill.isNotEmpty);
+                          bool allFilled =
+                              selectedSkills.every((skill) => skill.isNotEmpty);
                           if (allFilled) {
                             await _saveSkills();
-                            GoRouter.of(context).go('/setProfilePicture');
+                            GoRouter.of(context).push('/locationPage');
                           } else {
                             setState(() {
-                              _softSkillsNumberError = 'Please fill all soft skills';
+                              _softSkillsNumberError =
+                                  'Please fill all soft skills';
                             });
                           }
                         },

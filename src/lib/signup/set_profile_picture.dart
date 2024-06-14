@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:io';
+import 'package:adopte_1_candidat/redundancy/arrow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -64,7 +65,6 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -74,13 +74,14 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
               ),
               LinearPercentIndicator(
                 width: size.width,
-                percent: 0.8,
+                percent: 1,
                 animation: true,
                 backgroundColor: Colors.black,
                 progressColor: purpleColor,
               ),
-              SizedBox(
-                height: size.height * 0.05,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: ArrowButton()
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -116,40 +117,29 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
                   ),
                 ),
               ),
+              Container(
+                height: size.height / 20,
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: size.height / 20,
+                  IconGrid(
+                    size: size,
+                    selectedAvatar: selectedAvatar,
+                    onAvatarSelected: (String? avatar) {
+                      setState(() {
+                        selectedAvatar = avatar;
+                      });
+                    },
                   ),
-                  _buildIconRow([
-                    'assets/iconProfile/cat.svg',
-                    'assets/iconProfile/frog.svg',
-                    'assets/iconProfile/owl.svg',
-                  ], size),
-                  _buildIconRow([
-                    'assets/iconProfile/monkey.svg',
-                    'assets/iconProfile/fox.svg',
-                    'assets/iconProfile/lion.svg',
-                  ], size),
-                  _buildIconRow([
-                    'assets/iconProfile/wolf.svg',
-                    'assets/iconProfile/dog.svg',
-                    'assets/iconProfile/tiger.svg',
-                  ], size),
-                  _buildIconRow([
-                    'assets/iconProfile/deer.svg',
-                    'assets/iconProfile/bear.svg',
-                    'assets/iconProfile/panda.svg',
-                  ], size),
                   SizedBox(
-                    height: size.height / 15,
+                    height: size.height / 20,
                   ),
                   ContinueButton(
                     onPressed: () async {
                       if (selectedAvatar != null) {
                         await _saveSelectedAvatar();
-                        GoRouter.of(context).go('/home');
+                        GoRouter.of(context).go('/verifyEmail');
                       } else {
                         setState(() {
                           _avatarSelectionError = 'Please select an avatar';
@@ -174,33 +164,67 @@ class _SetProfilePictureState extends State<SetProfilePicture> {
       ),
     );
   }
+}
 
-  Row _buildIconRow(List<String> assetPaths, Size size) {
-    double iconSize = size.width / 5;
+class IconGrid extends StatefulWidget {
+  final Size size;
+  final String? selectedAvatar;
+  final ValueChanged<String?> onAvatarSelected;
+
+  IconGrid({required this.size, required this.selectedAvatar, required this.onAvatarSelected});
+
+  @override
+  _IconGridState createState() => _IconGridState();
+}
+
+class _IconGridState extends State<IconGrid> {
+  Row _buildIconRow(List<String> assetPaths) {
+    double iconSize = widget.size.width / 5;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: assetPaths.map((path) => GestureDetector(
         onTap: () {
-          setState(() {
-            if (selectedAvatar == path) {
-              selectedAvatar = null;
-            } else {
-              selectedAvatar = path;
-            }
-            _avatarSelectionError = null;
-          });
+          widget.onAvatarSelected(path == widget.selectedAvatar ? null : path);
         },
         child: Container(
           padding: EdgeInsets.all(15),
           width: iconSize * 1.4,
           height: iconSize * 1.4,
           decoration: BoxDecoration(
-            color: selectedAvatar == path ? purpleColor : Colors.transparent,
+            color: widget.selectedAvatar == path ? purpleColor : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           child: SvgPicture.asset(path),
         ),
       )).toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _buildIconRow([
+          'assets/iconProfile/cat.svg',
+          'assets/iconProfile/frog.svg',
+          'assets/iconProfile/owl.svg',
+        ]),
+        _buildIconRow([
+          'assets/iconProfile/monkey.svg',
+          'assets/iconProfile/fox.svg',
+          'assets/iconProfile/lion.svg',
+        ]),
+        _buildIconRow([
+          'assets/iconProfile/wolf.svg',
+          'assets/iconProfile/dog.svg',
+          'assets/iconProfile/tiger.svg',
+        ]),
+        _buildIconRow([
+          'assets/iconProfile/deer.svg',
+          'assets/iconProfile/bear.svg',
+          'assets/iconProfile/panda.svg',
+        ]),
+      ],
     );
   }
 }

@@ -40,9 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
           } else if (!snapshot.hasData) {
             return const Center(child: Text('No user data found'));
           }
-
           final user = snapshot.data!;
-
           return SizedBox(
             child: Column(
               children: [
@@ -79,6 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.only(left: 16.0),
                               child: Text(
                                 user.fullName,
+                                overflow: TextOverflow.ellipsis,
                                 style:
                                     const TextStyle(color: backgroundColor, fontSize: 20),
                               ),
@@ -86,9 +85,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             Container(
                               alignment: Alignment.centerLeft,
                               padding: const EdgeInsets.only(left: 16.0),
-                              child: const Text(
-                                'Paris, France',
-                                style: TextStyle(color: backgroundColor),
+                              child: Text(
+                                user.location,
+                                style: const TextStyle(color: backgroundColor),
                               ),
                             ),
                             Container(

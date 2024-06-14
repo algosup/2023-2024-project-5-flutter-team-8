@@ -9,6 +9,7 @@ import 'dart:developer' as developer;
 import '../constants.dart';
 import '../redundancy/round_button.dart';
 import '../signup/chips.dart';
+import '../redundancy/arrow_button.dart';  // Import the ArrowButton
 
 class SelectSoftSkills extends StatefulWidget {
   const SelectSoftSkills({super.key});
@@ -82,10 +83,12 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: size.height * 0.1,
+            ),
             LinearPercentIndicator(
               width: size.width,
               percent: 0.4,
@@ -93,8 +96,9 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
               backgroundColor: Colors.black,
               progressColor: purpleColor,
             ),
-            SizedBox(
-              height: size.height * 0.05,
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: ArrowButton()
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
@@ -167,32 +171,42 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               onPressed: () async {
                                 if (selectedSkills.length == 15) {
                                   try {
-                                    final directory = await getApplicationDocumentsDirectory();
-                                    final filePath = '${directory.path}/data.json';
+                                    final directory =
+                                        await getApplicationDocumentsDirectory();
+                                    final filePath =
+                                        '${directory.path}/data.json';
                                     final file = File(filePath);
-                                    
+
                                     if (await file.exists()) {
                                       final content = await file.readAsString();
                                       final data = jsonDecode(content);
-                                      
+
                                       int lastUserId = data["users"].length;
-                                      data["users"]["$lastUserId"]["softSkills"] = selectedSkills;
-                                      
-                                      await file.writeAsString(jsonEncode(data));
-                                      developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
-                                      GoRouter.of(context).push('/sortSoftSkills');
+                                      data["users"]["$lastUserId"]
+                                          ["softSkills"] = selectedSkills;
+
+                                      await file
+                                          .writeAsString(jsonEncode(data));
+                                      developer.log(
+                                          'data.json content: ${await file.readAsString()}',
+                                          name: 'SaveUser');
+                                      GoRouter.of(context)
+                                          .push('/sortSoftSkills');
                                     } else {
                                       // Handle the case where the file does not exist
-                                      developer.log('File does not exist', name: 'SelectSoftSkills');
+                                      developer.log('File does not exist',
+                                          name: 'SelectSoftSkills');
                                     }
                                   } catch (e) {
                                     // Handle any errors that occur during file write
-                                    developer.log('Error writing file', error: e, name: 'SelectSoftSkills');
+                                    developer.log('Error writing file',
+                                        error: e, name: 'SelectSoftSkills');
                                   }
                                 } else {
                                   // Handle the case where not enough skills are selected
                                   setState(() {
-                                    _softSkillsNumberError = 'Please select 15 soft skills';
+                                    _softSkillsNumberError =
+                                        'Please select 15 soft skills';
                                   });
                                 }
                               },
@@ -233,7 +247,7 @@ class ContinueButton extends RoundButton {
     required this.onError,
     required super.onPressed,
   }) : super(
-    color: purpleColor,
-    text: 'Continue',
-  );
+          color: purpleColor,
+          text: 'Continue',
+        );
 }
