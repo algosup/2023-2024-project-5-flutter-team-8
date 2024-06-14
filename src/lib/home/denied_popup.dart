@@ -26,44 +26,14 @@ class ConfirmationPopup extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(false),
           child: Text('Cancel'),
         ),
         TextButton(
-          onPressed: () {
-            Navigator.of(context).pop(); // Close the confirmation dialog
-            _showAcknowledgmentPopup(context); // Show acknowledgment message
-          },
+          onPressed: () => Navigator.of(context).pop(true),
           child: Text('Yes, deny'),
         ),
       ],
-    );
-  }
-
-  // Show acknowledgment popup after denying the job
-  void _showAcknowledgmentPopup(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          title: Text('Job Denied', style: TextStyle(color: Colors.red)),
-          content: Text(
-            'You have denied the job offer.',
-            style: TextStyle(fontSize: 16, color: Colors.black),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
     );
   }
 }

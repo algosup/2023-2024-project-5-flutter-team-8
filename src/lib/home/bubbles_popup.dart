@@ -11,9 +11,10 @@ import 'denied_popup.dart';
 
 class BubblePopup extends StatefulWidget {
   final String logoPath;
+  final VoidCallback onRemoveBubble;
 
-  BubblePopup({required this.logoPath});
-
+  BubblePopup({required this.logoPath, required this.onRemoveBubble});
+  
   @override
   _BubblePopupState createState() => _BubblePopupState();
 }
@@ -68,35 +69,42 @@ class _BubblePopupState extends State<BubblePopup> {
     _resetInactivityTimer();
   }
 
-  void _showSuccessPopup(BuildContext context) {
-    Navigator.of(context).pop();
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return SuccessPopup(
-          message: "You've applied for the job. Expect a message from the company in a few days.",
-        );
-      },
-    );
-  }
+void _showSuccessPopup(BuildContext context) {
+  Navigator.of(context).pop();
+  showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return SuccessPopup(
+        message: "You've applied for the job. Expect a message from the company in a few days.",
+      );
+    },
+  ).then((result) {
+    if (result == true) {
+      widget.onRemoveBubble();
+    }
+  });
+}
 
-   // Show confirmation popup after denying the job
-  void _showConfirmationPopup(BuildContext context) {
-    Navigator.of(context).pop(); // Close the current popup
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return ConfirmationPopup(
-          icon: Icon(Icons.cancel, color: Colors.red), // Use the same icon as the footer
-          onConfirm: () {
-            // No need to handle anything here as it is taken care of within ConfirmationPopup
-          },
-        );
-      },
-    );
-  }
+void _showConfirmationPopup(BuildContext context) {
+  Navigator.of(context).pop();
+  showDialog<bool>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return ConfirmationPopup(
+        icon: Icon(Icons.cancel, color: Colors.red),
+        onConfirm: () {
+          Navigator.of(context).pop(); // Close the confirmation dialog
+        },
+      );
+    },
+  ).then((result) {
+    if (result == true) {
+      widget.onRemoveBubble();
+    }
+  });
+}
 
 
   @override

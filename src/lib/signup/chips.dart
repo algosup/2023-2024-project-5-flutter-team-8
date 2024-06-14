@@ -20,15 +20,24 @@ class ChipsWidget extends StatefulWidget {
 class _ChipsWidgetState extends State<ChipsWidget> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
-      child: Wrap(
-        spacing: 2.0,
-        children: widget.skills.map((skill) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: chip(skill),
-          );
-        }).toList(),
+      child: Column(
+        children: [
+          Wrap(
+            spacing: 2.0,
+            children: widget.skills.map((skill) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: chip(skill),
+              );
+            }).toList(),
+          ),
+          SizedBox(
+            height: size.height * 0.1,
+          ),
+        ],
       ),
     );
   }
