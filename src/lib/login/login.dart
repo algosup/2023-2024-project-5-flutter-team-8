@@ -246,7 +246,7 @@ class LoginButton extends BlackRectangleButton {
               final passwordValid = isPasswordValid(password);
 
               if (emailValid && passwordValid) {
-                GoRouter.of(context).go('/loading');
+                GoRouter.of(context).go('/home');
               } else {
                 onError('Email or password is incorrect');
               }
