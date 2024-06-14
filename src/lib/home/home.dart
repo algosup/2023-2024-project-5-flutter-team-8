@@ -14,17 +14,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<User> _userFuture;
-  late User _user;
 
   @override
   void initState() {
     super.initState();
-    _userFuture = loadUserData();
-    _userFuture.then((user) {
-      setState(() {
-        _user = user;
-      });
-    });
+    _userFuture = loadUsers().then((users) => users.first);
   }
 
   @override
@@ -38,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
-            _user = snapshot.data!;
+            User user = snapshot.data!;
 
             return Stack(
               children: <Widget>[
@@ -57,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                       title: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Hello,\n${_user.fullName}!',
+                          'Hello,\n${user.fullName}!',
                           style: const TextStyle(
                             color: Colors.black,
                             fontFamily: 'DM Sans',
@@ -73,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                             width: 50,
                             height: 50,
                             child: SvgPicture.asset(
-                              _user.avatar,
+                              user.avatar,
                               fit: BoxFit.fill,
                             ),
                           ),

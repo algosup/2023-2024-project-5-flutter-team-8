@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class User {
   final String fullName;
@@ -47,6 +46,25 @@ class User {
   }
 }
 
+Future<List<User>> loadUsers() async {
+  try {
+    // Read the JSON file from assets
+    final data = await rootBundle.loadString('lib/redundancy/data.json');
+    final Map<String, dynamic> jsonData = jsonDecode(data);
+
+    if (jsonData.containsKey('users')) {
+      final usersMap = jsonData['users'] as Map<String, dynamic>;
+      final users = usersMap.values.map((user) => User.fromJson(user)).toList();
+      return users;
+    } else {
+      throw Exception("No users found in JSON");
+    }
+  } catch (e) {
+    print("Error loading user data: $e");
+    rethrow;
+  }
+}
+
 List<User> users = [
   User(
     fullName: 'Quentin Clément',
@@ -74,32 +92,3 @@ List<User> users = [
     avatar: 'assets/iconProfile/cat.svg',
   ),
 ];
-
-Future<User> loadUserData() async {
-  try {
-    final directory = await getApplicationDocumentsDirectory();
-    final filePath = '${directory.path}/data.json';
-    final file = File(filePath);
-    if (await file.exists()) {
-      final data = await file.readAsString();
-      final Map<String, dynamic> jsonData = jsonDecode(data);
-
-      if (jsonData.containsKey('users')) {
-        final users = jsonData['users'] as Map<String, dynamic>;
-        if (users.containsKey('1')) {
-          final userData = users['1'];
-          return User.fromJson(userData);
-        } else {
-          throw Exception("User with ID 1 not found");
-        }
-      } else {
-        throw Exception("No users found in JSON");
-      }
-    } else {
-      throw Exception("File not found");
-    }
-  } catch (e) {
-    print("Error loading user data: $e");
-    rethrow;
-  }
-}

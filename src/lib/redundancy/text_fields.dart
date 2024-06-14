@@ -162,6 +162,31 @@ class PasswordFieldProfile extends PasswordField {
   );
 }
 
+class PasswordFieldSignup extends CustomTextField {
+  PasswordFieldSignup({
+    Key? key,
+    required TextEditingController controller,
+    String? errorText,
+  }) : super(
+          key: key,
+          controller: controller,
+          hintText: 'Password',
+          errorText: errorText,
+          obscureText: true,
+          keyboardType: TextInputType.text,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a password';
+            } else if (value.length < 6) {
+              return 'Password must be at least 6 characters long';
+            } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))) {
+              return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
+            }
+            return null;
+          },
+        );
+}
+
 class Location extends CustomTextField {
   Location({Key? key, required TextEditingController controller, String? errorText})
       : super(

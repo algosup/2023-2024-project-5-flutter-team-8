@@ -20,7 +20,7 @@ class __CurrentSkillsPageStateState extends State<CurrentSkillsPage> {
   @override
   void initState() {
     super.initState();
-    userFuture = loadUserData();
+    userFuture = loadUsers().then((users) => users.first);
   }
 
   @override

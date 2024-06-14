@@ -131,7 +131,7 @@ class _SignupState extends State<Signup> {
                               padding: EdgeInsets.symmetric(
                                 vertical: size.height * 0.01,
                               ),
-                              child: PasswordField(controller: _passwordController, errorText: _emailPasswordError),
+                              child: PasswordFieldSignup(controller: _passwordController, errorText: _emailPasswordError),
                             ),
                             SizedBox(
                               height: size.height * 0.02,
@@ -230,28 +230,6 @@ Future<void> _saveUser(String fullName, String email, String password) async {
 
   await file.writeAsString(jsonEncode(data));
   developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
-}
-
-class PasswordField extends CustomTextField {
-  PasswordField({Key? key, required TextEditingController controller, String? errorText})
-    : super(
-    key: key,
-    controller: controller,
-    hintText: 'Password',
-    errorText: errorText,
-    obscureText: true,
-    keyboardType: TextInputType.text,
-    validator: (value) {
-      if (value == null || value.isEmpty) {
-        return 'Please enter a password';
-      } else if (value.length < 6) {
-        return 'Password must be at least 6 characters long';
-      } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))){
-        return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
-      }
-      return null;
-    },
-  );
 }
 
 class ContinueButton extends RoundButton {
