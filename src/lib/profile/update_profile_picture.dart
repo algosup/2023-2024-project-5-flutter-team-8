@@ -1,11 +1,85 @@
+import 'dart:convert';
+import 'dart:developer' as developer;
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:adopte_1_candidat/signup/icon_grid.dart';
+import '../constants.dart';
 
-import '../redundancy/rectangle_button.dart';
-
-class UpdateProfilePicture extends StatelessWidget {
+class UpdateProfilePicture extends StatefulWidget {
   const UpdateProfilePicture({super.key});
+
+  @override
+  _UpdateProfilePictureState createState() => _UpdateProfilePictureState();
+}
+
+class _UpdateProfilePictureState extends State<UpdateProfilePicture> {
+  String? selectedAvatar;
+  String? _avatarSelectionError;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedAvatar();
+  }
+
+  Future<void> _loadSelectedAvatar() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+
+    if (await file.exists()) {
+      final data = await file.readAsString();
+      final dynamic parsedData = jsonDecode(data);
+
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            setState(() {
+              selectedAvatar = user['avatar'] as String?;
+            });
+          }
+        }
+      }
+    }
+  }
+
+  Future<void> _saveSelectedAvatar() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+
+    if (await file.exists()) {
+      final data = await file.readAsString();
+      final dynamic parsedData = jsonDecode(data);
+
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            user['avatar'] = selectedAvatar;
+
+            await file.writeAsString(jsonEncode(jsonData));
+            developer.log('data.json content: $jsonData', name: 'SaveSelectedAvatar');
+          } else {
+            developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveSelectedAvatar');
+          }
+        } else {
+          developer.log('Error: Users data not found or invalid format', name: 'SaveSelectedAvatar');
+        }
+      } else {
+        developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedAvatar');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,61 +87,71 @@ class UpdateProfilePicture extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: size.width * 0.06), // Updated padding
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               height: size.height / 20,
             ),
-            _buildIconRow([
-              'assets/iconProfile/cat.svg',
-              'assets/iconProfile/frog.svg',
-              'assets/iconProfile/owl.svg',
-            ], size),
-            _buildIconRow([
-              'assets/iconProfile/monkey.svg',
-              'assets/iconProfile/fox.svg',
-              'assets/iconProfile/lion.svg',
-            ], size),
-            _buildIconRow([
-              'assets/iconProfile/wolf.svg',
-              'assets/iconProfile/dog.svg',
-              'assets/iconProfile/tiger.svg',
-            ], size),
-            _buildIconRow([
-              'assets/iconProfile/deer.svg',
-              'assets/iconProfile/bear.svg',
-              'assets/iconProfile/panda.svg',
-            ], size),
-            SizedBox(
-              height: size.height / 15,
-            ),
-            BlackRectangleButton(
+            IconGrid(
               size: size,
-              text: 'UPDATE',
-              onPressed: () {
-                GoRouter.of(context).push('/profile');
+              selectedAvatar: selectedAvatar,
+              onAvatarSelected: (String? avatar) {
+                setState(() {
+                  selectedAvatar = avatar;
+                });
               },
             ),
             SizedBox(
-              height: size.height / 25,
+              height: size.height / 15,
+            ),
+            ContinueButton(
+              onPressed: () async {
+                if (selectedAvatar != null) {
+                  await _saveSelectedAvatar();
+                  GoRouter.of(context).push('/profile');
+                } else {
+                  setState(() {
+                    _avatarSelectionError = 'Please select an avatar';
+                  });
+                }
+              },
+            ),
+            SizedBox(
+              height: size.height * 0.05,
+              child: Center(
+                child: Text(
+                  _avatarSelectionError ?? '',
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Row _buildIconRow(List<String> assetPaths, Size size) {
-    double iconSize = size.width / 5; // Adjust the division factor as needed
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: assetPaths.map((path) => SizedBox(
-        width: iconSize,
-        height: iconSize,
-        child: SvgPicture.asset(path),
-      )).toList(),
+class ContinueButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const ContinueButton({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: purpleColor,
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      child: const Text('CONTINUE'),
     );
   }
 }
