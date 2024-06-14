@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -9,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
 
   const CustomTextField({
     Key? key,
@@ -19,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.suffixIcon,
+    this.prefixIcon
   }) : super(key: key);
 
   @override
@@ -55,6 +58,7 @@ class CustomTextField extends StatelessWidget {
               ),
               errorText: errorText,
               suffixIcon: suffixIcon,
+              prefixIcon: prefixIcon,
             ),
             validator: validator,
           ),
@@ -101,8 +105,9 @@ class EmailField extends CustomTextField {
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
   final String? errorText;
+  final Widget? suffixIcon;
 
-  const PasswordField({Key? key, required this.controller, this.errorText}) : super(key: key);
+  const PasswordField({Key? key, required this.controller, this.errorText, this.suffixIcon}) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -124,7 +129,7 @@ class _PasswordFieldState extends State<PasswordField> {
         }
         return null;
       },
-      suffixIcon: GestureDetector(
+      suffixIcon: widget.suffixIcon ?? GestureDetector(
         onTap: () {
           setState(() {
             _obscureText = !_obscureText;
@@ -139,3 +144,37 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 }
 
+class PasswordFieldProfile extends PasswordField {
+  PasswordFieldProfile({
+    Key? key,
+    required TextEditingController controller,
+    String? errorText,
+    Widget? suffixIcon,
+    required BuildContext context
+  }) : super(
+    key: key,
+    controller: controller,
+    errorText: errorText,
+    suffixIcon: suffixIcon ?? GestureDetector(
+      onTap: () => GoRouter.of(context).push('/updatePasswordPage'),
+      child: const Icon(Icons.arrow_forward_ios),
+    ),
+  );
+}
+
+class Location extends CustomTextField {
+  Location({Key? key, required TextEditingController controller, String? errorText})
+      : super(
+          key: key,
+          controller: controller,
+          hintText: 'City, Country',
+          errorText: errorText,
+          keyboardType: TextInputType.text,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your location';
+            }
+            return null;
+          },
+        );
+}

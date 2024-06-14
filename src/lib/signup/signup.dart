@@ -1,9 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:developer' as developer;
 
 import '../constants.dart';
-import '../database.dart';
 import '../redundancy/text_fields.dart';
 import '../redundancy/round_button.dart';
 
@@ -193,43 +196,62 @@ class _SignupState extends State<Signup> {
   }
 }
 
-
 bool isFullNameValid(String? value) {
-  // Check if the value is not null and not empty
   return value != null && value.isNotEmpty;
 }
 
 bool isEmailValid(String? value) {
-  // Check if the value is not null, not empty, and contains '@'
   return value != null && value.isNotEmpty && value.contains('@');
 }
 
 bool isPasswordValid(String? value) {
-  // Check if the value is not null and has a length of at least 6 characters
   return value != null && value.length >= 6 && value.contains(RegExp(r'[0-9]')) && value.contains(RegExp(r'[a-z]')) && value.contains(RegExp(r'[A-Z]')) && value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
 }
 
-//error message for all the password cases
+Future<void> _saveUser(String fullName, String email, String password) async {
+  final directory = await getApplicationDocumentsDirectory();
+  final filePath = '${directory.path}/data.json';
+  final file = File(filePath);
+
+  Map<String, dynamic> data = {
+    "users": {
+      "1": {
+        "fullName": fullName,
+        "email": email,
+        "password": password,
+        "softSkills": [],
+        "distance": "",
+        "location": "",
+        "distance": "",
+        "avatar": ""
+      }
+    }
+  };
+
+  await file.writeAsString(jsonEncode(data));
+  developer.log('data.json content: ${await file.readAsString()}', name: 'SaveUser');
+}
+
 class PasswordField extends CustomTextField {
   PasswordField({Key? key, required TextEditingController controller, String? errorText})
-      : super(
-          key: key,
-          controller: controller,
-          hintText: 'Password',
-          errorText: errorText,
-          obscureText: true,
-          keyboardType: TextInputType.text,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter a password';
-            } else if (value.length < 6) {
-              return 'Password must be at least 6 characters long';
-            } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))){
-              return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
-            }
-            return null;
-          },
-        );
+    : super(
+    key: key,
+    controller: controller,
+    hintText: 'Password',
+    errorText: errorText,
+    obscureText: true,
+    keyboardType: TextInputType.text,
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter a password';
+      } else if (value.length < 6) {
+        return 'Password must be at least 6 characters long';
+      } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))){
+        return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
+      }
+      return null;
+    },
+  );
 }
 
 class ContinueButton extends RoundButton {
@@ -250,21 +272,20 @@ class ContinueButton extends RoundButton {
     required this.formKey,
     required this.onError,
   }) : super(
-        color: purpleColor,
-        text: 'Continue',
-        onPressed: () {
-          if (formKey.currentState?.validate() ?? false) {
-            String fullName = fullNameController.text;
-            String email = emailController.text;
-            String password = passwordController.text;
-
-            if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
-              users.add(User(fullName: fullName, email: email, password: password));
-              GoRouter.of(context).push('/selectSoftskills');
-            } else {
-              onError('Please fill out all fields correctly');
-            }
-          }
-        },
-      );
+    color: purpleColor,
+    text: 'Continue',
+    onPressed: () async {
+      if (formKey.currentState?.validate() ?? false) {
+        String fullName = fullNameController.text;
+        String email = emailController.text;
+        String password = passwordController.text;
+        if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
+          await _saveUser(fullName, email, password);
+          GoRouter.of(context).push('/selectSoftskills');
+        } else {
+          onError('Please fill out all fields correctly');
+        }
+      }
+    },
+  );
 }
