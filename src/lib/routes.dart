@@ -32,7 +32,7 @@ import 'package:adopte_1_candidat/chat/chat.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/loading',
+    initialLocation: '/setProfilePicture',
     routes: [
       GoRoute(
         path: '/loading',
