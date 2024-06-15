@@ -19,7 +19,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   @override
   void initState() {
     super.initState();
-    userFuture = loadUserData();
+    userFuture = loadUsers().then((users) => users.first);
   }
 
   @override

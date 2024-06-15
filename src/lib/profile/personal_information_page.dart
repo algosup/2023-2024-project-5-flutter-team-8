@@ -22,7 +22,7 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
   @override
   void initState() {
     super.initState();
-    _userFuture = loadUserData();
+    _userFuture = loadUsers().then((users) => users.first);
     _userFuture.then((user) {
       setState(() {
         _user = user;

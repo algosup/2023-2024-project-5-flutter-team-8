@@ -33,7 +33,7 @@ import 'package:adopte_1_candidat/login/forgot_password.dart';
 
 final routeProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
-    initialLocation: '/loading',
+    initialLocation: '/login',
     routes: [
       GoRoute(
         path: '/loading',

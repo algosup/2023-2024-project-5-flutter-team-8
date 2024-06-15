@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    userFuture = loadUserData();
+    userFuture = loadUsers().then((users) => users.first);
   }
 
   @override
