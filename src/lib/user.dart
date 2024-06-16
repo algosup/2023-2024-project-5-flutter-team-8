@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class User {
@@ -48,8 +49,11 @@ class User {
 
 Future<List<User>> loadUsers() async {
   try {
-    // Read the JSON file from assets
-    final data = await rootBundle.loadString('lib/redundancy/data.json');
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+
+    final data = await file.readAsString();
     final Map<String, dynamic> jsonData = jsonDecode(data);
 
     if (jsonData.containsKey('users')) {
@@ -64,31 +68,3 @@ Future<List<User>> loadUsers() async {
     rethrow;
   }
 }
-
-List<User> users = [
-  User(
-    fullName: 'Quentin Clément',
-    email: 'quentin.clement@algosup.com',
-    password: '12345',
-    softSkills: [
-      'Self-Confidence',
-      'Communication',
-      'Judgment',
-      'Empathy',
-      'Efficiency',
-      'Ability to focus',
-      'Time management',
-      'Stress management',
-      'Sense of priorities',
-      'Being organized',
-      'Know how to organize',
-      'Ability to concentrate',
-      'Meeting deadlines',
-      'Pressure handling',
-      'Process optimization'
-    ],
-    location: 'Paris',
-    distance: '10 km',
-    avatar: 'assets/iconProfile/cat.svg',
-  ),
-];
