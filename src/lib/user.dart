@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class User {
@@ -48,8 +49,11 @@ class User {
 
 Future<List<User>> loadUsers() async {
   try {
-    // Read the JSON file from assets
-    final data = await rootBundle.loadString('lib/redundancy/data.json');
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+
+    final data = await file.readAsString();
     final Map<String, dynamic> jsonData = jsonDecode(data);
 
     if (jsonData.containsKey('users')) {
