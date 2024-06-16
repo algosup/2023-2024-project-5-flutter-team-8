@@ -64,31 +64,3 @@ Future<List<User>> loadUsers() async {
     rethrow;
   }
 }
-
-List<User> users = [
-  User(
-    fullName: 'Quentin Clément',
-    email: 'quentin.clement@algosup.com',
-    password: '12345',
-    softSkills: [
-      'Self-Confidence',
-      'Communication',
-      'Judgment',
-      'Empathy',
-      'Efficiency',
-      'Ability to focus',
-      'Time management',
-      'Stress management',
-      'Sense of priorities',
-      'Being organized',
-      'Know how to organize',
-      'Ability to concentrate',
-      'Meeting deadlines',
-      'Pressure handling',
-      'Process optimization'
-    ],
-    location: 'Paris',
-    distance: '10 km',
-    avatar: 'assets/iconProfile/cat.svg',
-  ),
-];
