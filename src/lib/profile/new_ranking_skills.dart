@@ -46,7 +46,7 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
           if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
             final user = users['1'] as Map<String, dynamic>;
             setState(() {
-              selectedSkills = List<String>.from(user['softSkills']);
+              availableSkills = List<String>.from(user['softSkills']);
             });
           }
         }
