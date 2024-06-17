@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:developer' as developer;
 
 import 'package:adopte_1_candidat/redundancy/rectangle_button.dart';
 import 'package:flutter/material.dart';
@@ -41,12 +42,36 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
     }
   }
 
-  Future<void> _saveSkills() async {
+  Future<void> _saveRankedSkills() async {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/data.json';
     final file = File(filePath);
-    final data = jsonEncode(selectedSkills);
-    await file.writeAsString(data);
+
+    if (await file.exists()) {
+      final data = await file.readAsString();
+      final dynamic parsedData = jsonDecode(data);
+
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            user['softSkills'] = selectedSkills;
+
+            await file.writeAsString(jsonEncode(jsonData));
+            developer.log('data.json content: $jsonData', name: 'SaveRankedSkills');
+          } else {
+            developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveRankedSkills');
+          }
+        } else {
+          developer.log('Error: Users data not found or invalid format', name: 'SaveRankedSkills');
+        }
+      } else {
+        developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveRankedSkills');
+      }
+    }
   }
 
   @override
@@ -150,7 +175,7 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
                     bool allFilled =
                         selectedSkills.every((skill) => skill.isNotEmpty);
                     if (allFilled) {
-                      await _saveSkills();
+                      await _saveRankedSkills();
                       GoRouter.of(context).go('/profile');
                     } else {
                       setState(() {

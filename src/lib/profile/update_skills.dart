@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
@@ -74,6 +73,38 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
       selectedSkills = newSelectedSkills;
     });
   }
+  
+  Future<void> _saveSelectedSkills() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/data.json';
+    final file = File(filePath);
+
+    if (await file.exists()) {
+      final data = await file.readAsString();
+      final dynamic parsedData = jsonDecode(data);
+
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            user['softSkills'] = selectedSkills;
+
+            await file.writeAsString(jsonEncode(jsonData));
+            developer.log('data.json content: $jsonData', name: 'SaveSelectedSkills');
+          } else {
+            developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveSelectedSkills');
+          }
+        } else {
+          developer.log('Error: Users data not found or invalid format', name: 'SaveSelectedSkills');
+        }
+      } else {
+        developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedSkills');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,27 +164,11 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
                             size: size,
                             onPressed: () async {
                               if (selectedSkills.length == 15) {
-                                try {
-                                  final directory =
-                                      await getApplicationDocumentsDirectory();
-                                  final filePath =
-                                      '${directory.path}/data.json';
-                                  final file = File(filePath);
-                                  final data = jsonEncode(selectedSkills);
-                                  await file.writeAsString(data);
-                                  developer.log('File written to: $filePath',
-                                      name: 'SelectSoftSkills');
-                                  GoRouter.of(context).push('/newRankingSkills');
-                                } catch (e) {
-                                  // Handle any errors that occur during file write
-                                  developer.log('Error writing file',
-                                      error: e, name: 'SelectSoftSkills');
-                                }
+                                await _saveSelectedSkills();
+                                GoRouter.of(context).push('/newRankingSkills');
                               } else {
-                                // Handle the case where not enough skills are selected
                                 setState(() {
-                                  _softSkillsNumberError =
-                                      'Please select 15 soft skills';
+                                  _softSkillsNumberError = 'Please select 15 soft skills';
                                 });
                               }
                             },
