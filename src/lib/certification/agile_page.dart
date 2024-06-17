@@ -65,12 +65,20 @@ class AgilePage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                height: size.height * 0.6,
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
               certificate(context, 'Certified ScrumMaster (CSM)', 'assets/icons/company_icon.svg'),
               certificate(context, 'Professional Scrum Master (PSM)', 'assets/icons/company_icon3.svg'),
               certificate(context, 'SAFe Agilist (SA)', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Certified Agile Project Manager (IAPM)', 'assets/icons/company_icon.svg'),
               certificate(context, 'Disciplined Agile Scrum Master (DASM)', 'assets/icons/company_icon2.svg'),
-              certificate(context, 'ICAgile Certified Professional (ICP)', 'assets/icons/company_icon.svg'),          
+              certificate(context, 'ICAgile Certified Professional (ICP)', 'assets/icons/company_icon.svg'),  
+                  ],  
+                )
+              )     
             ],
           ),
         ),

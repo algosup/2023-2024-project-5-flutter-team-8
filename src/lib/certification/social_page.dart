@@ -65,12 +65,20 @@ class SocialPage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                height: size.height * 0.6,
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
               certificate(context, 'Communication Proficiency Assessment', 'assets/icons/company_icon.svg'),
               certificate(context, 'Verbal Communication Evaluation', 'assets/icons/company_icon3.svg'),
               certificate(context, 'Interpersonal Skills Test', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Effective Communication Benchmark', 'assets/icons/company_icon.svg'),
               certificate(context, 'Professional Communication Test', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Advanced Communication Skills', 'assets/icons/company_icon.svg'),          
+            ],
+                )
+              )
             ],
           ),
         ),

@@ -65,12 +65,20 @@ class LeadershipPage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                height: size.height * 0.6,
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
               certificate(context, 'Project Management Professional (PMP)', 'assets/icons/company_icon.svg'),
               certificate(context, 'Certified Manager (CM)', 'assets/icons/company_icon3.svg'),
               certificate(context, 'Certified Leadership Facilitator (CLF)', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Certified Leadership Professional (CLP)', 'assets/icons/company_icon.svg'),
               certificate(context, 'Situational Leadership® Certification', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Certified Public Leader (CPL)', 'assets/icons/company_icon.svg'),          
+            ],
+                ),
+              ),
             ],
           ),
         ),

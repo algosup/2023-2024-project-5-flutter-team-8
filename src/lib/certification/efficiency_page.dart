@@ -65,12 +65,20 @@ class EfficiencyPage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                height: size.height * 0.6,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
               certificate(context, 'Lean Six Sigma Green Belt', 'assets/icons/company_icon.svg'),
               certificate(context, 'Lean Six Sigma Black Belt', 'assets/icons/company_icon3.svg'),
               certificate(context, 'Certified Efficiency Expert (CEE)', 'assets/icons/company_icon2.svg'),
               certificate(context, 'Certified Energy Manager (CEM)', 'assets/icons/company_icon.svg'),
               certificate(context, 'Certified Quality Engineer (CQE)', 'assets/icons/company_icon2.svg'),
               certificate(context, 'ISO 9001 Lead Auditor', 'assets/icons/company_icon.svg'),          
+            ],
+                ),
+              ),
             ],
           ),
         ),
