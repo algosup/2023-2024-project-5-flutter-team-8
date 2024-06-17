@@ -33,12 +33,24 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/data.json';
     final file = File(filePath);
+
     if (await file.exists()) {
       final data = await file.readAsString();
-      setState(() {
-        skills = List<String>.from(jsonDecode(data));
-        availableSkills = List.from(skills);
-      });
+      final dynamic parsedData = jsonDecode(data);
+
+      if (parsedData is Map<String, dynamic>) {
+        final Map<String, dynamic> jsonData = parsedData;
+
+        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+          final users = jsonData['users'] as Map<String, dynamic>;
+          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+            final user = users['1'] as Map<String, dynamic>;
+            setState(() {
+              selectedSkills = List<String>.from(user['softSkills']);
+            });
+          }
+        }
+      }
     }
   }
 
