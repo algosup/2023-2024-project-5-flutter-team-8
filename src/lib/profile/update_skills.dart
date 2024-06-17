@@ -75,34 +75,38 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
   }
   
   Future<void> _saveSelectedSkills() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final filePath = '${directory.path}/data.json';
-    final file = File(filePath);
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/data.json';
+      final file = File(filePath);
 
-    if (await file.exists()) {
-      final data = await file.readAsString();
-      final dynamic parsedData = jsonDecode(data);
+      if (await file.exists()) {
+        final data = await file.readAsString();
+        final dynamic parsedData = jsonDecode(data);
 
-      if (parsedData is Map<String, dynamic>) {
-        final Map<String, dynamic> jsonData = parsedData;
+        if (parsedData is Map<String, dynamic>) {
+          final Map<String, dynamic> jsonData = parsedData;
 
-        if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
-          final users = jsonData['users'] as Map<String, dynamic>;
-          if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
-            final user = users['1'] as Map<String, dynamic>;
-            user['softSkills'] = selectedSkills;
+          if (jsonData.containsKey('users') && jsonData['users'] is Map<String, dynamic>) {
+            final users = jsonData['users'] as Map<String, dynamic>;
+            if (users.containsKey('1') && users['1'] is Map<String, dynamic>) {
+              final user = users['1'] as Map<String, dynamic>;
+              user['softSkills'] = selectedSkills;
 
-            await file.writeAsString(jsonEncode(jsonData));
-            developer.log('data.json content: $jsonData', name: 'SaveSelectedSkills');
+              await file.writeAsString(jsonEncode(jsonData));
+              developer.log('data.json content: $jsonData', name: 'SaveSelectedSkills');
+            } else {
+              developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveSelectedSkills');
+            }
           } else {
-            developer.log('Error: User with ID 1 not found or invalid format', name: 'SaveSelectedSkills');
+            developer.log('Error: Users data not found or invalid format', name: 'SaveSelectedSkills');
           }
         } else {
-          developer.log('Error: Users data not found or invalid format', name: 'SaveSelectedSkills');
+          developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedSkills');
         }
-      } else {
-        developer.log('Error: Parsed data is not a Map<String, dynamic>', name: 'SaveSelectedSkills');
       }
+    } catch (e) {
+      developer.log('Error: $e', name: 'SaveSelectedSkills');
     }
   }
 
@@ -119,12 +123,21 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
               width: size.width,
               height: size.height / 30,
             ),
-            const Row(
+            Row(
               children: [
-                SizedBox(
-                  child: Text(
-                    'Add Skills',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                const Text(
+                  'Add Skills',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                const Spacer(),
+                Text(
+                  '(${selectedSkills.length}/15)',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: 'DM Sans',
+                    fontWeight: FontWeight.bold,
+                    height: 2.5,
                   ),
                 ),
               ],
