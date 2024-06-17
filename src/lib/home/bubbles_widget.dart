@@ -127,8 +127,8 @@ class _BouncingBubbleState extends State<BouncingBubble> with TickerProviderStat
                   setState(() {
                     widget.bubbleData.isRemoved = true;
                     widget.bubbleData.isAnimating = false;
-                    widget.allBubbles.removeWhere((bubble) => bubble.id == widget.bubbleData.id);
                   });
+                  widget.allBubbles.removeWhere((bubble) => bubble.id == widget.bubbleData.id);
                 }
               });
             },
