@@ -50,15 +50,15 @@ class _BouncingBubbleState extends State<BouncingBubble> with TickerProviderStat
   @override
   void initState() {
     super.initState();
-    movementController = AnimationController(vsync: this, duration: Duration(milliseconds: 16))..repeat();
+    movementController = AnimationController(vsync: this, duration: Duration(milliseconds: 100))..repeat();
     lottieController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     movementController.addListener(_updateBubblePosition);
   }
 
   void _updateBubblePosition() {
-    setState(() {
-      if (widget.bubbleData.isRemoved || widget.bubbleData.isAnimating) return;
+    if (widget.bubbleData.isRemoved || widget.bubbleData.isAnimating) return;
 
+    setState(() {
       widget.bubbleData.top += widget.bubbleData.dy;
       widget.bubbleData.left += widget.bubbleData.dx;
 
@@ -71,16 +71,22 @@ class _BouncingBubbleState extends State<BouncingBubble> with TickerProviderStat
         widget.bubbleData.left = widget.bubbleData.left.clamp(0, widget.containerWidth - bubbleRadiusWithBorder * 2);
       }
 
-      for (var bubble in widget.allBubbles) {
-        if (bubble != widget.bubbleData && !bubble.isRemoved) {
-          double dx2 = bubble.left - widget.bubbleData.left;
-          double dy2 = bubble.top - widget.bubbleData.top;
-          double distance = sqrt(dx2 * dx2 + dy2 * dy2);
-          if (distance < bubbleRadiusWithBorder * 2) {
-            double overlap = bubbleRadiusWithBorder * 2 - distance;
-            double adjustX = (dx2 / distance) * overlap / 2;
-            double adjustY = (dy2 / distance) * overlap / 2;
+      _handleCollisions();
+    });
+  }
 
+  void _handleCollisions() {
+    for (var bubble in widget.allBubbles) {
+      if (bubble != widget.bubbleData && !bubble.isRemoved) {
+        double dx2 = bubble.left - widget.bubbleData.left;
+        double dy2 = bubble.top - widget.bubbleData.top;
+        double distance = sqrt(dx2 * dx2 + dy2 * dy2);
+        if (distance < bubbleRadiusWithBorder * 2) {
+          double overlap = bubbleRadiusWithBorder * 2 - distance;
+          double adjustX = (dx2 / distance) * overlap / 2;
+          double adjustY = (dy2 / distance) * overlap / 2;
+
+          setState(() {
             widget.bubbleData.left -= adjustX;
             widget.bubbleData.top -= adjustY;
             bubble.left += adjustX;
@@ -100,10 +106,10 @@ class _BouncingBubbleState extends State<BouncingBubble> with TickerProviderStat
             widget.bubbleData.dy -= impulse * normalY * mass;
             bubble.dx += impulse * normalX * mass;
             bubble.dy += impulse * normalY * mass;
-          }
+          });
         }
       }
-    });
+    }
   }
 
   void _showPopup(BuildContext context) {
@@ -216,8 +222,8 @@ class _BubblesWidgetState extends State<BubblesWidget> {
           isOverlapping = false;
           double top = Random().nextDouble() * (containerHeight - bubbleRadiusWithBorder * 2);
           double left = Random().nextDouble() * (containerWidth - bubbleRadiusWithBorder * 2);
-          double dx = 0.2 * (Random().nextBool() ? 1 : -1);
-          double dy = 0.2 * (Random().nextBool() ? 1 : -1);
+          double dx = 0.1 * (Random().nextBool() ? 1 : -1);  // Slower speed
+          double dy = 0.1 * (Random().nextBool() ? 1 : -1);  // Slower speed
 
           newBubble = BubbleData(
             id: UniqueKey().toString(),

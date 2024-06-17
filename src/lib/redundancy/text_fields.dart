@@ -11,6 +11,8 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final double heightFactor;
+  final int? errorMaxLines;
 
   const CustomTextField({
     Key? key,
@@ -21,7 +23,9 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.suffixIcon,
-    this.prefixIcon
+    this.prefixIcon,
+    this.heightFactor = 0.1,
+    this.errorMaxLines,
   }) : super(key: key);
 
   @override
@@ -31,7 +35,7 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: size.height * 0.1,
+          height: size.height * heightFactor,
           child: TextFormField(
             controller: controller,
             obscureText: obscureText,
@@ -57,6 +61,7 @@ class CustomTextField extends StatelessWidget {
                 borderSide: const BorderSide(color: Colors.red),
               ),
               errorText: errorText,
+              errorMaxLines: errorMaxLines,
               suffixIcon: suffixIcon,
               prefixIcon: prefixIcon,
             ),
@@ -105,9 +110,12 @@ class EmailField extends CustomTextField {
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
   final String? errorText;
-  final Widget? suffixIcon;
 
-  const PasswordField({Key? key, required this.controller, this.errorText, this.suffixIcon}) : super(key: key);
+  const PasswordField({
+    Key? key,
+    required this.controller,
+    this.errorText,
+  }) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -129,7 +137,7 @@ class _PasswordFieldState extends State<PasswordField> {
         }
         return null;
       },
-      suffixIcon: widget.suffixIcon ?? GestureDetector(
+      suffixIcon: GestureDetector(
         onTap: () {
           setState(() {
             _obscureText = !_obscureText;
@@ -144,22 +152,44 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 }
 
-class PasswordFieldProfile extends PasswordField {
-  PasswordFieldProfile({
+class PasswordFieldProfile extends StatefulWidget {
+  final TextEditingController controller;
+  final String? errorText;
+  final BuildContext context;
+
+  const PasswordFieldProfile({
     Key? key,
-    required TextEditingController controller,
-    String? errorText,
-    Widget? suffixIcon,
-    required BuildContext context
-  }) : super(
-    key: key,
-    controller: controller,
-    errorText: errorText,
-    suffixIcon: suffixIcon ?? GestureDetector(
-      onTap: () => GoRouter.of(context).push('/updatePasswordPage'),
-      child: const Icon(Icons.arrow_forward_ios),
-    ),
-  );
+    required this.controller,
+    this.errorText,
+    required this.context,
+  }) : super(key: key);
+
+  @override
+  _PasswordFieldProfileState createState() => _PasswordFieldProfileState();
+}
+
+class _PasswordFieldProfileState extends State<PasswordFieldProfile> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+      controller: widget.controller,
+      hintText: 'Password',
+      errorText: widget.errorText,
+      obscureText: _obscureText,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a password';
+        }
+        return null;
+      },
+      suffixIcon: GestureDetector(
+        onTap: () => GoRouter.of(widget.context).push('/updatePasswordPage'),
+        child: const Icon(Icons.arrow_forward_ios),
+      ),
+    );
+  }
 }
 
 class PasswordFieldSignup extends CustomTextField {
@@ -174,13 +204,15 @@ class PasswordFieldSignup extends CustomTextField {
           errorText: errorText,
           obscureText: true,
           keyboardType: TextInputType.text,
+          heightFactor: 0.15,
+          errorMaxLines: 3, // Set the max lines for error text here
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a password';
             } else if (value.length < 6) {
               return 'Password must be at least 6 characters long';
             } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))) {
-              return 'Password must contain at least one number,\n one lowercase letter, one uppercase letter,\n and one special character';
+              return 'Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character';
             }
             return null;
           },

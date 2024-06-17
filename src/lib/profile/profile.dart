@@ -168,7 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               size: size,
                                               text: 'YES',
                                               onPressed: () {
-                                                GoRouter.of(context).push('/login');
+                                                GoRouter.of(context).go('/login');
                                               },
                                             ),
                                             const SizedBox(
