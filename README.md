@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Adopte un Candidat is a recruitment app available on mobile and desktop platforms. Its aim is to change the way how people are recruited, basing the criteria on soft skills rather than hard skills and diplomas. It has been requested by the company "We Are Evolution.", wants to renew the process of recruiting people.
+Adopte un Candidat is a recruitment app available on mobile and desktop platforms. It aims to change the way how people are recruited, basing the criteria on soft skills rather than hard skills and diplomas. It has been requested by the company "We Are Evolution.", wants to renew the process of recruiting people.
 
 Consequently, in this project, we are going to use Flutter, a language standardizing development among all the platforms targeted by the product.
 
@@ -19,9 +19,19 @@ Consequently, in this project, we are going to use Flutter, a language standardi
 | Pavlo PRENDI     | Quality Assurance | <img src="https://avatars.githubusercontent.com/u/169643790?v=4" width=200 /> | <center>[<img src="documents/management/pictures/linkedin.png" alt="LinkedIn" style="width:100px">](https://www.linkedin.com/in/pavlo-prendi-674777309/)</center>         |
 | Arthur LEMOINE   | Technical Writer  | <img src="https://avatars.githubusercontent.com/u/91249827?v=4" width=200 />  | <center>[<img src="documents/management/pictures/linkedin.png" alt="LinkedIn" style="width:100px">](https://www.linkedin.com/in/arthur-lemoine-4b9782221/)</center>       |
 
-## Requirements
+## Development-related information
 
-The final product isn't ready yet to be installed on your device. This section will be updated as soon as the product can be installed on your side.
+This software has been created using Flutter 3.22.0.
+
+It has been thoroughly tested using the following devices:
+
+- Google Pixel 8 - Android 14.0
+- Iphone 14 pro - IOS 17.0
+
+### Credentials for the job seeker interface
+
+Email: patrick.broussard@algosup.com
+Password: AAzz11!!
 
 ## Installation
 
