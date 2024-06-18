@@ -22,7 +22,7 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
   final List<String> skills = [
     "Self-Confidence",
     "Communication",
-    "Judgment",
+    "Judgement",
     "Empathy",
     "Efficiency",
     "Ability to focus",

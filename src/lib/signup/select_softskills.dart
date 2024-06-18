@@ -25,7 +25,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
   final List<String> skills = [
     "Self-Confidence",
     "Communication",
-    "Judgment",
+    "Judgement",
     "Empathy",
     "Efficiency",
     "Ability to focus",
