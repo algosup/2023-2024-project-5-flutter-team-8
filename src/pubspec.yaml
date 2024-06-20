@@ -22,6 +22,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
   flutter_launcher_icons: ^0.13.1
+  provider: ^6.0.3 
   
 dev_dependencies:
   flutter_test:
