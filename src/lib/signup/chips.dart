@@ -59,7 +59,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
       onSelected: (selected) {
         setState(() {
           if (selected) {
-            if (widget.selectedSkills.length < 15) {
+            if (widget.selectedSkills.length < 10) {
               widget.selectedSkills.add(label);
             }
           } else {

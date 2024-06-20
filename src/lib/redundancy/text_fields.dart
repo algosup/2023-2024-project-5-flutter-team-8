@@ -64,6 +64,7 @@ class CustomTextField extends StatelessWidget {
               errorMaxLines: errorMaxLines,
               suffixIcon: suffixIcon,
               prefixIcon: prefixIcon,
+              contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0), // Adjust the content padding
             ),
             validator: validator,
           ),
@@ -192,31 +193,55 @@ class _PasswordFieldProfileState extends State<PasswordFieldProfile> {
   }
 }
 
-class PasswordFieldSignup extends CustomTextField {
-  PasswordFieldSignup({
+class PasswordFieldSignup extends StatefulWidget {
+  final TextEditingController controller;
+  final String? errorText;
+
+  const PasswordFieldSignup({
     Key? key,
-    required TextEditingController controller,
-    String? errorText,
-  }) : super(
-          key: key,
-          controller: controller,
-          hintText: 'Password',
-          errorText: errorText,
-          obscureText: true,
-          keyboardType: TextInputType.text,
-          heightFactor: 0.15,
-          errorMaxLines: 3, // Set the max lines for error text here
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter a password';
-            } else if (value.length < 6) {
-              return 'Password must be at least 6 characters long';
-            } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$'))) {
-              return 'Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character';
-            }
-            return null;
-          },
-        );
+    required this.controller,
+    this.errorText,
+  }) : super(key: key);
+
+  @override
+  _PasswordFieldSignupState createState() => _PasswordFieldSignupState();
+}
+
+class _PasswordFieldSignupState extends State<PasswordFieldSignup> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+      heightFactor: 0.15,
+      controller: widget.controller,
+      hintText: 'Password',
+      errorText: widget.errorText,
+      obscureText: _obscureText,
+      errorMaxLines: 3,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a password';
+        } else if (value.length < 6) {
+          return 'Password must be at least 6 characters long';
+        } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$'))) {
+          return 'Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character';
+        }
+        return null;
+      },
+      suffixIcon: GestureDetector(
+        onTap: () {
+          setState(() {
+            _obscureText = !_obscureText;
+          });
+        },
+        child: Icon(
+          _obscureText ? Icons.visibility : Icons.visibility_off,
+          color: Colors.grey,
+        ),
+      ),
+    );
+  }
 }
 
 class Location extends CustomTextField {

@@ -131,7 +131,7 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
                 ),
                 const Spacer(),
                 Text(
-                  '(${selectedSkills.length}/15)',
+                  '(${selectedSkills.length}/10)',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -176,12 +176,12 @@ class _UpdateSkillsPageState extends State<UpdateSkillsPage> {
                             },
                             size: size,
                             onPressed: () async {
-                              if (selectedSkills.length == 15) {
+                              if (selectedSkills.length == 10) {
                                 await _saveSelectedSkills();
                                 GoRouter.of(context).push('/newRankingSkills');
                               } else {
                                 setState(() {
-                                  _softSkillsNumberError = 'Please select 15 soft skills';
+                                  _softSkillsNumberError = 'Please select 10 soft skills';
                                 });
                               }
                             },

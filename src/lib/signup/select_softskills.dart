@@ -107,12 +107,12 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                 child: Column(
                   children: [
                     SizedBox(
-                      width: size.width * 0.7,
+                      width: size.width * 0.75,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Soft Skills',
+                            'Your Soft Skills',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 40,
@@ -132,7 +132,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               ),
                               const Spacer(),
                               Text(
-                                '(${selectedSkills.length}/5)',
+                                '(${selectedSkills.length}/10)',
                                 style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -169,7 +169,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               },
                               size: size,
                               onPressed: () async {
-                                if (selectedSkills.length == 5) {
+                                if (selectedSkills.length == 10) {
                                   try {
                                     final directory =
                                         await getApplicationDocumentsDirectory();
@@ -206,7 +206,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                                   // Handle the case where not enough skills are selected
                                   setState(() {
                                     _softSkillsNumberError =
-                                        'Please select 5 soft skills';
+                                        'Please select 10 soft skills';
                                   });
                                 }
                               },

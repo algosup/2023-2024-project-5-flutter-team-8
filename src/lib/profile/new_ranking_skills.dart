@@ -20,7 +20,7 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
   String? _softSkillsNumberError;
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
-  List<String> selectedSkills = List.filled(15, '');
+  List<String> selectedSkills = List.filled(10, '');
   List<String> availableSkills = [];
 
   @override
@@ -120,7 +120,7 @@ class _NewRankingSkillsPageState extends State<NewRankingSkillsPage> {
                 children: [
                   Column(
                     children: List.generate(
-                      15,
+                      10,
                       (index) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2),
                         child: Row(

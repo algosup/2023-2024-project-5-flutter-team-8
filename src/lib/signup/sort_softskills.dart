@@ -21,7 +21,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
   String? _softSkillsNumberError;
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
-  List<String> selectedSkills = List.filled(5, '');
+  List<String> selectedSkills = List.filled(10, '');
   List<String> availableSkills = [];
 
   @override
@@ -128,7 +128,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       SizedBox(height: size.height * 0.05),
                       Column(
                         children: List.generate(
-                          5,
+                          10,
                           (index) => Padding(
                             padding: const EdgeInsets.symmetric(vertical: 2),
                             child: Row(

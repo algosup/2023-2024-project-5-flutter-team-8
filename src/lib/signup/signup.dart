@@ -25,11 +25,34 @@ class _SignupState extends State<Signup> {
   String? _emailPasswordError;
 
   @override
+  void initState() {
+    super.initState();
+    _fullNameController.addListener(_updateEmailFromFullName);
+  }
+
+  @override
   void dispose() {
+    _fullNameController.removeListener(_updateEmailFromFullName);
     _fullNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _updateEmailFromFullName() {
+    final fullName = _fullNameController.text;
+    final email = _generateEmailFromFullName(fullName);
+    _emailController.text = email;
+  }
+
+  String _generateEmailFromFullName(String fullName) {
+    if (fullName.isEmpty) return '';
+    final parts = fullName.trim().split(' ');
+    if (parts.length < 2) return '';
+
+    final firstName = parts[0].toLowerCase();
+    final lastName = parts[1].toLowerCase();
+    return '$firstName.$lastName@algosup.com';
   }
 
   @override
@@ -189,8 +212,8 @@ class _SignupState extends State<Signup> {
                 ),
               ),
             ),
-        ],)
-        
+          ],
+        ),
       ),
     );
   }

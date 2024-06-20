@@ -51,12 +51,12 @@ class __CurrentSkillsPageStateState extends State<CurrentSkillsPage> {
                   width: size.width,
                   height: size.height / 30,
                 ),
-                const Row(
+                Row(
                   children: [
                     SizedBox(
                       child: Text(
-                        'Skills (15)',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        'Skills (${skills.length})',
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                   ],
