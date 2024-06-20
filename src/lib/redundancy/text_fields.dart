@@ -224,7 +224,7 @@ class _PasswordFieldSignupState extends State<PasswordFieldSignup> {
           return 'Please enter a password';
         } else if (value.length < 6) {
           return 'Password must be at least 6 characters long';
-        } else if (!value.contains(RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$'))) {
+        } else if (!value.contains(RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$'))) {
           return 'Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character';
         }
         return null;

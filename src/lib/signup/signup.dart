@@ -56,12 +56,13 @@ class _SignupState extends State<Signup> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+Widget build(BuildContext context) {
+  final size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      body: Center(
+  return Scaffold(
+    backgroundColor: backgroundColor,
+    body: SingleChildScrollView(
+      child: Center(
         child: Column(
           children: [
             SizedBox(
@@ -215,8 +216,10 @@ class _SignupState extends State<Signup> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
 
 bool isFullNameValid(String? value) {
@@ -245,7 +248,6 @@ Future<void> _saveUser(String fullName, String email, String password) async {
         "softSkills": [],
         "distance": "",
         "location": "",
-        "distance": "",
         "avatar": ""
       }
     }
