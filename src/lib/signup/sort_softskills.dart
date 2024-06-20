@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:adopte_1_candidat/redundancy/arrow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
@@ -9,6 +8,7 @@ import 'dart:developer' as developer;
 
 import 'chips.dart';
 import '../constants.dart';
+import '../redundancy/arrow_button.dart';
 
 class SortSoftSkills extends StatefulWidget {
   const SortSoftSkills({super.key});
@@ -21,7 +21,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
   String? _softSkillsNumberError;
   final _formKey = GlobalKey<FormState>();
   List<String> skills = [];
-  List<String> selectedSkills = List.filled(15, '');
+  List<String> selectedSkills = List.filled(5, '');
   List<String> availableSkills = [];
 
   @override
@@ -128,7 +128,7 @@ class _SortSoftSkillsState extends State<SortSoftSkills> {
                       SizedBox(height: size.height * 0.05),
                       Column(
                         children: List.generate(
-                          15,
+                          5,
                           (index) => Padding(
                             padding: const EdgeInsets.symmetric(vertical: 2),
                             child: Row(

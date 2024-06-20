@@ -9,7 +9,7 @@ import 'dart:developer' as developer;
 import '../constants.dart';
 import '../redundancy/round_button.dart';
 import '../signup/chips.dart';
-import '../redundancy/arrow_button.dart';  // Import the ArrowButton
+import '../redundancy/arrow_button.dart';
 
 class SelectSoftSkills extends StatefulWidget {
   const SelectSoftSkills({super.key});
@@ -132,7 +132,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               ),
                               const Spacer(),
                               Text(
-                                '(${selectedSkills.length}/15)',
+                                '(${selectedSkills.length}/5)',
                                 style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -169,7 +169,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                               },
                               size: size,
                               onPressed: () async {
-                                if (selectedSkills.length == 15) {
+                                if (selectedSkills.length == 5) {
                                   try {
                                     final directory =
                                         await getApplicationDocumentsDirectory();
@@ -206,7 +206,7 @@ class _SelectSoftSkillsState extends State<SelectSoftSkills> {
                                   // Handle the case where not enough skills are selected
                                   setState(() {
                                     _softSkillsNumberError =
-                                        'Please select 15 soft skills';
+                                        'Please select 5 soft skills';
                                   });
                                 }
                               },
