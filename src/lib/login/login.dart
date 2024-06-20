@@ -189,7 +189,7 @@ class _LoginState extends State<Login> {
                           ),
                           TextButton(
                             onPressed: () {
-                              GoRouter.of(context).go('/signup');
+                              GoRouter.of(context).push('/signup');
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.all(Colors.transparent), // Remove splash effect
