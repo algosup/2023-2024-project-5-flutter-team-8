@@ -2,11 +2,21 @@
 
 This document aims to centralize all the management artifact links and resources listed below:
 
-- Tasks & Schedule
-- RACI Matrix
-- Risks & Assumptions
-- Key Performance Indicators
-- Weekly reports
+- [2023 - 2024 Project-5 Flutter Team-8 - Management Artifacts](#2023---2024-project-5-flutter-team-8---management-artifacts)
+  - [Tasks \& schedule](#tasks--schedule)
+  - [RACI Matrix](#raci-matrix)
+  - [Risks \& Assumptions](#risks--assumptions)
+  - [Key Performance Indicators](#key-performance-indicators)
+    - [Definition of our KPIs](#definition-of-our-kpis)
+      - [Documents](#documents)
+      - [Design](#design)
+      - [Development](#development)
+      - [Mood](#mood)
+    - [Link to the project's KPIs](#link-to-the-projects-kpis)
+  - [Weekly reports](#weekly-reports)
+  - [Post Mortem Analysis](#post-mortem-analysis)
+  - [Addendum](#addendum)
+    - [Differences Between Gantt Chart and Actual Schedule](#differences-between-gantt-chart-and-actual-schedule)
 
 ## Tasks & schedule
 
@@ -16,7 +26,7 @@ It has been created using Google Sheets, ensuring a good comprehension already k
 
 ## RACI Matrix
 
-The RACI matrix of this project is as follows:
+The RACI matrix of this project is as follows considering the [Project Charter](./project_charter.md):
 
 | Name                     | Project Manager | Program Manager | Technical Leader | Software engineer | Quality assurance | Technical Writer | Client | Stakeholders |
 | ------------------------ | --------------- | --------------- | ---------------- | ----------------- | ----------------- | ---------------- | ------ | ------------ |
@@ -107,7 +117,11 @@ Where:
 - **sum_unfinished_pages_advancements**: The cumulative progress of each unfinished page, with progress for each page ranging from 0 to 1.
 - **total_designed_pages**: The total number of pages defined during project analysis and design.
 
-By utilizing these formulas, we ensure that our progress tracking is clear and consistent, and provides a realistic view of our project's status to the client.
+#### Mood
+
+The mood percentage is calculated by averaging the weekly grades out of 10 given by each team member. These grades reflect their overall motivation and well-being from a personal perspective, as well as considering the project's milestones and challenges.
+
+By utilizing these formulas, we ensure that our progress tracking is clear and consistent, and provides a realistic view of our project's status to the client. For readibility and a better understanding, the KPIs are rounded to the nearest 5%
 
 ### Link to the project's KPIs
 
@@ -126,6 +140,22 @@ You can directly access the reports individually following the below bullet poin
 - [Access Report for Week 5](/documents/management/weekly_reports/week5.md)
 - [Access Report for Week 6](/documents/management/weekly_reports/week6.md)
 
-For a centralized collection of all reports in a single document, please refer to the Cumulative File for Weekly Reports:
+For a centralized collection of copies of all the reports in a single document, please refer to the Cumulative File for Weekly Reports:
 
 - [Access Cumulative file for all 6 weeks](/documents/management/weekly_reports/cumulative.md)
+
+## Post Mortem Analysis
+
+You can refer to our Post Mortem Analysis to have a retrospective of our project following [this link](./post_mortem.md)
+
+## Addendum
+
+### Differences Between Gantt Chart and Actual Schedule
+
+The project schedule deviated significantly from the initial Gantt Chart, reflecting substantial differences in both the timeline and the expected prototype of "Adopte Un Candidat." This section aims to explain the discrepancies between the planned and actual schedules.
+
+Learning Dart and Flutter took longer than anticipated, delaying the development phase from the start. As mentioned in the [Post Mortem Analysis](./post_mortem.md), we should have spent more time mastering the language before diving into the project. This would have prevented many of the issues and incompatibilities discovered later, which forced us to rework several features towards the end.
+
+As the project manager, I underestimated the time required to develop each page and its related features. This miscalculation could not be mitigated by overtime if our software engineer worked alone. Consequently, to ensure a functional prototype, we had to reorganize our efforts. Our QA and Technical Writer continued with their tasks, only seeking assistance when necessary. We also solely focused on the job seeker side rather than the company one, preferring quality rather than quantity.
+
+Overall, although our progress was not as far along as planned, future projects should account more accurately for the software engineer's learning curve and the actual effort needed to create each page.
